@@ -1,0 +1,192 @@
+@import "bootstrap";
+@import "pages";
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #fff;
+  font-size: 13px;
+}
+
+.btn-sidebar {
+  border-radius: 0px;
+  border: 0px;
+  text-align: left;
+  // margin-left: 10px;
+}
+
+.text-muted {
+  color: #717272;
+  font-weight: 300;
+}
+
+.btn-menu-nav {
+  color: #000e20;
+}
+
+.btn-menu-nav:hover {
+  color: #E62F24;
+}
+.search-row{
+  padding-top: 145px;
+  padding-bottom: 145px;
+}
+
+.search-input {
+  border-radius: 2px;
+  border: 0px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+  color: #fff;
+  height: 45px;
+  font-weight: 300;
+}
+
+.search-button {
+  border-radius: 2px;
+  border: 0px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+  height: 45px;
+  font-weight: 700;
+
+}
+
+.navbar-color-shadow {
+  background-color: #fffafa;
+  // box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+  height: 50px;
+}
+
+.card-field-main {
+  border-radius: 5px;
+  border: 0px;
+  // border-radius: 2px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-field-main:hover {
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.6), 0 0px 8px 0 rgba(0, 0, 0, 0.6);
+}
+
+.card-community-main {
+  border: 0px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-community-main:hover {
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.6), 0 0px 8px 0 rgba(0, 0, 0, 0.6);
+}
+
+
+.card-title-field {
+  font-weight: 700;
+  text-shadow: 2px 2px 8px #000;
+  padding-top: 18px;
+}
+
+.btn-city-main {
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+  color: #000e20;
+}
+
+.main-text-color {
+  color: #E62F24;
+  font-weight: bold;
+}
+
+.annotation-main {
+  font-weight: 300;
+  color: #534C4C;
+  font-size: 0.85em;
+}
+
+.footer {
+  margin-top: 335px;
+  display: block;
+}
+
+.footer-text {
+  font-weight: 300;
+  color: #534C4C;
+  font-size: 0.75em;
+}
+
+.card-img {
+  width: 100%;
+  height: 300px;
+  // object-fit: cover;
+  object-fit: cover;
+}
+
+.card-field-img {
+  width: 100%;
+  height: 100px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.card-commutity-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  // border-radius: 5px;
+}
+
+.place-name {
+  color: #707070;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.place-statuses {
+  color: #707070;
+  font-weight: 300;
+}
+
+.fa-sun {
+  color: #FDF40F;
+}
+
+.btn-moreinfo-main {
+  border: 0px;
+  font-size: 13px;
+}
+
+.btn-outline-danger {
+  border-color: #E62F24;
+}
+
+.btn-outline-danger:hover {
+  background-color: #E62F24;
+}
+
+.alert {
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.modal-header-menu {
+  background-color: #E62F24;
+}
+
+.modal-title-menu {
+  color: #fff;
+}
+
+.model-dialog-menu {
+  border-radius: 7px;
+}
+
+.dropdown-item-menu:hover {
+  background-color: #E62F24;
+  color: #fff;
+  border-radius: 50px;
+  font-weight: 700;
+}
+
+.card-login {
+  border: 0px;
+  margin-bottom: 10px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.card-header-login {
+  background-color: #E62F24;
+  color: #fff;
+}
