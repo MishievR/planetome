@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card card-user">
+      <%= image_tag @user.background, class: "card-user-bg-img card-img-top" if @user.background? %>
+      <%= image_tag @user.avatar.url(:small), class: "profilePhoto" if @user.avatar? %>
+      <div class="card-body">
+        <h5 class="card-title card-title-user"><%= link_to @user.name, user_path(@user), class: "user-link" %></h5>
+        <p class="user-username">@<%= @user.username %></p>
+        <p class="card-text"><%= @user.about %></p>
+      </div>
+    </div>
+  </div>
+</div>

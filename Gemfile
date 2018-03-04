@@ -9,6 +9,11 @@ end
 gem 'bootstrap', '~> 4.0.0'
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+gem 'figaro'
+
 
 
 

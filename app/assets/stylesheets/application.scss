@@ -1,5 +1,6 @@
 @import "bootstrap";
 @import "pages";
+@import "users";
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -53,6 +54,7 @@ body {
   background-color: #fffafa;
   // box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
   height: 50px;
+  margin-bottom: 70px;
 }
 
 .card-field-main {

@@ -1,0 +1,33 @@
+
+.profilePhoto {
+  border: 3px solid white;
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  margin-left: 17px;
+  margin-bottom: -15px;
+}
+
+.card-user-bg-img {
+  width: 100%;
+  height: 125px;
+  object-fit: cover;
+}
+
+.card-user {
+  border: 0px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-title-user {
+  margin-bottom: 0px;
+}
+
+.user-username {
+  color: grey;
+}
+
+.user-link {
+  color: #443A3A;
+}
