@@ -24,28 +24,64 @@
               </button>
             </div>
             <div class="modal-body">
-
-                <% if user_signed_in? %>
-                  <%= link_to(edit_user_path(current_user), class: "dropdown-item dropdown-item-menu") do %>
-                  <i class="fas fa-edit"></i>
-                  Edit profile
-                  <% end %>
-                  <div class="dropdown-divider"></div>
-                  <%= link_to(destroy_user_session_path, method: :delete, class: "dropdown-item dropdown-item-menu") do %>
-                  <i class="fas fa-sign-out-alt"></i>
-                  Log out
+              <% if user_signed_in? %>
+              <div class="row">
+                  <%= image_tag current_user.avatar.url(:thumb), class: "profilePhotoMenu" if current_user.avatar? %>
+                  <% if current_user == @user && @user.first_name == nil %>
+                  <h5 class="user-title-menu"><%= link_to "Add info", edit_user_path(current_user), class: "user-link-menu" %></h5>
+                  <% else %>
+                  <h5 class="user-title-menu"><%= link_to current_user.name, user_path(current_user), class: "user-link-menu" %></h5>
                   <% end %>
 
-                <% else %>
-                <%= link_to(new_user_session_path, :class=>"dropdown-item dropdown-item-menu") do %>
-                  <i class="fas fa-sign-in-alt"></i>
-                  Log In
-                <% end %>
+              </div>
+              <%= link_to(communities_path, class: "dropdown-item dropdown-item-menu") do %>
+              <i class="fab fa-group"></i>
+              Communities
               <% end %>
-            </div>
-          </div>
+              <%= link_to(fields_path, class: "dropdown-item dropdown-item-menu") do %>
+              <i class="fab fa-buromobelexperte"></i>
+              Fields
+              <% end %>
+              <%= link_to(cities_path, class: "dropdown-item dropdown-item-menu") do %>
+              <i class="fab fa-buromobelexperte"></i>
+              Cities
+              <% end %>
+              <div class="dropdown-divider"></div>
+              <%= link_to(user_path(current_user), class: "dropdown-item dropdown-item-menu") do %>
+              <i class="fas fa-user"></i>
+              My profile
+              <% end %>
+              <%= link_to(edit_user_path(current_user), class: "dropdown-item dropdown-item-menu") do %>
+              <i class="fas fa-edit"></i>
+              Edit profile
+              <% end %>
+              <div class="dropdown-divider"></div>
+              <%= link_to(destroy_user_session_path, method: :delete, class: "dropdown-item dropdown-item-menu") do %>
+              <i class="fas fa-sign-out-alt"></i>
+              Log out
+              <% end %>
+
+            <% else %>
+            <%= link_to(fields_path, class: "dropdown-item dropdown-item-menu") do %>
+            <i class="fab fa-buromobelexperte"></i>
+            Fields
+            <% end %>
+            <%= link_to(cities_path, class: "dropdown-item dropdown-item-menu") do %>
+            <i class="fab fa-buromobelexperte"></i>
+            Cities
+            <% end %>
+            <%= link_to(new_user_session_path, :class=>"dropdown-item dropdown-item-menu") do %>
+              <i class="fas fa-sign-in-alt"></i>
+              Log In
+            <% end %>
+
+
+          <% end %>
+
         </div>
       </div>
+    </div>
+  </div>
 
 
 

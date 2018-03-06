@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col">
+    <div class="card card-login">
+      <!-- <div class="card-header ">
+        <h4>City</h4>
+      </div> -->
+      <div class="card-body">
+        <%= form_for(@field, :html => {class: "", role: "form"}) do |f| %>
+          <div class="form-group ">
+            <%= f.label :name %>
+            <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+          </div>
+          <div class="form-group ">
+            <%= f.label :description %>
+            <%= f.text_area :description, rows: 3, class: "form-control", placeholder: "Desctiption of the field", autofocus: false %>
+          </div>
+          <div class="form-group">
+            <%= f.label :Preview %>
+
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card bg-dark text-white card-field-main text-center">
+                  <%= image_tag @field.background, class: "card-field-img" if @field.background? %>
+                  <div class="card-img-overlay">
+                    <h5 class="card-title card-title-field"><%= @field.name%></h5>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <br>
+
+            <%= f.label :upload_background_photo %>
+            <%= f.file_field :background, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+          </div>
+          <%= f.submit class: 'btn btn-primary' %>
+          <small class="form-text text-muted">NOTE: It may take some time to upload your background image, <strong>don't reload the web page please!</strong></small>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

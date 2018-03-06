@@ -9,6 +9,16 @@
   margin-bottom: -15px;
 }
 
+.profilePhotoMenu {
+  border: 3px solid white;
+  border-radius: 50px;
+  width: 45px;
+  height: 45px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
 .card-user-bg-img {
   width: 100%;
   height: 125px;
@@ -18,6 +28,11 @@
 .card-user {
   border: 0px;
   box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-user:hover {
+  border: 0px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.6), 0 0px 8px 0 rgba(0, 0, 0, 0.6);
 }
 
 .card-title-user {
@@ -30,4 +45,44 @@
 
 .user-link {
   color: #443A3A;
+}
+
+.user-title-menu {
+  padding-top: 20px;
+  margin-bottom: 10px;
+
+}
+
+.user-link-menu {
+  color: #443A3A;
+}
+
+.card-pages-user {
+  height: 100px;
+  border: 0px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+  border-top: 3px solid red;
+}
+
+.card-pages-user:hover {
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.3), 0 0px 8px 0 rgba(0, 0, 0, 0.3);
+  border-bottom: 3px solid red;
+  margin-bottom: -3px;
+
+}
+
+.card-subtitle-pages-user {
+  font-size: 12px;
+}
+
+.dots-pages-user {
+  margin-right: -10px;
+}
+
+.card-used-fixedheight {
+  height: 335px;
+}
+
+.card-text-main {
+  color: grey;
 }

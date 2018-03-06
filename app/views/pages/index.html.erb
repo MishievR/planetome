@@ -11,53 +11,70 @@
   <div class="col">
     <h3 class="main-text-color">Fields
     <br>
-    <small class="text-muted">The market you want to disrupt.</small>
+    <!-- <small class="text-muted">The market you want to disrupt.</small> -->
+    <small class="text-muted">The field where you want to start.</small>
+
     </h3>
   </div>
 </div>
 <div class="row">
+  <% @fields.take(4).each do |field| %>
   <div class="col-6 col-md-6 col-lg-3 col-xl-3">
+    <%= link_to field_path(field) do %>
     <div class="card bg-dark text-white card-field-main text-center mr-3 mt-3">
-      <img class="card-field-img" src="https://farm5.staticflickr.com/4675/39649691735_eef7b9cbd0_h.jpg" width="1600" height="1063" alt="Card image">
+      <%= image_tag field.background, class: "card-field-img" if field.background? %>
       <div class="card-img-overlay">
-        <h5 class="card-title card-title-field">Real Estate</h5>
+        <h5 class="card-title card-title-field"><%= field.name%></h5>
       </div>
     </div>
+    <% end %>
   </div>
-  <!-- <div class="col-sm-3">
-    <div class="card card-field-main">
-      <%= image_tag('test-img-3.jpg', alt: "Nature", class: "card-img-top card-main-img")  %>
-    </div>
-  </div> -->
-  <div class="col-6 col-md-6 col-lg-3 col-xl-3">
-    <div class="card bg-dark text-white card-field-main text-center mr-3 mt-3">
-      <img class="card-field-img" src="https://farm5.staticflickr.com/4707/40518859882_6de2a1a147_h.jpg" width="1067" height="1600" alt="Card image">
-      <div class="card-img-overlay">
-        <h5 class="card-title card-title-field">AR/VR</h5>
-      </div>
-    </div>
-  </div>
-  <div class="col-6 col-md-6 col-lg-3 col-xl-3">
-    <div class="card bg-dark text-white card-field-main text-center mr-3 mt-3">
-      <img class="card-field-img" src="https://farm5.staticflickr.com/4723/40518859532_8a15d977ec_h.jpg" width="1600" height="900" alt="Card image">
-      <div class="card-img-overlay">
-        <h5 class="card-title card-title-field">Co-Workings</h5>
-      </div>
-    </div>
-  </div>
-  <div class="col-6 col-md-6 col-lg-3 col-xl-3">
-    <div class="card bg-dark text-white card-field-main text-center mr-3 mt-3">
-      <img class="card-field-img" src="https://farm5.staticflickr.com/4723/40561601021_692bc19e31_h.jpg" width="1600" height="1200" alt="Card image">
-      <div class="card-img-overlay">
-        <h5 class="card-title card-title-field">Car Sharing</h5>
-      </div>
+  <% end %>
+</div>
+
+<% if @fields.count < 4 %>
+<br>
+<br>
+
+<% else %>
+
+<div class="row">
+  <div class="col">
+    <div class="mr-3">
+      <%= link_to(fields_path, class: "btn btn-outline-danger btn-block btn-moreinfo-main main-text-color mt-3") do %>
+      + <%= Field.count-4 %> more
+      <% end %>
     </div>
   </div>
 </div>
+
+<br>
+<% end %>
+
+
+
 <div class="row">
-  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+  <div class="col">
+    <h3 class="main-text-color">Cities
+    <br>
+    <small class="text-muted">Location of your personal HQ.</small>
+    </h3>
+  </div>
+</div>
+
+<div class="row">
+  <% @cities.take(20).each do |city| %>
+  <div class="col">
+    <%= link_to city.name, city_path(city), class: "btn btn-outline-danger btn-lg btn-city-main mr-3 mt-3"  %>
+  </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col">
     <div class="mr-3">
-      <button type="button" class="btn btn-outline-danger btn-block btn-moreinfo-main main-text-color mt-3">+ 127 more</button>
+      <%= link_to(cities_path, class: "btn btn-outline-danger btn-block btn-moreinfo-main main-text-color mt-3") do %>
+      + <%= City.count-20 %> more
+      <% end %>
     </div>
   </div>
 </div>
@@ -66,35 +83,53 @@
 
 <div class="row">
   <div class="col">
-    <h3 class="main-text-color">Cities
+    <h3 class="main-text-color">People
     <br>
-    <small class="text-muted">A place where are you starting.</small>
+    <small class="text-muted">Meet founders. Connect with anyone.</small>
     </h3>
   </div>
 </div>
 
+
 <div class="row">
-  <div class="col">
+  <% @users.take(8).each do |user| %>
+  <div class="col-6 col-md-6 col-lg-3 col-xl-3">
+    <%= link_to user_path(user), class: "card-user-link"  do %>
+    <div class="card card-user card-used-fixedheight mt-3">
+      <%= image_tag user.background, class: "card-user-bg-img card-img-top" if user.background? %>
 
-    <button type="button" class="btn btn-outline-danger btn-lg btn-city-main mr-3 mt-3">Moscow</button>
-    <button type="button" class="btn btn-outline-danger btn-lg btn-city-main mr-3 mt-3">New York</button>
-    <button type="button" class="btn btn-outline-danger btn-lg btn-city-main mr-3 mt-3">Berlin</button>
-    <button type="button" class="btn btn-outline-danger btn-lg btn-city-main mr-3 mt-3">Chicago</button>
-    <button type="button" class="btn btn-outline-danger btn-lg btn-city-main mr-3 mt-3">Sydney</button>
-    <button type="button" class="btn btn-outline-danger btn-lg btn-city-main mr-3 mt-3">San Francisco</button>
-    <button type="button" class="btn btn-outline-danger btn-lg btn-city-main mr-3 mt-3">Chicago</button>
-    <button type="button" class="btn btn-outline-danger btn-lg btn-city-main mr-3 mt-3">Hong-Kong</button>
+      <div class="row">
+        <div class="col-6">
+          <%= image_tag user.avatar.url(:medium), class: "profilePhoto" if user.avatar? %>
+        </div>
+        <div class="col-6">
+          <p class="">Score: <%= user.status %></p>
+        </div>
+      </div>
 
+      <div class="card-body">
+        <h5 class="card-title card-title-user"><%= user.name %></h5>
+        <p class="user-username">@<%= user.username %></p>
+        <p class="card-text card-text-main"><%= truncate(user.about, length: 40 )%></p>
+      </div>
+    </div>
+    <% end %>
   </div>
-
+  <% end %>
 </div>
+
 <div class="row">
   <div class="col">
     <div class="mr-3">
-      <button type="button" class="btn btn-outline-danger btn-block btn-moreinfo-main main-text-color mt-3">+ 127 more</button>
+      <%= link_to(users_path, class: "btn btn-outline-danger btn-block btn-moreinfo-main main-text-color mt-3") do %>
+      + <%= User.count-8 %> people
+      <% end %>
     </div>
   </div>
 </div>
+
+
+
 
 
 <br>
@@ -103,7 +138,7 @@
   <div class="col">
     <h3 class="main-text-color">Communities
     <br>
-    <small class="text-muted">Ask, talk, give, get and much more.</small>
+    <small class="text-muted">Places where opportunities exist.</small>
     </h3>
   </div>
 </div>
@@ -112,51 +147,27 @@
 
 <div class="row">
   <div class="col-6 col-md-6 col-lg-3 col-xl-3">
-    <div class="card card-community-main mr-3 mt-3">
-      <img class="card-commutity-img card-img-top" src="https://farm5.staticflickr.com/4723/40518859532_8a15d977ec_h.jpg" width="1600" height="900" alt="Card image cap">
+    <% @communities.each do |community| %>
+    <div class="card card-community-index mr-3 mt-3">
+      <%= link_to community_path(community), class: "card-user-link" do %>
+      <%= image_tag community.background, class: "card-commutity-img card-img-top" if community.background? %>
       <div class="card-body">
-        <h5 class="card-title">Co-working nation</h5>
-        <p class="card-text">Find people who work in co-working spaces around the world or share your thoughts and advices.</p>
+        <h5 class="card-title"><%= community.name %></h5>
+        <p class="card-text"><%= community.description %></p>
+        <!-- <p class="card-text-location"><i class="fas fa-globe"></i> Worldwide</p> -->
       </div>
+      <% end %>
     </div>
-  </div>
-
-  <div class="col-6 col-md-6 col-lg-3 col-xl-3">
-    <div class="card card-community-main mr-3 mt-3">
-      <img class="card-commutity-img card-img-top" src="https://farm5.staticflickr.com/4759/40561601551_f3d1282908_h.jpg" width="1600" height="900" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Evergreen planet</h5>
-        <p class="card-text">Reneweble energy, bataries and evething electric is what we passionet about. Join us right now!</p>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col-6 col-md-6 col-lg-3 col-xl-3">
-    <div class="card card-community-main mr-3 mt-3">
-      <img class="card-commutity-img card-img-top" src="https://farm5.staticflickr.com/4650/39851769104_51f0686735_h.jpg" width="1600" height="990" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Fell in love in San Francisco</h5>
-        <p class="card-text">Ones you've been here you can't forget this city. We love it, we live here, we want to be here.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-6 col-md-6 col-lg-3 col-xl-3">
-    <div class="card card-community-main mr-3 mt-3">
-      <img class="card-commutity-img card-img-top" src="https://farm5.staticflickr.com/4695/26691091498_d05ce9cb0a_b.jpg" width="692" height="702" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Commercial interiors</h5>
-        <p class="card-text">Here you can meet people behind the greatests commercial interior designs from all over the world. Join us!</p>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
 
 <div class="row">
   <div class="col">
     <div class="mr-3">
-      <button type="button" class="btn btn-outline-danger btn-block btn-moreinfo-main main-text-color mt-3">+ 127 more</button>
+      <%= link_to(communities_path, class: "btn btn-outline-danger btn-block btn-moreinfo-main main-text-color mt-3") do %>
+      + <%= Community.count-4 %> more
+      <% end %>
     </div>
   </div>
 </div>

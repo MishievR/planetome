@@ -1,9 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Planetome User | Edit</title>
-  </head>
+<head>
+  <title>Edit Profile | Startups Space</title>
+</head>
 
-<h1 align="center">Edit your account</h1>
 
+<div class="row">
+  <div class="col">
+    <h1 class="main-text-color">Edit Your Profile</h1>
+    <h5><small class="text-muted"><%= link_to 'Go back to profile', user_path(@user), class: "text-muted text-muted-small" %> | <%= link_to 'Front page', root_path, class: "text-muted text-muted-small" %></small></h5>
+  </div>
+</div>
+
+<br>
 <%= render 'form' %>

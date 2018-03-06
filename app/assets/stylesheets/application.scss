@@ -1,11 +1,16 @@
 @import "bootstrap";
 @import "pages";
 @import "users";
+@import "fields";
 
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #fff;
   font-size: 13px;
+}
+
+a:hover {
+  color: #E62F24;
 }
 
 .btn-sidebar {
@@ -27,28 +32,34 @@ body {
 .btn-menu-nav:hover {
   color: #E62F24;
 }
-.search-row{
-  padding-top: 145px;
-  padding-bottom: 145px;
-}
 
-.search-input {
-  border-radius: 2px;
-  border: 0px;
-  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
-  color: #fff;
-  height: 45px;
-  font-weight: 300;
-}
-
-.search-button {
-  border-radius: 2px;
-  border: 0px;
-  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
-  height: 45px;
-  font-weight: 700;
-
-}
+// .text-muted-small {
+//   font-size: 12px;
+//   margin-top: 0px;
+//
+// }
+// .search-row{
+//   padding-top: 145px;
+//   padding-bottom: 145px;
+// }
+//
+// .search-input {
+//   border-radius: 2px;
+//   border: 0px;
+//   box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+//   color: #fff;
+//   height: 45px;
+//   font-weight: 300;
+// }
+//
+// .search-button {
+//   border-radius: 2px;
+//   border: 0px;
+//   box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+//   height: 45px;
+//   font-weight: 700;
+//
+// }
 
 .navbar-color-shadow {
   background-color: #fffafa;
@@ -68,15 +79,25 @@ body {
   box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.6), 0 0px 8px 0 rgba(0, 0, 0, 0.6);
 }
 
-.card-community-main {
+// .card-community-main {
+//   border: 0px;
+//   box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+// }
+//
+// .card-community-main:hover {
+//   box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.6), 0 0px 8px 0 rgba(0, 0, 0, 0.6);
+// }
+
+.card-community-index {
   border: 0px;
   box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.card-community-main:hover {
-  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.6), 0 0px 8px 0 rgba(0, 0, 0, 0.6);
+.card-community-index:hover {
+  border-bottom: 3px solid red;
+  margin-bottom: -3px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.3), 0 0px 8px 0 rgba(0, 0, 0, 0.3);
 }
-
 
 .card-title-field {
   font-weight: 700;
@@ -143,10 +164,6 @@ body {
   font-weight: 300;
 }
 
-.fa-sun {
-  color: #FDF40F;
-}
-
 .btn-moreinfo-main {
   border: 0px;
   font-size: 13px;
@@ -161,15 +178,15 @@ body {
 }
 
 .alert {
-  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
 .modal-header-menu {
-  background-color: #E62F24;
+  background-color: #fff;
 }
 
 .modal-title-menu {
-  color: #fff;
+  color: #E62F24;
 }
 
 .model-dialog-menu {
@@ -191,4 +208,9 @@ body {
 .card-header-login {
   background-color: #E62F24;
   color: #fff;
+}
+
+.card-text-location {
+  color: grey;
+  font-size: 11px;
 }

@@ -1,0 +1,47 @@
+<%= render 'shared/errors', obj: @community %>
+  <div class="row">
+    <div class="col">
+      <div class="card card-login">
+        <div class="card-body">
+          <%= form_for(@community, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-9 col-xl-9">
+                <div class="form-group">
+                      <%= f.label :name, class: "control-label" %>
+                      <%= f.text_field :name, class: "form-control", placeholder: "Elon", autofocus: true %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :Description, class: "control-label" %>
+                  <%= f.text_area :description, rows: 3, class: "form-control", placeholder: "Building electric cars. Sending them to Mars on my rockets.", autofocus: true %>
+                  <small class="form-text text-muted">300 letters limit</small>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-3 col-xl-3">
+                <div class="form-group">
+                  <%= f.label :Community_Preview %>
+                  <div class="row">
+                    <div class="card card-community-main mr-3 mt-3">
+                      <%= image_tag @community.background, class: "card-commutity-img card-img-top" if @community.background? %>
+                      <div class="card-body">
+                        <h5 class="card-title"><%= @community.name %></h5>
+                        <p class="card-text"><%= @community.description %></p>
+                        <!-- <p class="card-text-location"><i class="fas fa-globe"></i> Worldwide</p> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <label><i class="fas fa-upload"></i> <strong>Background</strong> photo</label>
+                  <%= f.file_field :background, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+                </div>
+            </div>
+          </div>
+          <%= f.submit class: 'btn btn-primary' %>
+          <small class="form-text text-muted">NOTE: It may take some time to upload your background and/or profile image, <strong>don't reload the web page please!</strong></small>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

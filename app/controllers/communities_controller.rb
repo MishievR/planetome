@@ -1,0 +1,57 @@
+class CommunitiesController < ApplicationController
+
+before_action :require_admin, except: [:index, :show]
+
+
+def index
+  @communities = Community.all
+end
+
+def new
+  @community = Community.new
+end
+
+def create
+  @community = Community.new(community_params)
+  if @community.save
+    flash[:success] = "Community was created succesfully"
+    redirect_to communities_path
+  else
+    render 'new'
+  end
+end
+
+def edit
+  @community = Community.find(params[:id])
+end
+
+def show
+  @community = Community.find(params[:id])
+end
+
+def update
+  @community = Community.find(params[:id])
+  if @community.update(community_params)
+    flash[:success] = "Community was updated succcessfully"
+    redirect_to community_path(@community)
+  else
+    render 'edit'
+  end
+end
+
+
+
+private
+def community_params
+  params.require(:community).permit(:name, :description, :background, :rating)
+end
+
+def require_admin
+  if user_signed_in? and !current_user.admin?
+    flash[:danger] = "Only admins can perform that action"
+    redirect_to communities_path
+  end
+end
+
+
+end
