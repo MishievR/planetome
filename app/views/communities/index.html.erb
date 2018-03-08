@@ -1,11 +1,30 @@
 
 <div class="row">
-  <div class="col">
-    <h3 class="main-text-color">Communities of Startups.Space
+  <% if user_signed_in?  %>
+  <div class="col-12 col-md-9 ">
+    <h3 class="main-text-color">Communities
     <br>
-    <!-- <small class="text-muted">The field where you want to start.</small> -->
+    <small class="text-muted">The field where you want to start.</small>
+
     </h3>
   </div>
+    <div class="col-12 col-md-3">
+      <%= link_to(new_community_path, class: "btn btn-outline-danger btn-block") do %>
+      <i class="fas fa-plus"></i>
+      Create a new Community
+      <% end %>
+    </div>
+
+
+  <% else %>
+  <div class="col-12">
+    <h3 class="main-text-color">Communities
+    <br>
+    <small class="text-muted">The field where you want to start.</small>
+
+    </h3>
+  </div>
+  <% end %>
 </div>
 <br>
 

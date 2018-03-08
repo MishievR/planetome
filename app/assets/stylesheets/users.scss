@@ -35,6 +35,11 @@
   box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.6), 0 0px 8px 0 rgba(0, 0, 0, 0.6);
 }
 
+.card-user-page {
+  border: 0px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
 .card-title-user {
   margin-bottom: 0px;
 }
@@ -58,16 +63,16 @@
 }
 
 .card-pages-user {
-  height: 100px;
+  height: 150px;
   border: 0px;
   box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
-  border-top: 3px solid red;
+  // border-top: 3px solid red;
 }
 
 .card-pages-user:hover {
   box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.3), 0 0px 8px 0 rgba(0, 0, 0, 0.3);
   border-bottom: 3px solid red;
-  margin-bottom: -3px;
+  margin-bottom: 0px;
 
 }
 

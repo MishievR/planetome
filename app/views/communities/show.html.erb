@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card card-community-show mb-3">
+      <%= image_tag @community.background, class: "card-commutity-img-show card-img-top" if @community.background? %>
+      <div class="card-body">
+        <h5 class="card-title"><%= @community.name %></h5>
+        <p class="card-text"><%= @community.description %></p>
+        <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(@community.created_at) %> ago</small></p>
+
+        
+      </div>
+    </div>§
+  </div>
+</div>
