@@ -5,7 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
+  has_many :communities
+  
   validates :first_name, presence: true, length: {minimum: 1, maximum: 35}
   validates :last_name, presence: true, length: {minimum: 1, maximum: 35}
   validates :username, presence: true, length: {minimum: 1, maximum: 35}
@@ -16,6 +17,7 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
   mount_uploader :background, ImageUploader
+
   def name
     "#{first_name} #{last_name}"
   end

@@ -1,10 +1,33 @@
 .card-commutity-img-show {
   width: 100%;
-  height: 280px;
+  height: 250px;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 .card-community-show {
   border: 0px;
   box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.text-shadow {
+  text-shadow: 4px 4px 10px #000;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+
+.card-community-show-margin {
+  margin-top: 70px;
+}
+
+.community-menu {
+  border-radius: 0px;
+  border: 0px;
+  font-weight: bold;
+}
+
+.list-group-item-action:hover {
+  border-bottom: 3px solid red;
+  margin-bottom: -4px;
 }

@@ -1,14 +1,40 @@
 <div class="row">
   <div class="col-12">
-    <div class="card card-community-show mb-3">
-      <%= image_tag @community.background, class: "card-commutity-img-show card-img-top" if @community.background? %>
-      <div class="card-body">
-        <h5 class="card-title"><%= @community.name %></h5>
-        <p class="card-text"><%= @community.description %></p>
-        <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(@community.created_at) %> ago</small></p>
-
-        
+    <div class="card bg-dark text-white card-community-show ">
+      <%= image_tag @community.background, class: "card-commutity-img-show " if @community.background? %>
+      <div class="card-img-overlay">
+        <h2 class="card-title text-shadow"><%= @community.name %></h2>
+        <!-- <p class="card-text text-shadow"><%= @community.description %></p> -->
+        <!-- <p class="card-text text-shadow">Created <%= time_ago_in_words(@community.created_at) %> ago</p> -->
       </div>
-    </div>§
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="col-12 col-md-3 col-lg-2 col-xl-2">
+    <div class="card card-community-show" >
+      <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action community-menu ">Posts</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu ">People</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu ">Meetups</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu ">Webinars</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu ">Books</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu ">Advices</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu ">Mentors</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu ">Ideas</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu ">Projects</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu ">Chat</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu ">Jobs</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu ">Wiki</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu " disabled>Rules</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu " >About</button>
+      </div>
+    </div>
+    <br>
+  </div>
+  <div class="col-12 col-md-9 col-lg-10 col-xl-10">
+
   </div>
 </div>

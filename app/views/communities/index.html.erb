@@ -29,18 +29,20 @@
 <br>
 
 <div class="row">
+  <% @communities.each do |community| %>
   <div class="col-6 col-md-6 col-lg-3 col-xl-3">
-    <% @communities.each do |community| %>
+    <%= link_to community_path(community), class: "card-user-link" do %>
     <div class="card card-community-index mr-3 mt-3">
-      <%= link_to community_path(community), class: "card-user-link" do %>
       <%= image_tag community.background, class: "card-commutity-img card-img-top" if community.background? %>
       <div class="card-body">
         <h5 class="card-title"><%= community.name %></h5>
         <p class="card-text"><%= community.description %></p>
         <!-- <p class="card-text-location"><i class="fas fa-globe"></i> Worldwide</p> -->
       </div>
-      <% end %>
     </div>
     <% end %>
+
   </div>
+  <% end %>
+
 </div>

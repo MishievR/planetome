@@ -26,6 +26,7 @@ class FieldsController < ApplicationController
 
   def show
     @field = Field.find(params[:id])
+    @community_fields = @field.communities
   end
 
   def update
@@ -37,7 +38,6 @@ class FieldsController < ApplicationController
       render 'edit'
     end
   end
-
 
 
   private

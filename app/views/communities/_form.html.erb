@@ -16,6 +16,15 @@
                   <%= f.text_area :description, rows: 3, class: "form-control", placeholder: "Building electric cars. Sending them to Mars on my rockets.", autofocus: true %>
                   <small class="form-text text-muted">300 letters limit</small>
                 </div>
+                <div class="form-group">
+                  <%= f.label :Field, class: "control-label" %>
+                  <%= f.collection_check_boxes :field_ids, Field.all, :id, :name do |cb| %>
+                  <ul>
+                    <%= cb.label(class: "form-check-label") {cb.check_box(class: "form-check-input") + cb.text}  %>
+                  </ul>
+                  <% end %>
+                  <small class="form-text text-muted">You can only choose one.</small>
+                </div>
               </div>
               <div class="col-12 col-md-6 col-lg-3 col-xl-3">
                 <div class="form-group">
