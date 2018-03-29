@@ -30,3 +30,11 @@ $(function () {
 $('.popover-dismiss').popover({
   trigger: 'focus'
 })
+
+$(function() {
+  $("#body-field").on("keyup", function(){
+    var length = $(this).val().length + '/160   Min. 50';
+
+    $("#body-count").html(length);
+  });
+});

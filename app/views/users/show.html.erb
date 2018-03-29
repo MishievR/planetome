@@ -5,21 +5,29 @@
     <br>
     <!-- <small class="text-muted">The market you want to disrupt.</small> -->
     <small class="text-muted">The field where you want to start.</small>
-
     </h3>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-12 col-sm-6 col-md-7 col-lg-9 col-xl-9">
-    <!-- <div class="row">
-      <div class="col">
-        <h3 class="main-text-color">Projects
-        </h3>
-      </div>
-    </div> -->
-
+  <div class="col-12 col-sm-6 col-md-8 col-lg-9 col-xl-9">
     <div class="row">
+      <% @user.communities.each do |community| %>
+      <div class="col-6 col-md-6 col-lg-4 col-xl-4">
+        <%= link_to community_path(community), class: "card-user-link" do %>
+        <div class="card card-community-index mr-3 mt-3">
+          <%= image_tag community.background, class: "card-commutity-img card-img-top" if community.background? %>
+          <div class="card-body">
+            <h5 class="card-title"><%= community.name %></h5>
+            <p class="card-text"><%= community.description %></p>
+            <!-- <p class="card-text-location"><i class="fas fa-globe"></i> Worldwide</p> -->
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+    <!-- <div class="row">
         <div class="col-12 col-md-12 col-lg-12 col-xl-12">
           <div class="card card-pages-user mt-2">
           <div class="card-body">
@@ -43,39 +51,12 @@
             <h6 class="card-subtitle mb-2 text-muted card-subtitle-pages-user">34 following | 1 created</h6>
           </div>
         </div>
-      </div>
-
-
-</div>
-
-
-    <!--
-    <br>
-    <div class="row">
-      <div class="col-6 col-md-6 col-lg-6 col-xl-6">
-        <div class="card card-community-main mr-3 mt-3">
-          <img class="card-commutity-img card-img-top" src="https://farm5.staticflickr.com/4695/26691091498_d05ce9cb0a_b.jpg" width="692" height="702" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Commercial interiors</h5>
-            <p class="card-text">Here you can meet people behind the greatests commercial interior designs from all over the world. Join us!</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-6 col-md-6 col-lg-6 col-xl-6">
-        <div class="card card-community-main mr-3 mt-3">
-          <img class="card-commutity-img card-img-top" src="https://farm5.staticflickr.com/4650/39851769104_51f0686735_h.jpg" width="1600" height="990" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Fell in love in San Francisco</h5>
-            <p class="card-text">Ones you've been here you can't forget this city. We love it, we live here, we want to be here.</p>
-          </div>
-        </div>
-      </div>
-    </div> -->
+      </div> -->
   </div>
-  <div class="col-12 col-sm-6 col-md-5 col-lg-3 col-xl-3">
-    <div class="mt-2">
-      <%= render 'users/userinfosidebar' %>
 
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+    <div class=" mr-3 mt-3">
+      <%= render 'users/userinfosidebar' %>
     </div>
   </div>
 </div>

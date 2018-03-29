@@ -7,7 +7,7 @@ class Community < ApplicationRecord
 
   validates :name, :uniqueness => {:case_sensitive => false}
   validates :name, presence: true, length: {minimum: 1, maximum: 45}
-  validates :description, presence: true, length: {minimum: 1, maximum: 300}
+  validates :description, presence: true, length: {minimum: 50, maximum: 160}
   validates :background, presence: true
 
 end

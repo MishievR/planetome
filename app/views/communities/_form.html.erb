@@ -13,8 +13,9 @@
 
                 <div class="form-group">
                   <%= f.label :Description, class: "control-label" %>
-                  <%= f.text_area :description, rows: 3, class: "form-control", placeholder: "Building electric cars. Sending them to Mars on my rockets.", autofocus: true %>
-                  <small class="form-text text-muted">300 letters limit</small>
+                  <%= f.text_area :description, rows: 3, class: "form-control", placeholder: "Building electric cars. Sending them to Mars on my rockets.", autofocus: true, id: "body-field" %>
+                  <small class="form-text text-muted" id="body-count">0</small>
+
                 </div>
                 <div class="form-group">
                   <%= f.label :Field, class: "control-label" %>

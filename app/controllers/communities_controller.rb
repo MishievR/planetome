@@ -42,6 +42,13 @@ def update
   end
 end
 
+def destroy
+  @community = Community.find(params[:id])
+  @community.destroy
+  flash[:danger] = "Community deleted successfully."
+  redirect_to communities_path
+end
+
 
 
 private
