@@ -1,27 +1,33 @@
 <div class="row">
-  <div class="col-12">
-    <div class="card bg-dark text-white card-community-show ">
-      <%= image_tag @community.background, class: "card-commutity-img-show " if @community.background? %>
-      <div class="card-img-overlay">
-        <h2 class="card-title text-shadow"><%= @community.name %></h2>
-        <!-- <p class="card-text text-shadow"><%= @community.description %></p> -->
-        <!-- <p class="card-text text-shadow">Created <%= time_ago_in_words(@community.created_at) %> ago</p> -->
-      </div>
-    </div>
+  <div class="col">
+    <h3 class="main-text-color"><%= @community.name %>
+    <br>
+    <!-- <small class="text-muted">The market you want to disrupt.</small> -->
+    <small class="text-muted"><%= @community.description %></small>
+    <% @community_fields.each do |field| %>
+    <small class="text-muted"><%= field.name %></small>
+    <% end %>
+    </h3>
   </div>
 </div>
 <br>
+<br>
+
+
 
 <div class="row">
   <div class="col-12 col-md-3 col-lg-2 col-xl-2">
     <div class="card card-community-show" >
+      <%= image_tag @community.background, class: "card-commutity-img-show card-img-top" if @community.background? %>
+
       <nav class="nav flex-column community-menu-annotation">
         <button type="button" class="list-group-item list-group-item-action community-menu ">Posts</button>
-        <button type="button" class="list-group-item list-group-item-action community-menu ">People</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu active">People</button>
         <button type="button" class="list-group-item list-group-item-action community-menu ">Meetups</button>
         <button type="button" class="list-group-item list-group-item-action community-menu ">Webinars</button>
         <button type="button" class="list-group-item list-group-item-action community-menu ">Books</button>
         <button type="button" class="list-group-item list-group-item-action community-menu ">Advices</button>
+
         <button type="button" class="list-group-item list-group-item-action community-menu ">Mentors</button>
         <button type="button" class="list-group-item list-group-item-action community-menu ">Ideas</button>
         <button type="button" class="list-group-item list-group-item-action community-menu ">Projects</button>
@@ -44,6 +50,7 @@
     <br>
   </div>
   <div class="col-12 col-md-9 col-lg-10 col-xl-10">
+    <p>Created by <%= @community.user.name %></p>
 
   </div>
 </div>

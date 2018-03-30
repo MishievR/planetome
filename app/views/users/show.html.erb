@@ -3,17 +3,22 @@
   <div class="col">
     <h3 class="main-text-color">Roman's Page
     <br>
-    <!-- <small class="text-muted">The market you want to disrupt.</small> -->
     <small class="text-muted">The field where you want to start.</small>
     </h3>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-12 col-sm-6 col-md-8 col-lg-9 col-xl-9">
+  <div class="col-12 order-xs-first col-sm-6 col-md-4 col-lg-3 col-xl-3">
+    <div class=" mr-3 mt-3">
+      <%= render 'users/userinfosidebar' %>
+    </div>
+  </div>
+
+  <div class="col-12 order-xs-last col-sm-6 col-md-8 col-lg-9 col-xl-9">
     <div class="row">
       <% @user.communities.each do |community| %>
-      <div class="col-6 col-md-6 col-lg-4 col-xl-4">
+      <div class="col-6 col-sm-12 col-md-6 col-lg-4 col-xl-4">
         <%= link_to community_path(community), class: "card-user-link" do %>
         <div class="card card-community-index mr-3 mt-3">
           <%= image_tag community.background, class: "card-commutity-img card-img-top" if community.background? %>
@@ -54,9 +59,5 @@
       </div> -->
   </div>
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-    <div class=" mr-3 mt-3">
-      <%= render 'users/userinfosidebar' %>
-    </div>
-  </div>
+
 </div>

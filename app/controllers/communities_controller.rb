@@ -5,6 +5,7 @@ before_action :require_admin, except: [:index, :show]
 
 def index
   @communities = Community.all
+
 end
 
 def new
@@ -29,7 +30,7 @@ end
 def show
   @community = Community.find(params[:id])
   @fields = Field.all
-
+  @community_fields = @community.fields
 end
 
 def update
