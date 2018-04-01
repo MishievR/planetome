@@ -1,0 +1,105 @@
+
+<div class="row">
+  <% if @project.user == current_user %>
+
+  <div class="col-12  col-md-7 col-lg-8 col-xl-9">
+    <h3 class="main-text-color"><%= @project.name %>
+    <br>
+    <small class="text-muted"><%= @project.description %></small>
+    </h3>
+  </div>
+    <div class="col-12  col-md-5 col-lg-4 col-xl-3">
+      <%= link_to "Edit", edit_project_path(@project), class: "btn btn-outline-danger btn-block "%>
+    </div>
+  <% else %>
+  <div class="col-12">
+    <h3 class="main-text-color"><%= @project.name %>
+    <br>
+    <small class="text-muted"><%= @project.description %></small>
+    </h3>
+  </div>
+  <% end %>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-12 order-xs-first col-sm-6 col-md-4 col-lg-3 col-xl-3">
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-user-page">
+          <%= image_tag @project.user.background, class: "card-user-bg-img card-img-top" if @project.user.background %>
+          <%= image_tag @project.user.avatar.url(:medium), class: "profilePhoto" if @project.user.avatar? %>
+          <div class="card-body">
+            <h5 class="card-title card-title-user"><%= link_to @project.user.name, user_path(@project.user), class: "user-link" %></h5>
+            <p class="user-username">@<%= @project.user.username %></p>
+            <p class="card-text"><%= @project.user.about %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+
+  <div class="col-12 order-xs-last col-sm-6 col-md-8 col-lg-9 col-xl-9">
+    <% if @project.user == current_user %>
+      <div class="row">
+        <div class="col-12">
+          <h3 class="main-text-color">Updates
+          <% if @project.updates.count == 0 %>
+          <% else %>
+          <small class="text-muted"><%= @project.updates.count %></small>
+          <% end %>
+          </h3>
+        </div>
+      </div>
+        <%= link_to(new_project_update_path(@project), class: "btn btn-outline-danger btn-block ") do %>
+        <i class="fas fa-plus"></i>
+        <br>
+        <% end %>
+      <% else %>
+      <div class="row">
+        <div class="col-12">
+          <h3 class="main-text-color">Updates
+          <% if @project.updates.count == 0 %>
+          <% else %>
+          <small class="text-muted"><%= @project.updates.count %></small>
+          <% end %>
+          </h3>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <% @project.updates.each do |update| %>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="card card-community-index mt-3">
+          <div class="card-body">
+            <h5 class="card-title"><%= update.name %></h5>
+            <p class="card-text"><%= update.description %></p>
+          </div>
+        </div>
+        <small class="float-right text-muted" style="margin-top:7px;"><%= time_ago_in_words(update.created_at) %> ago</small>
+      </div>
+      <% end %>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>

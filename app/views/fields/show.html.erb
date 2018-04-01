@@ -1,13 +1,74 @@
+
+<div class="row">
+  <% if user_signed_in?  %>
+  <div class="col-12  col-md-7 col-lg-8 col-xl-9">
+    <h1 class="display-4 main-text-color"><%= @field.name %></h1>
+    <h3><small class="text-muted"><%= @field.description %></small></h3>
+  </div>
+    <div class="col-12  col-md-5 col-lg-4 col-xl-3">
+      <%= link_to(new_project_path, class: "btn btn-outline-danger btn-block ") do %>
+      <i class="fas fa-plus"></i>
+      Start!
+      <% end %>
+    </div>
+  <% else %>
+  <div class="col-12">
+    <h1 class="display-4 main-text-color"><%= @field.name %></h1>
+    <h3><small class="text-muted"><%= @field.description %></small></h3>
+  </div>
+  <% end %>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col">
+    <h3 class="main-text-color">Communities
+    <br>
+    <small class="text-muted">You're not the only one just starting.</small>
+    </h3>
+  </div>
+</div>
 <div class="row">
   <% @community_fields.each do |community| %>
   <div class="col-6 col-md-6 col-lg-3 col-xl-3">
     <%= link_to community_path(community), class: "card-user-link" do %>
-    <div class="card card-community-index mr-3 mt-3">
+    <div class="card card-community-index card-community-fixedheight mt-3">
       <%= image_tag community.background, class: "card-commutity-img card-img-top" if community.background? %>
       <div class="card-body">
         <h5 class="card-title"><%= community.name %></h5>
-        <p class="card-text"><%= community.description %></p>
+        <p class="card-text card-community-link"><%= community.description %></p>
         <!-- <p class="card-text-location"><i class="fas fa-globe"></i> Worldwide</p> -->
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col">
+    <h3 class="main-text-color">Projects
+    <br>
+    <small class="text-muted">See what people are up to.</small>
+    </h3>
+  </div>
+</div>
+
+<div class="row">
+  <% @project_fields.each do |project| %>
+  <div class="col-6 col-md-6 col-lg-3 col-xl-3">
+    <%= link_to project_path(project), class: "card-user-link" do %>
+    <div class="card card-community-index mr-3 mt-3">
+      <%= image_tag project.image, class: "card-commutity-img card-img-top" if project.image? %>
+      <div class="card-body">
+        <h5 class="card-title"><%= project.name %></h5>
+        <p class="card-text"><%= project.description %></p>
+        <div class="row">
+          <%= image_tag project.user.avatar.url(:thumb), class: "profilePhotoProject" if project.user.avatar? %>
+          <h5 class="user-title-project"><%= link_to project.user.name, user_path(project.user), class: "user-title-project" %></h5>
+        </div>
       </div>
     </div>
     <% end %>

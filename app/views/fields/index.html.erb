@@ -1,34 +1,61 @@
 
 
 <div class="row">
-  <% if user_signed_in? && current_user.admin == true %>
-  <div class="col-10">
+  <% if current_user.admin == true   %>
+
+    <div class="col-12 col-md-6 col-lg-8 col-xl-8">
+      <h3 class="main-text-color">Fields
+      <br>
+      <small class="text-muted">The field where you want to start.</small>
+      </h3>
+    </div>
+      <div class="col-12 col-md-3 col-lg-2 col-xl-2">
+        <%= link_to(new_community_path, class: "btn btn-outline-danger btn-block ") do %>
+        <i class="fas fa-plus"></i>
+        Start!
+        <% end %>
+        <br>
+
+      </div>
+
+      <div class="col-12 col-md-3 col-lg-2 col-xl-2">
+        <%= link_to(new_field_path, class: "btn btn-block btn-outline-danger") do %>
+        <i class="fas fa-plus"></i>
+        Create Field
+        <% end %>
+      </div>
+  <% elsif user_signed_in? %>
+  <div class="col-12  col-md-7 col-lg-8 col-xl-9">
     <h3 class="main-text-color">Fields
     <br>
     <small class="text-muted">The field where you want to start.</small>
-
     </h3>
   </div>
-    <div class="col-2">
-      <%= link_to(new_field_path, class: "btn btn-block btn-outline-danger") do %>
+    <div class="col-12  col-md-5 col-lg-4 col-xl-3">
+      <%= link_to(new_community_path, class: "btn btn-outline-danger btn-block ") do %>
       <i class="fas fa-plus"></i>
-      Create Field
+      Start!
       <% end %>
     </div>
 
 
+
+
   <% else %>
-  <div class="col-12">
-    <h3 class="main-text-color">Fields
-    <br>
-    <small class="text-muted">The field where you want to start.</small>
-
-    </h3>
-  </div>
+    <div class="col-12">
+      <h3 class="main-text-color">Fields
+      <br>
+      <small class="text-muted">The field where you want to start.</small>
+      </h3>
+    </div>
   <% end %>
-
-
 </div>
+
+<br>
+
+
+
+
 <div class="row">
   <% @fields.each do |field| %>
   <div class="col-6 col-md-6 col-lg-3 col-xl-3">

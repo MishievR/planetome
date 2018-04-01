@@ -112,7 +112,7 @@
       <div class="card-body">
         <h5 class="card-title card-title-user"><%= user.name %></h5>
         <p class="user-username">@<%= user.username %></p>
-        <p class="card-text card-text-main"><%= truncate(user.about, length: 40 )%></p>
+        <p class="card-text card-text-main"><%= truncate(user.about, length: 100 )%></p>
       </div>
     </div>
     <% end %>
@@ -142,23 +142,20 @@
 
 <div class="row">
   <% @communities.take(8).each do |community| %>
-
-  <div class="col-6 col-md-6 col-lg-3 col-xl-3">
-    <%= link_to community_path(community), class: "card-user-link" do %>
-
-    <div class="card card-community-index  mt-3">
-      <%= image_tag community.background, class: "card-commutity-img card-img-top" if community.background? %>
-      <div class="card-body">
-        <h5 class="card-title"><%= community.name %></h5>
-        <p class="card-text"><%= community.description %></p>
-        <!-- <p class="card-text-location"><i class="fas fa-globe"></i> Worldwide</p> -->
+	  <div class="col-6 col-md-6 col-lg-3 col-xl-3">
+    <%= link_to community_path(community), class: "card-community-link" do %>
+      <div class="card bg-dark text-white text-white card-field-main  mt-3">
+        <%= image_tag community.background, class: "card-commutity-img " if community.background? %>
+        <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+          <div class="just-test">
+            <h5 class="card-title card-title-index"><%= truncate(community.name, length: 45 )%></h5>
+            <p class="card-text card-text-index card-community-link "><%= truncate(community.description, length: 90 )%></p>
+          </div>
+        </div>
       </div>
-    </div>
     <% end %>
-
   </div>
   <% end %>
-
 </div>
 
 <div class="row">

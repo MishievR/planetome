@@ -34,6 +34,10 @@
                   <% end %>
 
               </div>
+              <%= link_to(users_path, class: "dropdown-item dropdown-item-menu") do %>
+              <i class="fab fa-buromobelexperte"></i>
+              People
+              <% end %>
               <%= link_to(communities_path, class: "dropdown-item dropdown-item-menu") do %>
               <i class="fab fa-buromobelexperte"></i>
               Communities
@@ -42,10 +46,7 @@
               <i class="fab fa-buromobelexperte"></i>
               Fields
               <% end %>
-              <%= link_to(cities_path, class: "dropdown-item dropdown-item-menu") do %>
-              <i class="fab fa-buromobelexperte"></i>
-              Cities
-              <% end %>
+
               <div class="dropdown-divider"></div>
               <%= link_to(user_path(current_user), class: "dropdown-item dropdown-item-menu") do %>
               <i class="fas fa-user"></i>
@@ -62,13 +63,17 @@
               <% end %>
 
             <% else %>
+            <%= link_to(users_path, class: "dropdown-item dropdown-item-menu") do %>
+            <i class="fab fa-buromobelexperte"></i>
+            People
+            <% end %>
+            <%= link_to(communities_path, class: "dropdown-item dropdown-item-menu") do %>
+            <i class="fab fa-buromobelexperte"></i>
+            Communities
+            <% end %>
             <%= link_to(fields_path, class: "dropdown-item dropdown-item-menu") do %>
             <i class="fab fa-buromobelexperte"></i>
             Fields
-            <% end %>
-            <%= link_to(cities_path, class: "dropdown-item dropdown-item-menu") do %>
-            <i class="fab fa-buromobelexperte"></i>
-            Cities
             <% end %>
             <%= link_to(new_user_session_path, :class=>"dropdown-item dropdown-item-menu") do %>
               <i class="fas fa-sign-in-alt"></i>

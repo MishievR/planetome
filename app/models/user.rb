@@ -6,7 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :communities
-  
+  has_many :projects
+
   validates :first_name, presence: true, length: {minimum: 1, maximum: 35}
   validates :last_name, presence: true, length: {minimum: 1, maximum: 35}
   validates :username, presence: true, length: {minimum: 1, maximum: 35}

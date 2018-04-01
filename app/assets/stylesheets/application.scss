@@ -3,6 +3,7 @@
 @import "users";
 @import "fields";
 @import "communities";
+@import "projects";
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -73,11 +74,11 @@ a:hover {
   border-radius: 5px;
   border: 0px;
   // border-radius: 2px;
-  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 .card-field-main:hover {
-  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.6), 0 0px 8px 0 rgba(0, 0, 0, 0.6);
+  box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.15), 0 0px 10px 0 rgba(0, 0, 0, 0.15);
 }
 
 // .card-community-main {
@@ -91,14 +92,16 @@ a:hover {
 
 .card-community-index {
   border: 0px;
-  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 .card-community-index:hover {
-  border-bottom: 3px solid red;
-  margin-bottom: -3px;
-  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.3), 0 0px 8px 0 rgba(0, 0, 0, 0.3);
+  // border-bottom: 3px solid red;
+  // margin-bottom: -3px;
+  box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.15), 0 0px 10px 0 rgba(0, 0, 0, 0.15);
 }
+
+
 
 .card-title-field {
   font-weight: 700;
@@ -107,7 +110,7 @@ a:hover {
 }
 
 .btn-city-main {
-  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.1);
   color: #000e20;
 }
 
@@ -147,13 +150,6 @@ a:hover {
   object-fit: cover;
 }
 
-.card-commutity-img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  // border-radius: 5px;
-}
-
 .place-name {
   color: #707070;
   font-weight: 300;
@@ -179,7 +175,7 @@ a:hover {
 }
 
 .alert {
-  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+  box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 .modal-header-menu {
@@ -204,8 +200,9 @@ a:hover {
 .card-login {
   border: 0px;
   margin-bottom: 10px;
-  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.1);
 }
+
 .card-header-login {
   background-color: #E62F24;
   color: #fff;
