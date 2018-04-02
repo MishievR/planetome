@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
+    
   end
 
   # GET /projects/new
@@ -53,7 +54,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.destroy
     flash[:danger] = "Project deleted successfully."
-    redirect_to projects_path
+    redirect_to current_user
   end
 
 

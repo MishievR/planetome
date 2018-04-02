@@ -18,3 +18,40 @@
   color: #443A3A;
   text-decoration: none;
 }
+
+.search-row{
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+
+.search-input {
+  border-radius: 2px;
+  border: 0px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+  color: #443A3A;
+  height: 45px;
+  font-weight: 300;
+}
+
+.search-input-prepend {
+  border-radius: 2px;
+  border: 0px;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+  color: #fff;
+  height: 45px;
+  font-weight: 300;
+  background-color: #E62F24;
+}
+
+.search-button {
+  border-radius: 2px;
+  border: 0px;
+  // border-color: #E62F24;
+  box-shadow:  0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
+  height: 45px;
+  font-weight: 700;
+}
+
+.tag-line-row {
+  margin-bottom: -0px;
+}

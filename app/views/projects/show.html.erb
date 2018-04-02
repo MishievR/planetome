@@ -27,17 +27,38 @@
     <div class="row">
       <div class="col-12">
         <div class="card card-user-page">
-          <%= image_tag @project.user.background, class: "card-user-bg-img card-img-top" if @project.user.background %>
-          <%= image_tag @project.user.avatar.url(:medium), class: "profilePhoto" if @project.user.avatar? %>
+          <%= image_tag @project.image, class: "card-user-bg-img card-img-top" if @project.image? %>
           <div class="card-body">
-            <h5 class="card-title card-title-user"><%= link_to @project.user.name, user_path(@project.user), class: "user-link" %></h5>
-            <p class="user-username">@<%= @project.user.username %></p>
-            <p class="card-text"><%= @project.user.about %></p>
+            <h5 class="card-title card-title-user"><%= @project.name %></h5>
+            <p class="card-text"><%= @project.description %></p>
           </div>
         </div>
+        <br>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h6 class="main-text-color">
+        <small class="text-muted">Creator</small>
+        </h6>
+        <%= render 'users/usersmallcard', user: @project.user %>
       </div>
     </div>
     <br>
+
+    <% if current_user == @project.user %>
+    <div class="row">
+      <div class="col-12">
+        <h6 class="main-text-color">
+        <small class="text-muted">Owner controls</small>
+        </h6>
+        <%= link_to "Delete", @project, method: :delete, class: "btn btn-block btn-outline-danger", data: { confirm: 'Project and ALL DATA in it will be deleted permanently. Are you sure?' }  %>
+      </div>
+    </div>
+    <br>
+    <% end %>
+
   </div>
 
   <div class="col-12 order-xs-last col-sm-6 col-md-8 col-lg-9 col-xl-9">
@@ -70,7 +91,7 @@
     <% end %>
 
     <div class="row">
-      <% @project.updates.each do |update| %>
+      <% @project.updates.order("created_at DESC").each do |update| %>
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <div class="card card-community-index mt-3">
           <div class="card-body">

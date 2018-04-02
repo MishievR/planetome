@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-11">
     <h3 class="main-text-color"><%= @community.name %>
@@ -14,16 +15,13 @@
 <br>
 <br>
 
-
-
 <div class="row">
   <div class="col-12 col-md-3 col-lg-2 col-xl-2">
     <div class="card card-community-show" >
-      <%= image_tag @community.background, class: "card-commutity-img-show card-img-top" if @community.background? %>
       <nav class="nav flex-column community-menu-annotation">
         <button type="button" class="list-group-item list-group-item-action community-menu ">Posts</button>
         <button type="button" class="list-group-item list-group-item-action community-menu active">People</button>
-        <button type="button" class="list-group-item list-group-item-action community-menu ">Meetups</button>
+        <!-- <button type="button" class="list-group-item list-group-item-action community-menu ">Meetups</button>
         <button type="button" class="list-group-item list-group-item-action community-menu ">Webinars</button>
         <button type="button" class="list-group-item list-group-item-action community-menu ">Books</button>
         <button type="button" class="list-group-item list-group-item-action community-menu ">Advices</button>
@@ -32,17 +30,14 @@
         <button type="button" class="list-group-item list-group-item-action community-menu ">Projects</button>
         <button type="button" class="list-group-item list-group-item-action community-menu ">Chat</button>
         <button type="button" class="list-group-item list-group-item-action community-menu ">Jobs</button>
-        <button type="button" class="list-group-item list-group-item-action community-menu ">Wiki</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu ">Wiki</button> -->
         <!-- <button type="button" class="list-group-item list-group-item-action community-menu " disabled>Rules</button> -->
         <button type="button" class="list-group-item list-group-item-action community-menu " >About</button>
         <% if current_user == @community.user %>
         <div class="dropdown-divider"></div>
         <li class="list-group-item community-menu-annotation">Owner's controls</li>
         <%= link_to "Edit", edit_community_path, class: "list-group-item list-group-item-action community-menu"  %>
-        <%= link_to "Delete", @community, method: :delete, class: "list-group-item list-group-item-action community-menu", data: { confirm: 'Community a ALL DATA in it will be deleted permanently. Are you sure?' }  %>
-
-
-
+        <%= link_to "Delete", @community, method: :delete, class: "list-group-item list-group-item-action community-menu", data: { confirm: 'Community and ALL DATA in it will be deleted permanently. Are you sure?' }  %>
         <% end %>
       </nav>
     </div>

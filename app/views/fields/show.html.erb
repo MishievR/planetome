@@ -6,6 +6,7 @@
     <h3><small class="text-muted"><%= @field.description %></small></h3>
   </div>
     <div class="col-12  col-md-5 col-lg-4 col-xl-3">
+      <br>
       <%= link_to(new_project_path, class: "btn btn-outline-danger btn-block ") do %>
       <i class="fas fa-plus"></i>
       Start!
@@ -33,12 +34,13 @@
   <% @community_fields.each do |community| %>
   <div class="col-6 col-md-6 col-lg-3 col-xl-3">
     <%= link_to community_path(community), class: "card-user-link" do %>
-    <div class="card card-community-index card-community-fixedheight mt-3">
-      <%= image_tag community.background, class: "card-commutity-img card-img-top" if community.background? %>
-      <div class="card-body">
-        <h5 class="card-title"><%= community.name %></h5>
-        <p class="card-text card-community-link"><%= community.description %></p>
-        <!-- <p class="card-text-location"><i class="fas fa-globe"></i> Worldwide</p> -->
+    <div class="card bg-dark text-white text-white card-field-main  mt-3">
+      <%= image_tag community.background, class: "card-commutity-img " if community.background? %>
+      <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+        <div class="just-test">
+          <h5 class="card-title card-title-index"><%= truncate(community.name, length: 45 )%></h5>
+          <p class="card-text card-text-index card-community-link "><%= truncate(community.description, length: 90 )%></p>
+        </div>
       </div>
     </div>
     <% end %>
