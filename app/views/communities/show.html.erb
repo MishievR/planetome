@@ -9,6 +9,7 @@
     <% @community_fields.each do |field| %>
     • <%= field.name %>
     <% end %>
+    | Created by <%= image_tag @community.user.avatar.url(:medium), class: "community-user-profile-photo" if @community.user.avatar? %> <%= link_to @community.user.name, @community.user,  class: "community-user-link" %>
     </p>
   </div>
 </div>
@@ -19,8 +20,8 @@
   <div class="col-12 col-md-3 col-lg-2 col-xl-2">
     <div class="card card-community-show" >
       <nav class="nav flex-column community-menu-annotation">
-        <button type="button" class="list-group-item list-group-item-action community-menu ">Posts</button>
-        <button type="button" class="list-group-item list-group-item-action community-menu active">People</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu active" id="list-posts-list" data-toggle="list" href="#list-posts" role="tab" aria-controls="home">Posts</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu "id="list-people-list" data-toggle="list" href="#list-people" role="tab" aria-controls="profile">People</button>
         <!-- <button type="button" class="list-group-item list-group-item-action community-menu ">Meetups</button>
         <button type="button" class="list-group-item list-group-item-action community-menu ">Webinars</button>
         <button type="button" class="list-group-item list-group-item-action community-menu ">Books</button>
@@ -32,7 +33,7 @@
         <button type="button" class="list-group-item list-group-item-action community-menu ">Jobs</button>
         <button type="button" class="list-group-item list-group-item-action community-menu ">Wiki</button> -->
         <!-- <button type="button" class="list-group-item list-group-item-action community-menu " disabled>Rules</button> -->
-        <button type="button" class="list-group-item list-group-item-action community-menu " >About</button>
+        <!-- <button type="button" class="list-group-item list-group-item-action community-menu " >About</button> -->
         <% if current_user == @community.user %>
         <div class="dropdown-divider"></div>
         <li class="list-group-item community-menu-annotation">Owner's controls</li>
@@ -44,7 +45,17 @@
     <br>
   </div>
   <div class="col-12 col-md-9 col-lg-10 col-xl-10">
-    <p>Created by <%= @community.user.name %></p>
+
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="list-posts" role="tabpanel" aria-labelledby="list-posts-list">
+        <%= render "posts"%>
+      </div>
+      <div class="tab-pane fade" id="list-people" role="tabpanel" aria-labelledby="list-people-list">
+        <%= render "people"%>
+      </div>
+      <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+    </div>
 
   </div>
 </div>

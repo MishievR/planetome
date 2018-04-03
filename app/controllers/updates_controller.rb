@@ -46,7 +46,7 @@ class UpdatesController < ApplicationController
     @update = Update.find(params[:id])
     if @update.update(update_params)
       flash[:success] = "Update was updated succcessfully"
-      redirect_to update_path(@update)
+      redirect_to @project
     else
       render 'edit'
     end
@@ -55,10 +55,12 @@ class UpdatesController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
+    # @project = Project.find(params[:project_id])
+
     @update = Update.find(params[:id])
     @update.destroy
-    flash[:danger] = "Project deleted successfully."
-    redirect_to updates_path
+    flash[:danger] = "Update deleted successfully."
+    redirect_to @project
   end
 
 
@@ -67,6 +69,8 @@ class UpdatesController < ApplicationController
   def set_project
     @project = Project.find(params[:project_id])
   end
+
+
   def update_params
     params.require(:update).permit(:name, :description)
   end

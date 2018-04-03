@@ -10,6 +10,6 @@ class Project < ApplicationRecord
   validates :name, :uniqueness => {:case_sensitive => false}
   validates :name, presence: true, length: {minimum: 1, maximum: 45}
   validates :description, presence: true, length: {minimum: 10, maximum: 160}
-  validates :image, presence: true
+  # validates :image, presence: true
 
 end

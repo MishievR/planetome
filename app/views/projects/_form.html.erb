@@ -36,7 +36,7 @@
               </div>
               <div class="col-12 col-md-6 col-lg-3 col-xl-3">
                 <div class="form-group">
-                  <%= f.label :Community_Preview %>
+                  <%= f.label :Project_Preview %>
                   <div class="row">
                     <div class="card card-community-main mr-3 mt-3">
                       <%= image_tag @project.image, class: "card-commutity-img card-img-top" if @project.image? %>
@@ -55,7 +55,7 @@
                 </div>
             </div>
           </div>
-          <%= f.submit class: 'btn btn-primary' %>
+          <%= f.submit class: 'btn btn-outline-danger' %>
           <small class="form-text text-muted">NOTE: It may take some time to upload your background and/or profile image, <strong>don't reload the web page please!</strong></small>
         <% end %>
       </div>
