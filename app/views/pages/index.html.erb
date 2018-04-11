@@ -155,12 +155,10 @@
       <%= image_tag user.background, class: "card-user-bg-img card-img-top" if user.background? %>
 
       <div class="row">
-        <div class="col-6">
+        <div class="col-12">
           <%= image_tag user.avatar.url(:medium), class: "profilePhoto" if user.avatar? %>
         </div>
-        <div class="col-6">
-          <!-- <p class="">Score: <%= user.status %></p> -->
-        </div>
+      
       </div>
 
       <div class="card-body">

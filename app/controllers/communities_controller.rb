@@ -1,6 +1,5 @@
 class CommunitiesController < ApplicationController
 
-before_action :require_admin, except: [:index, :show]
 
 
 def index
@@ -17,7 +16,7 @@ def create
   @community.user = current_user
   if @community.save
     flash[:success] = "Community was created succesfully"
-    redirect_to communities_path
+    redirect_to community_path(@community)
   else
     render 'new'
   end
