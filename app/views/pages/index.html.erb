@@ -15,7 +15,6 @@
           <div class="search-row">
             <form class="form-group">
               <div class="form-row">
-                <%= form_for @idea do |f| %>
 
                 <div class="col-md-10 mb-3">
                   <div class="input-group mb-2">
@@ -23,16 +22,13 @@
                      <div class="input-group-text search-input-prepend">I want to start...</div>
                    </div>
 
-                      <%= f.text_field :title, autofocus: true, class: 'form-control search-input', placeholder: "Part-time job at Space company" %>
-                   <!-- <input type="text" class="form-control search-input" id="inlineFormInputGroup" placeholder="Part-time job at Space company"> -->
+                   <input type="text" class="form-control search-input" id="inlineFormInputGroup" placeholder="Part-time job at Space company">
                  </div>
                 </div>
                 <div class="col-md-2 mx-auto ">
-                   <%= f.submit "Start",  class: 'btn btn-outline-danger btn-block search-button' %>
-                  <!-- <button class="btn btn-outline-danger btn-block search-button" type="submit">Start!</button> -->
+                  <button class="btn btn-outline-danger btn-block search-button" type="submit">Start!</button>
                 </div>
 
-                <% end %>
 
               </div>
             </form>
