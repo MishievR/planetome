@@ -158,14 +158,18 @@
         <div class="col-12">
           <%= image_tag user.avatar.url(:medium), class: "profilePhoto" if user.avatar? %>
         </div>
-      
       </div>
+
+      <div class="row">
+        <div class="col-12">
 
       <div class="card-body">
         <h5 class="card-title card-title-user"><%= user.name %></h5>
         <p class="user-username">@<%= user.username %></p>
         <p class="card-text card-text-main"><%= truncate(user.about, length: 100 )%></p>
       </div>
+    </div>
+  </div>
     </div>
     <% end %>
   </div>
