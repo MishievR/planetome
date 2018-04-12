@@ -153,23 +153,17 @@
     <%= link_to user_path(user), class: "card-user-link"  do %>
     <div class="card card-user card-used-fixedheight mt-3">
       <%= image_tag user.background, class: "card-user-bg-img card-img-top" if user.background? %>
-
-      <div class="row">
-        <div class="col-12">
-          <%= image_tag user.avatar.url(:medium), class: "profilePhoto" if user.avatar? %>
+        <div class="card-img-overlay">
+          <div class="d-flex justify-content-center">
+            <%= image_tag user.avatar.url(:medium), class: "profilePhoto " if user.avatar? %>
+          </div>
+          <div class="d-flex justify-content-center">
+            <h5 class="card-title card-title-user text-center"><%= user.name %></h5>
+          </div>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12">
-
       <div class="card-body">
-        <h5 class="card-title card-title-user"><%= user.name %></h5>
-        <p class="user-username">@<%= user.username %></p>
         <p class="card-text card-text-main"><%= truncate(user.about, length: 100 )%></p>
       </div>
-    </div>
-  </div>
     </div>
     <% end %>
   </div>

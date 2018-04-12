@@ -89,7 +89,7 @@
         <div class="card card-user-page">
           <%= image_tag @project.image, class: "card-user-bg-img card-img-top" if @project.image? %>
           <div class="card-body">
-            <h5 class="card-title card-title-user"><%= @project.name %></h5>
+            <h5 class="card-title card-title-project"><%= @project.name %></h5>
             <p class="card-text"><%= @project.description %></p>
           </div>
         </div>
@@ -151,7 +151,7 @@
           <div class="card card-user-page">
             <%= image_tag @project.image, class: "card-user-bg-img card-img-top" if @project.image? %>
             <div class="card-body">
-              <h5 class="card-title card-title-user"><%= @project.name %></h5>
+              <h5 class="card-title card-title-project"><%= @project.name %></h5>
               <p class="card-text"><%= @project.description %></p>
             </div>
           </div>
@@ -208,6 +208,7 @@
                   <h5 class="card-title"><%= update.name %></h5>
                 </div>
                 <div class="col-2 col-sm-3 col-md-2 col-lg-1 col-xl-1">
+                  <% if @project.user == current_user %>
                   <div class="dropdown dropleft">
                     <button class="btn update-dropdown text-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v"></i>
@@ -217,6 +218,7 @@
                       <%= link_to "Delete update", project_update_path(@project, update), method: :delete, class: "dropdown-item", data: { confirm: 'Update and ALL DATA in it will be deleted permanently. Are you sure?' }  %>
                     </div>
                   </div>
+                  <% end %>
                 </div>
               </div>
               <p class="card-text"><%= update.description %></p>
