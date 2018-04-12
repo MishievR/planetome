@@ -1,1 +1,51 @@
 <h1>Posts</h1>
+
+
+    <div class="row">
+      <div class="col-12">
+        <h3 class="main-text-color">Posts
+        <% if @community.posts.count == 0 %>
+        <% else %>
+        <small class="text-muted"><%= @community.posts.count %></small>
+        <% end %>
+        </h3>
+      </div>
+    </div>
+      <%= link_to(new_community_post_path(@community), class: "btn btn-outline-danger btn-block ") do %>
+      <i class="fas fa-plus"></i>
+      <br>
+      <% end %>
+
+
+
+<div class="row">
+  <% @community.posts.order("created_at DESC").each do |post| %>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <div class="card card-community-index mt-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-10 col-sm-9 col-md-10 col-lg-11 col-xl-11">
+            <h5 class="card-title"><%= post.title %></h5>
+          </div>
+          <div class="col-2 col-sm-3 col-md-2 col-lg-1 col-xl-1">
+            <div class="dropdown dropleft">
+              <button class="btn update-dropdown text-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-ellipsis-v"></i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to "Edit post", edit_community_post_path(@community, post), class: "dropdown-item" %>
+                <%= link_to "Delete post", community_post_path(@community, post), method: :delete, class: "dropdown-item", data: { confirm: 'Post and ALL DATA in it will be deleted permanently. Are you sure?' }  %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="card-text"><%= post.body %></p>
+        <p class="card-text text-muted float-right">
+          Posted by <%= image_tag post.user.avatar.url(:medium), class: "community-user-profile-photo" if post.user.avatar? %> <%= link_to post.user.name, post.user,  class: "community-user-link" %>
+        </p>
+      </div>
+    </div>
+    <small class="float-right text-muted" style="margin-top:7px;"><%= time_ago_in_words(post.created_at) %> ago</small>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-12 col-md-9 ">
+    <h3 class="main-text-color">Edit Post
+    <br>
+    <small class="text-muted">Coooool!</small>
+    </h3>
+
+    <%= link_to 'Back to the community', @community, class: "text-muted"%>
+
+  </div>
+
+
+    <div class="col-12 col-md-3">
+      <%= link_to 'Back', :back, class: "btn btn-outline-danger btn-block"%>
+    </div>
+</div>
+<br>
+
+  <%= render 'form' %>

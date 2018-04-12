@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :communities
   has_many :projects
+  has_many :posts
 
   validates :first_name, presence: true, length: {minimum: 1, maximum: 35}
   validates :last_name, presence: true, length: {minimum: 1, maximum: 35}

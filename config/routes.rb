@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
   resources :fields
   resources :cities
-  resources :communities
+  resources :communities do
+    resources :posts
+  end
   resources :projects do
     resources :updates
   end
