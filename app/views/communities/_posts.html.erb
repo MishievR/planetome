@@ -38,7 +38,7 @@
             </div>
           </div>
         </div>
-        <p class="card-text"><%= post.body %></p>
+        <p class="card-text"><%= simple_format post.body %></p>
         <p class="card-text text-muted float-right">
           Posted by <%= image_tag post.user.avatar.url(:medium), class: "community-user-profile-photo" if post.user.avatar? %> <%= link_to post.user.name, post.user,  class: "community-user-link" %>
         </p>

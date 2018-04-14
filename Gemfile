@@ -13,7 +13,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'figaro'
-
+gem 'rails_autolink', '~> 1.1.3'
 
 
 

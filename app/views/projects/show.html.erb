@@ -74,7 +74,7 @@
                 </div>
               </div>
             </div>
-            <p class="card-text"><%= update.description %></p>
+            <p class="card-text"><%= simple_format update.description  %></p>
           </div>
         </div>
         <small class="float-right text-muted" style="margin-top:7px;"><%= time_ago_in_words(update.created_at) %> ago</small>
