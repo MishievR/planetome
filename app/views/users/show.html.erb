@@ -37,10 +37,10 @@
         <div class="card card-community-index mt-3">
           <div class="row">
             <% if project.image? %>
-            <div class="col-2 col-sm-4 col-md-2 col-lg-2 col-xl-1">
+            <div class="col-3 col-sm-4 col-md-2 col-lg-2 col-xl-1">
               <%= image_tag project.image, class: "card-project-img card-img-left" if project.image? %>
             </div>
-            <div class="col-10 col-sm-8 col-md-10 col-lg-10 col-xl-11">
+            <div class="col-9 col-sm-8 col-md-10 col-lg-10 col-xl-11">
               <div class="card-body card-body-project">
                 <h5 class="card-title"><%= project.name %></h5>
                 <p class="card-text"><%= project.description %></p>
