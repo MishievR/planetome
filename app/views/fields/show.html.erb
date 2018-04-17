@@ -1,34 +1,29 @@
-
 <div class="row">
-  <% if user_signed_in?  %>
-  <div class="col-12  col-md-7 col-lg-8 col-xl-9">
-    <h1 class="display-4 main-text-color"><%= @field.name %></h1>
-    <h3><small class="text-muted"><%= @field.description %></small></h3>
-  </div>
-    <div class="col-12  col-md-5 col-lg-4 col-xl-3">
-      <br>
-      <%= link_to(new_project_path, class: "btn btn-outline-danger btn-block ") do %>
-      <i class="fas fa-plus"></i>
-      Start!
-      <% end %>
-    </div>
-  <% else %>
   <div class="col-12">
     <h1 class="display-4 main-text-color"><%= @field.name %></h1>
     <h3><small class="text-muted"><%= @field.description %></small></h3>
   </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-12 col-md-7 col-lg-8 col-xl-9">
+      <h3 class="main-text-color">Communities
+      <br>
+      <small class="text-muted">You're not the only one just starting.</small>
+      </h3>
+  </div>
+  <% if @community_fields.count > 0 %>
+      <div class="col-12 col-md-5 col-lg-4 col-xl-3">
+        <br>
+        <%= link_to "Create community", new_community_path, class: "btn btn-block btn-outline-danger"  %>
+      </div>
   <% end %>
 </div>
-
 <br>
-
 <div class="row">
-  <div class="col">
-    <h3 class="main-text-color">Communities
-    <br>
-    <small class="text-muted">You're not the only one just starting.</small>
-    </h3>
-  </div>
+  <% if @community_fields.count == 0 %>
+    <%= render 'notifications/nocommunities'%>
+  <% end %>
 </div>
 <div class="row">
   <% @community_fields.each do |community| %>
@@ -50,16 +45,27 @@
 <br>
 <br>
 <div class="row">
-  <div class="col">
-    <h3 class="main-text-color">Projects
-    <br>
-    <small class="text-muted">See what people are up to.</small>
-    </h3>
+  <div class="col-12 col-md-7 col-lg-8 col-xl-9">
+      <h3 class="main-text-color">Projects
+      <br>
+      <small class="text-muted">See what people are up to.</small>
+      </h3>
   </div>
+  <% if @project_fields.count > 0 %>
+      <div class="col-12 col-md-5 col-lg-4 col-xl-3">
+        <br>
+        <%= link_to "Start new project", new_project_path, class: "btn btn-block btn-outline-danger"  %>
+      </div>
+  <% end %>
 </div>
-
+<br>
 <div class="row">
-  <% @project_fields.each do |project| %>
+  <% if @project_fields.count == 0 %>
+    <%= render 'notifications/noprojects'%>
+  <% end %>
+</div>
+<div class="row">
+  <% @project_fields.order("created_at DESC").each do |project| %>
   <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
     <%= link_to project_path(project), class: "card-user-link" do %>
     <div class="card card-community-index ">
@@ -70,11 +76,15 @@
         </div>
         <div class="col-9 col-sm-10 col-md-9 col-lg-10 col-xl-10">
           <div class="card-body card-body-project">
-            <h5 class="card-title"><%= project.name %></h5>
+            <h5 class="card-title"><%= project.name %>
+              <% if project.updates.count == 1 %>
+                <small class="text-muted"> | <%= project.updates.count %> update</small> </h5>
+                <% else %>
+                <small class="text-muted"> | <%= project.updates.count %> updates</small> </h5>
+              <% end %>
             <p class="card-text"><%= project.description %></p>
           </div>
         </div>
-
         <% else %>
         <div class="col-12">
           <div class="card-body">
@@ -88,11 +98,15 @@
     <% end %>
     <div class="row float-right mr-0  ">
       <% if project.user.present? %>
-      <%= image_tag project.user.avatar.url(:thumb), class: "profilePhotoProject" if project.user.avatar? %>
-      <h5 class="user-title-project"><%= link_to project.user.name, user_path(project.user), class: "user-title-project" %></h5>
+      <%= link_to user_path(project.user), class: "user-title-project" do %>
+        <h5 class="user-title-project text-muted">
+        <%= time_ago_in_words(project.created_at) %> ago
+        <%= image_tag project.user.avatar.url(:thumb), class: "profilePhotoProjectCard" if project.user.avatar? %>
+        <%= project.user.name %>
+        </h5>
+        <% end %>
       <% end %>
     </div>
   </div>
   <% end %>
-
 </div>

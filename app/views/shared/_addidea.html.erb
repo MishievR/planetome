@@ -1,0 +1,38 @@
+
+<%= form_for(@idea, method: :post, :html => {class: "", role: "form"}) do |f| %>
+<div class="form-row search-row">
+    <div class="col-md-10 mb-3">
+      <div class="input-group mb-2">
+       <div class="input-group-prepend">
+         <div class="input-group-text search-input-prepend">I want to start...</div>
+       </div>
+       <%= f.text_field :title, class: "form-control search-input", placeholder: "Playing piano..." %>
+     </div>
+    </div>
+    <div class="col-md-2 mx-auto ">
+      <%= f.submit "Start!", class: "btn btn-outline-danger btn-block search-button" %>
+    </div>
+      <div class="col">
+        <h6 class="main-text-color">
+          <small class="text-muted">• Tech startup</small>
+          <small class="text-muted">• Run every morning</small>
+          <small class="text-muted">• Learning to cook</small>
+          <small class="text-muted">• Tech startup</small>
+          <small class="text-muted">• Run every morning</small>
+          <small class="text-muted">• Learning to cook</small>
+          <small class="text-muted">• Tech startup</small>
+          <small class="text-muted">• Run every morning</small>
+          <small class="text-muted">• Learning to cook</small>
+          <small class="text-muted">• Tech startup</small>
+          <small class="text-muted">• Run every morning</small>
+          <small class="text-muted">• Learning to cook</small>
+          <small class="text-muted">• Tech startup</small>
+          <small class="text-muted">• Run every morning</small>
+          <small class="text-muted">• Learning to cook</small>
+          <small class="text-muted">• Tech startup</small>
+          <small class="text-muted">• Run every morning</small>
+          <small class="text-muted">• Learning to cook</small>
+        </h6>
+      </div>
+  </div>
+<% end %>

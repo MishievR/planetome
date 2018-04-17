@@ -180,6 +180,9 @@ a:hover {
 }
 
 .alert {
+  border-width: 1px;
+  border-color: red;
+  background-color: #fff;
   box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -216,4 +219,15 @@ a:hover {
 .card-text-location {
   color: grey;
   font-size: 11px;
+}
+
+.card-notification-if-0 {
+  border: 0px;
+  border-radius: 0px;
+  border-left: 2px solid red;
+}
+
+.pages-index-main-links:hover {
+  text-decoration: none;
+
 }

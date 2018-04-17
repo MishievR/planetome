@@ -9,67 +9,27 @@
 
 <div class="row">
   <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-     <form>
       <div class="row">
         <div class="col-md-8">
-          <div class="search-row">
-            <form class="form-group">
-              <div class="form-row">
-                <div class="col-md-10 mb-3">
-                  <div class="input-group mb-2">
-                   <div class="input-group-prepend">
-                     <div class="input-group-text search-input-prepend">I want to start...</div>
-                   </div>
-
-                   <input type="text" class="form-control search-input" id="inlineFormInputGroup" placeholder="Learning to code...">
-                 </div>
-                </div>
-                <div class="col-md-2 mx-auto ">
-                  <button class="btn btn-outline-danger btn-block search-button" type="submit">Start!</button>
-                </div>
-
-
-              </div>
-            </form>
-            <div class="row">
-              <div class="col">
-                <h6 class="main-text-color">
-                  <small class="text-muted">• Tech startup</small>
-                  <small class="text-muted">• Run every morning</small>
-                  <small class="text-muted">• Learning to cook</small>
-                  <small class="text-muted">• Tech startup</small>
-                  <small class="text-muted">• Run every morning</small>
-                  <small class="text-muted">• Learning to cook</small>
-                  <small class="text-muted">• Tech startup</small>
-                  <small class="text-muted">• Run every morning</small>
-                  <small class="text-muted">• Learning to cook</small>
-                  <small class="text-muted">• Tech startup</small>
-                  <small class="text-muted">• Run every morning</small>
-                  <small class="text-muted">• Learning to cook</small>
-                  <small class="text-muted">• Tech startup</small>
-                  <small class="text-muted">• Run every morning</small>
-                  <small class="text-muted">• Learning to cook</small>
-                  <small class="text-muted">• Tech startup</small>
-                  <small class="text-muted">• Run every morning</small>
-                  <small class="text-muted">• Learning to cook</small>
-                </h6>
-              </div>
-            </div>
-          </div>
+          <%= render 'shared/addidea' %>
         </div>
       </div>
-    </form>
   </div>
 </div>
 
 <div class="row">
   <div class="col">
+
+    <%= link_to(fields_path, class: "pages-index-main-links") do %>
     <h3 class="main-text-color">Fields
     <br>
     <!-- <small class="text-muted">The market you want to disrupt.</small> -->
     <small class="text-muted">The field where you want to start.</small>
 
     </h3>
+    <% end %>
+
+
   </div>
 </div>
 <div class="row">
@@ -138,10 +98,12 @@
 
 <div class="row">
   <div class="col">
+    <%= link_to(users_path, class: "pages-index-main-links") do %>
     <h3 class="main-text-color">People
     <br>
     <small class="text-muted">Meet people. Connect with anyone. Start together.</small>
     </h3>
+    <% end %>
   </div>
 </div>
 
@@ -168,6 +130,14 @@
   </div>
   <% end %>
 </div>
+
+
+<% if @users.count <= 4 %>
+<br>
+<br>
+
+<% else %>
+
 <div class="row">
   <div class="col">
     <div class="">
@@ -178,12 +148,18 @@
   </div>
 </div>
 <br>
+<% end %>
+
+
+
 <div class="row">
   <div class="col">
+    <%= link_to(communities_path, class: "pages-index-main-links") do %>
     <h3 class="main-text-color">Communities
     <br>
     <small class="text-muted">You're not the only one just starting.</small>
     </h3>
+    <% end %>
   </div>
 </div>
 
@@ -207,12 +183,17 @@
   <% end %>
 </div>
 
+
+
+<% if @communities.count < 8 %>
+  <br>
+  <br>
+<% else %>
 <div class="row">
   <div class="col">
-    <div class="">
       <%= link_to(communities_path, class: "btn btn-outline-danger btn-block btn-moreinfo-main main-text-color mt-3") do %>
       + <%= Community.count-8 %> more
       <% end %>
-    </div>
   </div>
 </div>
+<% end %>

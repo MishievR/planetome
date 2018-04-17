@@ -2,7 +2,15 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'user/registrations'}
 
   root 'pages#index'
-  resources :ideas
+
+  # match "/" => "ideas#create", :via => :post, :as => :ideas
+
+  # match '/' => 'ideas#create', :via => :post, :as => :create_idea
+  # post '/', to: 'pages#new', as: 'idea'
+  # get 'show', to: 'ideas#index', as: 'showidea'
+
+
+  resources :ideas, only: [:create, :index, :destroy]
 
   # match 'create' => 'ideas#new', :via => :post
 
