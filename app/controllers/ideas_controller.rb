@@ -1,5 +1,8 @@
 class IdeasController < ApplicationController
 
+  # before_action :require_admin, except: [:index, :create, :put, :show]
+  # before_action :authenticate_user!, except: [:index, :create, :put]
+
   def index
     @ideas = Idea.all
   end
@@ -20,6 +23,25 @@ class IdeasController < ApplicationController
     flash[:danger] = "Idea deleted successfully."
     redirect_to ideas_path
   end
+
+  def upvote
+    if current_user.present?
+      @idea = Idea.find(params[:id])
+      @idea.upvote_by current_user
+      redirect_to :back
+    elsif
+      flash[:danger] = "Please, sign up to upvote an idea and create your first project!."
+      redirect_to new_user_registration_path
+    end
+
+  end
+
+  def downvote
+    @idea = Idea.find(params[:id])
+    @idea.downvote_by current_user
+    redirect_to :back
+  end
+
 
   private
     def idea_params

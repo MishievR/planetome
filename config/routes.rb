@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   # get 'show', to: 'ideas#index', as: 'showidea'
 
 
-  resources :ideas, only: [:create, :index, :destroy]
+  resources :ideas, only: [:create, :index, :destroy] do
+    member do
+      put "upvote",    to: "ideas#upvote"
+      # put "downvote", to: "people#downvote"
+    end
+  end
 
   # match 'create' => 'ideas#new', :via => :post
 

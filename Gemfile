@@ -14,6 +14,7 @@ gem 'mini_magick'
 gem 'fog'
 gem 'figaro'
 gem 'rails_autolink', '~> 1.1.3'
+gem 'acts_as_votable', '~> 0.11.1'
 
 
 

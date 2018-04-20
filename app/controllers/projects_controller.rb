@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
 
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @projects = Project.all
   end
@@ -8,7 +10,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-    
+
   end
 
   # GET /projects/new
