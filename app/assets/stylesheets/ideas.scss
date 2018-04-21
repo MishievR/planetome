@@ -25,6 +25,9 @@
 
 .upvote-controls {
   color: #E62F24;
+  margin-left: 0px;
+  padding-left: 0px;
+  // float: left;
 }
 
 .upvote-arrow:hover {
@@ -33,4 +36,9 @@
 
 .idea-admin-control {
   color: lightgrey;
+}
+
+.idea-title {
+  text-decoration: underline;
+  text-decoration-color: #E62F24;
 }
