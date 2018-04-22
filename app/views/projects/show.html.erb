@@ -36,10 +36,10 @@
           </h3>
         </div>
       </div>
-        <%= link_to(new_project_update_path(@project), class: "btn btn-outline-danger btn-block ") do %>
-        <i class="fas fa-plus"></i>
-        <br>
-        <% end %>
+      <button class="btn btn-outline-danger btn-block " type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <i class="fas fa-plus"></i>
+        </button>
+
       <% else %>
       <div class="row">
         <div class="col-12">
@@ -52,6 +52,40 @@
         </div>
       </div>
     <% end %>
+
+
+
+    <div class="collapse " id="collapseExample">
+      <div class="row">
+        <div class="col">
+          <br>
+          <div class="card card-modal">
+            <div class="card-body">
+              <%= form_for [@project, @update], :method => :post  do |f| %>
+                <div class="row">
+                  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="form-group">
+                      <%= f.label :Title, class: "control-label" %>
+                      <%= f.text_field :name, class: "form-control", placeholder: "Just a few words here", autofocus: true, id: "title-field" %>
+                      <small class="form-text text-muted" id="title-count">0</small>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :Description, class: "control-label" %>
+                      <%= f.text_area :description, rows: 5, class: "form-control", placeholder: "Everything you want to write", autofocus: false, id: "body-field" %>
+                    </div>
+                  </div>
+                </div>
+              <%= f.submit class: 'btn btn-outline-danger' %>
+              <!-- <small class="form-text text-muted">NOTE: It may take some time to upload your background and/or profile image, <strong>don't reload the web page please!</strong></small> -->
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
     <div class="row">
       <% @project.updates.order("created_at DESC").each do |update| %>
