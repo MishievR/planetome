@@ -1,0 +1,116 @@
+<% if @project.user == current_user %>
+  <div class="row">
+    <div class="col-12">
+      <h3 class="main-text-color">Updates
+      <% if @project.updates.count == 0 %>
+      <% else %>
+      <small class="text-muted"><%= @project.updates.count %></small>
+      <% end %>
+      </h3>
+    </div>
+  </div>
+  <button class="btn btn-outline-danger btn-block " type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <i class="fas fa-plus"></i>
+    </button>
+
+  <% else %>
+  <div class="row">
+    <div class="col-12">
+      <h3 class="main-text-color">Updates
+      <% if @project.updates.count == 0 %>
+      <% else %>
+      <small class="text-muted"><%= @project.updates.count %></small>
+      <% end %>
+      </h3>
+    </div>
+  </div>
+<% end %>
+
+
+
+<div class="collapse " id="collapseExample">
+  <div class="row">
+    <div class="col">
+      <br>
+      <div class="card card-modal">
+        <div class="card-body">
+          <%= form_for [@project, @update], :method => :post  do |f| %>
+            <div class="row">
+              <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="form-group">
+                  <%= f.label :Title, class: "control-label" %>
+                  <%= f.text_field :name, class: "form-control", autofocus: true, id: "title-field" %>
+                  <small class="form-text text-muted" id="title-count">0</small>
+                </div>
+                <div class="form-group">
+                  <%= f.label :Description, class: "control-label" %>
+                  <%= f.text_area :description, rows: 5, class: "form-control", autofocus: false, id: "body-field" %>
+                </div>
+              </div>
+            </div>
+          <%= f.submit class: 'btn btn-outline-danger' %>
+          <!-- <small class="form-text text-muted">NOTE: It may take some time to upload your background and/or profile image, <strong>don't reload the web page please!</strong></small> -->
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+<div class="row">
+  <% @project.updates.order("created_at DESC").each do |update| %>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <div class="card card-community-index mt-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-10 col-sm-9 col-md-10 col-lg-11 col-xl-11">
+            <h5 class="card-title"><%= update.name %></h5>
+          </div>
+          <div class="col-2 col-sm-3 col-md-2 col-lg-1 col-xl-1">
+            <div class="dropdown dropleft">
+              <button class="btn update-dropdown text-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-ellipsis-v"></i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to "Edit update", edit_project_update_path(@project, update), class: "dropdown-item" %>
+                <%= link_to "Delete update", project_update_path(@project, update), method: :delete, class: "dropdown-item", data: { confirm: 'Update and ALL DATA in it will be deleted permanently. Are you sure?' }  %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="card-text"><%= simple_format update.description  %></p>
+      </div>
+    </div>
+    <small class="float-right text-muted" style="margin-top:7px;"><%= time_ago_in_words(update.created_at) %> ago</small>
+  </div>
+  <% end %>
+</div>
+
+
+<% if @project.updates.count == 0 %>
+  <% if @project.user == current_user %>
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <br>
+      <h5 class="text-muted">Hey <%= @project.user.first_name %>!
+        <br>
+        <small class="text-muted">Make your first project update! It's really easy and you can start to track your progress right away!</small>
+      </h5>
+    </div>
+  </div>
+  <% else %>
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <br>
+      <h5 class="text-muted">No updates yet.
+        <br>
+        <small class="text-muted">Show your interest in <%= @project.user.first_name %>'s project by using "I'm interested" button!</small>
+      </h5>
+    </div>
+  </div>
+  <% end %>
+<br>
+<% end %>

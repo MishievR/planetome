@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card card-user-page">
+      <%= image_tag @project.image, class: "card-user-bg-img card-img-top" if @project.image? %>
+      <div class="card-body">
+        <h5 class="card-title card-title-project"><%= @project.name %></h5>
+        <p class="card-text"><%= @project.description %></p>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+<% if @project.user == current_user %>
+  <% if @project.get_upvotes.size == 0 %>
+  <% else %>
+  <div class="row">
+    <div class="col-12">
+      <p class="main-text-color">
+        <span class="badge badge-danger badge-upvote"><%= @project.get_upvotes.size %></span>
+        Interested
+      </p>
+    </div>
+  </div>
+  <br>
+  <% end %>
+<% else %>
+  <div class="row">
+    <div class="col-12">
+      <%= link_to upvote_project_path(@project), method: :put, class: "btn btn-outline-danger btn-block" do %>
+        I'm interested
+        <span class="badge badge-danger badge-upvote"><%= @project.get_upvotes.size %></span>
+      <% end %>
+    </div>
+  </div>
+  <br>
+
+<% end %>
+<div class="row">
+  <div class="col-12">
+    <h6 class="main-text-color">
+    <small class="text-muted">Creator</small>
+    </h6>
+    <%= render 'users/usersmallcard', user: @project.user %>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-12">
+    <h6 class="main-text-color">
+    <small class="text-muted">Owner controls</small>
+    </h6>
+    <%= link_to "Edit", edit_project_path(@project), class: "btn btn-outline-danger btn-block "%>
+    <%= link_to "Delete", @project, method: :delete, class: "btn btn-block btn-outline-danger", data: { confirm: 'Project and ALL DATA in it will be deleted permanently. Are you sure?' }  %>
+  </div>
+</div>
+<br>

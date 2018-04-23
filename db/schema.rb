@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180420204216) do
+ActiveRecord::Schema.define(version: 20180422234642) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -52,8 +52,15 @@ ActiveRecord::Schema.define(version: 20180420204216) do
   create_table "ideas", force: :cascade do |t|
     t.string   "title"
     t.string   "country"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
   end
 
   create_table "posts", force: :cascade do |t|

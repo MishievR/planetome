@@ -33,6 +33,9 @@ Rails.application.routes.draw do
     resources :posts
   end
   resources :projects do
+    member do
+      put "upvote",    to: "projects#upvote"
+    end
     resources :updates
   end
 

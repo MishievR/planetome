@@ -18,10 +18,14 @@ class IdeasController < ApplicationController
   end
 
   def destroy
-    @idea = Idea.find(params[:id])
-    @idea.destroy
-    flash[:danger] = "Idea deleted successfully."
-    redirect_to ideas_path
+    if current_user.admin?
+      @idea = Idea.find(params[:id])
+      @idea.destroy
+      flash[:danger] = "Idea deleted successfully."
+      redirect_to ideas_path
+    else
+      flash[:danger] = "You can't perform this action."
+    end
   end
 
   def upvote
@@ -30,7 +34,7 @@ class IdeasController < ApplicationController
       @idea.upvote_by current_user
       redirect_to :back
     elsif
-      flash[:danger] = "Please, sign up to upvote an idea and create your first project!."
+      flash[:danger] = "Please, sign up to upvote an idea and create your first project!"
       redirect_to new_user_registration_path
     end
 

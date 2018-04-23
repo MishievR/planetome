@@ -1,11 +1,13 @@
 
 .card-project-img {
-  margin-top: 1px;
-  margin-left: 1px;
-  width: 93px;
-  height: 93px;
+  margin-top: 0px;
+  margin-left: 0px;
+  width: 95px;
+  height: 95px;
   border-radius: 4px;
   object-fit: cover;
+  border-top-right-radius: 1px;
+  border-bottom-right-radius: 1px;
 }
 
 .card-project-img-small {
@@ -32,5 +34,11 @@
 
 .card-modal {
   border: 1px solid red;
+}
 
+.badge-upvote {
+  border: 1px solid red;
+  background-color: white;
+  border-radius: 20px;
+  color: red;
 }

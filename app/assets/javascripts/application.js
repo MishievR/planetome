@@ -50,3 +50,30 @@ window.setTimeout(function() {
         $(this).remove();
     });
 }, 4000);
+
+
+// function expandTextarea('text-area-fix') {
+//     document.getElementById('text-area-fix').addEventListener('keyup', function() {
+//         this.style.overflow = 'hidden';
+//         this.style.height = 0;
+//         this.style.height = this.scrollHeight + 'px';
+//     }, false);
+// }
+// expandTextarea('text-area-fix');
+//
+//
+//
+//
+// var textarea = document.querySelector('textarea');
+//
+// textarea.addEventListener('keydown', autosize);
+//
+// function autosize(){
+//   var el = this;
+//   setTimeout(function(){
+//     el.style.cssText = 'height:auto; padding:0';
+//     // for box-sizing other than "content-box" use:
+//     // el.style.cssText = '-moz-box-sizing:content-box';
+//     el.style.cssText = 'height:' + el.scrollHeight + 'px';
+//   },0);
+// }

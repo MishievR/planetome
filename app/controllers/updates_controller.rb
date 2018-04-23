@@ -1,5 +1,6 @@
 class UpdatesController < ApplicationController
 
+  before_action :require_same_user
   before_action :authenticate_user!
   before_action :set_project
 
@@ -7,25 +8,20 @@ class UpdatesController < ApplicationController
     @updates = Update.all
   end
 
-  # GET /projects/1
-  # GET /projects/1.json
+
   def show
     @update = Update.find(params[:id])
   end
 
-  # GET /projects/new
   def new
     @update = Update.new
 
   end
 
-  # GET /projects/1/edit
   def edit
     @update = Update.find(params[:id])
   end
 
-  # POST /projects
-  # POST /projects.json
   def create
 
     @update = Update.new(update_params)
@@ -40,8 +36,6 @@ class UpdatesController < ApplicationController
 
   end
 
-  # PATCH/PUT /projects/1
-  # PATCH/PUT /projects/1.json
   def update
     @update = Update.find(params[:id])
     if @update.update(update_params)
@@ -52,8 +46,6 @@ class UpdatesController < ApplicationController
     end
   end
 
-  # DELETE /projects/1
-  # DELETE /projects/1.json
   def destroy
     # @project = Project.find(params[:project_id])
 
@@ -75,5 +67,12 @@ class UpdatesController < ApplicationController
     params.require(:update).permit(:name, :description)
   end
 
+  def require_same_user
+    @user = User.find(params[:id])
+    if current_user != @user
+      flash[:danger] = "You can't perform this action."
+      redirect_to root_path
+    end
+  end
 
 end
