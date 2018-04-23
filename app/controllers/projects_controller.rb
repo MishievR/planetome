@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-  before_action :require_same_user, except: [:index, :show]
+  before_action :require_same_user, only: [:destroy, :edit, :update]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -86,12 +86,11 @@ class ProjectsController < ApplicationController
   end
 
   def require_same_user
-    @user = User.find(params[:id])
-    if current_user != @user
+    @project = Project.find(params[:id])
+    if @project.user = current_user
       flash[:danger] = "You can't perform this action."
       redirect_to root_path
     end
   end
-
 
 end

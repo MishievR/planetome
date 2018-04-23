@@ -1,6 +1,6 @@
 class UpdatesController < ApplicationController
 
-  before_action :require_same_user
+  before_action :require_same_user, except: [:new, :create]
   before_action :authenticate_user!
   before_action :set_project
 
@@ -23,9 +23,7 @@ class UpdatesController < ApplicationController
   end
 
   def create
-
     @update = Update.new(update_params)
-
     @update.project = @project
     if @update.save
       flash[:success] = "Update was created succesfully"
@@ -47,8 +45,6 @@ class UpdatesController < ApplicationController
   end
 
   def destroy
-    # @project = Project.find(params[:project_id])
-
     @update = Update.find(params[:id])
     @update.destroy
     flash[:danger] = "Update deleted successfully."
@@ -68,8 +64,8 @@ class UpdatesController < ApplicationController
   end
 
   def require_same_user
-    @user = User.find(params[:id])
-    if current_user != @user
+    @update = Update.find(params[:id])
+    if current_user != @update.project.user
       flash[:danger] = "You can't perform this action."
       redirect_to root_path
     end

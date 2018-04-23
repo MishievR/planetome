@@ -69,17 +69,19 @@
           <div class="col-10 col-sm-9 col-md-10 col-lg-11 col-xl-11">
             <h5 class="card-title"><%= update.name %></h5>
           </div>
-          <div class="col-2 col-sm-3 col-md-2 col-lg-1 col-xl-1">
-            <div class="dropdown dropleft">
-              <button class="btn update-dropdown text-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-ellipsis-v"></i>
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <%= link_to "Edit update", edit_project_update_path(@project, update), class: "dropdown-item" %>
-                <%= link_to "Delete update", project_update_path(@project, update), method: :delete, class: "dropdown-item", data: { confirm: 'Update and ALL DATA in it will be deleted permanently. Are you sure?' }  %>
+          <% if @project.user == current_user %>
+            <div class="col-2 col-sm-3 col-md-2 col-lg-1 col-xl-1">
+              <div class="dropdown dropleft">
+                <button class="btn update-dropdown text-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <%= link_to "Edit update", edit_project_update_path(@project, update), class: "dropdown-item" %>
+                  <%= link_to "Delete update", project_update_path(@project, update), method: :delete, class: "dropdown-item", data: { confirm: 'Update and ALL DATA in it will be deleted permanently. Are you sure?' }  %>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
         </div>
         <p class="card-text"><%= simple_format update.description  %></p>
       </div>

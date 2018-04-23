@@ -1,4 +1,6 @@
 class CommunitiesController < ApplicationController
+
+  before_action :require_same_user,  except: [:index, :show]
   before_action :authenticate_user!, except: [:index, :show]
 
 
@@ -61,6 +63,14 @@ def require_admin
   if user_signed_in? and !current_user.admin?
     flash[:danger] = "Only admins can perform that action"
     redirect_to communities_path
+  end
+end
+
+def require_same_user
+  @community = Community.find(params[:id])
+  if current_user != @community.user
+    flash[:danger] = "You can't perform this action."
+    redirect_to root_path
   end
 end
 
