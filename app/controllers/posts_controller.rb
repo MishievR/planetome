@@ -77,5 +77,12 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body)
   end
 
+  def require_same_user
+    @post = Post.find(params[:id])
+    if @post.user = current_user
+      flash[:danger] = "You can't perform this action."
+      redirect_to root_path
+    end
+  end
 
 end

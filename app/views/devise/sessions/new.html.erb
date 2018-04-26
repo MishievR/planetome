@@ -1,11 +1,10 @@
 <%= render 'shared/errors', obj: resource %>
 <div class="row">
-  <div class="col-12 offset-md-1 col-md-10 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8">
+  <div class="col-12 offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-3 col-lg-6 offset-xl-4 col-xl-4">
     <div class="card card-login devise-bs">
-      <div class="card-header card-header-login">
-        <h4><%= t('.sign_in', default: 'Sign in') %></h4>
-      </div>
       <div class="card-body">
+        <h4><%= t('.sign_in', default: 'Sign in') %></h4>
+        <hr>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
           <div class="form-group">
             <%= f.label :email %>
