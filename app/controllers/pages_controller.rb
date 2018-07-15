@@ -6,6 +6,9 @@ class PagesController < ApplicationController
     @cities = City.all
     @communities = Community.all
     @idea = Idea.new
+    @jobs = Job.all
+    @categories = Category.all
+
   end
 
 end

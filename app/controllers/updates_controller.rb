@@ -15,7 +15,6 @@ class UpdatesController < ApplicationController
 
   def new
     @update = Update.new
-
   end
 
   def edit

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   # match 'create' => 'ideas#new', :via => :post
 
-
+  get "users/all" => 'users#all'
   get 'users/:id' => 'users#show', as: :user
   # get 'signup', to: 'users#new'
   resources :users, except: [:new]
@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   # post 'ideas' => 'ideas#create', as: :create
   # get 'idea', action: :create, controller: 'ideas'
 
+  resources :jobs
+  resources :employers
+  resources :categories
   resources :fields
   resources :cities
   resources :communities do

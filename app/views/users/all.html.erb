@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col">
+    <h3 class="main-text-color">Dashboard People </h3>
+  </div>
+</div>
+<div class="row">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">About</th>
+        <th scope="col">Stats</th>
+        <th scope="col">Controls</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <th scope="col"><%= image_tag user.avatar.url(:small), class: "small-card-profile-photo" if user.avatar? %>
+        <th scope="col"><h6><%= link_to user.name, class: "main-text-color" %></h6></th>
+        <th scope="col"><%= truncate(user.about, length: 100 )%></th>
+        <th scope="col">
+          <p>Projects: <%= user.projects.count %></p>
+          <p>Communities: <%= user.communities.count %></p>
+          <p>Created: <%= user.communities.count %></p>
+
+        </th>
+        <th scope="col">
+          <div class="dropdown dropleft">
+          <button class="btn update-dropdown text-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-ellipsis-v"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= link_to "Edit user", edit_user_path(user), class: "dropdown-item" %>
+            <%= link_to "Delete user", user_path(user), method: :delete, class: "dropdown-item", data: { confirm: 'User will be deleted. Are you sure?' }  %>
+          </div>
+        </div></th>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

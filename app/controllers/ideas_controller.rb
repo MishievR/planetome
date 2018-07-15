@@ -1,5 +1,6 @@
 class IdeasController < ApplicationController
-
+  require 'sendgrid-ruby'
+  include SendGrid
   # before_action :require_admin, except: [:index, :create, :put, :show]
   # before_action :authenticate_user!, except: [:index, :create, :put]
 
@@ -11,6 +12,33 @@ class IdeasController < ApplicationController
     @idea = Idea.new(idea_params)
     if @idea.save
       flash[:success] = "Your idea was added!"
+
+
+
+
+
+
+      from = Email.new(email: 'mr.mishiev@gmail.com')
+      to = Email.new(email: 'roman@planetome.com')
+      subject = 'Sending with SendGrid is Fun'
+      content = Content.new(type: 'text/plain', value: 'and easy to do anywhere, even with Ruby')
+      mail = Mail.new(from, subject, to, content)
+
+      sg = SendGrid::API.new(api_key: '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')
+      response = sg.client.mail._('send').post(request_body: mail.to_json)
+      puts response.status_code
+      puts response.body
+      puts response.headers
+
+
+
+
+
+
+
+
+
+
       redirect_to ideas_path
     else
       flash[:success] = "Wooops!"

@@ -1,0 +1,11 @@
+class Job < ApplicationRecord
+
+
+  belongs_to :employer
+  has_many :job_categories
+  has_many :categories, through: :job_categories
+
+
+  validates :position, presence: true
+  validates :impact, presence: true, length: {minimum: 1, maximum: 100}
+end

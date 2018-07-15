@@ -1,0 +1,123 @@
+<%= render 'shared/errors', obj: @job %>
+  <div class="row">
+    <div class="col">
+      <div class="card card-login">
+        <div class="card-body">
+          <%= form_for(@job, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+            <div class="row">
+              <div class="col-12 col-md-12 col-lg-9 col-xl-9">
+
+                <div class="form-group">
+                  <h6><strong> <%= f.label :company, class: "control-label mr-3" %></strong><%= f.select :employer_id, Employer.all.collect {|p| [ p.company_name, p.id ] }, { include_blank: true }, class: "company-pick" %> <br>
+</h6>
+                  <%= link_to "Add your company", new_employer_path %>
+                  <small class="form-text text-muted">NOTE: Before creating a job, please, select your company OR <%= link_to "create a new one", new_employer_path %></small>
+                </div>
+                <hr>
+                <br>
+                <div class="form-group">
+                  <h6><strong><%= f.label :position, class: "control-label" %></strong></h6>
+                  <%= f.text_field :position, class: "form-control", placeholder: "Software Developer", autofocus: true %>
+                </div>
+                <!-- <div class="form-group">
+                  <%= f.label :purpose, class: "control-label" %>
+                  <%= f.text_area :purpose, rows: 3, class: "form-control", placeholder: "You will work on our newest app that will change the world", autofocus: false, id: "body-field" %>
+                  <small class="form-text text-muted" id="body-count">0</small>
+                </div> -->
+                <div class="form-group">
+                  <h6><strong><%= f.label :job_impact, class: "control-label" %></strong></h6>
+                  <%= f.text_area :impact, rows: 3, class: "form-control", placeholder: "You will work on our newest app that will change the world", autofocus: false, id: "body-field" %>
+                  <small class="form-text text-muted" id="body-count">0</small>
+                </div>
+
+                <br>
+                <hr>
+
+                <div class="form-group">
+                  <h6><strong><%= f.label :job_description, class: "control-label" %></strong></h6>
+                  <%= f.text_area :job_description, rows: 3, class: "form-control", placeholder: "Build", autofocus: false, id: "body-field" %>
+                  <small class="form-text text-muted" id="body-count">0</small>
+                </div>
+                <div class="form-group">
+                  <h6><strong><%= f.label :responsibilities, class: "control-label" %></strong></h6>
+                  <%= f.text_area :responsibilities, rows: 3, class: "form-control", placeholder: "Provide engineering expertise in the area of design, development and test space hardened avionics hardware that will support the functions of our launch vehicles and spacecraft", autofocus: false, id: "body-field" %>
+                  <small class="form-text text-muted" id="body-count">0</small>
+                </div>
+                <div class="form-group">
+                  <h6><strong><%= f.label :requirements, class: "control-label" %></strong></h6>
+                  <%= f.text_area :requirements, rows: 3, class: "form-control", placeholder: "Provide engineering expertise in the area of design, development and test space hardened avionics hardware that will support the functions of our launch vehicles and spacecraft", autofocus: false, id: "body-field" %>
+                  <small class="form-text text-muted" id="body-count">0</small>
+                </div>
+                <br>
+                <hr>
+                <div class="form-group">
+                  <h6><strong><%= f.label :location, class: "control-label" %></strong></h6>
+                  <%= f.text_field :location, class: "form-control", placeholder: "San Francisco, CA, US", autofocus: false, id: "body-field" %>
+                </div>
+                <div class="form-group">
+                  <h6><strong><%= f.check_box :is_remote, class: "mr-3" %><%= f.label :Remote_is_possible_?, class: "control-label" %></strong></h6>
+                  <small class="form-text text-muted">Check if yes</small>
+
+                </div>
+
+                <br>
+
+                <div class="card">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <h6><strong><%= f.check_box :is_special_requirements, class: "mr-3" %><%= f.label :Is_this_job_have_special_reqirments_?, class: "control-label" %></strong></h6>
+                      <small class="form-text text-muted">Check if yes</small>
+                    </div>
+
+                    <div class="form-group">
+                      <h6><strong><%= f.label :special_requirements, class: "control-label" %></strong></h6>
+                      <%= f.text_area :special_requirements, rows: 3, class: "form-control", placeholder: "ITAR REQUIREMENTS for example ", autofocus: false, id: "body-field" %>
+                      <small class="form-text text-muted" id="body-count">0</small>
+                    </div>
+                  </div>
+                </div>
+
+
+                <br>
+
+
+                <div class="form-group">
+                  <h6><strong><%= f.label :link, class: "control-label" %></strong></h6>
+                  <%= f.text_field :link, class: "form-control", placeholder: "Link to the job", autofocus: false, id: "body-field" %>
+                </div>
+
+                <div class="form-group">
+                  <h6><strong><%= f.label :salary, class: "control-label" %></strong></h6>
+                  <%= f.text_field :salary, class: "form-control", placeholder: "$80K/year", autofocus: false, id: "body-field" %>
+                </div>
+
+                <div class="form-group">
+                  <h6><strong><%= f.label :email_to_contact, class: "control-label" %></strong></h6>
+                  <%= f.text_field :email_to_contact, class: "form-control", placeholder: "name@company.com", autofocus: false, id: "body-field" %>
+                  <small class="form-text text-muted" id="body-count">Private. It will be used to send you the invoice and edit link.</small>
+
+                </div>
+
+                <div class="form-group">
+                  <h6><strong><%= f.label :categories, class: "control-label" %></strong></h6>
+                  <%= f.collection_check_boxes :category_ids, Category.all, :id, :title do |cb| %>
+                  <ul>
+                    <%= cb.label(class: "form-check-label") {cb.check_box(class: "form-check-input") + cb.text}  %>
+                  </ul>
+                  <% end %>
+                  <small class="form-text text-muted">Choose every aplicable.</small>
+                </div>
+
+
+              </div>
+              <div class="col-12 col-md-6 col-lg-3 col-xl-3">
+
+            </div>
+          </div>
+          <%= f.submit "Post a Job", class: 'btn btn-lg btn-outline-danger' %>
+          <small class="form-text text-muted">NOTE: It may take some time to upload your background and/or profile image, <strong>don't reload the web page please!</strong></small>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

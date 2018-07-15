@@ -1,6 +1,6 @@
 class CommunitiesController < ApplicationController
 
-  before_action :require_same_user,  except: [:index, :show]
+  before_action :require_admin,  except: [:index, :show]
   before_action :authenticate_user!, except: [:index, :show]
 
 

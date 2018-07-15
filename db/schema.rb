@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180422234642) do
+ActiveRecord::Schema.define(version: 20180714200240) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "title"
+    t.text     "about"
+    t.string   "background"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -34,11 +42,50 @@ ActiveRecord::Schema.define(version: 20180422234642) do
     t.integer  "field_id"
   end
 
+  create_table "community_categories", force: :cascade do |t|
+    t.integer  "community_id"
+    t.integer  "category_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "community_fields", force: :cascade do |t|
     t.integer  "community_id"
     t.integer  "field_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "employer_fields", force: :cascade do |t|
+    t.integer  "employer_id"
+    t.integer  "field_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "employer_jobs", force: :cascade do |t|
+    t.integer  "employer_id"
+    t.integer  "job_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "employers", force: :cascade do |t|
+    t.string   "company_name"
+    t.string   "pitch"
+    t.text     "about"
+    t.text     "company_mission"
+    t.string   "hq_location"
+    t.string   "number_of_employees"
+    t.string   "year_founded"
+    t.string   "logo"
+    t.string   "background"
+    t.string   "link"
+    t.string   "twitter"
+    t.string   "facebook"
+    t.string   "industry"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "fields", force: :cascade do |t|
@@ -61,6 +108,32 @@ ActiveRecord::Schema.define(version: 20180422234642) do
     t.integer  "cached_weighted_score",   default: 0
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
+  end
+
+  create_table "job_categories", force: :cascade do |t|
+    t.integer  "job_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string   "position"
+    t.text     "purpose"
+    t.text     "impact"
+    t.string   "location"
+    t.boolean  "is_remote",               default: false
+    t.boolean  "is_special_requirements", default: false
+    t.text     "special_requirements"
+    t.text     "responsibilities"
+    t.text     "job_description"
+    t.string   "link"
+    t.string   "email_to_contact"
+    t.integer  "salary"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "employer_id"
+    t.text     "requirements"
   end
 
   create_table "posts", force: :cascade do |t|
