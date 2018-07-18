@@ -8,6 +8,8 @@ class Community < ApplicationRecord
   has_many :posts
   has_many :community_categories
   has_many :categories, through: :community_categories
+  has_many :community_jobs
+  has_many :jobs, through: :community_jobs
 
   validates :name, :uniqueness => {:case_sensitive => false}
   validates :name, presence: true, length: {minimum: 1, maximum: 45}

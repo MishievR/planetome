@@ -1,0 +1,60 @@
+
+<div class="row">
+  <div class="col-12  col-md-7 col-lg-8 col-xl-9">
+    <h1 class="main-text-color"><%= @employer.company_name %></h1>
+    <h3><small class="text-muted"><%= @employer.pitch %></small></small>
+    </h3>
+  </div>
+  <div class="col-12  col-md-5 col-lg-4 col-xl-3">
+    <%= link_to "Website", "https://#{@employer.link}", class: "btn btn-outline-danger btn-block " %>
+  </div>
+</div>
+
+<br>
+<br>
+<div class="row">
+  <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+    <% if @employer.jobs.count == 0 %>
+    <div class="row">
+      <div class="col">
+        <h3 class="main-text-color">Avalible jobs
+        <br>
+        <small class="text-muted">No jobs yet.</small>
+        </h3>
+      </div>
+    </div>
+    <% else %>
+    <div class="row">
+      <div class="col">
+        <h3 class="main-text-color">Avalible jobs</h3>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <% @jobs.order("created_at DESC").each do |job| %>
+        <div class="col-12 col-md-8 col-lg-8 col-xl-8">
+          <div class="card card-job-listing-main ">
+            <div class="card-body">
+              <% if job.is_remote == true %>
+                <h5 class="card-title"><small>Remote </small><strong><%= link_to job.position, job_path(job), class: "normal-link-red" %></strong>
+                  <small> at <%= link_to job.employer.company_name, employer_path(job.employer), class: "normal-link-light-grey"%></small>
+                  <small class="float-right text-muted"><%= time_ago_in_words(job.created_at) %> ago</small>
+                </h5>
+              <% else %>
+                <h5 class="card-title"><strong><%= link_to job.position, job_path(job), class: "normal-link-red" %></strong>
+                  <small> at <%= link_to job.employer.company_name, employer_path(job.employer), class: "normal-link-light-grey"%></small>
+                  <small class="float-right text-muted"><%= time_ago_in_words(job.created_at) %> ago</small>
+                </h5>
+              <% end %>
+              <p class="card-text text-muted"><%= job.impact %></p>
+            </div>
+          </div>
+          <br>
+        </div>
+        <% end %>
+      </div>
+    <% end %>
+    <br>
+    <br>
+  </div>
+</div>

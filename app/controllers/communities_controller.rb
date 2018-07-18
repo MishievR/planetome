@@ -33,6 +33,7 @@ def show
   @community = Community.find(params[:id])
   @fields = Field.all
   @community_fields = @community.fields
+  @community_jobs = @community.jobs
 end
 
 def update
@@ -56,7 +57,13 @@ end
 
 private
 def community_params
-  params.require(:community).permit(:name, :description, :background, :rating, field_ids: [])
+  params.require(:community).permit(
+    :name,
+    :description,
+    :background,
+    :rating,
+    field_ids: [],
+    job_ids: [])
 end
 
 def require_admin

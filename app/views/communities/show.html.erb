@@ -1,44 +1,85 @@
 
 <div class="row">
-  <div class="col-11">
-    <h3 class="main-text-color"><%= @community.name %>
-    <br>
-    <small class="text-muted"><%= @community.description %></small>
-    </h3>
-    <p class="text-muted">
-    <% @community_fields.each do |field| %>
-    • <%= field.name %>
-    <% end %>
-    | Created by <%= image_tag @community.user.avatar.url(:medium), class: "community-user-profile-photo" if @community.user.avatar? %> <%= link_to @community.user.name, @community.user,  class: "community-user-link" %>
-    </p>
+  <div class="col-12">
+    <div class="card bg-dark text-white text-white card-field-main  ">
+      <%= image_tag @community.background, class: "card-commutity-img " if @community.background? %>
+      <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+        <div class="community-gragient-bg">
+          <h1 class="card-title card-title-index"><%= @community.name %></h1>
+          <h5 class="card-text card-text-index card-community-link "><%= @community.description %></h5>
+          <h6 class="card-text card-text-index card-community-link ">
+            <% @community_fields.each do |field| %>
+            <%= link_to field.name, field_path(field), class: "normal-link-red" %> |
+            <% end %>
+          </h6>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <br>
 <br>
 
 <div class="row">
-  <div class="col-12 col-md-3 col-lg-2 col-xl-2">
-    <%= link_to "Join", new_community_post_path(@community), class: "btn btn-outline-danger btn-block " %>
+
+  <div class="col-12 col-md-9 col-lg-9 col-xl-9">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="list-posts" role="tabpanel" aria-labelledby="list-posts-list">
+        <div class="row">
+          <% @community_jobs.order("created_at DESC").each do |job| %>
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+              <h3 class="main-text-color">Jobs
+              <br>
+              <small class="text-muted">That's just awesome</small>
+              </h3>
+              <br>
+              <div class="card card-job-listing-main ">
+                <div class="card-body">
+                  <% if job.is_remote == true %>
+                    <h5 class="card-title"><small>Remote </small><strong><%= link_to job.position, job_path(job), class: "normal-link-red" %></strong>
+                      <small> at <%= link_to job.employer.company_name, employer_path(job.employer), class: "normal-link-light-grey"%></small>
+                      <small class="float-right text-muted"><%= time_ago_in_words(job.created_at) %> ago</small>
+                    </h5>
+                  <% else %>
+                    <h5 class="card-title"><strong><%= link_to job.position, job_path(job), class: "normal-link-red" %></strong>
+                      <small> at <%= link_to job.employer.company_name, employer_path(job.employer), class: "normal-link-light-grey"%></small>
+                      <small class="float-right text-muted"><%= time_ago_in_words(job.created_at) %> ago</small>
+                    </h5>
+                  <% end %>
+                  <p class="card-text text-muted"><%= job.impact %></p>
+                </div>
+              </div>
+              <br>
+            </div>
+            <% end %>
+          </div>
 
 
-    <br>
+        <%# render "posts"%>
+      </div>
+      <div class="tab-pane fade" id="list-people" role="tabpanel" aria-labelledby="list-people-list">
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+    </div>
+
+  </div>
+  <div class="col-12 col-md-3 col-lg-3 col-xl-3">
     <div class="card card-community-show" >
       <nav class="nav flex-column community-menu-annotation">
-        <button type="button" class="list-group-item list-group-item-action community-menu active" id="list-posts-list" data-toggle="list" href="#list-posts" role="tab" aria-controls="home">Posts</button>
-        <button type="button" class="list-group-item list-group-item-action community-menu "id="list-people-list" data-toggle="list" href="#list-people" role="tab" aria-controls="profile">People</button>
-        <!-- <button type="button" class="list-group-item list-group-item-action community-menu ">Meetups</button>
-        <button type="button" class="list-group-item list-group-item-action community-menu ">Webinars</button>
-        <button type="button" class="list-group-item list-group-item-action community-menu ">Books</button>
-        <button type="button" class="list-group-item list-group-item-action community-menu ">Advices</button>
-        <button type="button" class="list-group-item list-group-item-action community-menu ">Mentors</button>
-        <button type="button" class="list-group-item list-group-item-action community-menu ">Ideas</button>
-        <button type="button" class="list-group-item list-group-item-action community-menu ">Projects</button>
-        <button type="button" class="list-group-item list-group-item-action community-menu ">Chat</button>
-        <button type="button" class="list-group-item list-group-item-action community-menu ">Jobs</button>
-        <button type="button" class="list-group-item list-group-item-action community-menu ">Wiki</button> -->
-        <!-- <button type="button" class="list-group-item list-group-item-action community-menu " disabled>Rules</button> -->
-        <!-- <button type="button" class="list-group-item list-group-item-action community-menu " >About</button> -->
-        <% if current_user == @community.user %>
+        <button type="button" class="list-group-item list-group-item-action community-menu active" id="list-posts-list" data-toggle="list" href="#list-posts" role="tab" aria-controls="home">Jobs</button>
+        <button type="button" class="list-group-item list-group-item-action community-menu "id="list-people-list" data-toggle="list" href="#list-people" role="tab" aria-controls="profile">Companies</button>
+        <% if current_user.admin?  %>
         <div class="dropdown-divider"></div>
         <li class="list-group-item community-menu-annotation">Owner's controls</li>
         <%= link_to "Edit", edit_community_path, class: "list-group-item list-group-item-action community-menu"  %>
@@ -47,19 +88,5 @@
       </nav>
     </div>
     <br>
-  </div>
-  <div class="col-12 col-md-9 col-lg-10 col-xl-10">
-
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="list-posts" role="tabpanel" aria-labelledby="list-posts-list">
-        <%= render "posts"%>
-      </div>
-      <div class="tab-pane fade" id="list-people" role="tabpanel" aria-labelledby="list-people-list">
-        <%= render "people"%>
-      </div>
-      <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
-      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
-    </div>
-
   </div>
 </div>

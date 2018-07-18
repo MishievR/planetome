@@ -5,6 +5,7 @@
 @import "communities";
 @import "projects";
 @import "ideas";
+@import "jobs";
 
 body {
   font-family: 'Playfair Display', serif;
@@ -20,6 +21,28 @@ a:hover {
   border-radius: 2px;
 
 }
+
+
+.normal-link-red {
+  color: #000;
+  text-decoration: none;
+}
+
+.normal-link-red:hover {
+  text-decoration: underline;
+}
+
+.normal-link-light-grey {
+  color: #000;
+  text-decoration: none;
+}
+
+.normal-link-light-grey:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+
 
 // .form-control {
 //   border: 0px;
@@ -143,8 +166,8 @@ a:hover {
 }
 
 .btn-city-main {
-  box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.1);
-  color: #000e20;
+  box-shadow:  0 0px 5px 0 rgba(230, 47, 36, 0.1), 0 0px 5px 0 rgba(230, 47, 36, 0.1);
+  color: #000;
 }
 
 .main-text-color {

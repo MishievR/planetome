@@ -1,0 +1,29 @@
+.card-job-listing-main {
+  box-shadow:  0 0px 20px 0 rgba(211, 211, 211, 0.2), 0 0px 20px 0 rgba(211, 211, 211, 0.2);
+  background-color: #fafafa;
+  border-left: 2px solid red;
+}
+
+.card-job-post {
+  box-shadow:  0 0px 20px 0 rgba(211, 211, 211, 0.2), 0 0px 20px 0 rgba(211, 211, 211, 0.2);
+  background-color: #fafafa;
+  border: 1px solid red;
+  border-left: 3px solid red;
+  border-right: 3px solid red;
+}
+
+.card-job-post:hover {
+  box-shadow:  0 0px 40px 0 rgba(231, 23, 23, 0.2), 0 0px 40px 0 rgba(231, 23, 23, 0.2);
+  background-color: #fafafa;
+  border: 1px solid red;
+  border-left: 3px solid red;
+  border-right: 3px solid red;
+}
+
+.s-red {
+  // border-bottom: 3px solid red;
+  // margin-bottom: -20px;
+  // padding-bottom: -30px;
+  text-decoration-color: red;
+  color: grey;
+}

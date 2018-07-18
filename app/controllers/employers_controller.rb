@@ -25,6 +25,7 @@ class EmployersController < ApplicationController
 
     def show
       @employer = Employer.find(params[:id])
+      @jobs = @employer.jobs
       # @community_fields = @field.communities
       # @project_fields = @field.projects
 

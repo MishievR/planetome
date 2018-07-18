@@ -11,8 +11,6 @@ class JobsController < ApplicationController
 
     def create
       @job = Job.new(job_params)
-      # @job.employer = Employer.find(params[:employer])
-
       if @job.save
         flash[:success] = "Job was created succesfully"
         redirect_to @job
@@ -59,10 +57,14 @@ class JobsController < ApplicationController
         :requirements,
         :link,
         :email_to_contact,
-        :salary, :employer_id, category_ids: [])
+        :salary, :employer_id, category_ids: [], community_ids: [])
     end
 
-
+    # def employer_params
+    #   params.require(:employer).permit(
+    #     :company_name,
+    #     :link)
+    # end
 
     def require_admin
       if user_signed_in? and !current_user.admin?
