@@ -2,33 +2,23 @@
 <div class="row">
   <% if user_signed_in?  %>
   <div class="col-12  col-md-7 col-lg-8 col-xl-9">
-    <h3 class="main-text-color">Communities
+    <h1 class="main-text-color">Communities
     <br>
     <small class="text-muted">The field where you want to start.</small>
-
-    </h3>
+  </h1>
   </div>
     <div class="col-12  col-md-5 col-lg-4 col-xl-3">
       <%= link_to(new_community_path, class: "btn btn-outline-danger btn-block ") do %>
       <i class="fas fa-plus"></i>
       Create a new Community
       <% end %>
-
-      <%= link_to "Buy", "https://paypal.me/startupsspace/1", class: "btn btn-outline-danger btn-block " %>
-
-
-
-
     </div>
-
-
   <% else %>
   <div class="col-12">
-    <h3 class="main-text-color">Communities
+    <h1 class="main-text-color">Communities
     <br>
     <small class="text-muted">The field where you want to start.</small>
-
-    </h3>
+  </h1>
   </div>
   <% end %>
 </div>

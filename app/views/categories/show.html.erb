@@ -1,9 +1,12 @@
 <div class="row">
   <div class="col-11">
-    <h3 class="main-text-color"><%= @category.title %>
+    <h1 class="main-text-color"><%= @category.title %>
+      <% if current_user && current_user.admin? %>
+        <small> | <%= link_to "edit", edit_category_path(@category), class: "normal-link-red"%></small>
+      <% end %>
     <br>
-    <small class="text-muted"><%= @category.about %> | <%= link_to "(edit)", edit_category_path(@category)%></small>
-    </h3>
+    <small class="text-muted"><%= @category.about %></small>
+  </h1>
     <p class="text-muted">
     </p>
   </div>
@@ -13,16 +16,67 @@
 
 <div class="row">
   <% @job_categories.order("created_at DESC").each do |job| %>
-  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-    <%= link_to job_path(job), class: "card-user-link" do %>
-    <div class="card ">
+	  <div class="col-12 col-md-10 col-lg-8 col-xl-8">
+      <div class="card card-job-listing-main">
         <div class="card-body">
-          <h5 class="card-title"><strong><%= job.position %></strong> <small> at <%= link_to job.employer.company_name, employer_path(job.employer)%></small></h5>
-          <p class="card-text text-muted"><%= job.impact %></p>
+          <% if job.is_remote == true %>
+            <h5 class="card-title"><small>Remote </small><strong><%= link_to job.position, job_path(job), class: "normal-link-red" %></strong>
+              <small> at <%= link_to job.employer.company_name, employer_path(job.employer), class: "normal-link-light-grey"%></small>
+              <small class="float-right text-muted"><%= time_ago_in_words(job.created_at) %> ago</small>
+            </h5>
+          <% else %>
+            <h5 class="card-title"><strong><%= link_to job.position, job_path(job), class: "normal-link-red" %></strong>
+              <small> at <%= link_to job.employer.company_name, employer_path(job.employer), class: "normal-link-light-grey"%></small>
+              <small class="float-right text-muted"><%= time_ago_in_words(job.created_at) %> ago</small>
+            </h5>
+          <% end %>
+          <p class="card-text text-muted"><%= job.impact %>
+            <%# link_to "More", "#collapseExample", role: :button, data: { parent: '#collapseExample', toggle: :collapse }, aria: { controls: :collapseExample, expanded: false } %>
+          </p>
         </div>
-    </div>
-    <% end %>
-
+      </div>
+      <!--
+      <div class="collapse" id="collapseExample">
+        <div class="card">
+          <div class="card-body">
+            <h6><strong>Job description:</strong></h6>
+            <p><%= simple_format job.job_description %></p>
+            <br>
+            <h6><strong>Responsibilities:</strong></h6>
+            <p><%= simple_format job.responsibilities %></p>
+            <br>
+            <h6><strong>Requirements:</strong></h6>
+            <p><%= simple_format job.requirements %></p>
+            <br>
+            <% if job.is_special_requirements == true %>
+            <div class="card">
+              <div class="card-body">
+                <h6><strong>Special requirements:</strong></h6>
+                <p><%= simple_format job.special_requirements %></p>
+              </div>
+            </div>
+            <% end %>
+            <br>
+            <hr>
+            <h6><strong>Location:</strong></h6>
+            <p><%= job.location %>
+            <% if job.is_remote == true %>
+            | <strong>You can work remote.</strong>
+            <% end %></p>
+            <br>
+            <h6><strong>Salary:</strong></h6>
+            <p>$<%= job.salary %>K /year</p>
+              <br>
+            <% if current_user %>
+            <h6><strong>Email to contact:</strong></h6>
+            <p><%= job.email_to_contact %></p>
+            <br>
+            <% end %>
+            <%= link_to "Apply", "https://#{job.link}", class: "btn btn-outline-danger " %>
+          </div>
+        </div>
+      </div> -->
+  <br>
   </div>
   <% end %>
 </div>

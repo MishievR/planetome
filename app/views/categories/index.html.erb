@@ -14,8 +14,6 @@
       Add new category
       <% end %>
     </div>
-
-
   <% else %>
   <div class="col-12">
     <h3 class="main-text-color">Jobs categories
@@ -32,7 +30,9 @@
 <div class="row">
   <div class="col-12">
   <% @categories.each  do |cat| %>
-    <div class="card-columns">
+
+
+    <div class="card card-columns">
       <%= link_to cat.title, category_path(cat), class: "btn btn-outline-danger btn btn-city-main mr-3 mt-3 mb-3"  %>
     </div>
   <% end %>

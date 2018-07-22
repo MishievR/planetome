@@ -33,7 +33,7 @@ $('.popover-dismiss').popover({
 
 $(function() {
   $("#body-field").on("keyup", function(){
-    var length = $(this).val().length + '/160   Min. 50';
+    var length = $(this).val().length + '/140   Min. 50';
     $("#body-count").html(length);
   });
 });

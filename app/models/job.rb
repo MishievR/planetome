@@ -8,4 +8,6 @@ class Job < ApplicationRecord
 
   validates :position, presence: true
   validates :impact, presence: true, length: {minimum: 1, maximum: 100}
+  validates :job_description, presence: true, length: {minimum: 140}
+  validates :link, presence: true
 end
