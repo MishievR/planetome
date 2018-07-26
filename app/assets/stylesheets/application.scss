@@ -177,7 +177,9 @@ a:hover {
 }
 
 .btn-menu-nav {
-  color: #000e20;
+  color: #000;
+  margin-top: -8px;
+  float: right;
 }
 
 .btn-menu-nav:hover {
@@ -200,6 +202,7 @@ a:hover {
 .custom {
   border: 0px;
 }
+
 .custom .navbar-toggler-icon  {
   background: none;
   margin-top: 7px;
@@ -309,13 +312,12 @@ a:hover {
 }
 
 .footer {
-  margin-top: 335px;
-  display: block;
+  margin-top: 80px;
 }
 
 .footer-text {
   font-weight: 300;
-  color: #534C4C;
+  // color: #534C4C;
   font-size: 0.75em;
 }
 
@@ -446,7 +448,8 @@ a:hover {
 .card-category-main {
   border-radius: 0px;
   background-color: #fff;
-  border-bottom: 2px solid black;
+  // border-bottom: 2px solid black;
+  border-bottom: 0px;
   border-top: 0px;
   border-left: 0px;
   border-right: 0px;
@@ -454,11 +457,30 @@ a:hover {
   padding-left: 10px;
   padding-right: 10px;
   // border-radius: 2px;
-  box-shadow:  0 0px 20px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.2);
+  box-shadow:  0 0px 20px 0 rgba(211, 211, 211, 0.3), 0 0px 20px 0 rgba(211, 211, 211, 0.3);
 }
 
 .card-category-main:hover {
-  box-shadow:  0 0px 20px 0 rgba(0, 0, 0, 0.3), 0 0px 20px 0 rgba(0, 0, 0, 0.3);
+  box-shadow:  0 0px 20px 0 rgba(211, 211, 211, 0.6), 0 0px 20px 0 rgba(211, 211, 211, 0.6);
+}
+
+.card-category-index {
+  height: 100px;
+  width: 100%;
+  border-radius: 0px;
+  background-color: #fff;
+  border-bottom: 0px;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow:  0 0px 20px 0 rgba(211, 211, 211, 0.3), 0 0px 20px 0 rgba(211, 211, 211, 0.3);
+}
+
+.card-category-index:hover {
+  box-shadow:  0 0px 20px 0 rgba(211, 211, 211, 0.6), 0 0px 20px 0 rgba(211, 211, 211, 0.6);
 }
 
 .category-title {
@@ -480,4 +502,13 @@ a:hover {
 #parent:hover #hover-content {
     opacity:1;
 
+}
+
+
+.make-in-center {
+   margin: 0;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
 }

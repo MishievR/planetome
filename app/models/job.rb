@@ -6,13 +6,13 @@ class Job < ApplicationRecord
   has_many :community_jobs
   has_many :communities, through: :community_jobs
 
+  validates :employer_id, presence: true
   validates :position, presence: true
   validates :impact, presence: true, length: {minimum: 1, maximum: 100}
   validates :job_description, presence: true, length: {minimum: 140}
   validates :link, presence: true
+  validates :email_to_contact, presence: true
+  validates_format_of :email_to_contact, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates :category_ids, presence: true
 
-  def paginate_jobs(page, per_page = 9)
-    job.paginate(page: page, per_page: per_page)
-
-  end
 end

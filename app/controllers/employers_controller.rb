@@ -1,5 +1,7 @@
 class EmployersController < ApplicationController
 
+    before_action :require_admin, except: [:new, :create, :index, :show]
+    before_action :authenticate_user!, except: [:new, :create, :index, :show]
 
     def index
       @employers = Employer.all
@@ -12,7 +14,7 @@ class EmployersController < ApplicationController
     def create
       @employer = Employer.new(employer_params)
       if @employer.save
-        flash[:success] = "Employer was created succesfully"
+        flash[:success] = "#{@employer.company_name} was created succesfully"
         redirect_to @employer
       else
         render 'new'
@@ -26,15 +28,12 @@ class EmployersController < ApplicationController
     def show
       @employer = Employer.find(params[:id])
       @jobs = @employer.jobs
-      # @community_fields = @field.communities
-      # @project_fields = @field.projects
-
     end
 
     def update
       @employer = Employer.find(params[:id])
       if @employer.update(employer_params)
-        flash[:success] = "Employer was updated succcessfully"
+        flash[:success] = "#{@employer.company_name} was updated succcessfully"
         redirect_to employer_path(@employer)
       else
         render 'edit'

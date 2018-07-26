@@ -8,10 +8,7 @@
   </h1>
   </div>
     <div class="col-12  col-md-5 col-lg-4 col-xl-3">
-      <%= link_to(new_community_path, class: "btn btn-outline-danger btn-block ") do %>
-      <i class="fas fa-plus"></i>
-      Create a new Collection
-      <% end %>
+      <%= link_to "Create a new Collection", new_community_path, class: "btn btn-outline-danger btn-block " %>
     </div>
   <% else %>
   <div class="col-12">

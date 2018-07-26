@@ -1,0 +1,30 @@
+<% if current_user.projects.count > 0 %>
+  <div class="dropdown-divider"></div>
+  <h6 class="dropdown-header">Projects</h6>
+  <% current_user.projects.each do |project| %>
+    <%= link_to project_path(project), class: "dropdown-item dropdown-item-menu" do %>
+    <%= image_tag project.image, class: "card-project-img-small card-img-left" if project.image? %>
+    <%= project.name %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= link_to "Start your first project!", new_project_path, class: "dropdown-item dropdown-item-menu"  %>
+<div class="dropdown-divider"></div>
+<% end %>
+<h6 class="dropdown-header">Navigation</h6>
+<%= link_to(users_path, class: "dropdown-item dropdown-item-menu") do %>
+<i class="fab fa-buromobelexperte"></i>
+People
+<% end %>
+<%= link_to(communities_path, class: "dropdown-item dropdown-item-menu") do %>
+<i class="fab fa-buromobelexperte"></i>
+Communities
+<% end %>
+<%= link_to(projects_path, class: "dropdown-item dropdown-item-menu") do %>
+<i class="fab fa-buromobelexperte"></i>
+Projects
+<% end %>
+<%= link_to(fields_path, class: "dropdown-item dropdown-item-menu") do %>
+<i class="fab fa-buromobelexperte"></i>
+Fields
+<% end %>

@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
 
+    before_action :require_admin, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index, :show]
 
     def index
       @categories = Category.all
@@ -12,7 +14,7 @@ class CategoriesController < ApplicationController
     def create
       @category = Category.new(category_params)
       if @category.save
-        flash[:success] = "Category was created succesfully"
+        flash[:success] = "The category #{@category.title} was created succesfully"
         redirect_to categories_path
       else
         render 'new'
@@ -25,15 +27,13 @@ class CategoriesController < ApplicationController
 
     def show
       @category = Category.find(params[:id])
-      # @community_fields = @field.communities
       @job_categories = @category.jobs
-
     end
 
     def update
       @category = Category.find(params[:id])
       if @category.update(category_params)
-        flash[:success] = "Category was updated succcessfully"
+        flash[:success] = "The category #{@category.title} was updated succcessfully"
         redirect_to category_path(@category)
       else
         render 'edit'

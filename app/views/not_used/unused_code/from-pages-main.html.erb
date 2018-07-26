@@ -1,0 +1,85 @@
+
+
+
+
+<!-- <div class="row">
+  <div class="col">
+    <h3 class="main-text-color">Cities
+    <br>
+    <small class="text-muted">Location of your personal HQ.</small>
+    </h3>
+  </div>
+</div>
+
+<div class="row">
+  <% @cities.take(20).each do |city| %>
+  <div class="col">
+    <%= link_to city.name, city_path(city), class: "btn btn-outline-danger btn-lg btn-city-main mr-3 mt-3"  %>
+  </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="mr-3">
+      <%= link_to(cities_path, class: "btn btn-outline-danger btn-block btn-moreinfo-main main-text-color mt-3") do %>
+      + <%= City.count-20 %> more
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<br> -->
+
+<!-- <div class="row">
+  <div class="col">
+    <%= link_to(users_path, class: "pages-index-main-links") do %>
+    <h3 class="main-text-color">People
+    <br>
+    <small class="text-muted">Meet people. Connect with anyone. Start together.</small>
+    </h3>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="row">
+  <% @users.take(4).each do |user| %>
+  <div class="col-6 col-md-6 col-lg-3 col-xl-3">
+    <%= link_to user_path(user), class: "card-user-link"  do %>
+    <div class="card card-user card-used-fixedheight mt-3">
+      <%= image_tag user.background, class: "card-user-bg-img card-img-top" if user.background? %>
+        <div class="card-img-overlay">
+          <div class="d-flex justify-content-center">
+            <%= image_tag user.avatar.url(:medium), class: "profilePhoto " if user.avatar? %>
+          </div>
+          <div class="d-flex justify-content-center">
+            <h5 class="card-title card-title-user text-center"><%= user.name %></h5>
+          </div>
+        </div>
+      <div class="card-body">
+        <p class="card-text card-text-main"><%= truncate(user.about, length: 100 )%></p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+
+
+<% if @users.count <= 4 %>
+<br>
+<br>
+
+<% else %>
+
+<div class="row">
+  <div class="col">
+    <div class="">
+      <%= link_to(users_path, class: "btn btn-outline-danger btn-block btn-moreinfo-main main-text-color mt-3") do %>
+      + <%= User.count-4 %> people
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
+<% end %> -->

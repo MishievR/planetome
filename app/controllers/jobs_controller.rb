@@ -1,5 +1,7 @@
 class JobsController < ApplicationController
 
+  before_action :require_admin, except: [:new, :create, :index, :show]
+  before_action :authenticate_user!, except: [:new, :create, :index, :show]
 
     def index
       @jobs = Job.all
@@ -12,7 +14,7 @@ class JobsController < ApplicationController
     def create
       @job = Job.new(job_params)
       if @job.save
-        flash[:success] = "Job was created succesfully"
+        flash[:success] = "#{@job.position} position at #{@job.employer.company_name} was created succesfully"
         redirect_to @job
       else
         render 'new'
@@ -34,7 +36,7 @@ class JobsController < ApplicationController
     def update
       @job = Job.find(params[:id])
       if @job.update(job_params)
-        flash[:success] = "Job was updated succcessfully"
+        flash[:success] = "#{@job.position} position at #{@job.employer.company_name} was updated succcessfully"
         redirect_to job_path(@job)
       else
         render 'edit'
@@ -60,19 +62,10 @@ class JobsController < ApplicationController
         :salary, :employer_id, category_ids: [], community_ids: [])
     end
 
-    # def employer_params
-    #   params.require(:employer).permit(
-    #     :company_name,
-    #     :link)
-    # end
-
     def require_admin
       if user_signed_in? and !current_user.admin?
         flash[:danger] = "Only admins can perform that action"
         redirect_to jobs_path
       end
     end
-
-
-
 end

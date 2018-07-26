@@ -5,7 +5,7 @@ class Community < ApplicationRecord
   belongs_to :user
   has_many :community_fields
   has_many :fields, through: :community_fields
-  has_many :posts
+  # has_many :posts
   has_many :community_categories
   has_many :categories, through: :community_categories
   has_many :community_jobs

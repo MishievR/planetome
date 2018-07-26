@@ -1,43 +1,30 @@
 
-
 <div class="row">
   <% if user_signed_in? && current_user.admin? %>
   <div class="col-12  col-md-7 col-lg-8 col-xl-9">
-    <h3 class="main-text-color">Jobs categories
-    <br>
-    <small class="text-muted">Find your way.</small>
-    </h3>
+    <h1 class="main-text-color">Jobs categories</h1>
+    <h3><small class="text-muted">Find your way.</small></h3>
   </div>
     <div class="col-12 col-md-5 col-lg-4 col-xl-3">
-      <%= link_to(new_category_path, class: "btn btn-outline-danger btn-block ") do %>
-      <i class="fas fa-plus"></i>
-      Add new category
-      <% end %>
+      <%= link_to "Add new category", new_category_path, class: "btn btn-outline-danger btn-block " %>
     </div>
   <% else %>
   <div class="col-12">
-    <h3 class="main-text-color">Jobs categories
-    <br>
-    <small class="text-muted">Find your way.</small>
-    </h3>
+    <h1 class="main-text-color">Jobs categories</h1>
+    <h3><small class="text-muted">Find your way.</small></h3>
   </div>
   <% end %>
 </div>
-
-
 <br>
-
 <div class="row">
   <% @categories.each  do |cat| %>
-  <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+  <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
     <%= link_to category_path(cat) do  %>
-      <div class="card card-category-main text-center mb-3">
-        <h5 class="card-title category-title"><small><%= cat.jobs.count %> in </small><strong><%= cat.title %></strong></h5>
+      <div class="card card-category-index text-center mb-3">
+        <h5 class="card-title category-title make-in-center  "><strong><%= cat.title %></strong></h5>
       </div>
     <% end %>
   </div>
-  <div class="col-12 col-sm-4 col-md-6 col-lg-7 col-xl-8">
 
-  </div>
   <% end %>
 </div>

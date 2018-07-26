@@ -10,17 +10,16 @@ Rails.application.routes.draw do
   # get 'show', to: 'ideas#index', as: 'showidea'
 
 
-  resources :ideas, only: [:create, :index, :destroy] do
-    member do
-      put "upvote",    to: "ideas#upvote"
-      # put "downvote", to: "people#downvote"
-    end
-  end
+  # resources :ideas, only: [:create, :index, :destroy] do
+  #   member do
+  #     put "upvote",    to: "ideas#upvote"
+  #     # put "downvote", to: "people#downvote"
+  #   end
+  # end
 
-  # match 'create' => 'ideas#new', :via => :post
 
-  get "users/all" => 'users#all'
-  get 'users/:id' => 'users#show', as: :user
+  # get "users/all" => 'users#all'
+  # get 'users/:id' => 'users#show', as: :user
   # get 'signup', to: 'users#new'
   resources :users, except: [:new]
 
@@ -31,16 +30,16 @@ Rails.application.routes.draw do
   resources :employers
   resources :categories
   resources :fields
-  resources :cities
+  # resources :cities
   resources :communities do
-    resources :posts
+    # resources :posts
   end
-  resources :projects do
-    member do
-      put "upvote",    to: "projects#upvote"
-    end
-    resources :updates
-  end
+  # resources :projects do
+  #   member do
+  #     put "upvote",    to: "projects#upvote"
+  #   end
+  #   resources :updates
+  # end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

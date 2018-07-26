@@ -1,6 +1,7 @@
 class FieldsController < ApplicationController
-  before_action :require_admin, except: [:index, :show]
 
+  before_action :require_admin, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @fields = Field.all
@@ -13,7 +14,7 @@ class FieldsController < ApplicationController
   def create
     @field = Field.new(field_params)
     if @field.save
-      flash[:success] = "Field was created succesfully"
+      flash[:success] = "The field #{@field.name} was created succesfully"
       redirect_to fields_path
     else
       render 'new'
@@ -28,13 +29,12 @@ class FieldsController < ApplicationController
     @field = Field.find(params[:id])
     @community_fields = @field.communities
     @project_fields = @field.projects
-
   end
 
   def update
     @field = Field.find(params[:id])
     if @field.update(field_params)
-      flash[:success] = "Field was updated succcessfully"
+      flash[:success] = "The field #{@field.name} was updated succcessfully"
       redirect_to field_path(@field)
     else
       render 'edit'
@@ -44,7 +44,7 @@ class FieldsController < ApplicationController
   def destroy
     @field = Field.find(params[:id])
     @field.destroy
-    flash[:danger] = "Field deleted successfully."
+    flash[:danger] = "The field deleted successfully."
     redirect_to fields_path
   end
 
