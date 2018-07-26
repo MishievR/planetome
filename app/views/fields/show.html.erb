@@ -1,23 +1,29 @@
 <div class="row">
+  <% if user_signed_in? && current_user.admin? %>
+  <div class="col-12  col-md-7 col-lg-8 col-xl-9">
+    <h1 class="display-4 main-text-color"><%= @field.name %></h1>
+    <h3><small class="text-muted"><%= @field.description %></small></h3>
+  </div>
+    <div class="col-12 col-md-5 col-lg-4 col-xl-3">
+      <%= link_to "Edit", edit_field_path(@field), class: "btn btn-outline-danger btn-block " %>
+
+    </div>
+  <% else %>
   <div class="col-12">
     <h1 class="display-4 main-text-color"><%= @field.name %></h1>
     <h3><small class="text-muted"><%= @field.description %></small></h3>
   </div>
+  <% end %>
 </div>
+
 <br>
 <div class="row">
   <div class="col-12 col-md-7 col-lg-8 col-xl-9">
-      <h3 class="main-text-color">Communities
+      <h3 class="main-text-color">Collections
       <br>
       <small class="text-muted">You're not the only one just starting.</small>
       </h3>
   </div>
-  <% if @community_fields.count > 0 %>
-      <div class="col-12 col-md-5 col-lg-4 col-xl-3">
-        <br>
-        <%= link_to "Create community", new_community_path, class: "btn btn-block btn-outline-danger"  %>
-      </div>
-  <% end %>
 </div>
 <br>
 <div class="row">
@@ -25,24 +31,23 @@
     <%= render 'notifications/nocommunities'%>
   <% end %>
 </div>
+
+
 <div class="row">
   <% @community_fields.each do |community| %>
-  <div class="col-6 col-md-6 col-lg-3 col-xl-3">
-    <%= link_to community_path(community), class: "card-user-link" do %>
-    <div class="card bg-dark text-white text-white card-field-main  mt-3">
-      <%= image_tag community.background, class: "card-commutity-img " if community.background? %>
-      <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-        <div class="just-test">
-          <h5 class="card-title card-title-index"><%= truncate(community.name, length: 45 )%></h5>
-          <p class="card-text card-text-index card-community-link "><%= truncate(community.description, length: 90 )%></p>
+	  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+    <%= link_to community_path(community), class: "card-community-link" do %>
+      <div class="card bg-dark text-white text-white card-field-main  mt-3">
+        <%= image_tag community.background, class: "card-commutity-img " if community.background? %>
+        <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+          <h3 class="card-title card-title-index"><strong class="font-red-background-color"><%= community.name %></strong></h3>
         </div>
       </div>
-    </div>
     <% end %>
   </div>
   <% end %>
 </div>
-<br>
+<!-- <br>
 <br>
 <div class="row">
   <div class="col-12 col-md-7 col-lg-8 col-xl-9">
@@ -109,4 +114,4 @@
     </div>
   </div>
   <% end %>
-</div>
+</div> -->

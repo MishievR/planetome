@@ -4,7 +4,7 @@
   <div class="jumbotron jumbotron-fluid jumbo-test">
     <div class="container">
       <div class="col">
-        <h1 class="display-3 main-text-color font-black-background-color-community-show main-caption">Make an impact.</h1>
+        <h1 class="display-4 main-text-color font-black-background-color-community-show main-caption">Make an impact.</h1>
         <h3><small class="font-black-background-color-community-show main-caption">Work in purpose driven companies.</small></h3>
       </div>
     </div>
@@ -52,10 +52,7 @@
       <div class="card bg-dark text-white text-white card-field-main  mt-3">
         <%= image_tag community.background, class: "card-commutity-img " if community.background? %>
         <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-          <!-- <div class="just-test"> -->
-            <h3 class="card-title card-title-index "><strong class="font-red-background-color"><%= community.name %></strong></h3>
-            <!-- <p class="card-text card-text-index card-community-link "><%= truncate(community.description, length: 90 )%></p> -->
-          <!-- </div> -->
+          <h3 class="card-title card-title-index "><strong class="font-red-background-color"><%= community.name %></strong></h3>
         </div>
       </div>
     <% end %>
@@ -93,8 +90,10 @@
 <div class="row">
   <% @categories.each  do |cat| %>
   <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-    <%= link_to(category_path(cat), class: "btn btn-outline-danger btn-block btn-city-main mr-1 mt-1 ") do  %>
-    <small><%= cat.jobs.count %> in </small><strong><%= cat.title %></strong>
+    <%= link_to category_path(cat) do  %>
+      <div class="card card-category-main text-center mb-3">
+        <h5 class="card-title category-title"><small><%= cat.jobs.count %> in </small><strong><%= cat.title %></strong></h5>
+      </div>
     <% end %>
   </div>
   <% end %>

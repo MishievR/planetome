@@ -10,4 +10,9 @@ class Job < ApplicationRecord
   validates :impact, presence: true, length: {minimum: 1, maximum: 100}
   validates :job_description, presence: true, length: {minimum: 140}
   validates :link, presence: true
+
+  def paginate_jobs(page, per_page = 9)
+    job.paginate(page: page, per_page: per_page)
+
+  end
 end

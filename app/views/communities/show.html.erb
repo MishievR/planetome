@@ -27,32 +27,44 @@
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="list-posts" role="tabpanel" aria-labelledby="list-posts-list"> -->
         <div class="row">
-          <% @community_jobs.order("created_at DESC").each do |job| %>
-            <div class="col-12 col-md-12 col-lg-9 col-xl-9">
-              <h3 class="main-text-color">Jobs
-              <br>
-              <small class="text-muted">That's just awesome</small>
-              </h3>
-              <br>
-              <div class="card card-job-listing-main ">
-                <div class="card-body">
-                  <% if job.is_remote == true %>
-                    <h5 class="card-title"><small>Remote </small><strong><%= link_to job.position, job_path(job), class: "normal-link-red" %></strong>
-                      <small> at <%= link_to job.employer.company_name, employer_path(job.employer), class: "normal-link-light-grey"%></small>
-                      <small class="float-right text-muted"><%= time_ago_in_words(job.created_at) %> ago</small>
-                    </h5>
-                  <% else %>
-                    <h5 class="card-title"><strong><%= link_to job.position, job_path(job), class: "normal-link-red" %></strong>
-                      <small> at <%= link_to job.employer.company_name, employer_path(job.employer), class: "normal-link-light-grey"%></small>
-                      <small class="float-right text-muted"><%= time_ago_in_words(job.created_at) %> ago</small>
-                    </h5>
-                  <% end %>
-                  <p class="card-text text-muted"><%= job.impact %></p>
-                </div>
-              </div>
-              <br>
+          <div class="col-12 col-md-12 col-lg-9 col-xl-9">
+
+
+          <%  @community_jobs.each do |job| %>
+
+          <h3 class="main-text-color">Opportunities feed
+          <br>
+          <small class="text-muted">The greates. Special for your interest. </small>
+          </h3>
+          <br>
+          <div class="card card-job-listing-main ">
+            <div class="card-body">
+              <% if job.is_remote == true %>
+                <h5 class="card-title"><small>Remote </small><strong><%= link_to job.position, job_path(job), class: "normal-link-red" %></strong>
+                  <small> at <%= link_to job.employer.company_name, employer_path(job.employer), class: "normal-link-light-grey"%></small>
+                  <small class="float-right text-muted"><%= time_ago_in_words(job.created_at) %> ago</small>
+                </h5>
+              <% else %>
+                <h5 class="card-title"><strong><%= link_to job.position, job_path(job), class: "normal-link-red" %></strong>
+                  <small> at <%= link_to job.employer.company_name, employer_path(job.employer), class: "normal-link-light-grey"%></small>
+                  <small class="float-right text-muted"><%= time_ago_in_words(job.created_at) %> ago</small>
+                </h5>
+              <% end %>
+              <p class="card-text text-muted"><%= job.impact %></p>
             </div>
+          </div>
+          <br>
+
+
+
+
             <% end %>
+          <%= render "notifications/morejobs"%>
+
+        </div>
+
+
+
           <!-- </div> -->
         <%# render "posts"%>
       <!-- </div> -->
@@ -80,5 +92,13 @@
     <br>
   </div> -->
 
+  <div class="col-12 col-md-12 col-lg-3 col-xl-3">
+    <% if current_user && current_user.admin? %>
+      <h6 class="main-text-color">
+      <small class="text-muted">Owner's controls</small>
+      </h6>
+      <%= link_to "Edit", edit_community_path, class: "btn btn btn-outline-danger btn-block"  %>
+    <% end %>
+  </div>
 
 </div>

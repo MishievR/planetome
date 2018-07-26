@@ -87,7 +87,12 @@
         <p><%= @job.email_to_contact %></p>
         <br>
         <% end %>
-        <%= link_to "Apply", "https://#{@job.link}", class: "btn btn-outline-danger btn-lg" %>
+
+        <div class="row">
+          <div class="col-12">
+            <%= link_to "Apply", "https://#{@job.link}", class: "btn btn-outline-danger btn-lg btn-block" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

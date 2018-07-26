@@ -8,7 +8,7 @@
     <small class="text-muted">Find your way.</small>
     </h3>
   </div>
-    <div class="col-12  col-md-5 col-lg-4 col-xl-3">
+    <div class="col-12 col-md-5 col-lg-4 col-xl-3">
       <%= link_to(new_category_path, class: "btn btn-outline-danger btn-block ") do %>
       <i class="fas fa-plus"></i>
       Add new category
@@ -28,13 +28,16 @@
 <br>
 
 <div class="row">
-  <div class="col-12">
   <% @categories.each  do |cat| %>
-
-
-    <div class="card card-columns">
-      <%= link_to cat.title, category_path(cat), class: "btn btn-outline-danger btn btn-city-main mr-3 mt-3 mb-3"  %>
-    </div>
-  <% end %>
+  <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+    <%= link_to category_path(cat) do  %>
+      <div class="card card-category-main text-center mb-3">
+        <h5 class="card-title category-title"><small><%= cat.jobs.count %> in </small><strong><%= cat.title %></strong></h5>
+      </div>
+    <% end %>
   </div>
+  <div class="col-12 col-sm-4 col-md-6 col-lg-7 col-xl-8">
+
+  </div>
+  <% end %>
 </div>

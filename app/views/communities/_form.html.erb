@@ -15,8 +15,8 @@
                   <%= f.label :About, class: "control-label" %>
                   <%= f.text_area :description, rows: 3, class: "form-control", placeholder: "Help great entrepreneurs change the world.", autofocus: true, id: "body-field" %>
                   <small class="form-text text-muted" id="body-count">0</small>
-
                 </div>
+
                 <div class="form-group">
                   <%= f.label :Field, class: "control-label" %>
                   <%= f.collection_check_boxes :field_ids, Field.all, :id, :name do |cb| %>
@@ -29,19 +29,16 @@
               </div>
               <div class="col-12 col-md-6 col-lg-3 col-xl-3">
                 <div class="form-group">
-                  <%= f.label :Community_Preview %>
+                  <%= f.label :Collection_Preview %>
                   <div class="row">
-                    <% if @community.name? %>
-                    <div class="card bg-dark text-white text-white card-field-main  mt-3">
-                      <%= image_tag @community.background, class: "card-commutity-img " if @community.background? %>
-                      <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-                        <div class="just-test">
-                          <h5 class="card-title card-title-index"><%= truncate(@community.name, length: 45 )%></h5>
-                          <p class="card-text card-text-index card-community-link "><%= truncate(@community.description, length: 90 )%></p>
+                    <div class="col-12">
+                      <div class="card bg-dark text-white text-white card-field-main ">
+                        <%= image_tag @community.background, class: "card-commutity-img " if @community.background? %>
+                        <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+                          <h3 class="card-title card-title-index"><strong class="font-red-background-color"><%= @community.name %></strong></h3>
                         </div>
                       </div>
                     </div>
-                    <% end %>
                   </div>
                 </div>
                 <br>
@@ -52,9 +49,15 @@
             </div>
           </div>
           <%= f.submit class: 'btn btn-outline-danger' %>
-          <small class="form-text text-muted">NOTE: It may take some time to upload your background and/or profile image, <strong>don't reload the web page please!</strong></small>
+          <small class="form-text text-muted">NOTE: It may take some time to upload your background image, <strong>don't reload the web page please!</strong></small>
         <% end %>
       </div>
     </div>
+    <br>
+    <h6 class="main-text-color">
+    <small class="text-muted">Special controls</small>
+    </h6>
+    <%= link_to "Delete", @community, method: :delete, class: "btn btn-outline-danger", data: { confirm: 'Collection will be deleted permanently. Are you sure?' }  %>
+
   </div>
 </div>

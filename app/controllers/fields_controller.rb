@@ -41,6 +41,13 @@ class FieldsController < ApplicationController
     end
   end
 
+  def destroy
+    @field = Field.find(params[:id])
+    @field.destroy
+    flash[:danger] = "Field deleted successfully."
+    redirect_to fields_path
+  end
+
 
   private
   def field_params
