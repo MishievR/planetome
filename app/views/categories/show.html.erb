@@ -13,10 +13,16 @@
 </div>
 <br>
 <br>
-
+<% if @job_categories.count == 0 %>
+<div class="row">
+ <div class="col-12 col-md-10 col-lg-8 col-xl-8">
+   <%= render "notifications/nojobsincategory" %>
+  </div>
+</div>
+<% else %>
 <div class="row">
   <% @job_categories.order("created_at DESC").each do |job| %>
-	  <div class="col-12 col-md-10 col-lg-8 col-xl-8">
+   <div class="col-12 col-md-10 col-lg-8 col-xl-8">
       <div class="card card-job-listing-main">
         <div class="card-body">
           <% if job.is_remote == true %>
@@ -80,3 +86,5 @@
   </div>
   <% end %>
 </div>
+
+<% end %>

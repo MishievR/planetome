@@ -28,7 +28,7 @@ class FieldsController < ApplicationController
   def show
     @field = Field.find(params[:id])
     @community_fields = @field.communities
-    @project_fields = @field.projects
+    # @project_fields = @field.projects
   end
 
   def update
