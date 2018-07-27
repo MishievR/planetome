@@ -18,7 +18,7 @@
         <div class="card card-job-post">
           <div class="card-body">
             <%= link_to new_job_path, class: "card-community-link"  do %>
-              <h5 class="card-title"><strong>Post a Job - <small><s class="s-red">$179</s></small> $59 pre-launch price</strong> </h5>
+              <h5 class="card-title"><strong>Post a Job - <small><s class="s-red">$179</s></small> $59 pre-launch price. It takes 30 seconds.</strong> </h5>
               <p class="card-text">Post a meaningful job to get super interested applicants.</p>
             <% end %>
           </div>
@@ -108,7 +108,7 @@
 </div>
 <div class="row">
   <% @fields.take(8).each do |field| %>
-  <div class="col-6 col-md-6 col-lg-3 col-xl-3">
+  <div class="col-12 col-md-6 col-lg-3 col-xl-3">
     <%= link_to field_path(field) do %>
     <div class="card bg-dark text-white card-field-main text-center  mt-3">
       <%= image_tag field.background, class: "card-field-img" if field.background? %>
@@ -152,24 +152,31 @@
 <br>
 <div class="row">
   <% @jobs.order("created_at DESC").each do |job| %>
-	  <div class="col-12 col-md-8 col-lg-8 col-xl-8">
+	  <div class="col-12 col-md-10 col-lg-9 col-xl-8">
       <div class="card card-job-listing-main">
         <div class="card-body">
+          <h5 class="card-title">
           <% if job.is_remote == true %>
-            <h5 class="card-title"><small>Remote </small><strong><%= link_to job.position, job_path(job), class: "normal-link-red" %></strong>
-              <small> at <%= link_to job.employer.company_name, employer_path(job.employer), class: "normal-link-light-grey"%></small>
-              <small class="float-right text-muted"><%= time_ago_in_words(job.created_at) %> ago</small>
-            </h5>
-          <% else %>
-            <h5 class="card-title"><strong><%= link_to job.position, job_path(job), class: "normal-link-red" %></strong>
-              <small> at <%= link_to job.employer.company_name, employer_path(job.employer), class: "normal-link-light-grey"%></small>
-              <small class="float-right text-muted"><%= time_ago_in_words(job.created_at) %> ago</small>
-            </h5>
+          <small>Remote </small>
           <% end %>
-          <p class="card-text text-muted"><%= job.impact %>
-          </p>
+          <strong><%= link_to job.position, job_path(job), class: "normal-link-red" %></strong>
+          <small> at <%= link_to job.employer.company_name, employer_path(job.employer), class: "normal-link-light-grey"%>
+          <% if job.is_remote == false && job.location != "" %>
+          in <%= job.location %>
+          <% end %>
+          </small></h5>
+          <div class="row">
+            <div class="col-12 col-md-10 col-lg-9 col-xl-9">
+              <p class="card-text", style="margin-top:10px;"><strong><%= job.impact %></strong>
+              </p>
+            </div>
+            <div class="col-12 col-md-2 col-lg-3 col-xl-3">
+              <small class="float-right text-muted"><%= link_to "Apply", "https://#{job.link}", class: "btn btn-outline-danger mt-1 btn-block" %></small>
+            </div>
+          </div>
         </div>
       </div>
+      <h6><small class="float-right text-muted job-listing-time mr-2", style="margin-top:5px;"><%= time_ago_in_words(job.created_at) %> ago</small></h6>
       <br>
     </div>
   <% end %>

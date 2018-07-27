@@ -253,7 +253,7 @@ a:hover {
 
 
 .card-field-main {
-  border-radius: 0px;
+  border-radius: 1px;
   border: 0px;
   // border-radius: 2px;
   box-shadow:  0 0px 20px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.2);
@@ -511,4 +511,10 @@ a:hover {
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
+}
+
+
+.form-check-input {
+  border-radius: 0px;
+  border-color: #000;
 }
