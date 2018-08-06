@@ -1,14 +1,22 @@
-<div class="row">
-  <div class="col-12 col-md-9 ">
-    <h1 class="main-text-color">Job listing
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Post a job on MIW</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-12 col-md-9 ">
+        <h1 class="main-text-color">Job listing
+        <br>
+        <small class="text-muted">Take a shot!</small>
+      </h1>
+      </div>
+      <div class="col-12 col-md-3">
+        <%= link_to 'Back', :back, class: "btn btn-outline-danger btn-block"  %>
+      </div>
+    </div>
     <br>
-    <small class="text-muted">Take a shot!</small>
-  </h1>
-  </div>
-  <div class="col-12 col-md-3">
-    <%= link_to 'Back', :back, class: "btn btn-outline-danger btn-block"  %>
-  </div>
-</div>
-<br>
-<br>
-<%= render 'form' %>
+    <br>
+    <%= render 'form' %>
+  </body>
+</html>
