@@ -9,8 +9,8 @@
                 <br>
                 <h6 class="text-muted">Step 1</h6>
                 <br>
-                 <div class="form-group ml-5 mr-5">
-                   <h4><strong><%= f.label :company, class: "control-label " %></strong> - that change the world.</h4>
+                 <div class="form-group ml-2 mr-2">
+                   <h4><strong><%= f.label :company, class: "control-label " %></strong> <small>That changing the world.</small></h4>
                    <div class="row">
                      <div class="col-12 col-md-5 col-lg-5 col-xl-5">
                        <h4><%= f.select :employer_id, Employer.all.collect {|p| [ p.company_name, p.id ] }, { :include_blank => 'Select a Company'}, class: "form-control company-pick", autofocus: true %> <br></h4>
@@ -23,111 +23,72 @@
                      </div>
                    </div>
                  </div>
-                 <br>
-                <h4 class="ml-5 mr-5"><small class="form-text text-muted">Before going to Step 2, please, select your company or <%= link_to "add your company", new_employer_path, class: "normal-link-light-grey " %>. It will take 24 seconds.</small></h4>
+                <h4 class="ml-2 mr-2"><small class="form-text text-muted">Before going to Step 2, please, select your company or <%= link_to "add your company", new_employer_path, class: "normal-link-light-grey " %>. It will take 24 seconds.</small></h4>
                 <hr>
                 <h6 class="text-muted">Step 2 </h6>
-                <!-- <small>Every job can be fullfilled with a mission.</small> -->
                 <br>
-                <div class="form-group ml-5 mr-5">
-                  <h4><strong><%= f.label :position, class: "control-label" %></strong> - be creative!</h4>
+                <div class="form-group ml-2 mr-2">
+                  <h4><strong><%= f.label :position, class: "control-label" %></strong></h4>
                   <%= f.text_field :position, class: "form-control", placeholder: "Mechanical Engineer - Pressure Testing Systems", autofocus: false %>
                 </div>
                 <br>
                 <hr>
                 <h6 class="text-muted">Step 3</h6>
                 <br>
-                <div class="form-group ml-5 mr-5">
-                  <h4><strong><%= f.label :job_impact, class: "control-label" %></strong> - described in <strong>160</strong>  characters or less.</h4>
+                <div class="form-group ml-2 mr-2">
+                  <h4><strong><%= f.label :job_impact, class: "control-label" %></strong> <small>Described in <strong>160</strong>  characters or less.</small></h4>
                   <%= f.text_area :impact, rows: 2, class: "form-control", placeholder: "Build rockets that will fly people to Mars.", autofocus: false, id: "body-field" %>
                   <small class="form-text text-muted" id="body-count">160 characters maximum.</small>
                 </div>
 
-                <%# link_to "More fields", "#collapseExample", role: :button, class: "btn btn-outline-danger ml-5", data: { parent: '#collapseExample', toggle: :collapse }, aria: { controls: :collapseExample, expanded: false } %>
 
-                <div class="collapse" id="collapseExample">
-                  <br>
-                  <div class="form-group ml-5 mr-5">
-                    <h6><strong><%= f.label :job_description, class: "control-label" %></strong></h6>
-                    <%= f.text_area :job_description, rows: 3, class: "form-control", placeholder: "Build", autofocus: false %>
-                    <small class="form-text text-muted" id="body-count"> </small>
-                  </div>
-                  <div class="form-group ml-5 mr-5">
-                    <h6><strong><%= f.label :responsibilities, class: "control-label" %></strong></h6>
-                    <%= f.text_area :responsibilities, rows: 3, class: "form-control", placeholder: "Provide engineering expertise in the area of design, development and test space hardened avionics hardware that will support the functions of our launch vehicles and spacecraft", autofocus: false %>
-                    <small class="form-text text-muted" id="body-count">0</small>
-                  </div>
-                  <div class="form-group ml-5 mr-5">
-                    <h6><strong><%= f.label :requirements, class: "control-label" %></strong></h6>
-                    <%= f.text_area :requirements, rows: 3, class: "form-control", placeholder: "Provide engineering expertise in the area of design, development and test space hardened avionics hardware that will support the functions of our launch vehicles and spacecraft", autofocus: false %>
-                  </div>
-                </div>
                 <br>
                 <hr>
                 <h6 class="text-muted">Step 4</h6>
                 <br>
-                <div class="form-group ml-5 mr-5">
-                  <h4><strong><%= f.label :location, class: "control-label" %></strong> - of your beautiful office.</h4>
+                <div class="form-group ml-2 mr-2">
+                  <h4><strong><%= f.label :location, class: "control-label" %></strong> <small>Of your beautiful office.</small></h4>
                   <%= f.text_field :location, class: "form-control", placeholder: "San Francisco, CA, US if the office is requred", autofocus: false, id: "body-field" %>
-                  <h5 class="mt-3"><strong><%= f.label :This_is_remote_job!, class: "control-label mr-2" %><%= f.check_box :is_remote, class: "mr-2" %></strong><small class=" text-muted">Check if yes.</small></h5>
+                  <h6 class="mt-3"><strong><%= f.label :This_job_can_be_remote!, class: "control-label mr-2" %><%= f.check_box :is_remote, class: "mr-2" %></strong><small class=" text-muted">Check if yes.</small></h6>
                   <small class="form-text text-muted">Your job listing will contain "Remote" word before position.</small>
                 </div>
-                <div class="form-group ml-5 mr-5">
+                <div class="form-group ml-2 mr-2">
                 </div>
                 <br>
                 <hr>
                 <h6 class="text-muted">Step 5</h6>
                 <br>
 
-                <div class="form-group ml-5 mr-5">
-                  <h4><strong><%= f.label :link_to_the_job, class: "control-label" %></strong> - your connection with an awesome person.</h4>
-                  <%= f.text_field :link, class: "form-control", placeholder: "(without https://)makeimpact.com/jobs/awesome-job", autofocus: false %>
-
+                <div class="form-group ml-2 mr-2">
+                  <h4><strong><%= f.label :link_to_the_job, class: "control-label" %></strong> <small>Your connection with an awesome applicant.</small></h4>
+                  <%= f.text_field :link, class: "form-control", placeholder: "www.makeimpact.com/jobs/awesome-job", autofocus: false %>
                 </div>
                 <br>
                 <hr>
                 <h6 class="text-muted">Step 6</h6>
                 <br>
-                <div class="form-group ml-5 mr-5">
-                  <h4><strong><%= f.label :email_to_contact, class: "control-label" %></strong> - only for MIW.</h4>
+                <div class="form-group ml-2 mr-2">
+                  <h4><strong><%= f.label :email_to_contact, class: "control-label" %></strong> <small>Only for us, zero spam, no sharing.</small></h4>
                   <%= f.text_field :email_to_contact, class: "form-control", placeholder: "name@company.com", autofocus: false %>
-                  <small class="form-text text-muted" id="body-count">Private. It will be used to send you the invoice and edit link.</small>
-
+                  <small class="form-text text-muted">Private. It will be used to send you the invoice.</small>
                 </div>
-
                 <br>
                 <hr>
                 <h6 class="text-muted">Step 7</h6>
                 <br>
-
-
-                <div class="form-group ml-5 mr-5">
-                  <h4><strong><%= f.label :categories, class: "control-label" %></strong> - Choose every applicable.</h4>
+                <div class="form-group ml-2 mr-2">
+                  <h4><strong><%= f.label :categories, class: "control-label" %></strong> <small>Choose every applicable.</small></h4>
                   <div class="row">
                     <%= f.collection_check_boxes :category_ids, Category.all, :id, :title do |cb| %>
-                    <div class="col-12">
-                      <ul>
+                    <div class="col-sm-12 col-md-6">
+                      <ul class="ul-categories">
                         <%= cb.label(class: "form-check-label btn float-left") {cb.check_box(class: "form-check-input") + cb.text}  %>
                       </ul>
                     </div>
                     <% end %>
                   </div>
                 </div>
-
                 <br>
-                <!-- <div class="form-group ml-5 mr-5">
-                  <h6><strong><%= f.label :communities, class: "control-label" %></strong></h6>
-                  <div class="row">
-                  <%= f.collection_check_boxes :community_ids, Community.all, :id, :name do |cb| %>
-                    <div class="col-6 col-md-6 col-lg-4 col-xl-4">
-                      <ul>
-                        <%= cb.label(class: "form-check-label") {cb.check_box(class: "form-check-input") + cb.text}  %>
-                      </ul>
-                    </div>
-                  <% end %>
-                    </div>
-                  <small class="form-text text-muted">Choose every applicable.</small>
-                </div> -->
               </div>
           </div>
           <div class="row">
@@ -135,14 +96,23 @@
               <hr>
               <h6 class="text-muted">Step 8</h6>
               <br>
-              <div class="card card-special-requirements ml-5 mr-5">
+              <div class="card card-special-requirements ml-2 mr-2 ">
                 <div class="card-body">
-                <h6>Enjoy while it's free!</h6>
+                  <i class="fas fa-lock"></i> Secure payment guaranteed by Stripe over HTTPS
+                  <br>
+                  <i class="fas fa-credit-card"></i> Card is only charged when you press "Post a Job" button
+                  <div class="form-control form-control-stripe">
+                    <!-- <label for="card-element">
+                    </label> -->
+                    <div id="card-element">
+                    </div>
+                    <div id="card-errors" role="alert"></div>
+                  </div>
                 </div>
               </div>
               <br>
-              <div class="ml-5 mr-5">
-                <%= f.submit "Post a Job - Free", class: 'btn btn-lg btn-danger btn-block btn-post ' %>
+              <div class="ml-2 mr-2">
+                <%= f.submit "Post a Job - $59", class: 'btn btn-lg btn-danger btn-block btn-post ' %>
               </div>
               <br>
               <br>
