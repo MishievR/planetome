@@ -53,7 +53,14 @@
                 <br>
                 <div class="form-group ml-2 mr-2">
                   <h6><strong><%= f.label :link, class: "control-label" %></strong></h6>
-                  <%= f.text_field :link, class: "form-control", placeholder: "Link to the company", autofocus: false, id: "body-field" %>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon3">https://</span>
+                    </div>
+                    <%= f.text_field :link, class: "form-control", placeholder: "www.makeimpact.work", autofocus: false, id: "body-field" %>
+                  </div>
+
                 </div>
                 <!-- <hr>
                 <h3>Additional</h3> -->
