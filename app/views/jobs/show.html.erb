@@ -1,10 +1,6 @@
 <div class="row">
   <div class="col-12 col-md-7 col-lg-8 col-xl-9">
-    <h1 class="main-text-color"><%= @job.position %>
-      <% if current_user && current_user.admin? %>
-      | <%= link_to "(edit)", edit_job_path(@job) %>
-      <% end %>
-      </h1>
+    <h1 class="main-text-color"><%= @job.position %></h1>
     <h3><small class="text-muted"> <small>at</small>  <%= link_to @job.employer.company_name, employer_path(@job.employer), class: "normal-link-light-grey text-muted" %></small></h3>
 
     <p class="text-muted">
@@ -15,6 +11,9 @@
   </div>
     <div class="col-12  col-md-5 col-lg-4 col-xl-3">
       <%= link_to "Apply", "https://#{@job.link}", class: "btn btn-danger btn-block", target: :_blank %>
+      <% if current_user && current_user.admin? %>
+      <%= link_to "Edit (admin)", edit_job_path(@job), class: "btn btn-outline-danger btn-block" %>
+      <% end %>
     </div>
 </div>
 
@@ -96,3 +95,26 @@
     <%= link_to "Apply", "https://#{@job.link}", class: "btn btn-danger btn-lg btn-block", target: :_blank %>
   </div>
 </div>
+
+<% if @job.communities.count > 0 %>
+<br><br>
+<div class="row">
+  <div class="col">
+    <h3 class="main-text-color">Job's collections</h3>
+  </div>
+</div>
+<div class="row">
+  <% @job.communities.each do |community| %>
+	  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+    <%= link_to community_path(community), class: "card-community-link" do %>
+      <div class="card bg-dark text-white text-white card-field-main  mt-3">
+        <%= image_tag community.background, class: "card-commutity-img " if community.background? %>
+        <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+          <h3 class="card-title card-title-index"><strong class="font-red-background-color"><%= community.name %></strong></h3>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+<% end %>

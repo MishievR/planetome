@@ -116,8 +116,8 @@
 }
 
 .ul-categories {
-  padding: 5px;
-  margin-left: 5px;
+  padding: 0px;
+  margin-left: 23px;
 }
 
 .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -131,4 +131,8 @@
 
 .form-control::-ms-input-placeholder { /* Microsoft Edge */
     color: #aab7c4;
+}
+
+.category-check {
+  font-size: 15px;
 }

@@ -1,9 +1,30 @@
 <%= render 'shared/errors', obj: @job %>
   <div class="row">
     <div class="col">
+      <%= form_for(@job, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <% if current_user && current_user.admin? %>
+      <h6 class="text-muted ml-1 ">Admin's controls</h6>
+      <div class="card card-login">
+        <div class="card-body ">
+          <div class="form-group ml-2 mr-2">
+            <h4><strong><%= f.label :communities, class: "control-label" %></strong></h4>
+            <div class="row">
+            <%= f.collection_check_boxes :community_ids, Community.all, :id, :name do |cb| %>
+              <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                <ul class="ul-categories">
+                  <%= cb.label(class: "form-check-label") {cb.check_box(class: "form-check-input") + cb.text}  %>
+                </ul>
+              </div>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <% end %>
+
         <div class="card card-login">
           <div class="card-body pl-3">
-            <%= form_for(@job, :html => {class: "form-horizontal", role: "form"}) do |f| %>
             <div class="row">
               <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                 <br>
@@ -113,13 +134,14 @@
                 <hr>
                 <h6 class="text-muted">Step 7</h6>
                 <br>
+
                 <div class="form-group ml-2 mr-2">
                   <h4><strong><%= f.label :categories, class: "control-label" %></strong> <small>Choose every applicable.</small></h4>
                   <div class="row">
                     <%= f.collection_check_boxes :category_ids, Category.all, :id, :title do |cb| %>
-                    <div class="col-sm-12 col-md-6">
+                    <div class="col-sm-12 ">
                       <ul class="ul-categories">
-                        <%= cb.label(class: "form-check-label btn float-left") {cb.check_box(class: "form-check-input") + cb.text}  %>
+                        <%= cb.label(class: "form-check-label category-check") {cb.check_box(class: "form-check-input") + cb.text}  %>
                       </ul>
                     </div>
                     <% end %>
@@ -133,32 +155,33 @@
               <hr>
               <h6 class="text-muted">Step 8</h6>
               <br>
-              <div class="card card-special-requirements ml-2 mr-2 ">
+              <!-- <div class="card card-special-requirements ml-2 mr-2 ">
                 <div class="card-body">
                   <i class="fas fa-lock"></i> Secure payment guaranteed by Stripe over HTTPS
                   <br>
                   <i class="fas fa-credit-card"></i> Card is only charged when you press "Post a Job" button
                   <br>
                   <p class="text-muted" style="margin-top:5px;">If you're using a phone, put it into landscape position for better form expirience.</p>
-                  <div class="form-control form-control-stripe">
+                  <div class="form-control form-control-stripe"> -->
                     <!-- <label for="card-element">
                     </label> -->
-                    <div id="card-element">
+                    <!-- <div id="card-element">
                     </div>
                     <div id="card-errors" role="alert"></div>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <br>
               <div class="ml-2 mr-2">
-                <%= f.submit "Post a Job - $9", class: 'btn btn-lg btn-danger btn-block btn-post ' %>
+                <%= f.submit "Post a Job - $9", id: "submit-btn", class: 'btn btn-lg btn-danger btn-block btn-post ' %>
               </div>
               <br>
               <br>
             </div>
           </div>
-        <% end %>
+
       </div>
     </div>
+    <% end %>
   </div>
 </div>

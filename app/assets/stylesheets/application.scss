@@ -15,7 +15,8 @@
     --main-highlighted-text-color: #F23D32;
 
     --main-card-normal-background-color: #FBFBFB;
-    --main-bg-color: #F4F5F9;
+    --main-bg-color: #fafafa;
+    // #F4F5F9;
     --main-button-color: #000000;
     --main-button-hover-color:  #303339;
 }
@@ -36,12 +37,15 @@ body {
 //   padding-bottom: 0px;
 // }
 
+
 .jumbo-test {
   width: 100%;
   height: 400px;
-  background-image: url(https://farm1.staticflickr.com/940/42838891304_1e7e11eb5e_k.jpg);
+  // https://farm1.staticflickr.com/940/42838891304_1e7e11eb5e_k.jpg
+    // https://farm1.staticflickr.com/936/30115587798_850933f1c4_k.jpg
+  background-image: url(https://farm2.staticflickr.com/1771/42175133990_88c79f0931_k.jpg);
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: center bottom;
   background-size: cover;
 }
 
