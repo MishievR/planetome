@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Edit your company on MIW</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-12 col-md-9 ">
+        <h1 class="main-text-color">Edit <%= @employer.company_name%> profile
+        <br>
+        <small class="text-muted">We are thrilled to have you with us!</small>
+      </h1>
+      </div>
+      <div class="col-12 col-md-3">
+        <%= link_to 'Back', :back, class: "btn btn-outline-danger btn-block"  %>
+      </div>
+    </div>
+    <br>
+    <br>
+    <%= render 'form' %>
+  </body>
+</html>
