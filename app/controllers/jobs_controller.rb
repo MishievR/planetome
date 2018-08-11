@@ -5,6 +5,13 @@ class JobsController < ApplicationController
 
     def index
       @jobs = Job.all
+
+      if params[:search]
+        @jobs = Job.where(['position like ?', "%#{params[:search]}%"])
+      else
+        @jobs = Job.all
+      end
+
     end
 
     def new
@@ -14,7 +21,7 @@ class JobsController < ApplicationController
     def create
       @job = Job.new(job_params)
 
-      @amount = 5900
+      @amount = 900
 
       # token = params[:stripeToken]
       # email = params[:email_to_contact]

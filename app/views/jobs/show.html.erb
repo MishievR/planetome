@@ -14,7 +14,7 @@
     </p>
   </div>
     <div class="col-12  col-md-5 col-lg-4 col-xl-3">
-      <%= link_to "Apply", "#{@job.link}", class: "btn btn-danger btn-block" %>
+      <%= link_to "Apply", "https://#{@job.link}", class: "btn btn-danger btn-block", target: :_blank %>
     </div>
 </div>
 
@@ -22,8 +22,8 @@
 <br>
 <div class="row">
   <div class="col-12">
-    <h4><strong>Impact</strong></h4>
-    <br>
+    <!-- <h4><strong>Impact</strong></h4>
+    <br> -->
     <div class="card card-community-show job-show-impact">
       <div class="card-body">
         <h2 class="job-impact-text"><%= @job.impact %></h2>
@@ -83,11 +83,7 @@
           <p>$<%= @job.salary %>K /year</p>
           <br>
         <% end %>
-        <% if current_user %>
-        <h6><strong>Email to contact:</strong></h6>
-        <p><%= @job.email_to_contact %></p>
-        <br>
-        <% end %>
+
       </div>
     </div>
   </div>
@@ -97,6 +93,6 @@
 <br>
 <div class="row">
   <div class="col-12">
-    <%= link_to "Apply", "#{@job.link}", class: "btn btn-outline-danger btn-lg btn-block" %>
+    <%= link_to "Apply", "https://#{@job.link}", class: "btn btn-danger btn-lg btn-block", target: :_blank %>
   </div>
 </div>

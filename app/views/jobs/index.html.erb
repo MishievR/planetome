@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title><%= @category.title %> jobs | MIW</title>
+    <title>MIW jobs</title>
   </head>
   <body>
     <div class="row">
-      <div class="col-11">
-        <h1 class="main-text-color"><%= @category.title %>
-          <% if current_user && current_user.admin? %>
-            <small> | <%= link_to "edit", edit_category_path(@category), class: "normal-link-red"%></small>
-          <% end %>
+      <div class="col-12 col-md-9 ">
+        <h1 class="main-text-color">MIW jobs
         <br>
-        <small class="text-muted"><%= @category.about %></small>
+        <small class="text-muted">All opportunities</small>
       </h1>
-        <p class="text-muted">
-        </p>
+      </div>
+      <div class="col-12 col-md-3">
+        <%= link_to 'Back', :back, class: "btn btn-outline-danger btn-block"  %>
       </div>
     </div>
     <br>
     <br>
-    <% if @job_categories.count == 0 %>
+
     <div class="row">
-     <div class="col-12 col-md-10 col-lg-8 col-xl-8">
-       <%= render "notifications/nojobsincategory" %>
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12">
+            <div class="input-group mb-3">
+              <%= form_tag jobs_path, method: :get, class: "input-group mb-3" do %>
+                <%= text_field_tag(
+                    :search,
+                    params[:search],
+                    placeholder: "Search by position",
+                    class: "form-control"
+                    ) %>
+              <div class="input-group-append">
+                <%= submit_tag "Search!", :name => nil, class: "btn btn-outline-dander" %>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <% else %>
     <div class="row">
-      <% @job_categories.order("created_at DESC").each do |job| %>
-        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+      <% @jobs.order("created_at DESC").each do |job| %>
+    	  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
           <div class="card card-job-listing-main">
             <div class="card-body">
               <div class="row">
@@ -63,6 +76,5 @@
       </div>
       <% end %>
     </div>
-    <% end %>
   </body>
 </html>
