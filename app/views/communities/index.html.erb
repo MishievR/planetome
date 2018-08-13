@@ -1,10 +1,10 @@
 
 <div class="row">
-  <% if user_signed_in?  %>
+  <% if current_user && current_user.admin? %>
   <div class="col-12  col-md-7 col-lg-8 col-xl-9">
-    <h1 class="main-text-color">Collections
+    <h1 class="main-text-color good-font">Collections
     <br>
-    <small class="text-muted">The field where you want to start.</small>
+    <small class="text-muted good-font">The field where you want to start.</small>
   </h1>
   </div>
     <div class="col-12  col-md-5 col-lg-4 col-xl-3">
@@ -12,9 +12,9 @@
     </div>
   <% else %>
   <div class="col-12">
-    <h1 class="main-text-color">Collections
+    <h1 class="main-text-color good-font">Collections
     <br>
-    <small class="text-muted">The field where you want to start.</small>
+    <small class="text-muted good-font">The field where you want to start.</small>
   </h1>
   </div>
   <% end %>

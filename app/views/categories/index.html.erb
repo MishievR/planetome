@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>MIW jobs categories</title>
+    <title>MIW Jobs Categories</title>
   </head>
   <body>
     <div class="row">
       <% if user_signed_in? && current_user.admin? %>
       <div class="col-12  col-md-7 col-lg-8 col-xl-9">
-        <h1 class="main-text-color">Jobs categories</h1>
-        <h3><small class="text-muted">Find your way.</small></h3>
+        <h1 class="main-text-color good-font">Jobs categories</h1>
+        <h3><small class="text-muted good-font">Find your way.</small></h3>
       </div>
         <div class="col-12 col-md-5 col-lg-4 col-xl-3">
           <%= link_to "Add new category", new_category_path, class: "btn btn-outline-danger btn-block " %>
         </div>
       <% else %>
       <div class="col-12">
-        <h1 class="main-text-color">Jobs categories</h1>
-        <h3><small class="text-muted">Find your way.</small></h3>
+        <h1 class="main-text-color good-font">Jobs categories</h1>
+        <h3><small class="text-muted good-font">Find your way.</small></h3>
       </div>
       <% end %>
     </div>

@@ -1,13 +1,18 @@
 <div class="row">
   <div class="col-12 col-md-7 col-lg-8 col-xl-9">
-    <h1 class="main-text-color"><%= @job.position %></h1>
+    <h1 class="main-text-color good-font"><%= @job.position %></h1>
     <h3><small class="text-muted"> <small>at</small>  <%= link_to @job.employer.company_name, employer_path(@job.employer), class: "normal-link-light-grey text-muted" %></small></h3>
 
     <p class="text-muted">
     <% @job_categories.each do |category| %>
-    <%= link_to category.title, category_path(category), class: "normal-link-red text-muted" %>
+    <%= link_to "#{category.title}  |", category_path(category), class: "normal-link-red text-muted" %>
     <% end %>
     </p>
+    <% if current_user && current_user.admin? %>
+    <p class="text-muted">
+    Job listing owner email: <%= @job.email_to_contact %>
+    </p>
+    <% end %>
   </div>
     <div class="col-12  col-md-5 col-lg-4 col-xl-3">
       <%= link_to "Apply", "https://#{@job.link}", class: "btn btn-danger btn-block", target: :_blank %>
@@ -25,14 +30,14 @@
     <br> -->
     <div class="card card-community-show job-show-impact">
       <div class="card-body">
-        <h2 class="job-impact-text"><%= @job.impact %></h2>
+        <h2 class="job-impact-text good-font"><%= @job.impact %></h2>
       </div>
     </div>
   </div>
 </div>
 
 <br>
-<% if @job.job_description != "" %>
+<% if @job.job_description != "" && @job.location != "" %>
 
 <div class="row">
   <div class="col-12">

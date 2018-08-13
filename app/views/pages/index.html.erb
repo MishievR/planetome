@@ -6,7 +6,7 @@
   <div class="jumbotron jumbotron-fluid jumbo-test">
     <div class="container">
       <div class="col">
-        <h1 class="display-4 main-text-color font-black-background-color-community-show main-caption">Make an impact</h1>
+        <h1 class="display-4 main-text-color font-black-background-color-community-show main-caption good-font">Make an impact.</h1>
         <h3><small class="font-black-background-color-community-show main-caption">Find meaningful job opportunities</small></h3>
       </div>
     </div>
@@ -21,7 +21,7 @@
         <div class="card card-job-post">
           <div class="card-body">
             <%= link_to new_job_path, data: { turbolinks: false }, class: "card-community-link"  do %>
-              <h5 class="card-title"><strong>Post a Job - <small><s class="s-red">$79</s></small> $9 for a limited time. It takes 30 seconds.</strong> </h5>
+              <h5 class="card-title"><strong class="good-font">Post a Job - <small><s class="s-red">$79</s></small> $9 for a limited time. It takes 30 seconds.</strong> </h5>
               <p class="card-text">Post a meaningful job to get super interested applicants.</p>
             <% end %>
           </div>
@@ -55,7 +55,7 @@
 <br>
 <div class="row">
   <div class="col">
-    <%= link_to(communities_path, class: "pages-index-main-links") do %>
+    <%= link_to(communities_path, class: "pages-index-main-links good-font") do %>
     <h1 class="main-text-color">Curated collections</h1>
     <h3><small class="text-muted">Amazing opportunities handpicked by the MakeImpact team.</small></h3>
     <% end %>
@@ -98,7 +98,7 @@
 
 <div class="row">
   <div class="col">
-    <%= link_to(categories_path, class: "pages-index-main-links") do %>
+    <%= link_to(categories_path, class: "pages-index-main-links good-font") do %>
     <h1 class="main-text-color">Categories</h1>
     <h3><small class="text-muted">Pick where you best or where you want to start.</small></h3>
     <% end %>
@@ -164,13 +164,13 @@
 <% end %>-->
 <div class="row">
   <div class="col">
-    <h1 class="main-text-color">Recent jobs</h1>
-    <h3><small class="text-muted">The most fresh opportunities!</small></h3>
+    <h1 class="main-text-color good-font">Recent jobs</h1>
+    <h3><small class="text-muted good-font">The most fresh opportunities!</small></h3>
   </div>
 </div>
 <br>
 <div class="row">
-  <% @jobs.order("created_at DESC").each do |job| %>
+  <% @jobs.order("created_at DESC").take(30).each do |job| %>
 	  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
       <div class="card card-job-listing-main">
         <div class="card-body">

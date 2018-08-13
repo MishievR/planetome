@@ -25,5 +25,11 @@
         <% end %>
       </div>
     </div>
+    <br>
+    <h6 class="main-text-color">
+    <small class="text-muted">Special controls</small>
+    </h6>
+    <%= link_to "Delete", @category, method: :delete, class: "btn btn-outline-danger", data: { confirm: 'Category will be deleted permanently. Are you sure?' }  %>
+
   </div>
 </div>
