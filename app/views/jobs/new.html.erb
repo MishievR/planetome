@@ -73,9 +73,6 @@
         // Inform the user if there was an error.
         var errorElement = document.getElementById('card-errors');
         errorElement.textContent = result.error.message;
-        // var btn = document.getElementById('submit-btn');
-        // btn.removeAttr('disabled');
-        event.unbind('submit');
       } else {
         // Send the token to your server.
         stripeTokenHandler(result.token);
