@@ -26,7 +26,7 @@
                 <%= link_to new_job_path, data: { turbolinks: false }, class: "card-community-link"  do %>
                 <!-- <s class="s-red">$179</s> -->
                   <h5 class="card-title"><strong class="good-font">Post a Job - <small></small> $39 for a limited time. It's only take 30 seconds.</strong> </h5>
-                  <p class="card-text">Post a meaningful job to get super interested applicants.</p>
+                  <p class="card-text">Reach 5.000.000+ most interested people in top communities around the web.</p>
                 <% end %>
               </div>
             </div>
@@ -76,7 +76,7 @@
       <div class="col">
         <%= link_to(categories_path, class: "pages-index-main-links good-font") do %>
         <h1 class="main-text-color">Categories</h1>
-        <h3><small class="text-muted">Pick where you best or where you want to start.</small></h3>
+        <h3><small class="text-muted">Pick where you are the best or where do you want to start.</small></h3>
         <% end %>
       </div>
     </div>
@@ -135,6 +135,18 @@
       </div>
       <% end %>
     </div>
+    <% if @jobs.count < 29 %>
+      <br>
+      <br>
+    <% else %>
+    <div class="row">
+      <div class="col">
+          <%= link_to(jobs_path, class: "btn btn-lg btn-danger btn-block btn-moreinfo-main  mt-3") do %>
+          Show all jobs
+          <% end %>
+      </div>
+    </div>
+    <% end %>
     <br>
     <br>
   </body>
