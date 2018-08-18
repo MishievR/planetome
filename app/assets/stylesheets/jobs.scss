@@ -1,17 +1,9 @@
-// .card-job-listing-main {
-//   box-shadow:  0 0px 20px 0 rgba(211, 211, 211, 0.2), 0 0px 20px 0 rgba(211, 211, 211, 0.2);
-//   background-color: #fafafa;
-//   border-left: 2px solid red;
-// }
-
 .card-job-listing-main {
   box-shadow:  0 0px 20px 0 rgba(211, 211, 211, 0.3), 0 0px 20px 0 rgba(211, 211, 211, 0.3);
   background-color: var(--main-card-normal-background-color);
   border: 0px;
-
-  border-left: 2px solid var(--main-button-color);
   border-radius: 0px;
-
+  border-left: 1px solid var(--main-button-color);
 }
 
 // .card-job-post {
@@ -93,17 +85,18 @@
 }
 
 .btn-apply {
-  margin-top: 15px;
+  font-size: 20px;
+  // margin-top: 18px;
   color: grey;
-  border-left: 2px solid black;
+  // border-bottom: 1px solid black;
   padding-left: 5px;
 }
 
 .btn-apply:hover {
   text-decoration: underline;
   text-decoration-color: red;
-  border-left: 4px solid red;
-  padding-left: 2px;
+  // border-left: 4px solid red;
+  // padding-left: 2px;
 }
 
 .form-control-stripe {

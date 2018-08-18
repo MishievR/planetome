@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col-12 col-md-7 col-lg-8 col-xl-9">
         <h1 class="main-text-color good-font"><%= @job.position %></h1>
-        <h3><small class="text-muted"> <small>at</small>  <%= link_to @job.employer.company_name, employer_path(@job.employer), class: "normal-link-light-grey text-muted" %></small></h3>
+        <h3><small class="text-muted"><%= link_to @job.employer.company_name, employer_path(@job.employer), class: "normal-link-light-grey text-muted" %></small></h3>
 
         <p class="text-muted">
         <% @job_categories.each do |category| %>
@@ -76,7 +76,7 @@
 
               <% end %>
             <% end %>
-            <hr>
+            <br>
             <% if @job.location != "" %>
               <h6><strong>Location:</strong></h6>
               <p><%= @job.location %>
