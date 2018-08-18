@@ -26,7 +26,7 @@
       <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
         <%= link_to category_path(cat) do  %>
           <div class="card card-category-index text-center mb-3">
-            <h6 class="card-title category-title make-in-center  "><strong><%= cat.title %></strong></h6>
+            <h6 class="card-title category-title make-in-center"><strong><%= cat.title %></strong><br> <small><%= cat.jobs.count %> jobs</small></h6>
           </div>
         <% end %>
       </div>

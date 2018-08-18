@@ -8,7 +8,6 @@ class Employer < ApplicationRecord
   validates :company_name, :uniqueness => {:case_sensitive => false}
   validates :company_name, presence: true, length: {minimum: 1, maximum: 60}
   validates :pitch, presence: true, length: {minimum: 1, maximum: 160}
-  validates :about, presence: true
   validates :link, presence: true
 
 end
