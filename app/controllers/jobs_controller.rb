@@ -23,7 +23,7 @@ class JobsController < ApplicationController
 
       if current_user && current_user.admin?
       else
-        @amount = 2900
+        @amount = 3900
 
         customer = Stripe::Customer.create(
           :email => @job.email_to_contact,

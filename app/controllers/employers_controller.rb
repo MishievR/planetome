@@ -15,7 +15,7 @@ class EmployersController < ApplicationController
       @employer = Employer.new(employer_params)
       if @employer.save
         flash[:success] = "#{@employer.company_name} was created succesfully"
-        redirect_to @employer
+        redirect_to new_job_path
       else
         render 'new'
       end

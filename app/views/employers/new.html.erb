@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123975074-1"></script>
     <title>Add your company on MIW</title>
   </head>
   <body>
     <div class="row">
-      <div class="col-12 col-md-9 ">
+      <div class="col-12 col-md-12 ">
         <h1 class="main-text-color good-font">Create a Company Profile
         <br>
         <small class="text-muted good-font">We are thrilled to have you with us!</small>
       </h1>
-      </div>
-      <div class="col-12 col-md-3">
-        <%= link_to 'Back', :back, class: "btn btn-outline-danger btn-block"  %>
       </div>
     </div>
     <br>
     <br>
     <%= render 'form' %>
   </body>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-123975074-1');
+  </script>
 </html>

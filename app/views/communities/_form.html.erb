@@ -7,16 +7,14 @@
             <div class="row">
               <div class="col-12 col-md-6 col-lg-9 col-xl-9">
                 <div class="form-group">
-                      <%= f.label :title, class: "control-label" %>
-                      <%= f.text_field :name, class: "form-control", placeholder: "Get into VC world", autofocus: true %>
+                  <%= f.label :title, class: "control-label" %>
+                  <%= f.text_field :name, class: "form-control", placeholder: "Get into VC world", autofocus: true %>
                 </div>
-
                 <div class="form-group">
                   <%= f.label :About, class: "control-label" %>
                   <%= f.text_area :description, rows: 3, class: "form-control", placeholder: "Help great entrepreneurs change the world.", autofocus: true, id: "body-field" %>
                   <small class="form-text text-muted" id="body-count">0</small>
                 </div>
-
                 <div class="form-group">
                   <%= f.label :Field, class: "control-label" %>
                   <%= f.collection_check_boxes :field_ids, Field.all, :id, :name do |cb| %>
@@ -26,10 +24,6 @@
                   <% end %>
                   <small class="form-text text-muted">You can only choose one.</small>
                 </div>
-
-                
-
-
               </div>
               <div class="col-12 col-md-6 col-lg-3 col-xl-3">
                 <div class="form-group">
@@ -52,16 +46,10 @@
                 </div>
             </div>
           </div>
-          <%= f.submit class: 'btn btn-outline-danger' %>
+          <%= f.submit class: 'btn btn-danger' %>
           <small class="form-text text-muted">NOTE: It may take some time to upload your background image, <strong>don't reload the web page please!</strong></small>
         <% end %>
       </div>
     </div>
-    <br>
-    <h6 class="main-text-color">
-    <small class="text-muted">Special controls</small>
-    </h6>
-    <%= link_to "Delete", @community, method: :delete, class: "btn btn-outline-danger", data: { confirm: 'Collection will be deleted permanently. Are you sure?' }  %>
-
   </div>
 </div>

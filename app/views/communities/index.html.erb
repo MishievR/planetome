@@ -1,37 +1,51 @@
-
-<div class="row">
-  <% if current_user && current_user.admin? %>
-  <div class="col-12  col-md-7 col-lg-8 col-xl-9">
-    <h1 class="main-text-color good-font">Collections
-    <br>
-    <small class="text-muted good-font">The field where you want to start.</small>
-  </h1>
-  </div>
-    <div class="col-12  col-md-5 col-lg-4 col-xl-3">
-      <%= link_to "Create a new Collection", new_community_path, class: "btn btn-outline-danger btn-block " %>
-    </div>
-  <% else %>
-  <div class="col-12">
-    <h1 class="main-text-color good-font">Collections
-    <br>
-    <small class="text-muted good-font">The field where you want to start.</small>
-  </h1>
-  </div>
-  <% end %>
-</div>
-<br>
-
-<div class="row">
-  <% @communities.each do |community| %>
-	  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-    <%= link_to community_path(community), class: "card-community-link" do %>
-      <div class="card bg-dark text-white text-white card-field-main  mt-3">
-        <%= image_tag community.background, class: "card-commutity-img " if community.background? %>
-        <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-          <h3 class="card-title card-title-index"><strong class="font-red-background-color"><%= community.name %></strong></h3>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123975074-1"></script>
+    <title>MIW Collections</title>
+  </head>
+  <body>
+    <div class="row">
+      <% if current_user && current_user.admin? %>
+      <div class="col-12  col-md-7 col-lg-8 col-xl-9">
+        <h1 class="main-text-color good-font">Collections
+        <br>
+        <small class="text-muted good-font">The field where you want to start.</small>
+      </h1>
       </div>
-    <% end %>
-  </div>
-  <% end %>
-</div>
+        <div class="col-12  col-md-5 col-lg-4 col-xl-3">
+          <%= link_to "Create a new Collection", new_community_path, class: "btn btn-outline-danger btn-block " %>
+        </div>
+      <% else %>
+      <div class="col-12">
+        <h1 class="main-text-color good-font">Collections
+        <br>
+        <small class="text-muted good-font">The field where you want to start.</small>
+      </h1>
+      </div>
+      <% end %>
+    </div>
+    <br>
+
+    <div class="row">
+      <% @communities.each do |community| %>
+    	  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+        <%= link_to community_path(community), class: "card-community-link" do %>
+          <div class="card bg-dark text-white text-white card-field-main  mt-3">
+            <%= image_tag community.background, class: "card-commutity-img " if community.background? %>
+            <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+              <h3 class="card-title card-title-index"><strong class="font-red-background-color"><%= community.name %></strong></h3>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </body>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-123975074-1');
+  </script>
+</html>

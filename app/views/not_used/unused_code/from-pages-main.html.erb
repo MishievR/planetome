@@ -1,4 +1,45 @@
+<!--
+<div class="row">
+  <div class="col">
+    <%= link_to(fields_path, class: "pages-index-main-links") do %>
+    <h1 class="main-text-color">Fields</h1>
+    <h3><small class="text-muted">The field where you want to start.</small></h3>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <% @fields.take(8).each do |field| %>
+  <div class="col-12 col-md-6 col-lg-3 col-xl-3">
+    <%= link_to field_path(field) do %>
+    <div class="card bg-dark text-white card-field-main text-center  mt-3">
+      <%= image_tag field.background, class: "card-field-img" if field.background? %>
+      <div class="card-img-overlay">
+        <h5 class="card-title card-title-field"><%= field.name%></h5>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
 
+<% if @fields.count < 8 %>
+<br>
+<br>
+
+<% else %>
+
+<div class="row">
+  <div class="col">
+    <div class="">
+      <%= link_to(fields_path, class: "btn btn-outline-danger btn-block btn-moreinfo-main main-text-color mt-3") do %>
+      + <%= Field.count-4 %> more
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<% end %>-->
 
 
 
@@ -83,3 +124,53 @@
 </div>
 <br>
 <% end %> -->
+
+
+
+
+
+<!--
+<br>
+<br>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">How it works.</h5>
+        <h6> Every friday we put every job posted in last 7 days into collections</h6>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+## From job's card 
+        <!-- <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="card card-job-listing-main">
+            <div class="card-body">
+              <h5 class="card-title">
+              <% if job.is_remote == true %>
+              <small>Remote </small>
+              <% end %>
+              <strong><%= link_to job.position, job_path(job), class: "normal-link-red" %></strong>
+              <small> at <%= link_to job.employer.company_name, employer_path(job.employer), class: "normal-link-light-grey"%>
+              <% if job.is_remote == false && job.location != "" %>
+              in <%= job.location %>
+              <% end %>
+              </small></h5>
+              <div class="row">
+                <div class="col-12 col-md-10 col-lg-9 col-xl-9">
+                  <p class="card-text", style="margin-top:10px;"><strong><%= job.impact %></strong>
+                  </p>
+                </div>
+                <div class="col-12 col-md-2 col-lg-3 col-xl-3">
+                  <small class="float-right text-muted"><%= link_to "Apply", "https://#{job.link}", class: "btn btn-outline-danger mt-1 btn-block" %></small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h6><small class="float-right text-muted job-listing-time mr-2", style="margin-top:5px;"><%= time_ago_in_words(job.created_at) %> ago</small></h6>
+          <br>
+        </div> -->
