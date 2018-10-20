@@ -13,13 +13,13 @@
     --main-text-color: #303339;
     // --main-highlighted-text-color: #000;
     // --main-highlighted-text-color: #F23D32;
-    --main-highlighted-text-color: #E33939;
+    --main-highlighted-text-color: #070421;
 
     --main-card-normal-background-color: #FBFBFB;
-    --main-bg-color: #fafafa;
+    --main-bg-color: #ffffff;
     // #F4F5F9;
-    --main-button-color: #000000;
-    --main-button-hover-color:  #303339;
+    --main-button-color: #070421;
+    --main-button-hover-color:  #070421;
 }
 
 #mc-embedded-subscribe-form {
@@ -33,8 +33,8 @@
 
 
 body {
-  font-family: 'Raleway', sans-serif;
-  // font-family: 'Playfair Display', serif;
+  font-family: 'Nunito Sans', sans-serif;
+  // font-family: 'Raleway', sans-serif;
   background-color: var(--main-bg-color);
   font-size: 13px;
 }
@@ -48,34 +48,68 @@ body {
 // }
 
 .good-font {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Nunito Sans', sans-serif;
+  // font-family: 'Playfair Display', serif;
 }
 
 .jumbo-test {
   width: 100%;
   height: 400px;
-  // https://farm1.staticflickr.com/940/42838891304_1e7e11eb5e_k.jpg
-    // https://farm1.staticflickr.com/936/30115587798_850933f1c4_k.jpg
   background-image: url(https://farm2.staticflickr.com/1771/42175133990_88c79f0931_k.jpg);
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: cover;
 }
 
+.jumbo-spacefeed {
+  width: 100%;
+  height: 210px;
+  border-radius: 7px;
+  background-image: url(https://farm2.staticflickr.com/1771/42175133990_88c79f0931_k.jpg);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+
+
+
+}
+
+.jumbo-gragient-bg {
+  background-image: linear-gradient(-90deg, rgba(0,0,0, 0.0), rgba(0,0,0, 0.1), rgba(0,0,0, 0.9));
+  height: 210px;
+  margin-top: -63px;
+  border-radius: 7px;
+}
+
 .btn-danger {
-  border-radius: 0px;
-  border: 0px;
-  color: #fff;
-  background-color: var(--main-button-color);
+  color: #070421;
+  border-radius: 7px;
+  background-color: #fff;
+  border: 3px solid #070421;
+  // border-color: #070421;
   box-shadow:  0 0px 5px 0 rgba(230, 47, 36, 0.1), 0 0px 5px 0 rgba(230, 47, 36, 0.1);
 
+  //====== OLD BTN DANGER CSS =======//
+  // border-radius: 0px;
+  // border: 0px;
+  // color: #fff;
+  // background-color: var(--main-button-color);
+  // box-shadow:  0 0px 5px 0 rgba(230, 47, 36, 0.1), 0 0px 5px 0 rgba(230, 47, 36, 0.1);
+  //====== OLD BTN DANGER CSS =======//
 }
 
 
 .btn-danger:hover {
-  background-color: var(--main-button-hover-color)
+  background-color: var(--main-button-hover-color);
+  border: 3px solid #070421;
+  color: #fff;
+  text-decoration-color: #fff;
 }
 
+.feed-link {
+  margin-top: -7px;
+  margin-bottom: -2px;
+}
 
 .btn-post-job {
   font-weight: 700;

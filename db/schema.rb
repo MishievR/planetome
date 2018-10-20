@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180718174142) do
+ActiveRecord::Schema.define(version: 20181020162600) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -116,6 +116,9 @@ ActiveRecord::Schema.define(version: 20180718174142) do
     t.integer  "cached_weighted_score",   default: 0
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
+    t.string   "link"
+    t.text     "news_description"
+    t.integer  "user_id"
   end
 
   create_table "job_categories", force: :cascade do |t|

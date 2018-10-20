@@ -24,10 +24,16 @@
 }
 
 .upvote-controls {
-  color: #E62F24;
+  color: #070421;
+  margin-top: -10px;
   margin-left: 0px;
-  padding-left: 0px;
-  // float: left;
+  padding-left: 20px;
+  margin-right: -5px;
+}
+
+.upvote-number {
+  margin-left: -2px;
+  margin-top: -6px;
 }
 
 .upvote-arrow:hover {

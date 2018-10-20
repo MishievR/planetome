@@ -2,22 +2,22 @@ class IdeasController < ApplicationController
   require 'sendgrid-ruby'
   include SendGrid
   # before_action :require_admin, except: [:index, :create, :put, :show]
-  # before_action :authenticate_user!, except: [:index, :create, :put]
+  before_action :authenticate_user!, except: [:index, :put]
 
   def index
     @ideas = Idea.all
   end
 
+  def new
+    @idea = Idea.new
+  end
+
+
   def create
     @idea = Idea.new(idea_params)
+    @idea.user = current_user
     if @idea.save
-      flash[:success] = "Your idea was added!"
-
-
-
-
-
-
+      flash[:success] = "Your news was added!"
       from = Email.new(email: 'mr.mishiev@gmail.com')
       to = Email.new(email: 'roman@planetome.com')
       subject = 'Sending with SendGrid is Fun'
@@ -39,7 +39,7 @@ class IdeasController < ApplicationController
 
 
 
-      redirect_to ideas_path
+      redirect_to root_path
     else
       flash[:success] = "Wooops!"
     end
@@ -63,7 +63,7 @@ class IdeasController < ApplicationController
       redirect_to :back
     elsif
       flash[:danger] = "Please, sign up to upvote an idea and create your first project!"
-      redirect_to new_user_registration_path
+      redirect_to new_user_session_path
     end
 
   end
@@ -77,7 +77,7 @@ class IdeasController < ApplicationController
 
   private
     def idea_params
-      params.require(:idea).permit(:title)
+      params.require(:idea).permit(:title, :link)
     end
 
 

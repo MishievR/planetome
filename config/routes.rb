@@ -8,14 +8,14 @@ Rails.application.routes.draw do
   # match '/' => 'ideas#create', :via => :post, :as => :create_idea
   # post '/', to: 'pages#new', as: 'idea'
   # get 'show', to: 'ideas#index', as: 'showidea'
+  get '/' => 'ideas#index'
 
-
-  # resources :ideas, only: [:create, :index, :destroy] do
-  #   member do
-  #     put "upvote",    to: "ideas#upvote"
-  #     # put "downvote", to: "people#downvote"
-  #   end
-  # end
+  resources :ideas, only: [:new, :create, :index, :destroy] do
+    member do
+      put "upvote",    to: "ideas#upvote"
+      # put "downvote", to: "people#downvote"
+    end
+  end
 
 
   # get "users/all" => 'users#all'

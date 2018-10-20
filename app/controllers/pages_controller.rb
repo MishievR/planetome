@@ -5,9 +5,11 @@ class PagesController < ApplicationController
     @fields = Field.all
     # @cities = City.all
     @communities = Community.all
-    # @idea = Idea.new
+    @idea = Idea.new
     @jobs = Job.all
     @categories = Category.all
+    @ideas = Idea.all
+
   end
 
 end

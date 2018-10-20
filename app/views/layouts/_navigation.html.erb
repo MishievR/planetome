@@ -1,10 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light navbar-margin navbar-color-shadow ">
-  <%= link_to image_tag('logo.png', style: 'height:35px;width:auto;'), root_path %>
+  <%= link_to image_tag('logo_spacefeed.png', style: 'height:40px;width:auto;'), root_path %>
   <button class="navbar-toggler custom" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "News", ideas_path, class: "nav-link"  %>
+      </li>
       <li class="nav-item">
         <%= link_to "Categories", categories_path, class: "nav-link"  %>
       </li>
@@ -16,7 +19,24 @@
       </li>
     </ul>
     <span class="navbar-text">
-      <%= link_to "Post a Job - $39", new_job_path, data: { turbolinks: false }, class: "btn btn-danger btn-post-job text-white good-font"  %>
+      <%= link_to "Submit", new_idea_path, data: { turbolinks: false }, class: "btn btn-danger btn-post-job good-font"%>
+
+      <!-- <button type="button" class="btn btn-danger btn-post-job good-font" data-toggle="modal" data-target="#submitFeed">
+        Submit
+      </button> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
     </span>
   </div>
 </nav>

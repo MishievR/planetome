@@ -21,8 +21,9 @@
     </div>
     <br>
     <% if current_user == @user %>
-      <%= link_to "Start project", new_project_path, class: "btn btn-block btn-outline-danger"  %>
-      <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-block btn-outline-danger"  %>
+      <%= link_to "Submit a news", new_idea_path, class: "btn btn-block btn-danger"  %>
+      <%# link_to "Start project", new_project_path, class: "btn btn-block btn-outline-danger"  %>
+      <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-block btn-danger"  %>
     <% end %>
   </div>
 </div>

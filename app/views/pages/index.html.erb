@@ -2,21 +2,100 @@
 <html lang="en">
   <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123975074-1"></script>
-    <title>Make Impact - Meaningful job opportunities</title>
+    <title>SpaceFeed</title>
   </head>
   <body>
-    <div class="row">
+    <!-- <div class="row">
       <div class="jumbotron jumbotron-fluid jumbo-test">
         <div class="container">
           <div class="col">
-            <h1 class="display-4 main-text-color font-black-background-color-community-show main-caption good-font">Make an impact.</h1>
-            <h3><small class="font-black-background-color-community-show main-caption">Find meaningful job opportunities</small></h3>
+            <h1 class="display-4 main-text-color font-black-background-color-community-show main-caption good-font">SpaceFeed</h1>
+            <h3><small class="font-black-background-color-community-show main-caption">Be on the edge of space exploration</small></h3>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <br>
+    <br>
+    <div class="row">
+      <div class="col">
+        <h1 class="main-text-color">SpaceFeed <small> Be on the edge of space exploration.</small></h1>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+      <div class="jumbotron jumbotron-fluid jumbo-spacefeed">
+        <!-- <div class="jumbo-gragient-bg"></div> -->
+        <div class="container">
+          <div class="col">
+            <h1 class="display-4 main-text-color font-black-background-color-community-show main-caption good-font">Feed</h1>
           </div>
         </div>
       </div>
     </div>
     <br>
     <br>
+
+    <div class="row">
+      <% @ideas.order(:created_at => :DESC).each do |i| %>
+      <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
+        <!-- <div class="circle"></div> -->
+        <!-- <div class="idea-card"> -->
+          <div class="card card-idea-index mt-3">
+            <div class="row">
+              <%= link_to upvote_idea_path(i), method: :put, class: "btn btn-default  upvote-controls float-left" do %>
+                <i class="fas fa-caret-up upvote-arrow"></i>
+                <br>
+                <div class="upvote-number">
+                  <%= i.get_upvotes.size %>
+                </div>
+              <% end %>
+              <div class="col-10 col-sm-9 col-md-10 col-lg-10 col-xl-11">
+                <h4 class="main-text-color">
+                  <%= link_to i.title, "#{i.link}", class: "main-text-color", target: :_blank %>
+
+
+                  </h4>
+                <h5 class="feed-link"><small class="text-muted"><%= i.link %></small></h5>
+                <small class="float-left text-muted" style="margin-top:7px;"><%= time_ago_in_words(i.created_at) %> ago by
+                  <% if i.user.present? %>
+                  <%= link_to i.user.name, user_path(i.user), class: "main-text-color" %>
+
+                   <% end %>
+                <% if current_user.present? && current_user.admin? %>
+                <%= link_to " | delete", idea_path(i), method: :delete, class: "add-idea-link", data: { confirm: 'Idea will be deleted permanently. Are you sure?' } %>
+                <% end %>
+
+                </small>
+              </div>
+            </div>
+          <!-- </div> -->
+        </div>
+        <br>
+      </div>
+      <% end %>
+    </div>
+
+
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
         <div class="row">
@@ -25,8 +104,8 @@
               <div class="card-body">
                 <%= link_to new_job_path, data: { turbolinks: false }, class: "card-community-link"  do %>
                 <!-- <s class="s-red">$179</s> -->
-                  <h5 class="card-title"><strong class="good-font">Post a Job - <small></small> $39 for a limited time. It's only take 30 seconds.</strong> </h5>
-                  <p class="card-text">Reach 5.000.000+ most interested people in top communities around the web.</p>
+                  <h5 class="card-title"><strong class="good-font">Post a Job! - <small></small> $39. Limited time. It's only take 30 seconds.</strong> </h5>
+                  <p class="card-text">Reach most interested people in top communities around the web.</p>
                 <% end %>
               </div>
             </div>
