@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123975074-1"></script>
+    <title>SpaceFeed | Companies</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-12">
+        <h1 class="main-text-color good-font">Companies
+        <br>
+        <small class="text-muted good-font">Who push space exploration forward.</small>
+        </h1>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <% @employers.each  do |cat| %>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%= link_to employer_path(cat) do  %>
+        <div class="card card-idea-index mt-3">
+          <h4 class="main-text-color"><strong><%= cat.company_name %></strong><br><small><%= cat.jobs.count %> jobs</small></h4>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </body>
+</html>

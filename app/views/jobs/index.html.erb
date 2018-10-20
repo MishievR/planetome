@@ -18,6 +18,26 @@
     </div>
     <br>
     <br>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card card-job-post">
+              <div class="card-body">
+                <%= link_to new_job_path, data: { turbolinks: false }, class: "card-community-link"  do %>
+                <!-- <s class="s-red">$179</s> -->
+                  <h5 class="card-title"><strong class="good-font">Post a Job! - <small></small> $39. Limited time. It's only take 30 seconds.</strong> </h5>
+                  <p class="card-text">Reach most interested people in top communities around the web.</p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+
 
     <div class="row">
       <div class="col-12">
@@ -31,8 +51,8 @@
                     placeholder: "Search by position",
                     class: "form-control"
                     ) %>
-              <div class="input-group-append">
-                <%= submit_tag "Search!", :name => nil, class: "btn btn-outline-dander" %>
+              <div class="input-group-append ">
+                <%= submit_tag "Search!", :name => nil, class: "btn btn-danger btn-block search-button" %>
               </div>
               <% end %>
             </div>

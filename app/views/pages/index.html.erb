@@ -34,7 +34,7 @@
         <!-- <div class="jumbo-gragient-bg"></div> -->
         <div class="container">
           <div class="col">
-            <h1 class="display-4 main-text-color font-black-background-color-community-show main-caption good-font">Feed</h1>
+            <!-- <h1 class="display-4 main-text-color font-black-background-color-community-show main-caption good-font">Feed</h1> -->
           </div>
         </div>
       </div>
@@ -43,7 +43,15 @@
     <br>
 
     <div class="row">
-      <% @ideas.order(:created_at => :DESC).each do |i| %>
+      <div class="col">
+        <%= link_to(ideas_path, class: "pages-index-main-links good-font") do %>
+        <h1 class="main-text-color">Space news</h1>
+        <h3><small class="text-muted">Know what's happening now.</small></h3>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <% @ideas.order(:created_at => :DESC).take(5).each do |i| %>
       <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
         <!-- <div class="circle"></div> -->
         <!-- <div class="idea-card"> -->
@@ -59,19 +67,15 @@
               <div class="col-10 col-sm-9 col-md-10 col-lg-10 col-xl-11">
                 <h4 class="main-text-color">
                   <%= link_to i.title, "#{i.link}", class: "main-text-color", target: :_blank %>
-
-
-                  </h4>
+                </h4>
                 <h5 class="feed-link"><small class="text-muted"><%= i.link %></small></h5>
                 <small class="float-left text-muted" style="margin-top:7px;"><%= time_ago_in_words(i.created_at) %> ago by
-                  <% if i.user.present? %>
-                  <%= link_to i.user.name, user_path(i.user), class: "main-text-color" %>
-
-                   <% end %>
+                <% if i.user.present? %>
+                <%= link_to i.user.name, user_path(i.user), class: "main-text-color" %>
+                <% end %>
                 <% if current_user.present? && current_user.admin? %>
                 <%= link_to " | delete", idea_path(i), method: :delete, class: "add-idea-link", data: { confirm: 'Idea will be deleted permanently. Are you sure?' } %>
                 <% end %>
-
                 </small>
               </div>
             </div>
@@ -81,10 +85,23 @@
       </div>
       <% end %>
     </div>
+    <% if @ideas.count < 5 %>
+      <br>
+      <br>
+    <% else %>
+    <div class="row">
+      <div class="col">
+          <%= link_to(ideas_path, class: "btn btn-danger  main-text-color ") do %>
+          Explore more news
+          <% end %>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <% end %>
 
 
-<br>
-<br>
 
 
 
