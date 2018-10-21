@@ -21,25 +21,21 @@
         <%= link_to "Jobs", jobs_path, class: "nav-link"  %>
       </li>
     </ul>
+    <span class="navbar-text mr-2">
+      <% if user_signed_in? %>
+        <%= link_to(destroy_user_session_path, method: :delete, class: "btn") do %>
+        <i class="fas fa-sign-out-alt"></i>
+        Log out
+        <% end %>
+      <% else %>
+        <%= link_to(new_user_session_path, :class=>"btn") do %>
+          <i class="fas fa-sign-in-alt"></i>
+          Log In
+        <% end %>
+      <% end %>
+    </span>
     <span class="navbar-text">
       <%= link_to "Submit", new_idea_path, data: { turbolinks: false }, class: "btn btn-danger btn-post-job good-font"%>
-
-      <!-- <button type="button" class="btn btn-danger btn-post-job good-font" data-toggle="modal" data-target="#submitFeed">
-        Submit
-      </button> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
     </span>
   </div>
 </nav>

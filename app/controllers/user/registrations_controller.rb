@@ -3,6 +3,7 @@ class User::RegistrationsController < Devise::RegistrationsController
 
   require 'sendgrid-ruby'
   include SendGrid
+
   def create
     super do |resource|
       if resource.save
