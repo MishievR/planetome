@@ -5,6 +5,14 @@
   border-radius: 0px;
 }
 
+
+.card-commutity-img-planetome {
+  width: 100%;
+  height: 190px;
+  border-radius: 0px;
+  object-fit: cover;
+}
+
 .card-commutity-img-show {
   width: 100%;
   height: 100px;
@@ -14,7 +22,7 @@
 
 .card-community-show {
   border: 0px;
-  box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.1);
+  // box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 .text-shadow {

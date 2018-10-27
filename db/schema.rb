@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181020162600) do
+ActiveRecord::Schema.define(version: 20181026101033) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -145,6 +145,32 @@ ActiveRecord::Schema.define(version: 20181020162600) do
     t.datetime "updated_at",                              null: false
     t.integer  "employer_id"
     t.text     "requirements"
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "main_image"
+    t.integer  "rating"
+    t.string   "link"
+    t.integer  "price"
+    t.integer  "user_id"
+    t.decimal  "longitude",               precision: 10, scale: 6
+    t.decimal  "latitude",                precision: 10, scale: 6
+    t.string   "full_address"
+    t.integer  "city_id"
+    t.boolean  "is_free_wifi",                                     default: false
+    t.boolean  "is_good_for_laptop",                               default: false
+    t.boolean  "is_free_entrance",                                 default: false
+    t.boolean  "is_outlets_available",                             default: false
+    t.boolean  "is_whiteboard_available",                          default: false
+    t.boolean  "is_good_coffee",                                   default: false
+    t.boolean  "is_nice_staff",                                    default: false
+    t.boolean  "is_good_for_meetings",                             default: false
+    t.boolean  "is_good_location",                                 default: false
+    t.datetime "created_at",                                                       null: false
+    t.datetime "updated_at",                                                       null: false
+    t.string   "place_type"
   end
 
   create_table "posts", force: :cascade do |t|

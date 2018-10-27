@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-12 order-xs-first col-sm-6 col-md-4 col-lg-3 col-xl-3">
+    <div class="card bg-dark text-white text-white card-field-main  ">
+      <%= image_tag @place.main_image, class: "card-commutity-img " if @place.main_image? %>
+      <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+        <div class="community-gragient-bg">
+          some info
+        </div>
+      </div>
+    </div>
+    <br>
+    <% if current_user && current_user.admin? %>
+      <h6 class="main-text-color">
+      <small class="text-muted">Owner's controls</small>
+      </h6>
+      <%= link_to "Edit this place", edit_place_path, class: "btn btn btn-danger btn-block"  %>
+    <% end %>
+  </div>
+  <div class="col-12 order-xs-last col-sm-6 col-md-8 col-lg-9 col-xl-9">
+    <h1 class="main-text-color display-4"><%= @place.name %></h1>
+
+    <% if @place.place_type == "coffee_shop" %>
+      <h4 class="main-text-color">Coffee Shop</h4>
+    <% elsif  @place.place_type == "coworking" %>
+      <h4 class="main-text-color">Coworking</h4>
+    <% elsif  @place.place_type == "smart_office" %>
+      <h4 class="main-text-color">Smart Office</h4>
+    <% elsif  @place.place_type == "library" %>
+      <h4 class="main-text-color">Library</h4>
+    <% elsif  @place.place_type == "public_place" %>
+      <h4 class="main-text-color">Public place</h4>
+    <% elsif  @place.place_type == "outdoors" %>
+      <h4 class="main-text-color">Outdoors</h4>
+    <% elsif  @place.place_type == "meeting_point" %>
+      <h4 class="main-text-color">Meeting point</h4>
+    <% end %>
+
+    <h5>Added by
+      <% if @place.user.present? %>
+      <%= link_to @place.user.name, user_path(@place.user), class: "main-text-color" %>
+      <% end %>
+    </h5>
+    <br>
+    <br>
+    <h3 class="main-text-color good-font">About <%= @place.name %></h3>
+
+    <h6 class=""><%= simple_format @place.description %></h6>
+
+
+
+</div>
+
+</div>

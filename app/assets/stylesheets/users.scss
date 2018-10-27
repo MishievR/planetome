@@ -17,6 +17,14 @@
   margin-bottom: 10px;
 }
 
+.profilePhotoIndex {
+  border: 3px solid #070421;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  margin-top: -7px;
+}
+
 .profilePhotoProject {
   border: 1px solid white;
   border-radius: 50px;
@@ -81,6 +89,10 @@
 
 .user-link-menu {
   color: #443A3A;
+}
+
+.user-link-index {
+  color: #070421;
 }
 
 .card-pages-user {

@@ -30,7 +30,8 @@ Rails.application.routes.draw do
   resources :employers
   resources :categories
   resources :fields
-  # resources :cities
+  resources :places
+  resources :cities
   resources :communities do
     # resources :posts
   end

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123975074-1"></script>
-    <title>SpaceFeed</title>
+    <title>Planetome</title>
   </head>
   <body>
     <!-- <div class="row">
@@ -20,7 +20,7 @@
     <br>
     <div class="row">
       <div class="col">
-        <h1 class="main-text-color">SpaceFeed <small> Be on the edge of space exploration.</small></h1>
+        <h1 class="main-text-color">planetome <small> is your perfect place to work anywhere on Earth.</small></h1>
       </div>
     </div>
     <br>
@@ -34,7 +34,39 @@
         <!-- <div class="jumbo-gragient-bg"></div> -->
         <div class="container">
           <div class="col">
-            <!-- <h1 class="display-4 main-text-color font-black-background-color-community-show main-caption good-font">Feed</h1> -->
+            <% if current_user.present? %>
+              <div class="row">
+                <div class="col">
+                  <% if current_user == @user && @user.first_name == nil %>
+                  <h5 class="user-title-menu"><%= link_to "Add personal info", edit_user_path(current_user), class: "user-link-index" %></h5>
+                  <% else %>
+                  <h1 class=" main-text-color good-font mt-3">Hi,
+                    <%= image_tag current_user.avatar.url(:thumb), class: "profilePhotoIndex" if current_user.avatar? %>
+                    <%= link_to current_user.first_name, user_path(current_user), class: "user-link-index" %>
+                    <br>
+                    <small>Build working communities in places you love.</small>
+                  </h1>
+                  <% end %>
+                </div>
+              </div>
+            <div class="row">
+              <div class="col">
+                <%= link_to "Add a new place", new_place_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
+              </div>
+            </div>
+            <% else %>
+
+            <h1 class=" main-text-color  good-font mt-3">Join us
+            <br>
+            <small>Become a member of a powerful, working community.</small>
+            </h1>
+            <div class="row">
+              <div class="col">
+                <%= link_to "Sign Up", new_user_registration_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
+              </div>
+            </div>
+            <% end %>
+
           </div>
         </div>
       </div>
@@ -42,11 +74,118 @@
     <br>
     <br>
 
+
+
+
+
+    <div class="row">
+      <div class="col">
+        <h1 class="main-text-color">Places to work</h1>
+        <h3><small class="text-muted">Find a perfect spot or an office.</small></h3>
+      </div>
+    </div>
+    <div class="row">
+      <% @places.each do |place| %>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+        <%= link_to place_path(place), class: "card-community-link" do %>
+          <div class="card bg-dark text-white text-white card-field-main  mt-3">
+            <%= image_tag place.main_image, class: "card-commutity-img-planetome " if place.main_image? %>
+            <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+              <!-- <h3 class="card-title card-title-index "><strong class="font-red-background-color"><%# community.name %></strong></h3> -->
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h4 class="mt-2 main-text-color"><%= place.name %></strong> </h4>
+              <h6 class=" main-text-color text-muted card-office-address-text"><small><%= place.full_address %></small></h6>
+              <p class="card-office-info-text">
+                <% if place.place_type == "coffee_shop" %>
+                  Coffee Shop |
+                  <% if place.is_free_wifi = true %>
+                    Free WiFi
+                  <% end %>
+                <% elsif  place.place_type == "coworking" %>
+                  Coworking |
+                  <% if place.is_good_location = true %>
+                    Good location
+                  <% end %>
+                <% elsif  place.place_type == "smart_office" %>
+                  Smart Office
+                <% elsif  place.place_type == "library" %>
+                  <h4 class="main-text-color">Library</h4>
+                <% elsif  place.place_type == "public_place" %>
+                  <h4 class="main-text-color">Public place</h4>
+                <% elsif  place.place_type == "outdoors" %>
+                  <h4 class="main-text-color">Outdoors</h4>
+                <% elsif  place.place_type == "meeting_point" %>
+                  <h4 class="main-text-color">Meeting point</h4>
+                <% end %>
+
+
+                <br>
+                <% if place.price == 0 %>
+                  Free
+
+                <% elsif place.price == 1 %>
+                  $
+
+                <% elsif place.price == 2 %>
+                  $$
+                <% elsif place.price == 3 %>
+                  $$$
+                <% elsif place.price == 4 %>
+                  $$$+
+                <% end %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+    <br>
+    <br>
+
+    <div class="row">
+      <div class="col">
+        <h1 class="main-text-color">Cities</h1>
+        <h3><small class="text-muted">Explore workspaces around the world.</small></h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <% @cities.take(20).each do |city| %>
+      <div class="col">
+        <%= link_to city.name, city_path(city), class: "btn btn-danger btn-lg btn-city-main mr-3 mt-3"  %>
+      </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="mr-3">
+          <% if @cities.count > 20 %>
+          <%= link_to(cities_path, class: "btn btn-outline-danger btn-block btn-moreinfo-main main-text-color mt-3") do %>
+          + <%= City.count-20 %> more
+          <% end %>
+
+          <% else %>
+          <br>
+
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+
+
     <div class="row">
       <div class="col">
         <%= link_to(ideas_path, class: "pages-index-main-links good-font") do %>
-        <h1 class="main-text-color">Space news</h1>
-        <h3><small class="text-muted">Know what's happening now.</small></h3>
+        <h1 class="main-text-color">The feed</h1>
+        <h3><small class="text-muted">Know what's new here.</small></h3>
         <% end %>
       </div>
     </div>
@@ -55,7 +194,7 @@
       <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
         <!-- <div class="circle"></div> -->
         <!-- <div class="idea-card"> -->
-          <div class="card card-idea-index mt-3">
+          <div class="card card-idea-index mt-2">
             <div class="row">
               <%= link_to upvote_idea_path(i), method: :put, class: "btn btn-default  upvote-controls float-left" do %>
                 <i class="fas fa-caret-up upvote-arrow"></i>
@@ -113,6 +252,7 @@
 
 
 
+<!--
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
         <div class="row">
@@ -120,9 +260,8 @@
             <div class="card card-job-post">
               <div class="card-body">
                 <%= link_to new_job_path, data: { turbolinks: false }, class: "card-community-link"  do %>
-                <!-- <s class="s-red">$179</s> -->
-                  <h5 class="card-title"><strong class="good-font">Post a Job! - <small></small> $39. Limited time. It's only take 30 seconds.</strong> </h5>
-                  <p class="card-text">Reach most interested people in top communities around the web.</p>
+                  <h5 class="card-title"><strong class="good-font">Rent a home</strong> </h5>
+                  <p class="card-text">Find a perfect place to live with community or alone.</p>
                 <% end %>
               </div>
             </div>
@@ -132,6 +271,42 @@
     </div>
     <br>
     <br>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card card-job-post">
+              <div class="card-body">
+                <%= link_to new_job_path, data: { turbolinks: false }, class: "card-community-link"  do %>
+                  <h5 class="card-title"><strong class="good-font">Find a place to work</strong> </h5>
+                  <p class="card-text">Discover the best places to work from coworkings to libraries.</p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card card-job-post">
+              <div class="card-body">
+                <%= link_to new_job_path, data: { turbolinks: false }, class: "card-community-link"  do %>
+                  <h5 class="card-title"><strong class="good-font">Find a Job</strong> </h5>
+                  <p class="card-text">Local or remote but meaningful and with an impact.</p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br> -->
     <div class="row">
       <div class="col">
         <%= link_to(communities_path, class: "pages-index-main-links good-font") do %>

@@ -7,6 +7,7 @@
 @import "ideas";
 @import "jobs";
 @import "stripe";
+@import "places";
 
 
 :root {
@@ -39,9 +40,9 @@ body {
   font-size: 13px;
 }
 
-.card {
-  border-radius: 0px;
-}
+// .card {
+//   border-radius: 0px;
+// }
 
 // .card-body {
 //   padding-bottom: 0px;
@@ -60,15 +61,15 @@ body {
   background-position: center bottom;
   background-size: cover;
 }
-
 .jumbo-spacefeed {
   width: 100%;
-  height: 210px;
-  border-radius: 7px;
-  background-image: url(https://farm2.staticflickr.com/1771/42175133990_88c79f0931_k.jpg);
+  height: 310px;
+  border-radius: 0px;
+  background-image: url(https://farm2.staticflickr.com/1918/44798444064_bbfba68528_o.png);
   background-repeat: no-repeat;
-  background-position: center bottom;
+  background-position: center top;
   background-size: cover;
+  box-shadow:  0 0px 20px 0 rgba(211, 211, 211, 0.3), 0 0px 20px 0 rgba(211, 211, 211, 0.3);
 }
 
 .jumbo-spacefeed-login {
@@ -79,6 +80,8 @@ body {
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: cover;
+  box-shadow:  0 0px 20px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.2);
+
 }
 
 
@@ -183,7 +186,9 @@ body {
 
 
 a:hover {
-  color: #E62F24;
+  // color: #E62F24;
+  color: #070421;
+  text-decoration-color: #E62F24;
 }
 
 .btn-outline-danger {
@@ -339,10 +344,10 @@ a:hover {
 
 
 .card-field-main {
-  border-radius: 1px;
+  // border-radius: 1px;
   border: 0px;
   // border-radius: 2px;
-  box-shadow:  0 0px 20px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.2);
+  // box-shadow:  0 0px 20px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.2);
 }
 
 .card-field-main:hover {
@@ -369,7 +374,16 @@ a:hover {
   box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.15), 0 0px 10px 0 rgba(0, 0, 0, 0.15);
 }
 
+.card-office-address-text {
+  margin-top: -7px;
+  margin-bottom: 1px;
+  font-weight: 100;
+}
 
+.card-office-info-text {
+  color: #302D45;
+  font-weight: 100;
+}
 
 .card-title-field {
   font-weight: 700;
@@ -453,12 +467,25 @@ a:hover {
 
 }
 
-
 .alert {
   border-width: 1px;
   border-color: red;
   background-color: #fff;
   // box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.alert-danger {
+  color: #070421;
+  border-radius: 7px;
+  background-color: #fff;
+  border: 3px solid #070421;
+  box-shadow:  0 0px 5px 0 rgba(230, 47, 36, 0.1), 0 0px 5px 0 rgba(230, 47, 36, 0.1);
+}
+
+a.close {
+  color: #070421;
+  opacity: 1;
+  margin-top: -3px;
 }
 
 .modal-header-menu {

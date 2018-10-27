@@ -1,0 +1,109 @@
+<%= render 'shared/errors', obj: @place %>
+  <div class="row">
+    <div class="col">
+      <div class="card card-add-place">
+        <div class="card-body">
+          <%= form_for(@place, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-9 col-xl-9">
+                <div class="form-group ml-2 mr-2 mb-4">
+                  <h4><strong><%= f.label :name, class: "control-label" %></strong> </h4>
+                  <%= f.text_field :name, class: "form-control", placeholder: "Get into VC world", autofocus: true %>
+                </div>
+                <div class="form-group ml-2 mr-2 mb-3">
+                  <h4><strong> Place photo or image</strong> </h4>
+                  <i class="fas fa-upload mr-2"></i><%= f.file_field :main_image, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+                </div>
+                <div class="form-group ml-2 mr-2 mb-3">
+                  <h4><strong><%= f.label :Tell_people_why_are_you_adding_this_place_?, class: "control-label" %></strong><br><small>Help them get some valueble insigts.</small> </h4>
+                  <%= f.text_area :description, rows: 3, class: "form-control", placeholder: "Help great entrepreneurs change the world.", autofocus: false, id: "body-field" %>
+                </div>
+                <div class="form-group ml-2 mr-2">
+                  <h4><strong><%= f.label :City, class: "control-label" %></strong> </h4>
+                  <h4><%= f.select :city_id, City.all.collect {|p| [ p.name, p.id ] }, { :include_blank => 'Select a City'}, class: "form-control company-pick", autofocus: false %></h4>
+                </div>
+                <div class="form-group ml-2 mr-2 mb-3">
+                  <h4><strong><%= f.label :address, class: "control-label" %></strong> </h4>
+                  <%= f.text_field :full_address, class: "form-control", placeholder: "US, CA, San Francisco, Market St. 2107", autofocus: false, id: "body-field" %>
+                </div>
+
+                <div class="form-group ml-2 mr-2 mb-3">
+                  <h4><strong><%= f.label :Type_of_the_place, class: "control-label" %></strong> </h4>
+                  <h4><%= f.select :place_type, options_for_select([[ "Coworking", "coworking"], ["Smart Office", "smart_office"], ["Coffee Shop", "coffee_shop"], ["Library", "library"], ["Public Place", "public_place"], ["Outdoors", "outdoors"], ["Meeting Point", "meeting_point"]]), { :include_blank => 'Select a type of this place'}, class: "form-control company-pick", autofocus: false %> </h4>
+                </div>
+                <div class="form-group ml-2 mr-2 mb-3">
+                  <h4><strong><%= f.label :Price_level, class: "control-label" %></strong></h4>
+                  <h4><%= f.select :price, options_for_select([[ "Free", 0], ["$", 1], ["$$", 2], ["$$$", 3], ["$$$+", 4]]), { :include_blank => 'What do you think about price tag there?'}, class: "form-control company-pick", autofocus: false %></h4>
+                </div>
+
+                <div class="form-group ml-2 mr-2 mb-3">
+                  <h4><strong><%= f.label :Place_feautures, class: "control-label" %></strong> <small>Choose every applicable.</small></h4>
+                  <ul class="ul-categories">
+                    <div class="mb-2">
+                      <%= f.check_box :is_free_wifi, class: "form-check-input" %>
+                      <%= f.label :Free_wifi, class: "form-check-label category-check" %>
+                    </div>
+                    <div class="mb-2">
+                      <%= f.check_box :is_good_for_laptop, class: "form-check-input" %>
+                      <%= f.label :Good_for_laptop, class: "form-check-label category-check" %>
+                    </div>
+                    <div class="mb-2">
+                      <%= f.check_box :is_free_entrance, class: "form-check-input" %>
+                      <%= f.label :You_can_work_there_for_free , class: "form-check-label category-check" %>
+                    </div>
+                    <div class="mb-2">
+                      <%= f.check_box :is_outlets_available, class: "form-check-input" %>
+                      <%= f.label :acessible_outlets_to_charge_your_devices, class: "form-check-label category-check" %>
+                    </div>
+                    <div class="mb-2">
+                      <%= f.check_box :is_whiteboard_available, class: "form-check-input" %>
+                      <%= f.label :you_can_find_a_whiteboard, class: "form-check-label category-check" %>
+                    </div>
+                    <div class="mb-2">
+                      <%= f.check_box :is_good_coffee, class: "form-check-input" %>
+                      <%= f.label :you_can_have_a_great_cup_of_coffee_there, class: "form-check-label category-check" %>
+                    </div>
+                    <div class="mb-2">
+                      <%= f.check_box :is_nice_staff, class: "form-check-input" %>
+                      <%= f.label :nice_staff_inside, class: "form-check-label category-check" %>
+                    </div>
+                    <div class="mb-2">
+                      <%= f.check_box :is_good_for_meetings, class: "form-check-input" %>
+                      <%= f.label :this_place_is_good_for_meetings, class: "form-check-label category-check" %>
+                    </div>
+                    <div class="mb-2">
+                      <%= f.check_box :is_good_location, class: "form-check-input" %>
+                      <%= f.label :convinient_location, class: "form-check-label category-check" %>
+                    </div>
+                  </ul>
+                </div>
+
+
+
+              </div>
+              <div class="col-12 col-md-6 col-lg-3 col-xl-3">
+                <div class="form-group">
+                  <%= f.label :Preview %>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card bg-dark text-white text-white card-field-main ">
+                        <%= image_tag @place.main_image, class: "card-commutity-img " if @place.main_image? %>
+                        <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+                          <h3 class="card-title card-title-index"><strong class="font-red-background-color"><%= @place.name %></strong></h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+            </div>
+          </div>
+          <br>
+          <br>
+          <%= f.submit class: 'btn btn-danger' %>
+          <small class="form-text text-muted">NOTE: It may take some time to upload your background image, <strong>don't reload the web page please!</strong></small>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

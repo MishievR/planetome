@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col">
+    <h1 class="main-text-color">Places to work</h1>
+    <h3><small class="text-muted">Find a perfect spot or rent an office.</small></h3>
+  </div>
+</div>
+<div class="row">
+  <% @places.each do |place| %>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+    <%= link_to place_path(place), class: "card-community-link" do %>
+      <div class="card bg-dark text-white text-white card-field-main  mt-3">
+        <%= image_tag place.main_image, class: "card-commutity-img-planetome " if place.main_image? %>
+        <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+          <!-- <h3 class="card-title card-title-index "><strong class="font-red-background-color"><%# community.name %></strong></h3> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4 class="mt-2 main-text-color"><%= place.name %></strong> </h4>
+          <h6 class=" main-text-color text-muted card-office-address-text"><small><%= place.full_address %></small></h6>
+          <p class="card-office-info-text">Smart office | WiFi, Desk, Cleaning
+            <br>
+            $$$
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
