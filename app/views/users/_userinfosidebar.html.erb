@@ -10,18 +10,20 @@
             <% if current_user == @user && @user.first_name == nil %>
             <h5 class="card-title card-title-user text-center"><%= link_to "Add info", edit_user_path(@user), class: "user-link" %></h5>
             <% else %>
-            <h5 class="card-title card-title-user text-center"><%= @user.name %></h5>
+            <h5 class="card-title card-title-user text-center"><%= @user.first_name %></h5>
             <% end %>
           </div>
         </div>
       <div class="card-body">
-        <p class="user-username"><%= @user.username %></p>
-        <p class="card-text"><%= @user.about %></p>
+        <p class="card-text main-text-color"><%= @user.about %></p>
       </div>
     </div>
     <br>
     <% if current_user == @user %>
-      <%= link_to "Submit a news", new_idea_path, class: "btn btn-block btn-danger"  %>
+      <h6 class="main-text-color">
+      <small class="text-muted">Your controls</small>
+      </h6>
+      <%= link_to "Submit a topic", new_topic_path, class: "btn btn-block btn-danger"  %>
       <%# link_to "Start project", new_project_path, class: "btn btn-block btn-outline-danger"  %>
       <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-block btn-danger"  %>
     <% end %>

@@ -46,12 +46,19 @@ def city_params
   params.require(:city).permit(:name, :country, :background, :rating)
 end
 
+
 def require_admin
-  if user_signed_in? and !current_user.admin?
-    flash[:danger] = "Only admins can perform that action"
-    redirect_to cities_path
+  if user_signed_in?
+    if current_user.admin != true
+      flash[:danger] = "Only admin users can perform this action"
+      redirect_to :back
+    end
+  else
+    flash[:danger] = "Only admin users can perform this action"
+    redirect_to root_path
   end
 end
+
 
 
 end

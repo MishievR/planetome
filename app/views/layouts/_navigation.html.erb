@@ -1,34 +1,40 @@
 <nav class="navbar navbar-expand-lg navbar-light navbar-margin navbar-color-shadow ">
-  <%= link_to image_tag('planetome_logo_new.png', style: 'height:40px;width:auto;'), root_path %>
+  <%= link_to image_tag('planetome2_logo_tag.png', style: 'height:40px;width:auto;'), root_path %>
   <button class="navbar-toggler custom" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
+        <%= link_to "Topics", topics_path, class: "nav-link"  %>
+      </li>
+      <li class="nav-item">
         <%= link_to "Places", places_path, class: "nav-link"  %>
       </li>
       <li class="nav-item">
         <%= link_to "Categories", categories_path, class: "nav-link"  %>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <%= link_to "Collections", communities_path, class: "nav-link"  %>
-      </li>
-      <li class="nav-item">
+      </li> -->
+      <!-- <li class="nav-item">
         <%= link_to "Companies", employers_path, class: "nav-link"  %>
-      </li>
-      <li class="nav-item">
+      </li> -->
+      <!-- <li class="nav-item">
         <%= link_to "Jobs", jobs_path, class: "nav-link"  %>
-      </li>
+      </li> -->
     </ul>
     <span class="navbar-text mr-2">
       <% if user_signed_in? %>
-        <!-- <%# link_to(destroy_user_session_path, method: :delete, class: "btn") do %>
+        <%= link_to(destroy_user_session_path, method: :delete, class: "btn") do %>
         <i class="fas fa-sign-out-alt"></i>
         Log out
-        <%# end %> -->
+        <% end %>
         <%= link_to(user_path(current_user), class: "btn") do %>
-        My page
+        My <% if  current_user.admin = true %>
+            admin
+           <% end %>
+        page
         <% end %>
       <% else %>
         <%= link_to(new_user_session_path, :class=>"btn") do %>
@@ -38,7 +44,11 @@
       <% end %>
     </span>
     <span class="navbar-text">
-      <%= link_to "Submit", new_place_path, data: { turbolinks: false }, class: "btn btn-danger btn-post-job good-font"%>
+      <% if current_user.present? %>
+      <%= link_to "Discover a topic", topics_path, data: { turbolinks: false }, class: "btn btn-danger btn-post-job good-font"%>
+      <% else %>
+      <%= link_to "Sign Up", new_user_registration_path, data: { turbolinks: false }, class: "btn btn-danger btn-post-job good-font"%>
+      <% end %>
     </span>
   </div>
 </nav>

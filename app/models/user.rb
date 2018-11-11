@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :employers
   has_many :ideas
   has_many :places
+  has_many :topics
+  belongs_to :city
 
   validates :first_name, presence: true, length: {minimum: 1, maximum: 35}
   validates :last_name, presence: true, length: {minimum: 1, maximum: 35}

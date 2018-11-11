@@ -20,7 +20,7 @@
     <br>
     <div class="row">
       <div class="col">
-        <h1 class="main-text-color">planetome <small> is your perfect place to work anywhere on Earth.</small></h1>
+        <h1 class="main-text-color"><small>Meet like-minded people in great places around the world.</small></h1>
       </div>
     </div>
     <br>
@@ -44,21 +44,22 @@
                     <%= image_tag current_user.avatar.url(:thumb), class: "profilePhotoIndex" if current_user.avatar? %>
                     <%= link_to current_user.first_name, user_path(current_user), class: "user-link-index" %>
                     <br>
-                    <small>Build working communities in places you love.</small>
+                    <small>Meet like-minded people in places you love.</small>
                   </h1>
                   <% end %>
                 </div>
               </div>
             <div class="row">
               <div class="col">
-                <%= link_to "Add a new place", new_place_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
+                <%= link_to "Create a meeting topic", new_place_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
               </div>
             </div>
             <% else %>
 
             <h1 class=" main-text-color  good-font mt-3">Join us
             <br>
-            <small>Become a member of a powerful, working community.</small>
+            <!-- <small>Become a member of a powerful community.</small> -->
+            <small>Become a citizen of the world and start your journey today.</small>
             </h1>
             <div class="row">
               <div class="col">
@@ -75,28 +76,77 @@
     <br>
 
 
-
-
+    <div class="row">
+      <div class="col">
+        <%= link_to(topics_path, class: "pages-index-main-links good-font") do %>
+        <h1 class="main-text-color">Topics</h1>
+        <h3><small class="text-muted">Great coversations starts with a meaningful topic.</small></h3>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <% @topics.order(:created_at => :DESC).take(6).each do |i| %>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+        <div class="card mt-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <h4 class="main-text-color text-center mb-3">
+                  <%= link_to i.title, topic_path(i), class: "main-text-color", target: :_blank %>
+                </h4>
+                <h5 class="feed-link text-center mb-2"><small class="text-muted"><%= i.description %></small></h5>
+                <hr class="mb-4">
+                <% if i.user.present? %>
+                  <h6 class="main-text-color text-center">Created by
+                    <%= image_tag i.user.avatar.url(:medium), class: "profilePhotoIndex" if i.user.avatar? %>
+                    <%= link_to i.user.first_name, user_path(i.user), class: "user-link-index" %>
+                  </h6>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+      <% end %>
+    </div>
 
     <div class="row">
       <div class="col">
-        <h1 class="main-text-color">Places to work</h1>
-        <h3><small class="text-muted">Find a perfect spot or an office.</small></h3>
+        <div class="">
+          <% if @topics.count > 2 %>
+            <h6><strong> <%= link_to(topics_path, class: "  red-text-color mt-3") do %>Show all <%= Topic.count %> topics ></strong></h6>
+            <% end %>
+          <% else %>
+          <br>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+        <%= link_to(places_path, class: "pages-index-main-links good-font") do %>
+        <h1 class="main-text-color">Places</h1>
+        <h3><small class="text-muted">Where the meaningful conversation happens.</small></h3>
+        <% end %>
+
       </div>
     </div>
     <div class="row">
       <% @places.each do |place| %>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
         <%= link_to place_path(place), class: "card-community-link" do %>
-          <div class="card bg-dark text-white text-white card-field-main  mt-3">
+          <div class="card bg-dark text-white card-field-main  mt-3">
             <%= image_tag place.main_image, class: "card-commutity-img-planetome " if place.main_image? %>
             <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
               <!-- <h3 class="card-title card-title-index "><strong class="font-red-background-color"><%# community.name %></strong></h3> -->
             </div>
+
           </div>
           <div class="row">
             <div class="col">
-              <h4 class="mt-2 main-text-color"><%= place.name %></strong> </h4>
+              <h6 class="mt-2 main-text-color"><strong><%= place.name %></strong> </h6>
               <h6 class=" main-text-color text-muted card-office-address-text"><small><%= place.full_address %></small></h6>
               <p class="card-office-info-text">
                 <% if place.place_type == "coffee_shop" %>
@@ -112,13 +162,13 @@
                 <% elsif  place.place_type == "smart_office" %>
                   Smart Office
                 <% elsif  place.place_type == "library" %>
-                  <h4 class="main-text-color">Library</h4>
+                  Library
                 <% elsif  place.place_type == "public_place" %>
-                  <h4 class="main-text-color">Public place</h4>
+                  Public place
                 <% elsif  place.place_type == "outdoors" %>
-                  <h4 class="main-text-color">Outdoors</h4>
+                  Outdoors
                 <% elsif  place.place_type == "meeting_point" %>
-                  <h4 class="main-text-color">Meeting point</h4>
+                  Meeting point
                 <% end %>
 
 
@@ -148,18 +198,29 @@
 
     <div class="row">
       <div class="col">
+        <%= link_to(cities_path, class: "pages-index-main-links good-font") do %>
         <h1 class="main-text-color">Cities</h1>
-        <h3><small class="text-muted">Explore workspaces around the world.</small></h3>
+        <h3><small class="text-muted">Come to the new place, meet locals.</small></h3>
+        <% end %>
       </div>
     </div>
 
     <div class="row">
+
       <% @cities.take(20).each do |city| %>
-      <div class="col">
-        <%= link_to city.name, city_path(city), class: "btn btn-danger btn-lg btn-city-main mr-3 mt-3"  %>
+      <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+        <%= link_to city_path(city) do %>
+        <div class="card bg-dark text-white card-field-main text-center mt-3">
+          <%= image_tag city.background, class: "card-field-img" if city.background? %>
+          <div class="card-img-overlay">
+            <h4 class="card-title card-title-field"><strong><%= city.name%></strong></h4>
+          </div>
+        </div>
+        <% end %>
       </div>
       <% end %>
     </div>
+
     <div class="row">
       <div class="col">
         <div class="mr-3">
@@ -181,7 +242,7 @@
 
 
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col">
         <%= link_to(ideas_path, class: "pages-index-main-links good-font") do %>
         <h1 class="main-text-color">The feed</h1>
@@ -192,8 +253,7 @@
     <div class="row">
       <% @ideas.order(:created_at => :DESC).take(5).each do |i| %>
       <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
-        <!-- <div class="circle"></div> -->
-        <!-- <div class="idea-card"> -->
+
           <div class="card card-idea-index mt-2">
             <div class="row">
               <%= link_to upvote_idea_path(i), method: :put, class: "btn btn-default  upvote-controls float-left" do %>
@@ -218,7 +278,7 @@
                 </small>
               </div>
             </div>
-          <!-- </div> -->
+
         </div>
         <br>
       </div>
@@ -239,7 +299,7 @@
     <br>
 
     <% end %>
-
+ -->
 
 
 
@@ -259,10 +319,10 @@
           <div class="col-md-8">
             <div class="card card-job-post">
               <div class="card-body">
-                <%= link_to new_job_path, data: { turbolinks: false }, class: "card-community-link"  do %>
+                <%# link_to new_job_path, data: { turbolinks: false }, class: "card-community-link"  do %>
                   <h5 class="card-title"><strong class="good-font">Rent a home</strong> </h5>
                   <p class="card-text">Find a perfect place to live with community or alone.</p>
-                <% end %>
+                <%# end %>
               </div>
             </div>
           </div>
@@ -307,119 +367,8 @@
     </div>
     <br>
     <br> -->
-    <div class="row">
-      <div class="col">
-        <%= link_to(communities_path, class: "pages-index-main-links good-font") do %>
-        <h1 class="main-text-color">Curated collections</h1>
-        <h3><small class="text-muted">Amazing opportunities handpicked by the MakeImpact team.</small></h3>
-        <% end %>
-      </div>
-    </div>
-    <div class="row">
-      <% @communities.take(8).each do |community| %>
-    	  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <%= link_to community_path(community), class: "card-community-link" do %>
-          <div class="card bg-dark text-white text-white card-field-main  mt-3">
-            <%= image_tag community.background, class: "card-commutity-img " if community.background? %>
-            <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-              <h3 class="card-title card-title-index "><strong class="font-red-background-color"><%= community.name %></strong></h3>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <% end %>
-    </div>
-    <% if @communities.count < 8 %>
-      <br>
-      <br>
-    <% else %>
-    <div class="row">
-      <div class="col">
-          <%= link_to(communities_path, class: "btn btn-outline-danger btn-block btn-moreinfo-main main-text-color mt-3") do %>
-          + <%= Community.count-8 %> more
-          <% end %>
-      </div>
-    </div>
-    <% end %>
-    <br>
-    <br>
-    <div class="row">
-      <div class="col">
-        <%= link_to(categories_path, class: "pages-index-main-links good-font") do %>
-        <h1 class="main-text-color">Categories</h1>
-        <h3><small class="text-muted">Pick where you are the best or where do you want to start.</small></h3>
-        <% end %>
-      </div>
-    </div>
-    <div class="row">
-      <% @categories.each  do |cat| %>
-      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-        <%= link_to category_path(cat) do  %>
-          <div class="card card-category-main text-center mt-3">
-            <h6 class="card-title category-title"><strong><%= cat.title %></strong></h6>
-          </div>
-        <% end %>
-      </div>
-      <% end %>
-    </div>
-    <br>
-    <br>
-    <div class="row">
-      <div class="col">
-        <h1 class="main-text-color good-font">Recent jobs</h1>
-        <h3><small class="text-muted good-font">The most fresh opportunities!</small></h3>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <% @jobs.order("created_at DESC").take(30).each do |job| %>
-    	  <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-          <div class="card card-job-listing-main">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-12 col-md-10 col-lg-9 col-xl-10">
-                  <h5 class="card-title">
-                  <% if job.is_remote == true %>
-                  <small>Remote </small>
-                  <% end %>
-                  <strong><%= link_to job.position, job_path(job), class: "normal-link-red" %></strong>
-                  <small> at <%= link_to job.employer.company_name, employer_path(job.employer), class: "normal-link-light-grey"%>
-                  <% if job.is_remote == false && job.location != "" %>
-                  in <%= job.location %>
-                  <% end %>
-                </small></h5>
-                <h6 class="card-title", style="margin-top:10px;"><strong><%= job.impact %></strong></h6>
-                </div>
-                <div class="col-12 col-md-2 col-lg-3 col-xl-2">
-                  <%= link_to "https://#{job.link}" do  %>
-                    <h5 class="category-title float-right btn-apply">Apply</h5>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-        <h6><small class="float-right text-muted job-listing-time mr-2", style="margin-top:5px;">
-            <% if current_user && current_user.admin? %>
-          <%= link_to "edit", edit_job_path(job) %> |
-          <% end %><%= time_ago_in_words(job.created_at) %> ago</small></h6>
-        <br>
-      </div>
-      <% end %>
-    </div>
-    <% if @jobs.count < 29 %>
-      <br>
-      <br>
-    <% else %>
-    <div class="row">
-      <div class="col">
-          <%= link_to(jobs_path, class: "btn btn-lg btn-danger btn-block btn-moreinfo-main  mt-3") do %>
-          Show all jobs
-          <% end %>
-      </div>
-    </div>
-    <% end %>
-    <br>
-    <br>
+
+
   </body>
   <script>
     window.dataLayer = window.dataLayer || [];

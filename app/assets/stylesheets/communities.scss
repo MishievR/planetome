@@ -9,7 +9,7 @@
 .card-commutity-img-planetome {
   width: 100%;
   height: 190px;
-  border-radius: 0px;
+  border-radius: 5px;
   object-fit: cover;
 }
 
@@ -22,6 +22,7 @@
 
 .card-community-show {
   border: 0px;
+  border-radius: 5px;
   // box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -52,6 +53,7 @@
 .card-community-link {
   color: #443A3A;
   text-decoration: none;
+  border-radius: 5px;
 }
 
 .card-community-link:link {

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123975074-1"></script>
+    <title>Planetome Meeting Topics</title>
+  </head>
+  <body>
+    <div class="row">
+      <% if user_signed_in? %>
+      <div class="col-12  col-md-7 col-lg-8 col-xl-9">
+        <h1 class="main-text-color">Topics
+        <br>
+        <small class="text-muted">The begginings of every great conversation.</small>
+        </h1>
+      </div>
+        <div class="col-12 col-md-5 col-lg-4 col-xl-3">
+          <%= link_to "Create a topic", new_topic_path, class: "btn btn-danger btn-block btn-post-job" %>
+        </div>
+      <% else %>
+        <div class="col-12">
+          <h1 class="main-text-color">Topics
+          <br>
+          <small class="text-muted">The begginings of every great conversation.</small>
+          </h1>
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <div class="row">
+      <% @topics.order(:created_at => :DESC).each do |i| %>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+        <div class="card mt-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <h4 class="main-text-color text-center mb-3">
+                  <%= link_to i.title, topic_path(i), class: "main-text-color", target: :_blank %>
+                </h4>
+                <h5 class="feed-link text-center mb-2"><small class="text-muted"><%= i.description %></small></h5>
+                <hr class="mb-4">
+                <% if i.user.present? %>
+                  <h6 class="main-text-color text-center">Created by
+                    <%= image_tag i.user.avatar.url(:medium), class: "profilePhotoIndex" if i.user.avatar? %>
+                    <%= link_to i.user.first_name, user_path(i.user), class: "user-link-index" %>
+                  </h6>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+      <% end %>
+    </div>
+  </body>
+</html>

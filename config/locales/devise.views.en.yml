@@ -100,7 +100,7 @@ en:
         update: Update
         we_need_your_current_password_to_confirm_your_changes: we need your current password to confirm your changes
       new:
-        sign_up: Sign up to the SpaceFeed
+        sign_up: Sign up to planetome community!
         sign_up_btn: Sign up
       signed_up: Welcome! You have signed up successfully.
       signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
@@ -111,7 +111,7 @@ en:
     sessions:
       already_signed_out: Signed out successfully.
       new:
-        sign_in: Log in to the SpaceFeed
+        sign_in: Log in to the planetome
         sign_in_btn: Log in
       signed_in: Signed in successfully.
       signed_out: Signed out successfully.

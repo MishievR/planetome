@@ -1,69 +1,89 @@
 <%= render 'shared/errors', obj: @user %>
   <div class="row">
     <div class="col">
-      <div class="card card-login">
-        <div class="card-body">
+
           <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-            <div class="row">
-              <div class="col-12 col-md-6 col-lg-9 col-xl-9">
-                <div class="form-group">
-                  <div class="form-row">
-                    <div class="col">
-                      <%= f.text_field :first_name, class: "form-control", placeholder: "Elon", autofocus: true %>
-                      <%= f.label :first_name, class: "control-label control-label-new-design" %>
-                    </div>
-                    <div class="col">
-                      <%= f.text_field :last_name, class: "form-control", placeholder: "Musk", autofocus: false %>
-                      <%= f.label :last_name, class: "control-label" %>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <%= f.label :username, class: "control-label" %>
-                  <%= f.text_field :username, class: "form-control", placeholder: "elonmusk", autofocus: false %>
-                  <small class="form-text text-muted">Username must contain only letters, no sapces .-/@ </small>
-                </div>
-                <div class="form-group">
-                  <%= f.label :Short_bio, class: "control-label" %>
-                  <%= f.text_area :about, rows: 4, id: "text-area-fix", class: "form-control", placeholder: "Building electric cars. Sending them to Mars on my rockets.", autofocus: false %>
-                  <small class="form-text text-muted">100 letters limit</small>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 col-lg-3 col-xl-3">
-                <div class="form-group">
-                  <%= f.label :Profile_images_Preview %>
-                    <div class="row">
-                      <div class="card">
-                        <%= image_tag @user.background, class: "card-user-bg-img card-img-top" if @user.background? %>
-                          <div class="card-img-overlay">
-                            <div class="d-flex justify-content-center">
-                              <%= image_tag @user.avatar.url(:medium), class: "profilePhoto " if @user.avatar? %>
-                            </div>
-                            <div class="d-flex justify-content-center">
-                              <h5 class="card-title card-title-user text-center"><%= @user.name %></h5>
-                            </div>
-                          </div>
-                        <div class="card-body">
-                          <p class="user-username">@<%= @user.username %></p>
-                          <p class="card-text"><%= @user.about %></p>
-                        </div>
+          <div class="card card-login mb-3">
+            <div class="card-body">
+              <h3 class="main-tetx-color mb-3"><strong>Interests</strong></h3>
+
+            </div>
+          </div>
+
+
+          <div class="card card-login">
+            <div class="card-body">
+              <h3 class="main-tetx-color mb-3"><strong>Personal info</strong></h3>
+              <div class="row">
+                <div class="col-12 col-md-7 col-lg-8 col-xl-9">
+                  <div class="form-group">
+                    <div class="form-row">
+                      <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                        <h5><strong><%= f.label :first_name, class: "control-label" %>
+                        <%= f.text_field :first_name, class: "form-control", placeholder: "Elon", autofocus: true %></strong></h5>
+                      </div>
+                      <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                        <h5><strong><%= f.label :last_name, class: "control-label" %>
+                        <%= f.text_field :last_name, class: "form-control", placeholder: "Musk", autofocus: false %></strong></h5>
                       </div>
                     </div>
                   </div>
-                  <br>
+                  <!-- <div class="form-group">
+                    <%= f.label :username, class: "control-label" %>
+                    <%= f.text_field :username, class: "form-control", placeholder: "elonmusk", autofocus: false %>
+                    <small class="form-text text-muted">Username must contain only letters, no sapces .-/@ </small>
+                  </div> -->
                   <div class="form-group">
-                    <label><i class="fas fa-upload"></i> <strong>Profile</strong> photo</label>
-                    <%= f.file_field :avatar, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+                    <h5><strong><%= f.label :Short_bio, class: "control-label" %>
+                    <%= f.text_area :about, rows: 4, id: "text-area-fix", class: "form-control", placeholder: "Building electric cars. Sending them to Mars on my rockets.", autofocus: false %></strong></h5>
+                    <small class="form-text text-muted">100 letters limit</small>
                   </div>
                   <div class="form-group">
-                    <label><i class="fas fa-upload"></i> <strong>Background</strong> photo</label>
-                    <%= f.file_field :background, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+                    <h5><strong>Telegram/Whatsapp/Other
+                    </strong></h5>
+                    <h4><%= f.select :city_id, City.all.collect {|p| [ p.name, p.id ] }, { :include_blank => 'Select a city you live'}, class: "form-control company-pick", autofocus: false %> <br></h4>
+
                   </div>
+                  <div class="form-group">
+                    <h5><strong>Phone number
+                    </strong></h5>
+                  </div>
+
+                </div>
+                <div class="col-12 col-md-5 col-lg-4 col-xl-3">
+                  <div class="form-group">
+                    <%= f.label :Profile_view_Preview %>
+                      <div class="row">
+                        <div class="card">
+                          <%= image_tag @user.background, class: "card-user-bg-img card-img-top" if @user.background? %>
+                            <div class="card-img-overlay">
+                              <div class="d-flex justify-content-center">
+                                <%= image_tag @user.avatar.url(:medium), class: "profilePhoto " if @user.avatar? %>
+                              </div>
+                              <div class="d-flex justify-content-center">
+                                <h5 class="card-title card-title-user text-center"><%= @user.name %></h5>
+                              </div>
+                            </div>
+                          <div class="card-body">
+                            <p class="card-text main-text-color"><%= @user.about %></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                      <label><i class="fas fa-upload"></i> <strong>Profile</strong> photo</label>
+                      <%= f.file_field :avatar, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+                    </div>
+                    <div class="form-group">
+                      <label><i class="fas fa-upload"></i> <strong>Background</strong> photo</label>
+                      <%= f.file_field :background, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+                    </div>
+                </div>
               </div>
-            </div>
-            <%= f.submit( "Update account", class: 'btn btn-outline-danger') %>
-            <small class="form-text text-muted">NOTE: It may take some time to upload your background and/or profile image, <strong>don't reload the web page please!</strong></small>
-          <% end %>
+              <%= f.submit( "Update account", class: 'btn btn-danger') %>
+              <small class="form-text text-muted">NOTE: It may take some time to upload your background and/or profile image, <strong>don't reload the web page please!</strong></small>
+            <% end %>
         </div>
       </div>
     </div>

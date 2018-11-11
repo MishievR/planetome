@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :fields
   resources :places
   resources :cities
+  resources :topics
   resources :communities do
     # resources :posts
   end

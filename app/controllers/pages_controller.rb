@@ -10,6 +10,7 @@ class PagesController < ApplicationController
     @categories = Category.all
     @ideas = Idea.all
     @places = Place.all
+    @topics = Topic.all
 
   end
 

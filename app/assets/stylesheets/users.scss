@@ -19,10 +19,11 @@
 
 .profilePhotoIndex {
   border: 3px solid #070421;
-  border-radius: 50px;
+  border-radius: 25px;
   width: 40px;
   height: 40px;
   margin-top: -7px;
+  margin-left: -2.75px;
 }
 
 .profilePhotoProject {
@@ -66,6 +67,7 @@
 .card-title-user {
   color: #fff;
   text-shadow: 0px 0px 10px #000;
+  margin-top: 10px;
 }
 
 .user-username {

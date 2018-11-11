@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123975074-1"></script>
+    <title>Create a topic</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-12 col-md-12 ">
+        <h1 class="main-text-color good-font">Create a topic
+        <br>
+        <small class="text-muted good-font">Share with people what you want to talk about!</small>
+      </h1>
+      <h5><small class="text-muted"><%= link_to 'Go back to topics', topics_path, class: "text-muted text-muted-small" %> | <%= link_to 'Front page', root_path, class: "text-muted text-muted-small" %></small></h5>
+      </div>
+
+    </div>
+    <br>
+
+    <%= render 'form' %>
+  </body>
+</html>

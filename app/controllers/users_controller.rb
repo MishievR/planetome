@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :avatar, :background, :email, :admin, :about, :username)
+    params.require(:user).permit(:first_name, :last_name, :avatar, :background, :email, :admin, :about, :username, :city_id)
   end
 
   def set_user
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 
   def require_same_user
     @user = User.find(params[:id])
-    if current_user != @user || !current_user.admin?
+    if current_user != @user || current_user.admin = false
       flash[:danger] = "You can only edit your own account"
       redirect_to root_path
     end

@@ -1,10 +1,14 @@
 
 <div class="row">
   <div class="col">
-    <h3 class="main-text-color"><%= @user.first_name %>'s Page
-    <!-- <br> -->
-    <!-- <small class="text-muted">The field where you want to start.</small> -->
-    </h3>
+    <% if current_user == @user %>
+      <h1 class="main-text-color">Welcome back to your page <%= @user.first_name %>
+      <!-- <br> -->
+      <!-- <small class="text-muted">The field where you want to start.</small> -->
+      </h1>
+    <% else %>
+      <h1 class="main-text-color">Meet <%= @user.first_name %></h1>
+    <% end %>
   </div>
 </div>
 <br>
@@ -14,6 +18,80 @@
     <%= render 'users/userinfosidebar' %>
   </div>
   <div class="col-12 order-xs-last col-sm-6 col-md-8 col-lg-9 col-xl-9">
+    <% if @user.topics.count == 0 %>
+    <div class="row">
+      <div class="col">
+        <h3 class="main-text-color">Created topics
+        <br>
+        <small class="text-muted">No created topics yet.</small>
+        </h3>
+      </div>
+    </div>
+    <% else %>
+    <div class="row">
+      <div class="col">
+        <h3 class="main-text-color">Created topics</h3>
+        <h4><small class="text-muted">
+          <% if current_user == @user %>
+            You
+          <% else %>
+            <%= @user.first_name %>
+          <% end %>
+           created <%= @user.topics.count %> topics, last one was cretaed <%= time_ago_in_words(@user.topics.last.created_at) %> ago</small></h4>
+      </div>
+    </div>
+    <div class="row">
+      <% @user.topics.order(:created_at => :DESC).each do |i| %>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
+        <div class="card  mt-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <h4 class="main-text-color text-center mb-3">
+                  <%= link_to i.title, topic_path(i), class: "main-text-color", target: :_blank %>
+                </h4>
+                <h5 class="feed-link text-center mb-2"><small class="text-muted"><%= i.description %></small></h5>
+                <hr class="mb-4">
+
+                <% if current_user == @user %>
+                <div class="text-center">
+                  <%= link_to "Edit", edit_topic_path(i), class: "btn text-muted" %>
+                </div>
+
+                <% else %>
+                  <% if i.user.present? %>
+                    <h6 class="main-text-color text-center">Created by
+                      <%= image_tag i.user.avatar.url(:medium), class: "profilePhotoIndex" if i.user.avatar? %>
+                      <%= link_to i.user.first_name, user_path(i.user), class: "user-link-index" %>
+                    </h6>
+                  <% end %>
+                <% end %>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div class="col-12 order-xs-last col-sm-6 col-md-8 col-lg-9 col-xl-9">
     <% if @user.ideas.count == 0 %>
     <div class="row">
       <div class="col">
@@ -32,8 +110,7 @@
     <div class="row">
       <% @user.ideas.order(:created_at => :DESC).each do |i| %>
       <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
-        <!-- <div class="circle"></div> -->
-        <!-- <div class="idea-card"> -->
+
           <div class="card card-idea-index mt-3">
             <div class="row">
               <%= link_to upvote_idea_path(i), method: :put, class: "btn btn-default  upvote-controls float-left" do %>
@@ -44,33 +121,26 @@
                 </div>
               <% end %>
               <div class="col-10 col-sm-9 col-md-10 col-lg-10 col-xl-11">
-                <h4 class="main-text-color">
-                  <%= link_to i.title, "#{i.link}", class: "main-text-color", target: :_blank %>
-
-
-                  </h4>
+                <h4 class="main-text-color"><%= link_to i.title, "#{i.link}", class: "main-text-color", target: :_blank %></h4>
                 <h5 class="feed-link"><small class="text-muted"><%= i.link %></small></h5>
                 <small class="float-left text-muted" style="margin-top:7px;"><%= time_ago_in_words(i.created_at) %> ago by
-                  <% if i.user.present? %>
+                <% if i.user.present? %>
                   <%= link_to i.user.name, user_path(i.user), class: "main-text-color" %>
-
-                   <% end %>
+                <% end %>
                 <% if current_user.present? && current_user.admin? %>
                 <%= link_to " | delete", idea_path(i), method: :delete, class: "add-idea-link", data: { confirm: 'Idea will be deleted permanently. Are you sure?' } %>
                 <% end %>
-
                 </small>
               </div>
             </div>
-          <!-- </div> -->
         </div>
         <br>
       </div>
       <% end %>
     </div>
-    <% end %>
+    <% end %> -->
 
-    <% if @user.places.count == 0 %>
+    <!-- <% if @user.places.count == 0 %>
     <div class="row">
       <div class="col">
         <h3 class="main-text-color">Places
@@ -93,12 +163,11 @@
           <div class="card bg-dark text-white text-white card-field-main  mt-3">
             <%= image_tag place.main_image, class: "card-commutity-img-planetome " if place.main_image? %>
             <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-              <!-- <h3 class="card-title card-title-index "><strong class="font-red-background-color"><%# community.name %></strong></h3> -->
             </div>
           </div>
           <div class="row">
             <div class="col">
-              <h4 class="mt-2 main-text-color"><%= place.name %></strong> </h4>
+              <h4 class="mt-2 main-text-color"><%= place.name %></h4>
               <h6 class=" main-text-color text-muted card-office-address-text"><small><%= place.full_address %></small></h6>
               <p class="card-office-info-text">Smart office | WiFi, Desk, Cleaning
                 <br>
@@ -111,7 +180,7 @@
       <% end %>
     </div>
 
-    <% end %>
+    <% end %> -->
 
 
 
