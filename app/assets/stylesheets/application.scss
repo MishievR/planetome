@@ -39,6 +39,8 @@ body {
   // font-family: 'Raleway', sans-serif;
   background-color: var(--main-bg-color);
   font-size: 13px;
+  // padding-top: 135px;
+
 }
 
 // .card {
@@ -298,6 +300,7 @@ a:hover {
   padding-left: 20px;
   padding-bottom: 10px;
   padding-top: 10px;
+
 }
 
 .custom {
@@ -340,8 +343,10 @@ a:hover {
 
 .navbar-color-shadow {
   background-color: var(--main-bg-color);
-  height: 56px;
+  height: 70px;
   margin-bottom: 70px;
+  // padding-top: 30px;
+  // padding-bottom: -15px;
 }
 
 // .no-transition {

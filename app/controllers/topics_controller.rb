@@ -70,10 +70,14 @@ class TopicsController < ApplicationController
 
     def require_same_user
       @topic = Topic.find(params[:id])
-      if current_user != @topic.user
-        flash[:danger] = "You can only edit your own topic."
-        redirect_to root_path
-      end
+
+        if current_user != @topic.user
+          flash[:danger] = "You can only edit your own topic."
+          redirect_to root_path
+        end
+
+
+
     end
 
 end
