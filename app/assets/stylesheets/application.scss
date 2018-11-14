@@ -8,6 +8,7 @@
 @import "jobs";
 @import "stripe";
 @import "places";
+@import "topics";
 
 
 :root {
@@ -359,14 +360,13 @@ a:hover {
 
 
 .card-field-main {
-  // border-radius: 1px;
   border: 0px;
-  border-radius: 5px;
+  border-radius: 7px;
   box-shadow:  0 0px 20px 0 rgba(211, 211, 211, 0.3), 0 0px 20px 0 rgba(211, 211, 211, 0.3);
 }
 
 .card-field-main:hover {
-  box-shadow:  0 0px 20px 0 rgba(211, 211, 211, 0.4), 0 0px 20px 0 rgba(211, 211, 211, 0.4);
+  box-shadow:  0 0px 40px 0 rgba(211, 211, 211, 0.4), 0 0px 40px 0 rgba(211, 211, 211, 0.4);
 }
 
 // .card-community-main {
@@ -444,8 +444,12 @@ a:hover {
 }
 
 .card-field-img {
-  width: 100%;
+  // width: 100%;
   height: 130px;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  margin-left: -1px;
+  margin-right: -2px;
   border-radius: 7px;
   object-fit: cover;
 }

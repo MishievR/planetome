@@ -20,7 +20,8 @@
     <br>
     <div class="row">
       <div class="col">
-        <h1 class="main-text-color"><%=  image_tag('planetome2.0_logo.png', style: 'height:45px;width:auto;margin-right:10px;')%><small>- meet like-minded people in great places around the world.</small></h1>
+        <h1 class="main-text-color"><%=  image_tag('planetome2.0_logo.png', style: 'height:45px;width:auto;margin-right:10px;')%><small> Enabling meaningful human conversations in the real world.</small></h1>
+<!-- - meet like-minded people in great places around the world. -->
       </div>
     </div>
     <br>
@@ -87,7 +88,7 @@
     <div class="row">
       <% @topics.order(:created_at => :DESC).take(3).each do |i| %>
       <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-        <div class="card mt-3">
+        <div class="card card-topic mt-3">
           <div class="card-body">
             <div class="row">
               <div class="col-12">
