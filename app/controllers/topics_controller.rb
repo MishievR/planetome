@@ -13,6 +13,12 @@ class TopicsController < ApplicationController
     @topic = Topic.new
   end
 
+  def show
+    @topic = Topic.find(params[:id])
+    @user = @topic.user
+    # @other_topics = @user.topics.except(:topic)
+    @places = Place.all
+  end
 
   def create
     @topic = Topic.new(topic_params)

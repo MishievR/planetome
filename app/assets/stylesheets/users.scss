@@ -26,6 +26,16 @@
   margin-left: -2.75px;
 }
 
+.profilePhotoTopicShow {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border: 3px solid #070421;
+  border-radius: 70px;
+}
+
+
+
 .profilePhotoProject {
   border: 1px solid white;
   border-radius: 50px;
@@ -47,9 +57,11 @@
   width: 100%;
   height: 165px;
   object-fit: cover;
+  border-radius: 7px;
 }
 
 .card-user {
+  // border-radius: 7px;
   border: 0px;
   box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.1);
 }
@@ -66,8 +78,9 @@
 
 .card-title-user {
   color: #fff;
-  text-shadow: 0px 0px 10px #000;
+  text-shadow: 4px 4px 10px #000;
   margin-top: 10px;
+
 }
 
 .user-username {
@@ -135,4 +148,16 @@
   width: 40px;
   height: 40px;
   margin-right: 5px;
+}
+
+.font-background-color-usercard {
+  display: table;
+  padding:8px;
+  margin-left: -20px;
+  margin-right: -20px;
+  border-radius: 3.5px;
+  background-color: rgba(7, 4, 33, 1);
+  color:#ffffff;
+  line-height: 1.1;
+
 }

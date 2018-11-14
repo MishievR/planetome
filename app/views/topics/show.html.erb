@@ -1,0 +1,143 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+      <h1 class="main-text-color">Hi! My name is <%= @topic.user.first_name %>!</h1>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-2">
+      <div class="profile-photo-div">
+        <%= image_tag @topic.user.avatar.url(:medium), class: "profilePhotoTopicShow mb-2 " if @topic.user.avatar? %>
+      </div>
+    </div>
+    <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6">
+      <h4 class="main-text-color">Short intro: <small> <%= @topic.user.about %></small></h4>
+      <h4 class="main-text-color">City: <small> <%= @topic.user.city.name %></small></h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <br>
+      <br>
+      <h4 class="main-text-color"><%= @topic.user.first_name %> is open to meet and to talk about:</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-8">
+      <div class="card card-topic mt-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <h4 class="main-text-color  mb-3">
+                <%= @topic.title %>
+              </h4>
+              <h5 class="feed-link  mb-2"><small class="text-muted"><%= @topic.description %></small></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+
+
+
+
+
+  <%= link_to "Let's meet!", "#collapseExample", role: :button, class: "btn btn-lg btn-danger btn-post-job good-font", data: { parent: '#collapseExample', toggle: :collapse }, aria: { controls: :collapseExample, expanded: false } %>
+
+  <div class="collapse" id="collapseExample">
+    <br>
+
+    <div class="row">
+      <div class="col-12">
+        <h4 class="main-text-color">1. Pick the places</h4>
+
+        <div class="row">
+          <% @places.each do |place| %>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+            <%= link_to place_path(place), class: "card-community-link" do %>
+              <div class="card bg-dark text-white card-field-main  mt-3">
+                <%= image_tag place.main_image, class: "card-commutity-img-planetome " if place.main_image? %>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <h6 class="mt-2 main-text-color"><strong><%= place.name %></strong></h6>
+                  <h6 class=" main-text-color text-muted card-office-address-text"><small><%= place.full_address %></small></h6>
+                  <br>
+                  <strong>Put the map here</strong>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+
+        <br>
+
+        <h4 class="main-text-color">2. Choose your preffered time</h4>
+        <br>
+        <%= link_to "8:00 - 11:00","hhdh", role: :button, class: "btn btn-lg btn-danger btn-post-job good-font mr-3 mb-2" %>
+        <%= link_to "11:00 - 15:00","hhdh", role: :button, class: "btn btn-lg btn-danger btn-post-job good-font mr-3 mb-2" %>
+        <%= link_to "15:00 - 19:00","hhdh", role: :button, class: "btn btn-lg btn-danger btn-post-job good-font mr-3 mb-2" %>
+        <%= link_to "19:00 - 21:00","hhdh", role: :button, class: "btn btn-lg btn-danger btn-post-job good-font mb-2" %>
+
+        <br>
+          <br>
+
+        <h4 class="main-text-color mb-3">3. Tell <%= @topic.user.first_name %> why you are interested in this topic </h4>
+
+        <div class="input-group">
+
+          <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
+
+        <br>
+        <br>
+        <%= link_to "Send meeting invitation!","hhdh", role: :button, class: "btn btn-lg btn-danger btn-post-job good-font mb-2" %>
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <% if @user.topics.count > 1 %>
+
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-8">
+        <br>
+        <hr>
+        <h4 class="main-text-color text-muted">Also there are other topics you can discuss with <%= @topic.user.first_name %> on the meeting </h4>
+      </div>
+    </div>
+    <div class="row">
+      <% @user.topics.all_except(@topic).order(:created_at => :DESC).each do |i| %>
+      <div class="col-12 col-sm-12 col-md-8">
+        <div class="card card-topic-show-other mt-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <h4 class="main-text-color text-muted  mb-3">
+                  <%= link_to i.title, topic_path(i), class: "main-text-color text-muted", target: :_blank %>
+                </h4>
+                <h5 class="feed-link  mb-2"><small class="text-muted"><%= i.description %></small></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>

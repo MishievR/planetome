@@ -149,45 +149,7 @@
             <div class="col">
               <h6 class="mt-2 main-text-color"><strong><%= place.name %></strong> </h6>
               <h6 class=" main-text-color text-muted card-office-address-text"><small><%= place.full_address %></small></h6>
-              <p class="card-office-info-text">
-                <% if place.place_type == "coffee_shop" %>
-                  Coffee Shop |
-                  <% if place.is_free_wifi = true %>
-                    Free WiFi
-                  <% end %>
-                <% elsif  place.place_type == "coworking" %>
-                  Coworking |
-                  <% if place.is_good_location = true %>
-                    Good location
-                  <% end %>
-                <% elsif  place.place_type == "smart_office" %>
-                  Smart Office
-                <% elsif  place.place_type == "library" %>
-                  Library
-                <% elsif  place.place_type == "public_place" %>
-                  Public place
-                <% elsif  place.place_type == "outdoors" %>
-                  Outdoors
-                <% elsif  place.place_type == "meeting_point" %>
-                  Meeting point
-                <% end %>
-
-
-                <br>
-                <% if place.price == 0 %>
-                  Free
-
-                <% elsif place.price == 1 %>
-                  $
-
-                <% elsif place.price == 2 %>
-                  $$
-                <% elsif place.price == 3 %>
-                  $$$
-                <% elsif place.price == 4 %>
-                  $$$+
-                <% end %>
-              </p>
+              
             </div>
           </div>
         <% end %>

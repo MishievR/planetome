@@ -6,4 +6,8 @@ class Topic < ApplicationRecord
   validates :title, presence: true, length: {minimum: 1, maximum: 160}
   validates :description, presence: true
 
+  def self.all_except(topic)
+    where.not(id: topic)
+  end
+
 end

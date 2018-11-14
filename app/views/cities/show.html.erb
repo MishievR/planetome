@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col">
+    <h1 class="main-text-color">Meet people in <%= @city.name %></h1>
+  </div>
+</div>
+
+
+<div class="row">
+  <% @city.users.each do |user| %>
+  <div class="col-6 col-md-6 col-lg-3 col-xl-3">
+    <%= link_to user_path(user), class: "card-user-link"  do %>
+
+    <div class="card card-user  mt-3">
+      <%= image_tag user.background, class: "card-user-bg-img card-img-top" if user.background? %>
+      <div class="card-img-overlay">
+        <div class="d-flex justify-content-center">
+          <%= image_tag user.avatar.url(:medium), class: "profilePhoto " if user.avatar? %>
+        </div>
+        <div class="d-flex justify-content-center">
+          <h6 class="card-title card-title-user text-center font-background-color-usercard"><%= user.first_name %></h6>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6 class="card-text card-text-main main-text-color mt-2 "><%= truncate(user.about, length: 100 )%></h6>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
