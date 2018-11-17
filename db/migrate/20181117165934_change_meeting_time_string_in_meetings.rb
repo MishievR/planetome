@@ -1,4 +1,4 @@
-class ChangeMeetingTimeIntInMeetings < ActiveRecord::Migration[5.0]
+class ChangeMeetingTimeStringInMeetings < ActiveRecord::Migration[5.0]
   def up
     change_column :meetings, :meeting_time, :integer, using: 'meeting_time::integer'
   end
