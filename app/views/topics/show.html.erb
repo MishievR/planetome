@@ -1,8 +1,11 @@
 <div class="container">
-
   <div class="row">
     <div class="col">
-      <h1 class="main-text-color"><%= current_user.first_name %>, Meet <%= @topic.user.first_name %>!</h1>
+      <h1 class="main-text-color">
+      <% if current_user.present? %>
+      <%= current_user.first_name %>,
+      <% end %>
+      Meet <%= @topic.user.first_name %>!</h1>
       <h4><small class="text-muted">From <%= @topic.user.city.name %></small></h4>
     </div>
   </div>
@@ -12,11 +15,7 @@
       <%= link_to user_path(@topic.user), class: "card-user-link"  do %>
       <div class="card card-user-topic mt-3">
         <%= image_tag @topic.user.background, class: "card-user-topic-bg-img card-img-top" if @topic.user.background? %>
-        <!-- <div class="card-img-overlay">
-          <div class="photo-topic-position"> -->
-            <%= image_tag @topic.user.avatar.url(:medium), class: "profilePhotoTopicShow  " if @topic.user.avatar? %>
-          <!-- </div>
-        </div> -->
+        <%= image_tag @topic.user.avatar.url(:medium), class: "profilePhotoTopicShow  " if @topic.user.avatar? %>
       </div>
       <div class="row">
         <div class="col-12 col-sm-12 col-md-8">
@@ -158,10 +157,6 @@
 
       </div>
     </div> -->
-
-
-
-
 
   <% if @user.topics.count > 1 %>
     <div class="row">
