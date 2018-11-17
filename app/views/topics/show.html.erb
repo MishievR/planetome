@@ -11,14 +11,14 @@
   </div>
   <br>
   <div class="row">
-    <div class="col-12 col-sm-12 col-md-12">
+    <div class="col-12 col-sm-12 col-md-8">
       <%= link_to user_path(@topic.user), class: "card-user-link"  do %>
       <div class="card card-user-topic mt-3">
-        <%= image_tag @topic.user.background, class: "card-user-topic-bg-img card-img-top" if @topic.user.background? %>
+        <%= image_tag @topic.user.background, class: "card-user-topic-bg-img" if @topic.user.background? %>
         <%= image_tag @topic.user.avatar.url(:medium), class: "profilePhotoTopicShow  " if @topic.user.avatar? %>
       </div>
       <div class="row">
-        <div class="col-12 col-sm-12 col-md-8">
+        <div class="col-12">
           <div class="card card-meeting-setup mt-3">
             <div class="card-body">
               <h5 class="card-text card-text-main main-text-color"><%= truncate(@topic.user.about, length: 100 )%></h5>
