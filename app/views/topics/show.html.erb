@@ -2,22 +2,35 @@
 
   <div class="row">
     <div class="col">
-      <h1 class="main-text-color">Hi! My name is <%= @topic.user.first_name %>!</h1>
+      <h1 class="main-text-color"><%= current_user.first_name %>, Meet <%= @topic.user.first_name %>!</h1>
+      <h4><small class="text-muted">From <%= @topic.user.city.name %></small></h4>
     </div>
   </div>
-
   <br>
-  <br>
-
   <div class="row">
-    <div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-2">
-      <div class="profile-photo-div">
-        <%= image_tag @topic.user.avatar.url(:medium), class: "profilePhotoTopicShow mb-2 " if @topic.user.avatar? %>
+    <div class="col-12 col-sm-12 col-md-12">
+      <%= link_to user_path(@topic.user), class: "card-user-link"  do %>
+      <div class="card card-user-topic mt-3">
+        <%= image_tag @topic.user.background, class: "card-user-topic-bg-img card-img-top" if @topic.user.background? %>
+        <!-- <div class="card-img-overlay">
+          <div class="photo-topic-position"> -->
+            <%= image_tag @topic.user.avatar.url(:medium), class: "profilePhotoTopicShow  " if @topic.user.avatar? %>
+          <!-- </div>
+        </div> -->
       </div>
-    </div>
-    <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6">
-      <h4 class="main-text-color">Short intro: <small> <%= @topic.user.about %></small></h4>
-      <h4 class="main-text-color">City: <small> <%= @topic.user.city.name %></small></h4>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-8">
+          <div class="card card-meeting-setup mt-3">
+            <div class="card-body">
+              <h5 class="card-text card-text-main main-text-color"><%= truncate(@topic.user.about, length: 100 )%></h5>
+              <% if @topic.user.city.name != nil %>
+                <h6 class="card-text card-text-main main-text-color">Live in <%= @topic.user.city.name %></h6>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
 
@@ -25,7 +38,7 @@
     <div class="col">
       <br>
       <br>
-      <h4 class="main-text-color"><%= @topic.user.first_name %> is open to meet and to talk about:</h4>
+      <h2 class="main-text-color"><%= @topic.user.first_name %> is open to meet and to talk about:</h2>
     </div>
   </div>
 
@@ -46,16 +59,56 @@
       <br>
     </div>
   </div>
+  <br>
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-8">
+      <h2 class="main-text-color mb-3">Setup a meeting  </h2>
+      <div class="card card-meeting-setup">
+        <div class="card-body">
+      <%= form_for @meeting, :url => meetings_path(@meeting), :html => {:method => :post} do |f| %>
+      <%= f.hidden_field :main_topic_id, :value => @topic.id %>
 
-
-
-
-
-  <%= link_to "Let's meet!", "#collapseExample", role: :button, class: "btn btn-lg btn-danger btn-post-job good-font", data: { parent: '#collapseExample', toggle: :collapse }, aria: { controls: :collapseExample, expanded: false } %>
-
-  <div class="collapse" id="collapseExample">
+      <div class="form-group ">
+        <h4 class="main-text-color mb-3 ">1. Pick the places
+        <small>or <%= link_to "discover all available places", places_path, class: "red-text-color", target: :_blank %></small></h4>
+        <div class="row">
+          <%= f.collection_check_boxes :place_ids, Place.all, :id, :name do |cb| %>
+          <div class="col-12 ">
+            <ul class="ul-categories">
+             <strong><%= cb.label(class: "form-check-label category-check ") {cb.check_box(class: "form-check-input ") + cb.text}  %></strong>
+            </ul>
+          </div>
+          <% end %>
+        </div>
+       </div>
+       <br>
+       <div class="form-group ">
+         <h4 class="main-text-color mb-3 ">2. Choose your preffered meeting time</h4>
+         <%= f.select :meeting_time, options_for_select([[ "8:00 - 11:00", 0], ["11:00 - 15:00", 1], ["15:00 - 19:00", 2], ["19:00 - 21:00", 3]]), class: "form-control company-pick", autofocus: false %>
+       </div>
+       <br>
+        <div class="form-group ">
+          <h4 class="main-text-color mb-3">3. Tell <%= @topic.user.first_name %> why you are interested in this topic</h4>
+          <%= f.text_area :meeting_comment, class: "form-control",rows: 2, placeholder: "I love it!" %>
+        </div>
+        <div class="form-group mb-2 ">
+          <%= f.submit "Send meeting invitation!", class: "btn btn-lg btn-danger btn-post-job good-font mb-2" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+  <br>
     <br>
 
+
+
+
+
+
+
+<!--
     <div class="row">
       <div class="col-12">
         <h4 class="main-text-color">1. Pick the places</h4>
@@ -104,25 +157,23 @@
         <%= link_to "Send meeting invitation!","hhdh", role: :button, class: "btn btn-lg btn-danger btn-post-job good-font mb-2" %>
 
       </div>
-    </div>
+    </div> -->
 
-  </div>
+
 
 
 
   <% if @user.topics.count > 1 %>
-
     <div class="row">
       <div class="col-12 col-sm-12 col-md-8">
         <br>
-        <hr>
         <h4 class="main-text-color text-muted">Also there are other topics you can discuss with <%= @topic.user.first_name %> on the meeting </h4>
       </div>
     </div>
     <div class="row">
       <% @user.topics.all_except(@topic).order(:created_at => :DESC).each do |i| %>
       <div class="col-12 col-sm-12 col-md-8">
-        <div class="card card-topic-show-other mt-3">
+        <div class="card mt-3">
           <div class="card-body">
             <div class="row">
               <div class="col-12">
@@ -134,10 +185,8 @@
             </div>
           </div>
         </div>
-        <br>
       </div>
       <% end %>
     </div>
   <% end %>
-
 </div>

@@ -22,9 +22,11 @@ Rails.application.routes.draw do
   # get 'users/:id' => 'users#show', as: :user
   # get 'signup', to: 'users#new'
   resources :users, except: [:new]
+  resources :meetings, except: [:index]
+
 
   # post 'ideas' => 'ideas#create', as: :create
-  # get 'idea', action: :create, controller: 'ideas'
+  # get 'meeting', action: :new, controller: 'meetings'
 
   resources :jobs
   resources :employers

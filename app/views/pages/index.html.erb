@@ -16,12 +16,17 @@
       </div>
     </div> -->
 
+
+
+    <% if current_user.present? %>
+
+    <% else %>
     <br>
     <br>
     <div class="row">
       <div class="col">
-        <h1 class="main-text-color"><%=  image_tag('planetome2.0_logo.png', style: 'height:45px;width:auto;margin-right:10px;')%><small> Enabling meaningful human conversations in the real world.</small></h1>
-<!-- - meet like-minded people in great places around the world. -->
+        <h1 class="main-text-color"><%=  image_tag('planetome2.0_logo.png', style: 'height:45px;width:auto;margin-right:10px;')%><small> Enabling meaningful human connections in the real world.</small></h1>
+  <!-- - meet like-minded people in great places around the world. Enabling meaningful human conversations in the real world. -->
       </div>
     </div>
     <br>
@@ -30,6 +35,7 @@
     <br>
     <br>
     <br>
+    <% end %>
     <div class="row">
       <div class="jumbotron jumbotron-fluid jumbo-spacefeed">
         <!-- <div class="jumbo-gragient-bg"></div> -->
@@ -59,16 +65,13 @@
 
             <h1 class=" main-text-color  good-font mt-3">Join us
             <br>
-            <!-- <small>Become a member of a powerful community.</small> -->
-            <small>Become a citizen of the world and start your journey today.</small>
-            </h1>
+            <small>Find your perfect conversation today.</small></h1>
             <div class="row">
               <div class="col">
                 <%= link_to "Sign Up", new_user_registration_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
               </div>
             </div>
             <% end %>
-
           </div>
         </div>
       </div>
@@ -116,7 +119,7 @@
       <div class="col">
         <div class="">
           <% if @topics.count > 2 %>
-            <h6><strong> <%= link_to(topics_path, class: "  red-text-color mt-3") do %>Show all <%= Topic.count %> topics ></strong></h6>
+            <h6><strong> <%= link_to(topics_path, class: "red-text-color mt-3") do %>Show all <%= Topic.count %> topics ></strong></h6>
             <% end %>
           <% else %>
           <br>
@@ -149,7 +152,7 @@
             <div class="col">
               <h6 class="mt-2 main-text-color"><strong><%= place.name %></strong> </h6>
               <h6 class=" main-text-color text-muted card-office-address-text"><small><%= place.full_address %></small></h6>
-              
+
             </div>
           </div>
         <% end %>

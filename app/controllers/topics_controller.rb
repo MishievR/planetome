@@ -18,6 +18,7 @@ class TopicsController < ApplicationController
     @user = @topic.user
     # @other_topics = @user.topics.except(:topic)
     @places = Place.all
+    @meeting = Meeting.new
   end
 
   def create
@@ -37,7 +38,7 @@ class TopicsController < ApplicationController
       puts response.body
       puts response.headers
 
-      redirect_to topic_path(@topic)
+      redirect_to topics_path
     else
       flash[:success] = "Wooops!"
     end

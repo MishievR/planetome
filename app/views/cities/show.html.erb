@@ -3,13 +3,10 @@
     <h1 class="main-text-color">Meet people in <%= @city.name %></h1>
   </div>
 </div>
-
-
 <div class="row">
   <% @city.users.each do |user| %>
   <div class="col-6 col-md-6 col-lg-3 col-xl-3">
     <%= link_to user_path(user), class: "card-user-link"  do %>
-
     <div class="card card-user  mt-3">
       <%= image_tag user.background, class: "card-user-bg-img card-img-top" if user.background? %>
       <div class="card-img-overlay">

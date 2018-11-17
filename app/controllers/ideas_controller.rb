@@ -30,15 +30,6 @@ class IdeasController < ApplicationController
       puts response.body
       puts response.headers
 
-
-
-
-
-
-
-
-
-
       redirect_to root_path
     else
       flash[:success] = "Wooops!"
