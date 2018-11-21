@@ -66,6 +66,8 @@
         <div class="card-body">
       <%= form_for @meeting, :url => meetings_path(@meeting), :html => {:method => :post} do |f| %>
       <%= f.hidden_field :main_topic_id, :value => @topic.id %>
+      <%= f.hidden_field :meeting_with, :value => @topic.user.id %>
+
 
       <div class="form-group ">
         <h4 class="main-text-color mb-3 ">1. Pick the places

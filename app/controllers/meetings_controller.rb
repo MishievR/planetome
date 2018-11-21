@@ -1,4 +1,6 @@
 class MeetingsController < ApplicationController
+  require 'sendgrid-ruby'
+  include SendGrid
 
   before_action :authenticate_user!, except: [:index, :put]
 

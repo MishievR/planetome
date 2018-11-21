@@ -3,5 +3,5 @@ class Place < ApplicationRecord
 
   belongs_to :user
   belongs_to :city
-  belongs_to :meeting
+  # belongs_to :meeting
 end
