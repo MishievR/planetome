@@ -51,7 +51,7 @@ class TopicsController < ApplicationController
   def update
     @topic = Topic.find(params[:id])
     if @topic.update(topic_params)
-      flash[:success] = "The topic #{@topic.name} was updated succcessfully"
+      flash[:success] = "The topic #{@topic.title} was updated succcessfully"
       redirect_to topic_path(@topic)
     else
       render 'edit'
