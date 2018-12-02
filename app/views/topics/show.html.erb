@@ -1,24 +1,30 @@
-<div class="container">
+<!-- <div class="container"> -->
   <div class="row">
     <div class="col">
       <h1 class="main-text-color">
       <% if current_user.present? %>
-      <%= current_user.first_name %>,
+      <%= current_user.first_name %>, meet
+      <% else %>
+      Meet
       <% end %>
-      Meet <%= @topic.user.first_name %>!</h1>
-      <h4><small class="text-muted">From <%= @topic.user.city.name %></small></h4>
+      <%= @topic.user.first_name %>!</h1>
+      <!-- <h4><small class="text-muted">From <%= @topic.user.city.name %></small></h4> -->
     </div>
   </div>
   <br>
   <div class="row">
-    <div class="col-12 col-sm-12 col-md-8">
+    <div class="col-12 col-sm-12 col-md-12">
       <%= link_to user_path(@topic.user), class: "card-user-link"  do %>
       <div class="card card-user-topic mt-3">
         <%= image_tag @topic.user.background, class: "card-user-topic-bg-img" if @topic.user.background? %>
-        <%= image_tag @topic.user.avatar.url(:medium), class: "profilePhotoTopicShow  " if @topic.user.avatar? %>
+        <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+          <div class="community-gragient-bg">
+            <%= image_tag @topic.user.avatar.url(:medium), class: "profilePhotoTopicShow  " if @topic.user.avatar? %>
+          </div>
+        </div>
       </div>
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 col-md-8">
           <div class="card card-meeting-setup mt-3">
             <div class="card-body">
               <h5 class="card-text card-text-main main-text-color"><%= truncate(@topic.user.about, length: 100 )%></h5>
@@ -32,6 +38,16 @@
       <% end %>
     </div>
   </div>
+  <% if current_user == @topic.user %>
+    <div class="row mt-3">
+      <div class="col-12 col-sm-12 col-md-8">
+        <h6 class="main-text-color">
+        <small class="text-muted">Owner's controls</small>
+        </h6>
+        <%= link_to "Edit your topic", edit_topic_path, class: "btn btn btn-danger "  %>
+      </div>
+    </div>
+  <% end %>
 
   <div class="row">
     <div class="col">
@@ -47,10 +63,11 @@
         <div class="card-body">
           <div class="row">
             <div class="col-12">
-              <h4 class="main-text-color  mb-3">
+              <h3 class="main-text-color mb-3">
                 <%= @topic.title %>
-              </h4>
-              <h5 class="feed-link  mb-2"><small class="text-muted"><%= @topic.description %></small></h5>
+              </h3>
+              <hr style="width:50px;height:1.5px;background-color:#e62e21;margin-left:0px;margin-top:0px;" >
+              <h5 class="feed-link mb-2"><small class=""><%= @topic.description %></small></h5>
             </div>
           </div>
         </div>
@@ -186,4 +203,4 @@
       <% end %>
     </div>
   <% end %>
-</div>
+<!-- </div> -->

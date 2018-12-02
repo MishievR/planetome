@@ -91,23 +91,20 @@
     <div class="row">
       <% @topics.order(:created_at => :DESC).take(3).each do |i| %>
       <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-        <div class="card card-topic mt-3">
+        <div class="card card-topic mt-1">
           <div class="card-body">
-            <div class="row">
-              <div class="col-12">
-                <h4 class="main-text-color text-center mb-3">
-                  <%= link_to i.title, topic_path(i), class: "main-text-color", target: :_blank %>
-                </h4>
-                <h5 class="feed-link text-center mb-2"><small class="text-muted"><%= i.description %></small></h5>
-                <hr class="mb-4">
-                <% if i.user.present? %>
-                  <h6 class="main-text-color text-center">Created by
-                    <%= image_tag i.user.avatar.url(:medium), class: "profilePhotoIndex" if i.user.avatar? %>
-                    <%= link_to i.user.first_name, user_path(i.user), class: "user-link-index" %>
-                  </h6>
-                <% end %>
-              </div>
-            </div>
+            <h4 class="main-text-color mb-3">
+              <%= link_to i.title, topic_path(i), class: "main-text-color", target: :_blank %>
+            </h4>
+            <!-- <h5 class="feed-link text-center mb-2"><small class="text-muted"><%= i.description %></small></h5> -->
+            <!-- <hr class="mb-4"> -->
+            <!-- <hr style="width:50px;height:1.5px;background-color:#e62e21;margin-left:0px;margin-top:0px;"> -->
+            <% if i.user.present? %>
+              <p class="main-text-color" style="margin-bottom:-10px;"><span style="margin-right:3px;">Created by</span>
+                <%= image_tag i.user.avatar.url(:medium), class: "profilePhotoIndex" if i.user.avatar? %>
+                <%= link_to i.user.first_name, user_path(i.user), class: "user-link-index" %>
+              </p>
+            <% end %>
           </div>
         </div>
         <br>
@@ -177,7 +174,7 @@
       <div class="col-12 col-md-6 col-lg-6 col-xl-6">
         <%= link_to city_path(city) do %>
         <div class="card bg-dark text-white card-field-main text-center mt-3">
-          <%= image_tag city.background, class: "card-field-img" if city.background? %>
+          <%= image_tag city.background, class: "card-field-img qqq" if city.background? %>
           <div class="card-img-overlay">
             <h4 class="card-title card-title-field"><strong><%= city.name%></strong></h4>
           </div>

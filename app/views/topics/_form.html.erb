@@ -1,22 +1,18 @@
-<%= form_for(@topic, :html => {class: "", role: "form"}) do |f| %>
-<div class="form-row search-row">
-    <div class="col-md-12 mb-3">
-      <div class="input-group mb-2">
-       <div class="input-group-prepend">
-         <div class="input-group-text search-input-prepend">Topic title</div>
-       </div>
-       <%= f.text_field :title, class: "form-control search-input", placeholder: "Space exploration" %>
-     </div>
-     <div class="input-group mb-2">
-      <div class="input-group-prepend">
-        <div class="input-group-text search-input-prepend">Why do you want to talk about this topic?</div>
-      </div>
-      <%= f.text_field :description, class: "form-control search-input", placeholder: "I dream to someday be able to go to the weekend on Earth's orbit or Moon." %>
-    </div>
-    </div>
-    <div class="col-md-12 mx-auto mb-2">
-      <%= f.submit "Submit", class: "btn btn-danger btn-block search-button" %>
-    </div>
-
-  </div>
-<% end %>
+<%= render 'shared/errors', obj: @topic %>
+        <%= form_for(@topic, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-8 mb-3">
+            <div class="form-group mb-4">
+              <h4><strong><%= f.label :Title, class: "control-label" %></strong></h4>
+              <%= f.text_field :title, class: "form-control search-input", placeholder: "", autofocus: true %>
+            </div>
+            <div class="form-group mb-4">
+              <h4><strong>Why do you want to talk about this topic?</strong><br><small>And why people will want to meet with you?</small> </h4>
+              <%= f.text_area :description, rows: 3, class: "form-control search-input-text-area", placeholder: "" %>
+            </div>
+          </div>
+          <div class="col-md-12 mx-auto mb-2">
+            <%= f.submit "Submit", class: "btn btn-danger btn-lg btn-post-job" %>
+          </div>
+        </div>
+        <% end %>

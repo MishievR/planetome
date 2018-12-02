@@ -2,8 +2,8 @@ class TopicsController < ApplicationController
   require 'sendgrid-ruby'
   include SendGrid
 
-  before_action :require_same_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
     @topics = Topic.all

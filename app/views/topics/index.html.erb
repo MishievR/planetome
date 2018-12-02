@@ -16,10 +16,8 @@
         </div>
       <% else %>
         <div class="col-12">
-          <h1 class="main-text-color">Topics
-          <br>
-          <small class="text-muted">The begginings of every great conversation.</small>
-          </h1>
+          <h1 class="red-text-color-bold"><%=  image_tag('planetome2.0_logo.png', style: 'height:40px;width:auto;')%> topics</h1>
+          <h3><small class="text-muted">The begginings of every great conversation.</small></h3>
         </div>
       <% end %>
     </div>
@@ -30,21 +28,21 @@
         <div class="col-12">
           <div class="card card-topic mt-3">
             <div class="card-body">
-              <div class="row">
-                <div class="col-12">
-                  <h4 class="main-text-color text-center mb-3">
+              <!-- <div class="row">
+                <div class="col-12"> -->
+                  <h5 class="main-text-color  mb-3">
                     <%= link_to i.title, topic_path(i), class: "main-text-color", target: :_blank %>
-                  </h4>
-                  <h5 class="feed-link text-center mb-2"><small class="text-muted"><%= i.description %></small></h5>
-                  <hr class="mb-4">
+                  </h5>
+                  <p class="feed-link text-muted mb-4"><%= i.description %></p>
+                  <!-- <hr class="mb-4"> -->
                   <% if i.user.present? %>
-                    <h6 class="main-text-color text-center">Created by
+                    <h6 class="main-text-color" style="margin-bottom:0px;"><span style="margin-right:3px;">Created by</span>
                       <%= image_tag i.user.avatar.url(:medium), class: "profilePhotoIndex" if i.user.avatar? %>
                       <%= link_to i.user.first_name, user_path(i.user), class: "user-link-index" %>
                     </h6>
                   <% end %>
-                </div>
-              </div>
+                <!-- </div>
+              </div> -->
             </div>
           </div>
         </div>
