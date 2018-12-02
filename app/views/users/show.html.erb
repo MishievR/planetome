@@ -2,10 +2,7 @@
 <div class="row">
   <div class="col">
     <% if current_user == @user %>
-      <h1 class="main-text-color">Welcome back to your page <%= @user.first_name %>
-      <!-- <br> -->
-      <!-- <small class="text-muted">The field where you want to start.</small> -->
-      </h1>
+      <h3 class="main-text-color">Welcome back to your page <%= @user.first_name %></h3>
     <% else %>
       <h1 class="main-text-color">Meet <%= @user.first_name %></h1>
     <% end %>

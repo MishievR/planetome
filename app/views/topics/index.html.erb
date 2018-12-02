@@ -2,22 +2,26 @@
 <html lang="en">
   <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123975074-1"></script>
-    <title>Planetome Meeting Topics</title>
+    <title>Planetome Topics</title>
   </head>
   <body>
     <div class="row">
       <% if user_signed_in? %>
       <div class="col-12  col-md-7 col-lg-8 col-xl-9">
-        <h1 class="red-text-color-bold"><%=  image_tag('planetome2.0_logo.png', style: 'height:40px;width:auto;')%> topics</h1>
-        <h3><small class="text-muted">The begginings of every great conversation.</small></h3>
+        <h3 class="red-text-color-bold"><%=  image_tag('planetome2.0_logo.png', style: 'height:30px;width:auto;')%> topics
+        <br>
+        <small class="text-muted">The begginings of every great conversation.</small>
+        </h3>
       </div>
         <div class="col-12 col-md-5 col-lg-4 col-xl-3">
           <%= link_to "Create a topic", new_topic_path, class: "btn btn-danger btn-block btn-post-job" %>
         </div>
       <% else %>
         <div class="col-12">
-          <h1 class="red-text-color-bold"><%=  image_tag('planetome2.0_logo.png', style: 'height:40px;width:auto;')%> topics</h1>
-          <h3><small class="text-muted">The begginings of every great conversation.</small></h3>
+          <h3 class="red-text-color-bold"><%=  image_tag('planetome2.0_logo.png', style: 'height:30px;width:auto;')%> topics
+          <br>
+          <small class="text-muted">The begginings of every great conversation.</small>
+          </h3>
         </div>
       <% end %>
     </div>

@@ -174,7 +174,7 @@
       <div class="col-12 col-md-6 col-lg-6 col-xl-6">
         <%= link_to city_path(city) do %>
         <div class="card bg-dark text-white card-field-main text-center mt-3">
-          <%= image_tag city.background, class: "card-field-img qqq" if city.background? %>
+          <%= image_tag city.background, class: "card-field-img" if city.background? %>
           <div class="card-img-overlay">
             <h4 class="card-title card-title-field"><strong><%= city.name%></strong></h4>
           </div>
@@ -188,15 +188,12 @@
       <div class="col">
         <div class="mr-3">
           <% if @cities.count > 20 %>
-          <%= link_to(cities_path, class: "btn btn-outline-danger btn-block btn-moreinfo-main main-text-color mt-3") do %>
-          + <%= City.count-20 %> more
-          <% end %>
-
+            <%= link_to(cities_path, class: "btn btn-outline-danger btn-block btn-moreinfo-main main-text-color mt-3") do %>
+            + <%= City.count-20 %> more
+            <% end %>
           <% else %>
           <br>
-
           <% end %>
-
         </div>
       </div>
     </div>

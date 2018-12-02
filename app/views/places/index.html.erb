@@ -1,66 +1,77 @@
-<div class="row">
-  <div class="col">
-    <h1 class="red-text-color-bold"><%=  image_tag('planetome2.0_logo.png', style: 'height:40px;width:auto;')%> places</h1>
-    <h3><small class="text-muted">Where the meaningful conversation happens.</small></h3>
-  </div>
-</div>
-<div class="row">
-  <% @places.each do |place| %>
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-    <%= link_to place_path(place), class: "card-community-link" do %>
-      <div class="card bg-dark text-white text-white card-field-main  mt-3">
-        <%= image_tag place.main_image, class: "card-commutity-img-planetome " if place.main_image? %>
-        <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-          <!-- <h3 class="card-title card-title-index "><strong class="font-red-background-color"><%# community.name %></strong></h3> -->
-        </div>
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123975074-1"></script>
+    <title>Planetome Places</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col">
+        <h3 class="red-text-color-bold"><%=  image_tag('planetome2.0_logo.png', style: 'height:30px;width:auto;')%> places
+          <br>
+          <small class="text-muted">Where the meaningful conversation happens.</small>
+        </h3>
       </div>
-      <div class="row">
-        <div class="col">
-          <h5 class="mt-2 main-text-color"><strong><%= place.name %></strong> </h5>
-          <h6 class=" main-text-color text-muted card-office-address-text"><small><%= place.full_address %></small></h6>
-          <p class="card-office-info-text">
-            <% if place.place_type == "coffee_shop" %>
-              Coffee Shop |
-              <% if place.is_free_wifi = true %>
-                Free WiFi
-              <% end %>
-            <% elsif  place.place_type == "coworking" %>
-              Coworking |
-              <% if place.is_good_location = true %>
-                Good location
-              <% end %>
-            <% elsif  place.place_type == "smart_office" %>
-              Smart Office
-            <% elsif  place.place_type == "library" %>
-              Library
-            <% elsif  place.place_type == "public_place" %>
-              Public place
-            <% elsif  place.place_type == "outdoors" %>
-              Outdoors
-            <% elsif  place.place_type == "meeting_point" %>
-              Meeting point
-            <% end %>
+    </div>
+    <div class="row">
+      <% @places.each do |place| %>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+        <%= link_to place_path(place), class: "card-community-link" do %>
+          <div class="card bg-dark text-white text-white card-field-main  mt-3">
+            <%= image_tag place.main_image, class: "card-commutity-img-planetome " if place.main_image? %>
+            <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+              <!-- <h3 class="card-title card-title-index "><strong class="font-red-background-color"><%# community.name %></strong></h3> -->
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5 class="mt-2 main-text-color"><strong><%= place.name %></strong> </h5>
+              <h6 class=" main-text-color text-muted card-office-address-text"><small><%= place.full_address %></small></h6>
+              <p class="card-office-info-text">
+                <% if place.place_type == "coffee_shop" %>
+                  Coffee Shop |
+                  <% if place.is_free_wifi = true %>
+                    Free WiFi
+                  <% end %>
+                <% elsif  place.place_type == "coworking" %>
+                  Coworking |
+                  <% if place.is_good_location = true %>
+                    Good location
+                  <% end %>
+                <% elsif  place.place_type == "smart_office" %>
+                  Smart Office
+                <% elsif  place.place_type == "library" %>
+                  Library
+                <% elsif  place.place_type == "public_place" %>
+                  Public place
+                <% elsif  place.place_type == "outdoors" %>
+                  Outdoors
+                <% elsif  place.place_type == "meeting_point" %>
+                  Meeting point
+                <% end %>
 
 
-            <br>
-            <% if place.price == 0 %>
-              Free
+                <br>
+                <% if place.price == 0 %>
+                  Free
 
-            <% elsif place.price == 1 %>
-              $
+                <% elsif place.price == 1 %>
+                  $
 
-            <% elsif place.price == 2 %>
-              $$
-            <% elsif place.price == 3 %>
-              $$$
-            <% elsif place.price == 4 %>
-              $$$+
-            <% end %>
-          </p>
-        </div>
+                <% elsif place.price == 2 %>
+                  $$
+                <% elsif place.price == 3 %>
+                  $$$
+                <% elsif place.price == 4 %>
+                  $$$+
+                <% end %>
+              </p>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-  <% end %>
-</div>
+      <% end %>
+    </div>
+  </body>
+</html>

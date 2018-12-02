@@ -40,7 +40,7 @@ class TopicsController < ApplicationController
 
       redirect_to topics_path
     else
-      flash[:success] = "Wooops!"
+      render 'new'
     end
   end
 

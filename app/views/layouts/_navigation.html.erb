@@ -24,10 +24,8 @@
             <br>
             Stay tuned for awesome features!</p> -->
           <%= link_to "Places", places_path, class: "dropdown-item"  %>
-          <a class="dropdown-item" href="#">People</a>
+          <%= link_to "People", users_path, class: "dropdown-item"  %>
           <a class="dropdown-item" href="#">About</a>
-          <a class="dropdown-item" href="#">Employers</a>
-
         </div>
       </li>
 
@@ -43,15 +41,10 @@
     </ul>
     <span class="navbar-text mr-2">
       <% if user_signed_in? %>
-        <%= link_to(destroy_user_session_path, method: :delete, class: "btn") do %>
-        <i class="fas fa-sign-out-alt"></i>
-        Log out
-        <% end %>
-        <%= link_to(user_path(current_user), class: "btn") do %>
-        My <% if current_user.admin? %>
-            admin
-           <% end %>
-        page
+        <%= image_tag current_user.avatar.url(:medium), class: "profilePhotoNav" if current_user.avatar? %>
+        <%= link_to(user_path(current_user), class: "btn btn-post-job") do %>
+        <%= current_user.first_name %>
+        <% if current_user.admin? %><% end %>
         <% end %>
       <% else %>
         <%= link_to(new_user_session_path, :class=>"btn") do %>
