@@ -42,6 +42,18 @@ body {
 
 }
 
+.text-17 {
+  font-size: 17px;
+}
+
+.text-20 {
+  font-size: 20px;
+}
+
+.heading-22 {
+  font-size: 22px !important;
+}
+
 .support-text-color {
   color: #302D45;
 }
@@ -140,6 +152,18 @@ body {
   background-size: cover;
   // box-shadow:  0 0px 20px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.2);
 
+}
+
+.jumbo-email {
+  width: 100%;
+  height: 250px;
+  border-radius: 0px;
+  margin-bottom: 0px;
+  background-image: url(https://farm5.staticflickr.com/4829/31364179967_caf4f461ea_o.png);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  box-shadow:  0 0px 20px 0 rgba(211, 211, 211, 0.3), 0 0px 20px 0 rgba(211, 211, 211, 0.3);
 }
 
 .text-white-shadow {

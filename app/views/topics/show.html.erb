@@ -1,206 +1,110 @@
-<!-- <div class="container"> -->
-  <div class="row">
-    <div class="col">
-      <h1 class="main-text-color">
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-8">
+    <h1 class="main-text-color">
+    <%= @topic.title %> <% if current_user == @topic.user %>
+      <%= link_to "Edit your topic", edit_topic_path, class: "btn btn-sm btn-danger" %>
+      <% end %> </h1>
+    <hr style="width:50px;height:1.5px;background-color:#e62e21;margin-left:0px;margin-top:0px;" >
+    <h5 class="feed-link mb-2"><small class=""><%= @topic.description %></small></h5>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-8">
+    <% if current_user == @topic.user %>
+    <% else %>
+      <p class="main-text-color heading-22 mb-3">
       <% if current_user.present? %>
       <%= current_user.first_name %>, meet
       <% else %>
       Meet
       <% end %>
-      <%= @topic.user.first_name %>!</h1>
-      <!-- <h4><small class="text-muted">From <%= @topic.user.city.name %></small></h4> -->
-    </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-12 col-sm-12 col-md-12">
-      <%= link_to user_path(@topic.user), class: "card-user-link"  do %>
-      <div class="card card-user-topic mt-3">
-        <%= image_tag @topic.user.background, class: "card-user-topic-bg-img" if @topic.user.background? %>
-        <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-          <div class="community-gragient-bg">
-            <%= image_tag @topic.user.avatar.url(:medium), class: "profilePhotoTopicShow  " if @topic.user.avatar? %>
-          </div>
+      <%= @topic.user.first_name %></p>
+    <% end %>
+    <%= link_to user_path(@topic.user), class: "card-user-link"  do %>
+    <div class="card card-user">
+      <%= image_tag @topic.user.background, class: "card-user-bg-img card-img-top" if @topic.user.background? %>
+      <div class="card-img-overlay">
+        <div class="d-flex justify-content-center">
+          <%= image_tag @topic.user.avatar.url(:medium), class: "profilePhoto " if @topic.user.avatar? %>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12 col-md-8">
-          <div class="card card-meeting-setup mt-3">
-            <div class="card-body">
-              <h5 class="card-text card-text-main main-text-color"><%= truncate(@topic.user.about, length: 100 )%></h5>
-              <% if @topic.user.city.name != nil %>
-                <h6 class="card-text card-text-main main-text-color">Live in <%= @topic.user.city.name %></h6>
-              <% end %>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6 class="card-text card-text-main main-text-color mt-2 "><%= truncate(@topic.user.about, length: 100 )%></h6>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-8">
+    <p class="main-text-color heading-22 mb-3">Setup a meeting with <%= @topic.user.first_name %></p>
+    <div class="card card-meeting-setup">
+      <div class="card-body">
+        <%= form_for @meeting, :url => meetings_path(@meeting), :html => {:method => :post} do |f| %>
+        <%= f.hidden_field :main_topic_id, :value => @topic.id %>
+        <%= f.hidden_field :meeting_with, :value => @topic.user.id %>
+        <div class="form-group ">
+          <h4 class="main-text-color mb-3 ">1. Pick the places
+          <small>or <%= link_to "discover all available places", places_path, class: "red-text-color", target: :_blank %></small></h4>
+          <div class="row">
+            <%= f.collection_check_boxes :place_ids, Place.all, :id, :name do |cb| %>
+            <div class="col-12 ">
+              <ul class="ul-categories">
+               <strong><%= cb.label(class: "form-check-label category-check ") {cb.check_box(class: "form-check-input ") + cb.text}  %></strong>
+              </ul>
             </div>
+            <% end %>
           </div>
-        </div>
+         </div>
+         <br>
+         <div class="form-group ">
+           <h4 class="main-text-color mb-3 ">2. Choose your preffered meeting time</h4>
+           <%= f.select :meeting_time, options_for_select([[ "8:00 - 11:00", 0], ["11:00 - 15:00", 1], ["15:00 - 19:00", 2], ["19:00 - 21:00", 3]]), class: "form-control company-pick", autofocus: false %>
+         </div>
+         <br>
+          <div class="form-group ">
+            <h4 class="main-text-color mb-3">3. Tell <%= @topic.user.first_name %> why you are interested in this topic</h4>
+            <%= f.text_area :meeting_comment, class: "form-control",rows: 2, placeholder: "I love it!" %>
+          </div>
+          <div class="form-group mb-2 ">
+            <%= f.submit "Send meeting invitation!", class: "btn btn-lg btn-danger btn-post-job good-font mb-2" %>
+          </div>
+        <% end %>
       </div>
-      <% end %>
     </div>
   </div>
-  <% if current_user == @topic.user %>
-    <div class="row mt-3">
-      <div class="col-12 col-sm-12 col-md-8">
-        <h6 class="main-text-color">
-        <small class="text-muted">Owner's controls</small>
-        </h6>
-        <%= link_to "Edit your topic", edit_topic_path, class: "btn btn btn-danger "  %>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="row">
-    <div class="col">
-      <br>
-      <br>
-      <h2 class="main-text-color"><%= @topic.user.first_name %> is open to meet and to talk about:</h2>
-    </div>
-  </div>
-
+</div>
+<br>
+<br>
+<% if @user.topics.count > 1 %>
   <div class="row">
     <div class="col-12 col-sm-12 col-md-8">
-      <div class="card card-topic mt-3">
+      <br>
+      <p class="main-text-color heading-22 ">Also there are other topics you can discuss with <%= @topic.user.first_name %> on the meeting </p>
+    </div>
+  </div>
+  <div class="row">
+    <% @user.topics.all_except(@topic).order(:created_at => :DESC).each do |i| %>
+    <div class="col-12 col-sm-12 col-md-8">
+      <div class="card mt-2">
         <div class="card-body">
           <div class="row">
             <div class="col-12">
-              <h3 class="main-text-color mb-3">
-                <%= @topic.title %>
-              </h3>
-              <hr style="width:50px;height:1.5px;background-color:#e62e21;margin-left:0px;margin-top:0px;" >
-              <h5 class="feed-link mb-2"><small class=""><%= @topic.description %></small></h5>
+              <h4 class="main-text-color  mb-3">
+                <%= link_to i.title, topic_path(i), class: "main-text-color", target: :_blank %>
+              </h4>
+              <p class="text-17 mb-1"><small class=""><%= i.description %></small></p>
             </div>
           </div>
         </div>
       </div>
-      <br>
     </div>
+    <% end %>
   </div>
-  <br>
-  <div class="row">
-    <div class="col-12 col-sm-12 col-md-8">
-      <h2 class="main-text-color mb-3">Setup a meeting  </h2>
-      <div class="card card-meeting-setup">
-        <div class="card-body">
-      <%= form_for @meeting, :url => meetings_path(@meeting), :html => {:method => :post} do |f| %>
-      <%= f.hidden_field :main_topic_id, :value => @topic.id %>
-      <%= f.hidden_field :meeting_with, :value => @topic.user.id %>
-
-
-      <div class="form-group ">
-        <h4 class="main-text-color mb-3 ">1. Pick the places
-        <small>or <%= link_to "discover all available places", places_path, class: "red-text-color", target: :_blank %></small></h4>
-        <div class="row">
-          <%= f.collection_check_boxes :place_ids, Place.all, :id, :name do |cb| %>
-          <div class="col-12 ">
-            <ul class="ul-categories">
-             <strong><%= cb.label(class: "form-check-label category-check ") {cb.check_box(class: "form-check-input ") + cb.text}  %></strong>
-            </ul>
-          </div>
-          <% end %>
-        </div>
-       </div>
-       <br>
-       <div class="form-group ">
-         <h4 class="main-text-color mb-3 ">2. Choose your preffered meeting time</h4>
-         <%= f.select :meeting_time, options_for_select([[ "8:00 - 11:00", 0], ["11:00 - 15:00", 1], ["15:00 - 19:00", 2], ["19:00 - 21:00", 3]]), class: "form-control company-pick", autofocus: false %>
-       </div>
-       <br>
-        <div class="form-group ">
-          <h4 class="main-text-color mb-3">3. Tell <%= @topic.user.first_name %> why you are interested in this topic</h4>
-          <%= f.text_area :meeting_comment, class: "form-control",rows: 2, placeholder: "I love it!" %>
-        </div>
-        <div class="form-group mb-2 ">
-          <%= f.submit "Send meeting invitation!", class: "btn btn-lg btn-danger btn-post-job good-font mb-2" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
-</div>
-  <br>
-    <br>
-
-
-
-
-
-
-
-<!--
-    <div class="row">
-      <div class="col-12">
-        <h4 class="main-text-color">1. Pick the places</h4>
-
-        <div class="row">
-          <% @places.each do |place| %>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <%= link_to place_path(place), class: "card-community-link" do %>
-              <div class="card bg-dark text-white card-field-main  mt-3">
-                <%= image_tag place.main_image, class: "card-commutity-img-planetome " if place.main_image? %>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <h6 class="mt-2 main-text-color"><strong><%= place.name %></strong></h6>
-                  <h6 class=" main-text-color text-muted card-office-address-text"><small><%= place.full_address %></small></h6>
-                  <br>
-                  <strong>Put the map here</strong>
-                </div>
-              </div>
-            <% end %>
-          </div>
-          <% end %>
-        </div>
-
-        <br>
-
-        <h4 class="main-text-color">2. Choose your preffered time</h4>
-        <br>
-        <%= link_to "8:00 - 11:00","hhdh", role: :button, class: "btn btn-lg btn-danger btn-post-job good-font mr-3 mb-2" %>
-        <%= link_to "11:00 - 15:00","hhdh", role: :button, class: "btn btn-lg btn-danger btn-post-job good-font mr-3 mb-2" %>
-        <%= link_to "15:00 - 19:00","hhdh", role: :button, class: "btn btn-lg btn-danger btn-post-job good-font mr-3 mb-2" %>
-        <%= link_to "19:00 - 21:00","hhdh", role: :button, class: "btn btn-lg btn-danger btn-post-job good-font mb-2" %>
-
-        <br>
-          <br>
-
-        <h4 class="main-text-color mb-3">3. Tell <%= @topic.user.first_name %> why you are interested in this topic </h4>
-
-        <div class="input-group">
-
-          <textarea class="form-control" aria-label="With textarea"></textarea>
-        </div>
-
-        <br>
-        <br>
-        <%= link_to "Send meeting invitation!","hhdh", role: :button, class: "btn btn-lg btn-danger btn-post-job good-font mb-2" %>
-
-      </div>
-    </div> -->
-
-  <% if @user.topics.count > 1 %>
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-8">
-        <br>
-        <h4 class="main-text-color text-muted">Also there are other topics you can discuss with <%= @topic.user.first_name %> on the meeting </h4>
-      </div>
-    </div>
-    <div class="row">
-      <% @user.topics.all_except(@topic).order(:created_at => :DESC).each do |i| %>
-      <div class="col-12 col-sm-12 col-md-8">
-        <div class="card mt-3">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-12">
-                <h4 class="main-text-color text-muted  mb-3">
-                  <%= link_to i.title, topic_path(i), class: "main-text-color text-muted", target: :_blank %>
-                </h4>
-                <h5 class="feed-link  mb-2"><small class="text-muted"><%= i.description %></small></h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    </div>
-  <% end %>
-<!-- </div> -->
+<% end %>

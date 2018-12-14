@@ -1,0 +1,137 @@
+<!-- <div class="row">
+  <div class="jumbotron jumbotron-fluid jumbo-test">
+    <div class="container">
+      <div class="col">
+        <h1 class="display-4 main-text-color font-black-background-color-community-show main-caption good-font">SpaceFeed</h1>
+        <h3><small class="font-black-background-color-community-show main-caption">Be on the edge of space exploration</small></h3>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+    <!-- <div class="row">
+      <div class="col">
+        <%= link_to(ideas_path, class: "pages-index-main-links good-font") do %>
+        <h1 class="main-text-color">The feed</h1>
+        <h3><small class="text-muted">Know what's new here.</small></h3>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <% @ideas.order(:created_at => :DESC).take(5).each do |i| %>
+      <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
+
+          <div class="card card-idea-index mt-2">
+            <div class="row">
+              <%= link_to upvote_idea_path(i), method: :put, class: "btn btn-default  upvote-controls float-left" do %>
+                <i class="fas fa-caret-up upvote-arrow"></i>
+                <br>
+                <div class="upvote-number">
+                  <%= i.get_upvotes.size %>
+                </div>
+              <% end %>
+              <div class="col-10 col-sm-9 col-md-10 col-lg-10 col-xl-11">
+                <h4 class="main-text-color">
+                  <%= link_to i.title, "#{i.link}", class: "main-text-color", target: :_blank %>
+                </h4>
+                <h5 class="feed-link"><small class="text-muted"><%= i.link %></small></h5>
+                <small class="float-left text-muted" style="margin-top:7px;"><%= time_ago_in_words(i.created_at) %> ago by
+                <% if i.user.present? %>
+                <%= link_to i.user.name, user_path(i.user), class: "main-text-color" %>
+                <% end %>
+                <% if current_user.present? && current_user.admin? %>
+                <%= link_to " | delete", idea_path(i), method: :delete, class: "add-idea-link", data: { confirm: 'Idea will be deleted permanently. Are you sure?' } %>
+                <% end %>
+                </small>
+              </div>
+            </div>
+
+        </div>
+        <br>
+      </div>
+      <% end %>
+    </div>
+    <% if @ideas.count < 5 %>
+      <br>
+      <br>
+    <% else %>
+    <div class="row">
+      <div class="col">
+          <%= link_to(ideas_path, class: "btn btn-danger  main-text-color ") do %>
+          Explore more news
+          <% end %>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <% end %>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card card-job-post">
+              <div class="card-body">
+                <%# link_to new_job_path, data: { turbolinks: false }, class: "card-community-link"  do %>
+                  <h5 class="card-title"><strong class="good-font">Rent a home</strong> </h5>
+                  <p class="card-text">Find a perfect place to live with community or alone.</p>
+                <%# end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card card-job-post">
+              <div class="card-body">
+                <%= link_to new_job_path, data: { turbolinks: false }, class: "card-community-link"  do %>
+                  <h5 class="card-title"><strong class="good-font">Find a place to work</strong> </h5>
+                  <p class="card-text">Discover the best places to work from coworkings to libraries.</p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card card-job-post">
+              <div class="card-body">
+                <%= link_to new_job_path, data: { turbolinks: false }, class: "card-community-link"  do %>
+                  <h5 class="card-title"><strong class="good-font">Find a Job</strong> </h5>
+                  <p class="card-text">Local or remote but meaningful and with an impact.</p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br> -->

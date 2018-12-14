@@ -5,28 +5,13 @@
     <title>Planetome - Enabling meaningful human connections in the real world. </title>
   </head>
   <body>
-    <!-- <div class="row">
-      <div class="jumbotron jumbotron-fluid jumbo-test">
-        <div class="container">
-          <div class="col">
-            <h1 class="display-4 main-text-color font-black-background-color-community-show main-caption good-font">SpaceFeed</h1>
-            <h3><small class="font-black-background-color-community-show main-caption">Be on the edge of space exploration</small></h3>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-
-
     <% if current_user.present? %>
-
     <% else %>
     <br>
     <br>
     <div class="row">
       <div class="col">
         <h1 class="main-text-color"><%=  image_tag('planetome2.0_logo.png', style: 'height:45px;width:auto;margin-right:10px;')%><small> Enabling meaningful human connections in the real world.</small></h1>
-  <!-- - meet like-minded people in great places around the world. Enabling meaningful human conversations in the real world. -->
       </div>
     </div>
     <br>
@@ -38,8 +23,7 @@
     <% end %>
     <div class="row">
       <div class="jumbotron jumbotron-fluid jumbo-spacefeed">
-        <!-- <div class="jumbo-gragient-bg"></div> -->
-        <div class="container">
+        <div class="container-fluid">
           <div class="col">
             <% if current_user.present? %>
               <div class="row">
@@ -62,7 +46,6 @@
               </div>
             </div>
             <% else %>
-
             <h1 class=" main-text-color  good-font mt-3">Join us
             <br>
             <small>Find your perfect conversation today.</small></h1>
@@ -78,8 +61,20 @@
     </div>
     <br>
     <br>
+    <div class="row">
+      <div class="col">
+        <p class="text-20"> <strong>About</strong> <%=  image_tag('planetome2.0_logo.png', style: 'height:20px;width:auto;')%> </p>
+          <p class="text-17">We building services that helps to create connections between people around the world, not just online but in the real world.
+            <!-- <br>Meet with people who want to speak in English in Moscow.
+            <br>How it works:
+            <br>1. Choose coffee shop where you are comfortable to meet and discover topics there
+            <br>2. Find one that interesting to you and send a meeting invitation
+            <br>3. Discuss day and time with person and meet! -->
+            </p>
+      </div>
+    </div>
 
-
+    <br><br>
     <div class="row">
       <div class="col">
         <%= link_to(topics_path, class: "pages-index-main-links good-font") do %>
@@ -93,16 +88,13 @@
       <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
         <div class="card card-topic mt-1">
           <div class="card-body">
-            <h4 class="main-text-color mb-3">
+            <h5 class="main-text-color mt-2 mb-3">
               <%= link_to i.title, topic_path(i), class: "main-text-color", target: :_blank %>
-            </h4>
-            <!-- <h5 class="feed-link text-center mb-2"><small class="text-muted"><%= i.description %></small></h5> -->
-            <!-- <hr class="mb-4"> -->
-            <!-- <hr style="width:50px;height:1.5px;background-color:#e62e21;margin-left:0px;margin-top:0px;"> -->
+            </h5>
             <% if i.user.present? %>
-              <p class="main-text-color" style="margin-bottom:-10px;"><span style="margin-right:3px;">Created by</span>
+              <p class="main-text-color " style="margin-bottom:-10px;">
                 <%= image_tag i.user.avatar.url(:medium), class: "profilePhotoIndex" if i.user.avatar? %>
-                <%= link_to i.user.first_name, user_path(i.user), class: "user-link-index" %>
+                <span style="margin-left:3px;"><%= link_to i.user.first_name, user_path(i.user), class: "user-link-index" %></span>
               </p>
             <% end %>
           </div>
@@ -161,6 +153,55 @@
 
     <div class="row">
       <div class="col">
+        <div class="card card-field-main">
+      <div class="jumbotron jumbo-email">
+          <div class="col">
+            <% if current_user.present? %>
+            <div class="row">
+              <div class="col">
+            <p class="heading-22 main-text-color good-font mt-1 text-white text-white-shadow">Start exploring today!
+            <br>
+            <small>Discover new coffee shops and meet people there.</small></p>
+          </div>
+          </div>
+            <div class="row">
+              <div class="col">
+                <%= link_to "Discover places", places_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
+              </div>
+            </div>
+            <% else %>
+            <p class="heading-22 main-text-color good-font mt-2 text-white text-white-shadow">Join today!
+            <br>
+            <small>Get new locations and topics updates! Once a week.</small></p>
+            <div class="row">
+              <div class="col">
+                <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+                <style type="text/css">
+                #mc_embed_signup{ clear:left; font:14px; width:100%;}
+                </style>
+                <div id="mc_embed_signup">
+                <form action="https://planetome.us17.list-manage.com/subscribe/post?u=3602f37a0cdbaa42875a4ffb6&amp;id=31f6001008" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                  <div id="mc_embed_signup_scroll">
+                  <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                  <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3602f37a0cdbaa42875a4ffb6_31f6001008" tabindex="-1" value=""></div>
+                  <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <br>
+    <br>
+
+    <div class="row">
+      <div class="col">
         <%= link_to(cities_path, class: "pages-index-main-links good-font") do %>
         <h1 class="main-text-color">Cities</h1>
         <h3><small class="text-muted">Come to the new place, meet locals.</small></h3>
@@ -169,7 +210,6 @@
     </div>
 
     <div class="row">
-
       <% @cities.take(20).each do |city| %>
       <div class="col-12 col-md-6 col-lg-6 col-xl-6">
         <%= link_to city_path(city) do %>
@@ -199,135 +239,6 @@
     </div>
 
     <br>
-
-
-
-    <!-- <div class="row">
-      <div class="col">
-        <%= link_to(ideas_path, class: "pages-index-main-links good-font") do %>
-        <h1 class="main-text-color">The feed</h1>
-        <h3><small class="text-muted">Know what's new here.</small></h3>
-        <% end %>
-      </div>
-    </div>
-    <div class="row">
-      <% @ideas.order(:created_at => :DESC).take(5).each do |i| %>
-      <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
-
-          <div class="card card-idea-index mt-2">
-            <div class="row">
-              <%= link_to upvote_idea_path(i), method: :put, class: "btn btn-default  upvote-controls float-left" do %>
-                <i class="fas fa-caret-up upvote-arrow"></i>
-                <br>
-                <div class="upvote-number">
-                  <%= i.get_upvotes.size %>
-                </div>
-              <% end %>
-              <div class="col-10 col-sm-9 col-md-10 col-lg-10 col-xl-11">
-                <h4 class="main-text-color">
-                  <%= link_to i.title, "#{i.link}", class: "main-text-color", target: :_blank %>
-                </h4>
-                <h5 class="feed-link"><small class="text-muted"><%= i.link %></small></h5>
-                <small class="float-left text-muted" style="margin-top:7px;"><%= time_ago_in_words(i.created_at) %> ago by
-                <% if i.user.present? %>
-                <%= link_to i.user.name, user_path(i.user), class: "main-text-color" %>
-                <% end %>
-                <% if current_user.present? && current_user.admin? %>
-                <%= link_to " | delete", idea_path(i), method: :delete, class: "add-idea-link", data: { confirm: 'Idea will be deleted permanently. Are you sure?' } %>
-                <% end %>
-                </small>
-              </div>
-            </div>
-
-        </div>
-        <br>
-      </div>
-      <% end %>
-    </div>
-    <% if @ideas.count < 5 %>
-      <br>
-      <br>
-    <% else %>
-    <div class="row">
-      <div class="col">
-          <%= link_to(ideas_path, class: "btn btn-danger  main-text-color ") do %>
-          Explore more news
-          <% end %>
-      </div>
-    </div>
-    <br>
-    <br>
-
-    <% end %>
- -->
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="row">
-          <div class="col-md-8">
-            <div class="card card-job-post">
-              <div class="card-body">
-                <%# link_to new_job_path, data: { turbolinks: false }, class: "card-community-link"  do %>
-                  <h5 class="card-title"><strong class="good-font">Rent a home</strong> </h5>
-                  <p class="card-text">Find a perfect place to live with community or alone.</p>
-                <%# end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <br>
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="row">
-          <div class="col-md-8">
-            <div class="card card-job-post">
-              <div class="card-body">
-                <%= link_to new_job_path, data: { turbolinks: false }, class: "card-community-link"  do %>
-                  <h5 class="card-title"><strong class="good-font">Find a place to work</strong> </h5>
-                  <p class="card-text">Discover the best places to work from coworkings to libraries.</p>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <br>
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="row">
-          <div class="col-md-8">
-            <div class="card card-job-post">
-              <div class="card-body">
-                <%= link_to new_job_path, data: { turbolinks: false }, class: "card-community-link"  do %>
-                  <h5 class="card-title"><strong class="good-font">Find a Job</strong> </h5>
-                  <p class="card-text">Local or remote but meaningful and with an impact.</p>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <br> -->
-
 
   </body>
   <script>
