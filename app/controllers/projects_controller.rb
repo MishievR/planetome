@@ -87,7 +87,7 @@ class ProjectsController < ApplicationController
 
   def require_same_user
     @project = Project.find(params[:id])
-    if @project.user = current_user
+    if @project.user != current_user
       flash[:danger] = "You can't perform this action."
       redirect_to root_path
     end

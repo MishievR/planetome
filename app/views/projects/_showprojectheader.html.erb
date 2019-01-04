@@ -6,11 +6,11 @@
     </h3>
     <p class="text-muted">
     <% @project.fields.each do |field| %>
-    • <%= field.name %>
+    <%= field.name %> |
     <% end %>
     </p>
   </div>
   <div class="col-12 col-md-3 col-lg-3 col-xl-3">
-    <%= link_to 'Back', :back, class: "btn btn-outline-danger btn-block"  %>
+    <%= link_to 'Back', :back, class: "btn btn-danger btn-block"  %>
   </div>
 </div>

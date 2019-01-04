@@ -9,8 +9,8 @@
       </h3>
     </div>
   </div>
-  <button class="btn btn-outline-danger btn-block " type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      <i class="fas fa-plus"></i>
+  <button class="btn btn-danger  " type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Add an update <i class="fas fa-plus"></i>
     </button>
 
   <% else %>
@@ -32,7 +32,7 @@
   <div class="row">
     <div class="col">
       <br>
-      <div class="card card-modal">
+      <div class="card card-login">
         <div class="card-body">
           <%= form_for [@project, @update], :method => :post  do |f| %>
             <div class="row">
@@ -48,7 +48,7 @@
                 </div>
               </div>
             </div>
-          <%= f.submit class: 'btn btn-outline-danger' %>
+          <%= f.submit class: 'btn btn-danger' %>
           <!-- <small class="form-text text-muted">NOTE: It may take some time to upload your background and/or profile image, <strong>don't reload the web page please!</strong></small> -->
         <% end %>
       </div>

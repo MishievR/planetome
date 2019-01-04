@@ -36,14 +36,14 @@ Rails.application.routes.draw do
   resources :cities
   resources :topics
   resources :communities do
-    # resources :posts
+  # resources :posts
   end
-  # resources :projects do
-  #   member do
-  #     put "upvote",    to: "projects#upvote"
-  #   end
-  #   resources :updates
-  # end
+  resources :projects do
+    member do
+      put "upvote",    to: "projects#upvote"
+    end
+    resources :updates
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
