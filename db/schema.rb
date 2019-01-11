@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181202175364) do
+ActiveRecord::Schema.define(version: 20190111060700) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -102,6 +102,22 @@ ActiveRecord::Schema.define(version: 20181202175364) do
     t.string   "background"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "homes", force: :cascade do |t|
+    t.string   "name"
+    t.text     "about"
+    t.text     "features"
+    t.string   "type"
+    t.string   "capacity"
+    t.string   "full_address"
+    t.string   "main_photo"
+    t.string   "other_photo"
+    t.string   "video_url"
+    t.integer  "city_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "ideas", force: :cascade do |t|

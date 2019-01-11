@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
     @project.user = current_user
     if @project.save
       flash[:success] = "Project was created succesfully"
-      redirect_to current_user
+      redirect_to @project
     else
       render 'new'
     end

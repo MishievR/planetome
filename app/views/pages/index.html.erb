@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123975074-1"></script>
-    <title>Planetome - Enabling meaningful human connections in the real world. </title>
+    <title>Planetome - Find like-minded people to rent a better house together. </title>
   </head>
   <body>
     <% if current_user.present? %>
@@ -11,7 +11,7 @@
     <br>
     <div class="row">
       <div class="col">
-        <h1 class="main-text-color"><%=  image_tag('logo_normal.png', style: 'height:40px;width:auto;margin-right:10px;')%><small> Enabling meaningful human connections in the real world.</small></h1>
+        <h1 class="main-text-color"><%=  image_tag('planetome2.0_logo.png', style: 'height:40px;width:auto;margin-right:10px;')%><small> Find like-minded people to rent a better house together.</small></h1>
       </div>
     </div>
     <br>
@@ -35,20 +35,20 @@
                     <%= image_tag current_user.avatar.url(:thumb), class: "profilePhotoIndex" if current_user.avatar? %>
                     <%= link_to current_user.first_name, user_path(current_user), class: "user-link-index" %>
                     <br>
-                    <small>Create meaningful conversation today.</small>
+                    <small>Connect with new communities today.</small>
                   </h1>
                   <% end %>
                 </div>
               </div>
             <div class="row">
               <div class="col">
-                <%= link_to "Create a meeting topic", new_topic_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
+                <%= link_to "Find your home", new_topic_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
               </div>
             </div>
             <% else %>
             <h1 class=" main-text-color  good-font mt-3">Join us
             <br>
-            <small>Find your perfect conversation today.</small></h1>
+            <small>Find a place you'll call home.</small></h1>
             <div class="row">
               <div class="col">
                 <%= link_to "Sign Up", new_user_registration_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
@@ -63,19 +63,55 @@
     <br>
     <div class="row">
       <div class="col">
-        <p class="text-20"> <strong>About</strong> <%=  image_tag('logo_normal.png', style: 'height:20px;width:auto;')%> </p>
-          <p class="text-17">We building services that helps to create connections between people around the world, not just online but in the real world.
+        <p class="text-20"> <strong>About</strong> <%=  image_tag('planetome2.0_logo.png', style: 'height:20px;width:auto;')%> </p>
+          <p class="text-17">Our goal is to make housing better and improve the way people live on the planet.
             <!-- <br>Meet with people who want to speak in English in Moscow.
             <br>How it works:
             <br>1. Choose coffee shop where you are comfortable to meet and discover topics there
             <br>2. Find one that interesting to you and send a meeting invitation
             <br>3. Discuss day and time with person and meet! -->
             </p>
+            <h6 class="red-text-color mt-3"><strong> Learn more ></strong></h6>
       </div>
     </div>
 
     <br><br>
+
+     <div class="row">
+      <div class="col">
+        <%= link_to(topics_path, class: "pages-index-main-links good-font") do %>
+        <h1 class="main-text-color">Homes</h1>
+        <h3><small class="text-muted">Great people living togerther in a nice place.</small></h3>
+        <% end %>
+      </div>
+    </div>
+
     <div class="row">
+      <% @places.each do |place| %>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+        <%= link_to place_path(place), class: "card-community-link" do %>
+          <div class="card bg-dark text-white card-field-main  mt-3">
+            <%= image_tag place.main_image, class: "card-commutity-img-planetome " if place.main_image? %>
+            <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+              <!-- <h3 class="card-title card-title-index "><strong class="font-red-background-color"><%# community.name %></strong></h3> -->
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col">
+              <h6 class="mt-2 main-text-color"><strong><%= place.name %></strong> </h6>
+              <h6 class=" main-text-color text-muted card-office-address-text"><small><%= place.full_address %></small></h6>
+
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+
+
+
+<!--     <div class="row">
       <div class="col">
         <%= link_to(topics_path, class: "pages-index-main-links good-font") do %>
         <h1 class="main-text-color">Topics</h1>
@@ -115,8 +151,8 @@
           <% end %>
         </div>
       </div>
-    </div>
-    <br>
+    </div> -->
+    <!-- <br>
     <div class="row">
       <div class="col">
         <%= link_to(places_path, class: "pages-index-main-links good-font") do %>
@@ -132,10 +168,7 @@
         <%= link_to place_path(place), class: "card-community-link" do %>
           <div class="card bg-dark text-white card-field-main  mt-3">
             <%= image_tag place.main_image, class: "card-commutity-img-planetome " if place.main_image? %>
-            <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-              <!-- <h3 class="card-title card-title-index "><strong class="font-red-background-color"><%# community.name %></strong></h3> -->
-            </div>
-
+            <div class="card-img-overlay h-100 d-flex flex-column justify-content-end"></div>
           </div>
           <div class="row">
             <div class="col">
@@ -147,7 +180,7 @@
         <% end %>
       </div>
       <% end %>
-    </div>
+    </div> -->
     <br>
     <br>
 
@@ -161,12 +194,12 @@
               <div class="col">
             <p class="heading-22 main-text-color good-font mt-1 text-white text-white-shadow">Start exploring today!
             <br>
-            <small>Discover new coffee shops and meet people there.</small></p>
+            <small>Discover new homes and meet people living there.</small></p>
           </div>
           </div>
             <div class="row">
               <div class="col">
-                <%= link_to "Discover places", places_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
+                <%= link_to "Discover homes", places_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
               </div>
             </div>
             <% else %>
@@ -211,7 +244,7 @@
 
     <div class="row">
       <% @cities.take(20).each do |city| %>
-      <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+      <div class="col-12 col-md-6 col-lg-4 col-xl-4">
         <%= link_to city_path(city) do %>
         <div class="card bg-dark text-white card-field-main text-center mt-3">
           <%= image_tag city.background, class: "card-field-img" if city.background? %>
