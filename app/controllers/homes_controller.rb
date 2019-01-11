@@ -61,7 +61,7 @@ class HomesController < ApplicationController
       :main_photo,
       :other_photo,
       :video_url,
-      :type,
+      :home_type,
       :full_address,
       :city_id,
       :user_id

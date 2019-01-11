@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123975074-1"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css' rel='stylesheet' />
+    <title>Planetome Homes | <%= @home.name%></title>
+    <style>
+       #map { top:0; bottom:0; width:100%; height: 400px;}
+   </style>
+  </head>
+  <body>
+    <!-- <div class="row">
+      <div class="col">
+        <h3 class=""><%= @home.name%></h3>
+      </div>
+    </div> -->
+
+
+    <div class="row">
+      <div class="col-12 order-xs-first col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div class="card card-field-main mb-3">
+          <%= image_tag @home.main_photo, class: "card-home-main-photo" if @home.main_photo? %>
+          <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+            <div class="community-gragient-bg">
+              <h1 class="main-text-color text-white"><%= @home.name %></h1>
+              <% if @home.home_type == "coliving" %>
+                <h4 class="text-white">Coliving</h4>
+              <% elsif  @home.home_type == "shared_house" %>
+                <h4 class="text-white">Shared house</h4>
+              <% elsif  @home.home_type == "community" %>
+                <span class="main-text-color text-white ">Community</span>
+              <% end %>
+              <span class="main-text-color text-white">| <%= @home.capacity %> people</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-12 order-xs-last col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <%= link_to user_path(@home.user), class: "card-user-link"  do %>
+        <div class="card card-user">
+          <%= image_tag @home.user.background, class: "card-user-bg-img card-img-top" if @home.user.background? %>
+          <div class="card-img-overlay">
+            <div class="d-flex justify-content-center">
+              <%= image_tag @home.user.avatar.url(:medium), class: "profilePhoto " if @home.user.avatar? %>
+            </div>
+            <div class="d-flex justify-content-center">
+              <h6 class="card-title card-title-user  font-background-color-usercard"><strong><%= @home.user.name %></strong></h6>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h6 class="card-text card-text-main main-text-color mt-2 "><%= truncate(@home.user.about, length: 100 )%></h6>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-field-main" style=" border: 2px #111223 solid; border-radius: 7px; object-fit: cover;">
+          <div id='map'></div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <span class="main-text-color text-muted">Owner controls</span>
+        <div class="card">
+          <div class="card-body">
+            <% if current_user || current_user.admin? %>
+              <span class="text-17"><%= link_to "Edit your home information", edit_home_path, class: "btn btn-sm btn-danger" %></span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-12 order-xs-last col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+
+
+        <!-- <h5>Added by
+          <%# if @place.user.present? %>
+          <%# link_to @place.user.name, user_path(@place.user), class: "main-text-color" %>
+          <%# end %>
+        </h5> -->
+        <br>
+        <br>
+        <h3 class="main-text-color good-font">About</h3>
+
+        <h6 class=""><%= simple_format @home.about %></h6>
+
+
+
+    </div>
+
+    </div>
+
+
+
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoicm9tYW4tbSIsImEiOiJjajFtcGtocDAwMDFoMzJwZmZzZG9hdG52In0.fxcpZ-JkfjAGgDbD2vDzUw';
+    var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/dark-v9'
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+    </script>
+  </body>
+</html>

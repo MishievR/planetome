@@ -1,0 +1,72 @@
+<%= render 'shared/errors', obj: @home %>
+  <div class="row">
+    <div class="col">
+      <div class="card card-add-place">
+        <div class="card-body">
+          <%= form_for(@home, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-9 col-xl-9">
+                <div class="form-group ml-2 mr-2 mb-4">
+                  <h4><strong><%= f.label :name, class: "control-label" %></strong> </h4>
+                  <%= f.text_field :name, class: "form-control", placeholder: "AstroHouse", autofocus: true %>
+                </div>
+                <div class="form-group ml-2 mr-2 mb-3">
+                  <h4><strong> Home photo</strong> </h4>
+                  <i class="fas fa-upload mr-2"></i><%= f.file_field :main_photo, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+                </div>
+                <div class="form-group ml-2 mr-2 mb-3">
+                  <h4><strong><%= f.label :About, class: "control-label" %></strong><br><small>Help them get some valueble insigts.</small> </h4>
+                  <%= f.text_area :about, rows: 3, class: "form-control", placeholder: "Help great entrepreneurs change the world.", autofocus: false, id: "body-field" %>
+                </div>
+                <div class="form-group ml-2 mr-2 mb-4">
+                  <h4><strong><%= f.label :total_people_capacity, class: "control-label" %></strong> </h4>
+                  <%= f.text_field :capacity, class: "form-control", placeholder: "7", autofocus: true %>
+                </div>
+                <div class="form-group ml-2 mr-2">
+                  <h4><strong><%= f.label :City, class: "control-label" %></strong> </h4>
+                  <h4><%= f.select :city_id, City.all.collect {|p| [ p.name, p.id ] }, { :include_blank => 'Select a City'}, class: "form-control company-pick", autofocus: false %></h4>
+                </div>
+                <div class="form-group ml-2 mr-2 mb-3">
+                  <h4><strong><%= f.label :address, class: "control-label" %></strong> </h4>
+                  <%= f.text_field :full_address, class: "form-control", placeholder: "US, CA, San Francisco, Market St. 2107", autofocus: false, id: "body-field" %>
+                </div>
+
+                <div class="form-group ml-2 mr-2 mb-3">
+                  <h4><strong><%= f.label :Type_of_the_place, class: "control-label" %></strong> </h4>
+                  <h4><%= f.select :home_type, options_for_select([[ "Coliving", "coliving"], ["Shared house", "shared_house"], ["Community", "community"]]), { :include_blank => 'Select a type of this home'}, class: "form-control company-pick", autofocus: false %> </h4>
+                </div>
+
+                <div class="form-group ml-2 mr-2 mb-3">
+                  <h4><strong><%= f.label :features, class: "control-label" %></strong><br><small>Help them get some valueble insigts.</small> </h4>
+                  <%= f.text_area :features, rows: 3, class: "form-control", placeholder: "Help great entrepreneurs change the world.", autofocus: false, id: "body-field" %>
+                </div>
+
+
+
+              </div>
+              <div class="col-12 col-md-6 col-lg-3 col-xl-3">
+                <div class="form-group">
+                  <%= f.label :Preview %>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card bg-dark text-white text-white card-field-main ">
+                        <%= image_tag @home.main_photo, class: "card-commutity-img " if @home.main_photo? %>
+                        <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+                          <h3 class="card-title card-title-index"><strong class="font-red-background-color"><%= @home.name %></strong></h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+            </div>
+          </div>
+          <br>
+          <br>
+          <%= f.submit class: 'btn btn-danger' %>
+          <small class="form-text text-muted">NOTE: It may take some time to upload your background image, <strong>don't reload the web page please!</strong></small>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
