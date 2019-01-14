@@ -9,18 +9,34 @@
 }
 
 .idea-card {
-  border-left: 1px solid #E62F24;
-  padding-left: 20px;
-  padding-bottom: 5px;
+  // border-left: 1px solid #E62F24;
+  padding-left: 10px;
+  // padding-bottom: -15px;
+  // margin-bottom: -15px;
+  // margin-left: 3px;
 }
 
 .circle {
-  background-color: #E62F24;
-  height: 11px;
-  width: 11px;
-  border-radius: 20px;
-  margin-left: -5px;
-  margin-bottom: -33px;
+  background-color: #111223;
+  height: 5px;
+  width: 5px;
+  border-radius: 3px;
+  margin-left: -10px;
+  margin-bottom: -10px;
+}
+
+.line {
+  background-color: #111223;
+  height: 40px;
+  width: 1px;
+  border-radius: 0px;
+  margin-left: -8px;
+  margin-top: -57px;
+  z-index: auto;
+}
+
+.circles {
+  margin-bottom: 5px;
 }
 
 .upvote-controls {

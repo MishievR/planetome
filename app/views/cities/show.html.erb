@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col">
-    <h1 class="main-text-color">Meet people in <%= @city.name %></h1>
+    <h1 class="main-text-color">Meet people who's going to <%= @city.name %></h1>
   </div>
 </div>
 <div class="row">
@@ -21,6 +21,13 @@
     <div class="row">
       <div class="col">
         <h6 class="card-text card-text-main main-text-color mt-2 "><%= truncate(user.about, length: 100 )%></h6>
+        <div class="idea-card">
+          <div class="circle"></div>
+            <p class="circles">From <%= user.originnaly_from_city %> </p>
+          <div class="circle"></div>
+            <p class="circles">Now in <%= user.currently_in_city %></p>
+          <!-- <div class="line"></div> -->
+        </div>
       </div>
     </div>
     <% end %>

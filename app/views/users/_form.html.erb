@@ -39,10 +39,9 @@
                     <small class="form-text text-muted">100 letters limit</small>
                   </div>
                   <div class="form-group">
-                    <h5><strong>Telegram/Whatsapp/Other
+                    <h5><strong>Whats your home city
                     </strong></h5>
-                    <h4><%= f.select :city_id, City.all.collect {|p| [ p.name, p.id ] }, { :include_blank => 'Select a city you live'}, class: "form-control company-pick", autofocus: false %> <br></h4>
-
+                    <%= f.text_field :originnaly_from_city, class: "form-control", placeholder: "New York, NY, US", autofocus: false %>
                   </div>
                   <div class="form-group">
                     <h5><strong>Phone number

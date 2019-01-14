@@ -1,4 +1,10 @@
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123975074-1"></script>
+    <title>Planetome | <%= @user.name %></title>
+  </head>
+  <body>
 <div class="row">
   <div class="col">
     <% if current_user == @user %>
@@ -11,10 +17,17 @@
 <br>
 <br>
 <div class="row">
-  <div class="col-12 order-xs-first col-sm-6 col-md-4 col-lg-3 col-xl-3">
+  <div class="col-12 order-xs-first col-sm-12 order-sm-first col-md-4 col-lg-3 col-xl-3">
     <%= render 'users/userinfosidebar' %>
   </div>
-  <div class="col-12 order-xs-last col-sm-6 col-md-8 col-lg-9 col-xl-9">
+  <div class="col-12 order-xs-last col-sm-12 order-sm-last col-md-8 col-lg-9 col-xl-9">
+    <% if @user.city == nil %>
+      <%= render 'users/new_user' %>
+
+    <% end %>
+
+    <!-- <div class="">
+
     <% if @user.topics.count == 0 %>
     <div class="row">
       <div class="col">
@@ -74,6 +87,7 @@
     </div>
     <% end %>
 
+  </div> -->
 
 
 
@@ -237,7 +251,7 @@
         <div class="col">
           <h3 class="main-text-color">Communities
             <br>
-            <small class="text-muted">No communities yet.</small>
+            <small class="text-muted">You haven't joined any communities yet.</small>
           </h3>
         </div>
       </div>
@@ -294,3 +308,6 @@
         </div>
       </div> -->
 </div>
+
+</body>
+</html>

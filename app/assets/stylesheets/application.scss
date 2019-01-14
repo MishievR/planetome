@@ -196,7 +196,67 @@ body {
   background-size: cover;
 }
 
+@mixin for-phone-only {
+  @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
 
+// usage
+.my-box {
+  padding: 10px;
+
+  @include for-desktop-up {
+    padding: 20px;
+  }
+}
+
+.jumbotron-users {
+  padding: 0em;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 1em;
+
+  @include for-desktop-up {
+    padding-top: 3em;
+  }
+}
+
+.jumbo-new-user {
+  width: 100%;
+  height: 250px;
+  border-radius: 7px;
+  // background-image: url(https://farm8.staticflickr.com/7846/45510474035_52ab176a9f_o.jpg);
+  background-image: url(https://farm8.staticflickr.com/7927/46740906321_cc899c1125_o.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  box-shadow:  0 0px 10px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.1);
+
+  @include for-phone-only {
+    height: 235px;
+  }
+}
+
+.h1-responsive {
+  @include for-phone-only {
+    font-size: 25px;
+  }
+
+  @include for-tablet-portrait-up {
+    font-size: 30px;
+  }
+}
 .jumbo-gragient-bg {
   background-image: linear-gradient(-90deg, rgba(0,0,0, 0.0), rgba(0,0,0, 0.1), rgba(0,0,0, 0.9));
   height: 210px;
@@ -374,10 +434,20 @@ a:hover {
   margin-top: -8px;
   float: right;
 }
-
 .btn-menu-nav:hover {
   color: #E62F24;
 }
+
+.btn-cities-user {
+  color: #000;
+  margin-top: -9px;
+  margin-bottom: -4px;
+}
+.btn-cities-user:hover {
+  color: #E62F24;
+}
+
+
 
 
 .navbar-collapse {
