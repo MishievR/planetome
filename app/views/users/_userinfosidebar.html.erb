@@ -16,17 +16,22 @@
         <h6 class="card-text card-text-main main-text-color mt-2 "><%= truncate(@user.about, length: 100 )%></h6>
         <div class="idea-card">
           <div class="circle"></div>
-            <p class="circles">From <%= @user.originnaly_from_city %> </p>
+            <p class="circles">From
+              <% if @user.originnaly_from_city != nil %>
+                <%= @user.originnaly_from_city %>
+              <% end %></p>
           <div class="circle"></div>
-            <p class="circles">Now in <%= @user.currently_in_city %>
+            <p class="circles">Now in
+              <% if @user.currently_in_city != nil %> <%= @user.currently_in_city %> <% end %>
               <button type="button" class="btn btn-sm btn-link btn-cities-user" data-toggle="modal" data-target="#exampleModal">
                 <i class="fas fa-edit"></i>
               </button>
             </p>
           <div class="circle"></div>
             <p class="circles"><strong>Going to
+              <% if @user.city != nil %>
               <%= link_to @user.city.name, city_path(@user.city), class: "main-text-color"  %>
-              , <%= @user.city.country %></strong></p>
+              , <%= @user.city.country %>  <% end %> </strong></p>
           <div class="line"></div>
         </div>
       </div>
