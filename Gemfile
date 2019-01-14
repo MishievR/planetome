@@ -17,6 +17,7 @@ gem 'rails_autolink', '~> 1.1.3'
 gem 'acts_as_votable', '~> 0.11.1'
 gem 'sendgrid-ruby'
 gem 'will_paginate', '~> 3.1.0'
+gem 'geocoder'
 
 
 

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123975074-1"></script>
+    <title>Planetome Homes | Edit home</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-12 col-md-9 ">
+        <h1 class="main-text-color good-font">Edit a <%= @home.name %></h1>
+        <h5><small class="text-muted"><%= link_to '• Front page', root_path, class: "text-muted text-muted-small" %> | • How-To Guide</small></h5>
+      </div>
+    </div>
+    <br>
+    <%= render 'create_home_form' %>
+  </body>
+</html>

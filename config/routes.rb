@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   resources :places
   resources :cities
   resources :topics
+  resources :homes
   resources :communities do
   # resources :posts
   end

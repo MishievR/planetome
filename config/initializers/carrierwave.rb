@@ -7,6 +7,7 @@ CarrierWave.configure do |config|
       }
 
       config.fog_directory = 'planetome'
+      # config.fog_public = true
 
   # For testing, upload files to local `tmp` folder.
 

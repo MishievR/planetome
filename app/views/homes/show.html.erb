@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123975074-1"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css' rel='stylesheet' />
+    <title>Planetome Homes | <%= @home.name%></title>
+    <style>
+       #map { top:0; bottom:0; width:100%; height: 400px;}
+   </style>
+  </head>
+  <body>
+    <!-- <div class="row">
+      <div class="col">
+        <h3 class=""><%= @home.name%></h3>
+      </div>
+    </div> -->
+
+
+    <div class="row">
+      <div class="col-12 order-xs-first col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div class="card card-field-main mb-3">
+          <%= image_tag @home.main_photo, class: "card-home-main-photo" if @home.main_photo? %>
+          <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+            <div class="community-gragient-bg">
+              <h1 class="main-text-color text-white"><%= @home.name %></h1>
+              <% if @home.home_type == "coliving" %>
+                <h4 class="text-white">Coliving</h4>
+              <% elsif  @home.home_type == "shared_house" %>
+                <h4 class="text-white">Shared house</h4>
+              <% elsif  @home.home_type == "community" %>
+                <span class="main-text-color text-white ">Community</span>
+              <% end %>
+              <span class="main-text-color text-white">| <%= @home.capacity %> people</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-12 order-xs-last col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <%= link_to user_path(@home.user), class: "card-user-link"  do %>
+        <div class="card card-user">
+          <%= image_tag @home.user.background, class: "card-user-bg-img card-img-top" if @home.user.background? %>
+          <div class="card-img-overlay">
+            <div class="d-flex justify-content-center">
+              <%= image_tag @home.user.avatar.url(:medium), class: "profilePhoto " if @home.user.avatar? %>
+            </div>
+            <div class="d-flex justify-content-center">
+              <h6 class="card-title card-title-user  font-background-color-usercard"><strong><%= @home.user.name %></strong></h6>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h6 class="card-text card-text-main main-text-color mt-2 "><%= truncate(@home.user.about, length: 100 )%></h6>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-field-main" style=" border: 2px #111223 solid; border-radius: 7px; object-fit: cover;">
+          <div id='map'></div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <span class="main-text-color text-muted">Owner controls</span>
+        <div class="card">
+          <div class="card-body">
+            <% if current_user || current_user.admin? %>
+              <span class="text-17"><%= link_to "Edit your home information", edit_home_path, class: "btn btn-sm btn-danger" %></span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-12 order-xs-last col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+
+
+        <!-- <h5>Added by
+          <%# if @place.user.present? %>
+          <%# link_to @place.user.name, user_path(@place.user), class: "main-text-color" %>
+          <%# end %>
+        </h5> -->
+        <br>
+        <br>
+        <h3 class="main-text-color good-font">About</h3>
+
+        <h6 class=""><%= simple_format @home.about %></h6>
+
+
+
+    </div>
+
+    </div>
+
+
+
+    <script>
+
+// mapboxgl.accessToken = 'pk.eyJ1Ijoicm9tYW4tbSIsImEiOiJjajFtcGtocDAwMDFoMzJwZmZzZG9hdG52In0.fxcpZ-JkfjAGgDbD2vDzUw';
+// var map = new mapboxgl.Map({
+//
+//
+//
+//     container: 'map',
+//     style: 'mapbox://styles/mapbox/light-v9',
+//     center: [<% @home.latitude.to_s %>, <% @home.longitude.to_s %>],
+//     zoom: 15.5,
+//     pitch: 45
+// });
+<%#
+
+
+
+
+
+
+}); %>
+
+
+    mapboxgl.accessToken = 'pk.eyJ1Ijoicm9tYW4tbSIsImEiOiJjajFtcGtocDAwMDFoMzJwZmZzZG9hdG52In0.fxcpZ-JkfjAGgDbD2vDzUw';
+    var map = new mapboxgl.Map({
+        container: 'map',
+    // center: [<% @home.latitude.to_s %>, <% @home.longitude.to_s %>],
+        style: 'mapbox://styles/mapbox/dark-v9',
+        center: [-73.985242, 40.748521], // starting position
+        zoom: 15,
+        pitch: 55
+    });
+    map.on('load', function () {
+        map.addLayer({
+
+          "id": "points",
+        "type": "symbol",
+        "source": {
+            "type": "geojson",
+            "data": {
+                "type": "FeatureCollection",
+                "features": [{
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [0, 0]
+                    }
+                }]
+            }
+        }
+        // "type": "geojson",
+        // "data": {
+        //     "type": "Feature",
+        //     "geometry": {
+        //         "type": "Point",
+        //         "coordinates": [<%= @home.latitude %>, <%= @home.longitude %>]
+        //     },
+        //     "properties": {
+        //       "title": "<%= @home.name %>",
+        //       "marker-symbol": "monument"
+        //     }
+        // }
+    });
+
+//   "geojson-marker": {
+//     "type": "geojson",
+//     "data": {
+//         "type": "Feature",
+//         "geometry": {
+//             "type": "Point",
+//             "coordinates": [-77.0323, 38.9131]
+//         },
+//         "properties": {
+//             "title": "Mapbox DC",
+//             "marker-symbol": "monument"
+//         }
+//     }
+// }
+        // Start the animation.
+        // rotateCamera(0);
+
+        // Add 3d buildings and remove label layers to enhance the map
+        // var layers = map.getStyle().layers;
+        // for (var i = 0; i < layers.length; i++) {
+        //     if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+        //         // remove text labels
+        //         map.removeLayer(layers[i].id);
+        //     }
+        // }
+
+        // function rotateCamera(timestamp) {
+        //     // clamp the rotation between 0 -360 degrees
+        //     // Divide timestamp by 100 to slow rotation to ~10 degrees / sec
+        //     map.rotateTo((timestamp / 100) % 360, {duration: 0});
+        //     // Request the next frame of the animation.
+        //     requestAnimationFrame(rotateCamera);
+        // }
+        map.addLayer({
+            'id': '3d-buildings',
+            'source': 'composite',
+            'source-layer': 'building',
+            'filter': ['==', 'extrude', 'true'],
+            'type': 'fill-extrusion',
+            'minzoom': 15,
+            'paint': {
+                'fill-extrusion-color': '#aaa',
+
+                // use an 'interpolate' expression to add a smooth transition effect to the
+                // buildings as the user zooms in
+                'fill-extrusion-height': [
+                    "interpolate", ["linear"], ["zoom"],
+                    15, 0,
+                    15.05, ["get", "height"]
+                ],
+                'fill-extrusion-base': [
+                    "interpolate", ["linear"], ["zoom"],
+                    15, 0,
+                    15.05, ["get", "min_height"]
+                ],
+                'fill-extrusion-opacity': .6
+            }
+        });
+        });
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+    </script>
+  </body>
+</html>

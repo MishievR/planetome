@@ -57,8 +57,10 @@ class ProjectsController < ApplicationController
   def destroy
     if @project.user = current_user
       @project = Project.find(params[:id])
+      @updates = @project.updates.all
+      @updates.destroy_all
       @project.destroy
-      flash[:danger] = "Project deleted successfully."
+      flash[:danger] = "Project and updates was deleted successfully."
       redirect_to current_user
     else
       flash[:success] = "You can't perform this action."
