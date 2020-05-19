@@ -69,18 +69,18 @@
       </div>
     </div>
     <br>
+    <% if current_user && current_user.admin? %>
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <span class="main-text-color text-muted">Owner controls</span>
         <div class="card">
           <div class="card-body">
-            <% if current_user || current_user.admin? %>
-              <span class="text-17"><%= link_to "Edit your home information", edit_home_path, class: "btn btn-sm btn-danger" %></span>
-            <% end %>
+            <span class="text-17"><%= link_to "Edit your home information", edit_home_path, class: "btn btn-sm btn-danger" %></span>
           </div>
         </div>
       </div>
     </div>
+    <% end %>
     <br>
     <br>
     <div class="row">

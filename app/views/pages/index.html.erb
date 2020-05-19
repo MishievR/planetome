@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123975074-1"></script>
-    <title>Planetome - Find like-minded people to rent a better house together. </title>
+    <title>Planetome - launch more. </title>
   </head>
   <body>
     <% if current_user.present? %>
@@ -11,7 +11,8 @@
     <br>
     <div class="row">
       <div class="col">
-        <h1 class="main-text-color"><%=  image_tag('planetome2.0_logo.png', style: 'height:40px;width:auto;margin-right:10px;')%><small> Find like-minded people to rent a better house together.</small></h1>
+        <!-- Find like-minded people to rent a better house together. -->
+        <h1 class="main-text-color"><%=  image_tag('planetome2.0_logo.png', style: 'height:40px;width:auto;margin-right:10px;')%><small> Products to make living on planet Earth better.</small></h1>
       </div>
     </div>
     <br>
@@ -48,10 +49,11 @@
             <% else %>
             <h1 class=" main-text-color  good-font mt-3">Join us
             <br>
-            <small>Find a place you'll call home.</small></h1>
+            <!-- Find a place you'll call home. -->
+            <small>Start a new exciting project today.</small></h1>
             <div class="row">
               <div class="col">
-                <%= link_to "Sign Up", new_user_registration_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
+                <%= link_to "Let's go!", new_user_registration_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
               </div>
             </div>
             <% end %>
@@ -64,18 +66,77 @@
     <div class="row">
       <div class="col">
         <p class="text-20"> <strong>About</strong> <%=  image_tag('planetome2.0_logo.png', style: 'height:20px;width:auto;')%> </p>
-          <p class="text-17">Our goal is to make housing better and improve the way people live on the planet.
-            <!-- <br>Meet with people who want to speak in English in Moscow.
-            <br>How it works:
-            <br>1. Choose coffee shop where you are comfortable to meet and discover topics there
-            <br>2. Find one that interesting to you and send a meeting invitation
-            <br>3. Discuss day and time with person and meet! -->
+          <p class="text-17">We believe in people who are doing together.
+            Who are working together, starting together, living together, traveling together and so on.
+            <br>
+            We believe in communities. Because it's people who are uniting around something important to them and enjoying that common value.
+             We want to erase borders between countries and cultures and enable people to do together on a planetary scale.
             </p>
             <h6 class="red-text-color mt-3"><strong> Learn more ></strong></h6>
       </div>
     </div>
-
-    <br><br>
+    <br>
+    <br>
+    <div class="row">
+     <div class="col">
+       <%= link_to(projects_path, class: "pages-index-main-links good-font") do %>
+       <h1 class="main-text-color">Projects</h1>
+       <h3><small class="text-muted">Check what people is up to.</small></h3>
+       <% end %>
+     </div>
+   </div>
+    <div class="row">
+      <% @projects.order("created_at DESC").each do |project| %>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <%= link_to project_path(project), class: "card-user-link" do %>
+        <div class="card card-community-index ">
+          <div class="row">
+            <% if project.image? %>
+            <div class="col-3 col-sm-2 col-md-3 col-lg-2 col-xl-2">
+              <%= image_tag project.image, class: "card-project-img card-img-left" if project.image? %>
+            </div>
+            <div class="col-9 col-sm-10 col-md-9 col-lg-10 col-xl-10">
+              <div class="card-body card-body-project">
+                <h5 class="card-title"><%= project.name %>
+                  <% if project.updates.count == 1 %>
+                    <small class="text-muted"> | <%= project.updates.count %> update</small>
+                    <% else %>
+                    <small class="text-muted"> | <%= project.updates.count %> updates</small>
+                  <% end %>
+                  </h5>
+                <p class="card-text"><%= project.description %></p>
+              </div>
+            </div>
+            <% else %>
+            <div class="col-12">
+              <div class="card-body">
+                <h5 class="card-title"><%= project.name %>
+                <% if project.updates.count == 1 %>
+                  <small class="text-muted"> | <%= project.updates.count %> update</small> </h5>
+                  <% else %>
+                  <small class="text-muted"> | <%= project.updates.count %> updates</small> </h5>
+                <% end %>
+                <p class="card-text"><%= project.description %></p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+        <div class="row float-right mr-0  ">
+          <% if project.user.present? %>
+          <%= link_to user_path(project.user), class: "user-title-project" do %>
+            <h5 class="user-title-project text-muted">
+            <%= time_ago_in_words(project.created_at) %> ago
+            <%= image_tag project.user.avatar.url(:thumb), class: "profilePhotoProjectCard" if project.user.avatar? %>
+            <%= project.user.name %>
+            </h5>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
 
      <div class="row">
       <div class="col">
@@ -85,7 +146,6 @@
         <% end %>
       </div>
     </div>
-
     <div class="row">
       <% @homes.order(:created_at => :DESC).take(3).each do |home| %>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">

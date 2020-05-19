@@ -1,14 +1,16 @@
 <div class="row">
   <div class="col-12 col-md-7 col-lg-8 col-xl-9">
-    <h1 class="display-4 main-text-color">Projects</h1>
-    <h3><small class="text-muted">Every idea can lead to the major changes</small></h3>
+    <h3 class="red-text-color-bold"><%=  image_tag('planetome2.0_logo.png', style: 'height:30px;width:auto;')%> people
+      <br>
+      <small class="text-muted">Share knowledge, experience, and opinions - we can do more, together.</small>
+    </h3>
   </div>
   <div class="col-12 col-md-5 col-lg-4 col-xl-3">
     <br>
-    <%= link_to "Start new project", new_project_path, class: "btn btn-block btn-outline-danger"  %>
+    <%= link_to "Start new project", new_project_path, class: "btn btn-block btn-danger"  %>
   </div>
 </div>
-<br>
+
 <br>
 <div class="row">
   <% @projects.order("created_at DESC").each do |project| %>

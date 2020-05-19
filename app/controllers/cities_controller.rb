@@ -51,7 +51,7 @@ def require_admin
   if user_signed_in?
     if current_user.admin != true
       flash[:danger] = "Only admin users can perform this action"
-      redirect_to :back
+      redirect_to cities_path
     end
   else
     flash[:danger] = "Only admin users can perform this action"

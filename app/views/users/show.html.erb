@@ -102,20 +102,33 @@
 
 
 
-  <!-- <div class="col-12 order-xs-last col-sm-6 col-md-8 col-lg-9 col-xl-9">
+<div class="col-12 order-xs-last col-sm-6 col-md-8 col-lg-9 col-xl-9">
     <% if @user.ideas.count == 0 %>
     <div class="row">
       <div class="col">
-        <h3 class="main-text-color">News
+        <h3 class="main-text-color">Links
         <br>
-        <small class="text-muted">No submitted news yet.</small>
+        <small class="text-muted">No submitted links yet.</small>
         </h3>
       </div>
     </div>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="card ">
+          <div class="card-body">
+            <h5 class="card-title text-muted">Add something cool
+            <br>
+            <small class="text-muted">It's easy!</small></h5>
+            <%= link_to "Add link", new_idea_path, class: "btn btn-danger"  %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
     <% else %>
     <div class="row">
       <div class="col">
-        <h3 class="main-text-color">Submitted news</h3>
+        <h3 class="main-text-color">Submitted links</h3>
       </div>
     </div>
     <div class="row">
@@ -149,9 +162,9 @@
       </div>
       <% end %>
     </div>
-    <% end %> -->
+    <% end %>
 
-    <!-- <% if @user.places.count == 0 %>
+   <% if @user.places.count == 0 %>
     <div class="row">
       <div class="col">
         <h3 class="main-text-color">Places
@@ -169,7 +182,7 @@
 
     <div class="row">
       <% @user.places.order(:created_at => :DESC).each do |place| %>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
         <%= link_to place_path(place), class: "card-community-link" do %>
           <div class="card bg-dark text-white text-white card-field-main  mt-3">
             <%= image_tag place.main_image, class: "card-commutity-img-planetome " if place.main_image? %>
@@ -191,7 +204,7 @@
       <% end %>
     </div>
 
-    <% end %> -->
+    <% end %>
 
 
 
@@ -204,6 +217,18 @@
           <br>
           <small class="text-muted">No projects yet.</small>
           </h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="card card-field-main">
+            <div class="card-body">
+              <h5 class="card-title text-muted">Create a new one!
+              <br>
+              <small class="text-muted">Right now!</small></h5>
+              <%= link_to "New project", new_project_path, class: "btn btn-danger"  %>
+            </div>
+          </div>
         </div>
       </div>
       <% else %>
@@ -264,7 +289,7 @@
       <% end %>
       <div class="row">
         <% @user.communities.each do |community| %>
-        <div class="col-6 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <div class="col-6 col-sm-12 col-md-6 col-lg-6 col-xl-6">
           <%= link_to community_path(community), class: "card-user-link" do %>
           <div class="card bg-dark text-white text-white card-field-main  mt-3">
             <%= image_tag community.background, class: "card-commutity-img " if community.background? %>

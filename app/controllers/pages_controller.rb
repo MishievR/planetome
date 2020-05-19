@@ -12,6 +12,7 @@ class PagesController < ApplicationController
     @places = Place.all
     @topics = Topic.all
     @homes = Home.all
+    @projects = Project.all
   end
 
 end

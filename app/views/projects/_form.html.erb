@@ -7,23 +7,27 @@
             <div class="row">
               <div class="col-12 col-md-6 col-lg-9 col-xl-9">
                 <div class="form-group">
-                  <%= f.label :name, class: "control-label" %>
+                  <h4><strong><%= f.label :name, class: "control-label" %></strong></h4>
                   <%= f.text_field :name, class: "form-control", placeholder: "Mars colonization", autofocus: true %>
                 </div>
                 <div class="form-group">
-                  <%= f.label :Description, class: "control-label" %>
+                  <h4><strong><%= f.label :Description, class: "control-label" %></strong></h4>
                   <%= f.text_area :description, rows: 3, class: "form-control", placeholder: "I think that Mars can be a great vacation spot but let's colonize it first.", autofocus: false, id: "body-field" %>
-                  <small class="form-text text-muted" id="body-count">0</small>
                 </div>
+                <br>
                 <div class="form-group">
-                  <%= f.label :Field, class: "control-label" %>
+                  <label><i class="fas fa-upload"></i> <strong>Project</strong> image</label>
+                  <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+                </div>
+                <!-- <div class="form-group">
+                  <h4><strong><%= f.label :Field, class: "control-label" %></strong></h4>
                   <%= f.collection_check_boxes :field_ids, Field.all, :id, :name do |cb| %>
                   <ul>
                     <%= cb.label(class: "form-check-label") {cb.check_box(class: "form-check-input") + cb.text}  %>
                   </ul>
                   <% end %>
                   <small class="form-text text-muted">You can only choose one.</small>
-                </div>
+                </div> -->
               </div>
               <div class="col-12 col-md-6 col-lg-3 col-xl-3">
                 <div class="form-group">
@@ -40,13 +44,9 @@
                   </div>
                 </div>
                 <br>
-                <div class="form-group">
-                  <label><i class="fas fa-upload"></i> <strong>Image</strong> photo</label>
-                  <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
-                </div>
             </div>
           </div>
-          <%= f.submit class: 'btn btn-outline-danger' %>
+          <%= f.submit class: 'btn btn-danger' %>
           <small class="form-text text-muted">NOTE: It may take some time to upload your background and/or profile image, <strong>don't reload the web page please!</strong></small>
         <% end %>
       </div>
