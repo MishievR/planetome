@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12">
     <div class="card card-user-page">
-      <%= image_tag @user.background, class: "card-user-bg-img card-img-top" if @user.background? %>
+      <%= image_tag @user.background.url, class: "card-user-bg-img card-img-top" if @user.background? %>
       <div class="card-img-overlay">
         <div class="d-flex justify-content-center">
           <%= image_tag @user.avatar.url(:medium), class: "profilePhoto " if @user.avatar? %>
@@ -40,7 +40,7 @@
     <% if current_user == @user %>
       <span class="text-muted">Your controls</span>
       <%# link_to "Submit a topic", new_topic_path, class: "btn btn-block btn-danger mt-2"  %>
-      <%# link_to "Start a project", new_project_path, class: "btn btn-block btn-danger"  %>
+      <%= link_to "Start a project", new_project_path, class: "btn btn-block btn-danger"  %>
       <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-block btn-danger"  %>
       <%= link_to(destroy_user_session_path, method: :delete, class: "btn main-text-color btn-block") do %>
       <i class="fas fa-sign-out-alt"></i>

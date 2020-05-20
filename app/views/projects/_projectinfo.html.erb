@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12">
     <div class="card card-user-page">
-      <%= image_tag @project.image, class: "card-user-bg-img card-img-top" if @project.image? %>
+      <%= image_tag @project.image.url, class: "card-user-bg-img card-img-top" if @project.image? %>
       <div class="card-body">
         <h5 class="card-title card-title-project"><%= @project.name %></h5>
         <p class="card-text"><%= @project.description %></p>
@@ -51,7 +51,6 @@
     <small class="text-muted">Owner controls</small>
     </h6>
     <%= link_to "Edit", edit_project_path(@project), class: "btn btn-danger btn-block "%>
-    <%= link_to "Delete", @project, method: :delete, class: "btn btn-block btn-danger", data: { confirm: 'PROJECT and ALL UPDATES associated with it will be deleted permanently. Are you sure?' }  %>
   </div>
 </div>
 <br>
@@ -63,9 +62,22 @@
       <small class="text-muted">Projects</small>
       </h6>
       <% @project.user.projects.each do |project| %>
-        <%= link_to project_path(project), class: "dropdown-item dropdown-item-menu" do %>
-        <%= image_tag project.image, class: "card-project-img-small card-img-left" if project.image? %>
-        <%= project.name %>
+        <%= link_to project_path(project), class: "main-text-color a-none" do %>
+        <div class="mb-1">
+
+
+          <% if @project == project %>
+            <div class="projects-list current-project">
+              <%= image_tag project.image.url, class: "card-project-img-small card-img-left" if project.image? %>
+              <%= project.name %>
+            </div>
+          <% else %>
+            <div class="projects-list">
+              <%= image_tag project.image.url, class: "card-project-img-small card-img-left" if project.image? %>
+              <%= project.name %>
+            </div>
+          <% end %>
+          </div>
         <% end %>
       <% end %>
     <% end %>

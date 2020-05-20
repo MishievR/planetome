@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col">
         <!-- Find like-minded people to rent a better house together. -->
-        <h1 class="main-text-color"><%=  image_tag('planetome2.0_logo.png', style: 'height:40px;width:auto;margin-right:10px;')%><small> Products to make living on planet Earth better.</small></h1>
+        <h1 class="main-text-color"><%=  image_tag('planetome2.0_logo.png', style: 'height:40px;width:auto;margin-right:10px;')%><small> Start your project. Today.</small></h1>
       </div>
     </div>
     <br>
@@ -47,7 +47,7 @@
               </div>
             </div>
             <% else %>
-            <h1 class=" main-text-color  good-font mt-3">Join us
+            <h1 class=" main-text-color  good-font mt-3">Hop in!
             <br>
             <!-- Find a place you'll call home. -->
             <small>Start a new exciting project today.</small></h1>
@@ -66,11 +66,12 @@
     <div class="row">
       <div class="col">
         <p class="text-20"> <strong>About</strong> <%=  image_tag('planetome2.0_logo.png', style: 'height:20px;width:auto;')%> </p>
-          <p class="text-17">We believe in people who are doing together.
-            Who are working together, starting together, living together, traveling together and so on.
-            <br>
-            We believe in communities. Because it's people who are uniting around something important to them and enjoying that common value.
-             We want to erase borders between countries and cultures and enable people to do together on a planetary scale.
+          <p class="text-17">Side projects are a way to learn new things, fulfill your creativity and expiriment.
+            <br>Divide the big tasks into small and doable tasks
+            <br> Consistency > intensity.
+            <br> Block fixed amaount of time for your projects
+
+
             </p>
             <h6 class="red-text-color mt-3"><strong> Learn more ></strong></h6>
       </div>
@@ -93,7 +94,7 @@
           <div class="row">
             <% if project.image? %>
             <div class="col-3 col-sm-2 col-md-3 col-lg-2 col-xl-2">
-              <%= image_tag project.image, class: "card-project-img card-img-left" if project.image? %>
+              <%= image_tag project.image.url, class: "card-project-img card-img-left" if project.image? %>
             </div>
             <div class="col-9 col-sm-10 col-md-9 col-lg-10 col-xl-10">
               <div class="card-body card-body-project">
@@ -151,7 +152,7 @@
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
         <%= link_to home_path(home), class: "card-community-link" do %>
           <div class="card bg-dark text-white text-white card-field-main  mt-3">
-            <%= image_tag home.main_photo, class: "card-commutity-img-planetome " if home.main_photo? %>
+            <%= image_tag home.main_photo.url, class: "card-commutity-img-planetome " if home.main_photo? %>
           </div>
           <div class="row">
             <div class="col">
@@ -222,7 +223,7 @@
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
         <%= link_to place_path(place), class: "card-community-link" do %>
           <div class="card bg-dark text-white card-field-main  mt-3">
-            <%= image_tag place.main_image, class: "card-commutity-img-planetome " if place.main_image? %>
+            <%= image_tag place.main_image.url, class: "card-commutity-img-planetome " if place.main_image? %>
             <div class="card-img-overlay h-100 d-flex flex-column justify-content-end"></div>
           </div>
           <div class="row">
@@ -302,7 +303,7 @@
       <div class="col-12 col-md-6 col-lg-4 col-xl-4">
         <%= link_to city_path(city) do %>
         <div class="card bg-dark text-white card-field-main text-center mt-3">
-          <%= image_tag city.background, class: "card-field-img" if city.background? %>
+          <%= image_tag city.background.url, class: "card-field-img" if city.background? %>
           <div class="card-img-overlay">
             <h4 class="card-title card-title-field"><strong><%= city.name%></strong></h4>
           </div>

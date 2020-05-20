@@ -31,7 +31,7 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="card bg-dark text-white text-white card-field-main ">
-                        <%= image_tag @community.background, class: "card-commutity-img " if @community.background? %>
+                        <%= image_tag @community.background.url, class: "card-commutity-img " if @community.background? %>
                         <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
                           <h3 class="card-title card-title-index"><strong class="font-red-background-color"><%= @community.name %></strong></h3>
                         </div>

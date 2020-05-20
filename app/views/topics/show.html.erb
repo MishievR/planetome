@@ -24,7 +24,7 @@
     <% end %>
     <%= link_to user_path(@topic.user), class: "card-user-link"  do %>
     <div class="card card-user">
-      <%= image_tag @topic.user.background, class: "card-user-bg-img card-img-top" if @topic.user.background? %>
+      <%= image_tag @topic.user.background.url, class: "card-user-bg-img card-img-top" if @topic.user.background? %>
       <div class="card-img-overlay">
         <div class="d-flex justify-content-center">
           <%= image_tag @topic.user.avatar.url(:medium), class: "profilePhoto " if @topic.user.avatar? %>

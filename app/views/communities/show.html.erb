@@ -6,7 +6,7 @@
   </head>
   <body>
     <div class="card bg-dark text-white text-white card-field-main  ">
-      <%= image_tag @community.background, class: "card-commutity-img " if @community.background? %>
+      <%= image_tag @community.background.url, class: "card-commutity-img " if @community.background? %>
       <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
         <div class="community-gragient-bg">
           <h1 class="card-title card-title-index"> <strong class="font-black-background-color-community-show"><%= @community.name %></strong> </h1>

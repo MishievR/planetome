@@ -12,7 +12,7 @@
             <%= f.text_field :about, autofocus: false, class: 'form-control' %>
           </div>
           <div class="form-group">
-            <%= image_tag @category.background, class: "profilePhoto" if @category.background? %>
+            <%= image_tag @category.background.url, class: "profilePhoto" if @category.background? %>
             <%= f.label :upload_background_photo %>
             <%= f.file_field :background, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
           </div>

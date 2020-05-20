@@ -51,7 +51,7 @@ class IdeasController < ApplicationController
     if current_user.present?
       @idea = Idea.find(params[:id])
       @idea.upvote_by current_user
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     elsif
       flash[:danger] = "Please, sign up to upvote an idea and create your first project!"
       redirect_to new_user_session_path
@@ -62,7 +62,7 @@ class IdeasController < ApplicationController
   def downvote
     @idea = Idea.find(params[:id])
     @idea.downvote_by current_user
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
 

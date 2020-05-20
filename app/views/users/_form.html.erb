@@ -54,7 +54,7 @@
                     <%= f.label :Profile_view_Preview %>
                       <div class="row">
                         <div class="card">
-                          <%= image_tag @user.background, class: "card-user-bg-img card-img-top" if @user.background? %>
+                          <%= image_tag @user.background.url, class: "card-user-bg-img card-img-top" if @user.background? %>
                             <div class="card-img-overlay">
                               <div class="d-flex justify-content-center">
                                 <%= image_tag @user.avatar.url(:medium), class: "profilePhoto " if @user.avatar? %>

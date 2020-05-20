@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12">
     <div class="card card-user-page">
-      <%= image_tag @employer.background, class: "card-user-bg-img card-img-top" if @employer.background? %>
+      <%= image_tag @employer.background.url, class: "card-user-bg-img card-img-top" if @employer.background? %>
         <div class="card-img-overlay">
           <div class="d-flex justify-content-center">
             <%= image_tag @employer.logo.url(:medium), class: "profilePhoto " if @employer.logo? %>

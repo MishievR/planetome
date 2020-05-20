@@ -8,7 +8,7 @@
   <div class="col-6 col-md-6 col-lg-3 col-xl-3">
     <%= link_to user_path(user), class: "card-user-link"  do %>
     <div class="card card-user  mt-3">
-      <%= image_tag user.background, class: "card-user-bg-img card-img-top" if user.background? %>
+      <%= image_tag user.background.url, class: "card-user-bg-img card-img-top" if user.background? %>
       <div class="card-img-overlay">
         <div class="d-flex justify-content-center">
           <%= image_tag user.avatar.url(:medium), class: "profilePhoto " if user.avatar? %>

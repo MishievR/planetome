@@ -61,7 +61,7 @@ class ProjectsController < ApplicationController
       @updates.destroy_all
       @project.destroy
       flash[:danger] = "Project and updates was deleted successfully."
-      redirect_to current_user
+      redirect_to @project
     else
       flash[:success] = "You can't perform this action."
     end
@@ -72,7 +72,7 @@ class ProjectsController < ApplicationController
     if current_user.present?
       @project = Project.find(params[:id])
       @project.upvote_by current_user
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     elsif
       flash[:danger] = "Please, sign up to upvote this project and create your oun first project!."
       redirect_to new_user_registration_path

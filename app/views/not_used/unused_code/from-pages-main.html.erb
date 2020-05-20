@@ -12,7 +12,7 @@
   <div class="col-12 col-md-6 col-lg-3 col-xl-3">
     <%= link_to field_path(field) do %>
     <div class="card bg-dark text-white card-field-main text-center  mt-3">
-      <%= image_tag field.background, class: "card-field-img" if field.background? %>
+      <%= image_tag field.background.url, class: "card-field-img" if field.background? %>
       <div class="card-img-overlay">
         <h5 class="card-title card-title-field"><%= field.name%></h5>
       </div>
@@ -88,7 +88,7 @@
   <div class="col-6 col-md-6 col-lg-3 col-xl-3">
     <%= link_to user_path(user), class: "card-user-link"  do %>
     <div class="card card-user card-used-fixedheight mt-3">
-      <%= image_tag user.background, class: "card-user-bg-img card-img-top" if user.background? %>
+      <%= image_tag user.background.url, class: "card-user-bg-img card-img-top" if user.background? %>
         <div class="card-img-overlay">
           <div class="d-flex justify-content-center">
             <%= image_tag user.avatar.url(:medium), class: "profilePhoto " if user.avatar? %>
@@ -146,7 +146,7 @@
 
 
 
-## From job's card 
+## From job's card
         <!-- <div class="col-12 col-md-12 col-lg-12 col-xl-12">
           <div class="card card-job-listing-main">
             <div class="card-body">

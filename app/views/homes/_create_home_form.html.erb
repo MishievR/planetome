@@ -50,7 +50,7 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="card bg-dark text-white text-white card-field-main ">
-                        <%= image_tag @home.main_photo, class: "card-commutity-img " if @home.main_photo? %>
+                        <%= image_tag @home.main_photo.url, class: "card-commutity-img " if @home.main_photo? %>
                         <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
                           <h3 class="card-title card-title-index"><strong class="font-red-background-color"><%= @home.name %></strong></h3>
                         </div>

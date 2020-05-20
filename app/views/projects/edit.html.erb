@@ -3,13 +3,25 @@
     <h3 class="main-text-color">Edit your project
     <br>
     <small class="text-muted">Step by step to the top of the mountain.</small>
-
     </h3>
+    <%= link_to '< Back to project', @project, class: "main-text-color"  %>
   </div>
     <div class="col-12 col-md-3">
-      <%= link_to 'Back', :back, class: "btn btn-outline-danger btn-block"  %>
-
+      <%= link_to 'Back to project', :back, class: "btn btn-outline-danger btn-block"  %>
     </div>
 </div>
 <br>
 <%= render 'form', project: @project %>
+<div class="row">
+  <div class="col-12 col-md-6 col-lg-5 col-xl-4">
+    <div class="card danger-zone">
+      <div class="card-body">
+        <h6 class="", style="color:#e53e3e;"><strong>Danger zone</strong></h6>
+        <p class="">Here you can delete your project once and for all. Every piece of information inside this project will be deleted permanently.</p>
+        <hr>
+        <p class=""><strong>Do you want to achive this project?</strong> <br><%= link_to "> Archive this project", @project, method: :delete, class: "main-text-color" %></p>
+        <%= link_to "Delete this project", @project, method: :delete, class: "btn btn-danger", data: { confirm: 'PROJECT and ALL UPDATES associated with it will be deleted permanently. Are you sure?' }  %>
+      </div>
+    </div>
+  </div>
+</div>

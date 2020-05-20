@@ -8,19 +8,19 @@
 <div class="row">
   <div class="col">
     <% if current_user == @user %>
-      <h3 class="main-text-color">Welcome back to your page <%= @user.first_name %></h3>
+      <h3 class="main-text-color custom-font">Hi, <%= @user.first_name %>!</h3>
     <% else %>
-      <h1 class="main-text-color">Meet <%= @user.first_name %></h1>
+      <h1 class="main-text-color custom-font">Meet <%= @user.first_name %></h1>
     <% end %>
   </div>
 </div>
 <br>
 <br>
 <div class="row">
-  <div class="col-12 order-xs-first col-sm-12 order-sm-first col-md-4 col-lg-3 col-xl-3">
+  <div class="col-12 order-last col-sm-12 order-sm-first col-md-4 col-lg-3 col-xl-3">
     <%= render 'users/userinfosidebar' %>
   </div>
-  <div class="col-12 order-xs-last col-sm-12 order-sm-last col-md-8 col-lg-9 col-xl-9">
+  <div class="col-12 order-first col-sm-12 order-sm-last col-md-8 col-lg-9 col-xl-9">
     <% if @user.city == nil %>
       <%= render 'users/new_user' %>
 
@@ -102,109 +102,11 @@
 
 
 
-<div class="col-12 order-xs-last col-sm-6 col-md-8 col-lg-9 col-xl-9">
-    <% if @user.ideas.count == 0 %>
-    <div class="row">
-      <div class="col">
-        <h3 class="main-text-color">Links
-        <br>
-        <small class="text-muted">No submitted links yet.</small>
-        </h3>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <div class="card ">
-          <div class="card-body">
-            <h5 class="card-title text-muted">Add something cool
-            <br>
-            <small class="text-muted">It's easy!</small></h5>
-            <%= link_to "Add link", new_idea_path, class: "btn btn-danger"  %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <% else %>
-    <div class="row">
-      <div class="col">
-        <h3 class="main-text-color">Submitted links</h3>
-      </div>
-    </div>
-    <div class="row">
-      <% @user.ideas.order(:created_at => :DESC).each do |i| %>
-      <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
 
-          <div class="card card-idea-index mt-3">
-            <div class="row">
-              <%= link_to upvote_idea_path(i), method: :put, class: "btn btn-default  upvote-controls float-left" do %>
-                <i class="fas fa-caret-up upvote-arrow"></i>
-                <br>
-                <div class="upvote-number">
-                  <%= i.get_upvotes.size %>
-                </div>
-              <% end %>
-              <div class="col-10 col-sm-9 col-md-10 col-lg-10 col-xl-11">
-                <h4 class="main-text-color"><%= link_to i.title, "#{i.link}", class: "main-text-color", target: :_blank %></h4>
-                <h5 class="feed-link"><small class="text-muted"><%= i.link %></small></h5>
-                <small class="float-left text-muted" style="margin-top:7px;"><%= time_ago_in_words(i.created_at) %> ago by
-                <% if i.user.present? %>
-                  <%= link_to i.user.name, user_path(i.user), class: "main-text-color" %>
-                <% end %>
-                <% if current_user.present? && current_user.admin? %>
-                <%= link_to " | delete", idea_path(i), method: :delete, class: "add-idea-link", data: { confirm: 'Idea will be deleted permanently. Are you sure?' } %>
-                <% end %>
-                </small>
-              </div>
-            </div>
-        </div>
-        <br>
-      </div>
-      <% end %>
-    </div>
-    <% end %>
 
-   <% if @user.places.count == 0 %>
-    <div class="row">
-      <div class="col">
-        <h3 class="main-text-color">Places
-        <br>
-        <small class="text-muted">No added places yet.</small>
-        </h3>
-      </div>
-    </div>
-    <% else %>
-    <div class="row">
-      <div class="col">
-        <h3 class="main-text-color">Added places</h3>
-      </div>
-    </div>
 
-    <div class="row">
-      <% @user.places.order(:created_at => :DESC).each do |place| %>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-        <%= link_to place_path(place), class: "card-community-link" do %>
-          <div class="card bg-dark text-white text-white card-field-main  mt-3">
-            <%= image_tag place.main_image, class: "card-commutity-img-planetome " if place.main_image? %>
-            <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <h4 class="mt-2 main-text-color"><%= place.name %></h4>
-              <h6 class=" main-text-color text-muted card-office-address-text"><small><%= place.full_address %></small></h6>
-              <p class="card-office-info-text">Smart office | WiFi, Desk, Cleaning
-                <br>
-                $$$
-              </p>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <% end %>
-    </div>
 
-    <% end %>
+
 
 
 
@@ -213,7 +115,7 @@
       <% if @user.projects.count == 0 %>
       <div class="row">
         <div class="col">
-          <h3 class="main-text-color">Projects
+          <h3 class="main-text-color custom-font">Projects
           <br>
           <small class="text-muted">No projects yet.</small>
           </h3>
@@ -234,7 +136,7 @@
       <% else %>
       <div class="row">
         <div class="col">
-          <h3 class="main-text-color">Projects</h3>
+          <h3 class="main-text-color custom-font">Projects</h3>
         </div>
       </div>
       <% end %>
@@ -242,28 +144,17 @@
         <% @user.projects.each do |project| %>
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <%= link_to project_path(project), class: "card-user-link" do %>
-          <div class="card card-community-index mt-3">
-            <div class="row">
-              <% if project.image? %>
-              <div class="col-3 col-sm-4 col-md-2 col-lg-2 col-xl-2">
-                <%= image_tag project.image, class: "card-project-img card-img-left" if project.image? %>
-              </div>
-              <div class="col-9 col-sm-8 col-md-10 col-lg-10 col-xl-10">
-                <div class="card-body card-body-project">
-                  <h5 class="card-title"><%= project.name %></h5>
-                  <p class="card-text"><%= project.description %></p>
+            <div class="card card-community-index mt-3">
+              <div class="d-inline-flex">
+                <%= image_tag project.image.url, class: "fixed-image " if project.image? %>
+                <div class="d-flex align-items-center" >
+                  <div class="ml-2 mt-2 mb-2 mr-1">
+                    <h5 class="card-title mb-0 mb-1"><%= project.name %></h5>
+                    <p class="card-text mb-0"><%= project.description %></p>
+                  </div>
                 </div>
               </div>
-              <% else %>
-              <div class="col-12">
-                <div class="card-body">
-                  <h5 class="card-title"><%= project.name %></h5>
-                  <p class="card-text"><%= project.description %></p>
-                </div>
-              </div>
-              <% end %>
             </div>
-          </div>
           <% end %>
         </div>
         <% end %>
@@ -271,40 +162,7 @@
       <br>
       <br>
 
-      <% if @user.communities.count == 0 %>
-      <div class="row">
-        <div class="col">
-          <h3 class="main-text-color">Communities
-            <br>
-            <small class="text-muted">You haven't joined any communities yet.</small>
-          </h3>
-        </div>
-      </div>
-      <% else %>
-      <div class="row">
-        <div class="col">
-          <h3 class="main-text-color">Communities</h3>
-        </div>
-      </div>
-      <% end %>
-      <div class="row">
-        <% @user.communities.each do |community| %>
-        <div class="col-6 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-          <%= link_to community_path(community), class: "card-user-link" do %>
-          <div class="card bg-dark text-white text-white card-field-main  mt-3">
-            <%= image_tag community.background, class: "card-commutity-img " if community.background? %>
-            <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-              <div class="just-test">
-                <h5 class="card-title card-title-index"><%= truncate(community.name, length: 45 )%></h5>
-                <p class="card-text card-text-index card-community-link "><%= truncate(community.description, length: 90 )%></p>
-              </div>
-            </div>
-          </div>
-          <% end %>
-        </div>
-        <% end %>
-      </div>
-      <br>
+
 
        <!-- <div class="row">
           <div class="col-12 col-md-12 col-lg-12 col-xl-12">

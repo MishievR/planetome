@@ -11,7 +11,7 @@
   <div class="col-12 col-md-6 col-lg-6 col-xl-6">
     <%= link_to city_path(city) do %>
     <div class="card bg-dark text-white card-field-main text-center mt-3">
-      <%= image_tag city.background, class: "card-field-img" if city.background? %>
+      <%= image_tag city.background.url, class: "card-field-img" if city.background? %>
       <div class="card-img-overlay">
         <h5 class="card-title card-title-field"><%= city.name%></h5>
       </div>

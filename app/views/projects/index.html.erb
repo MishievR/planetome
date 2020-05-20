@@ -20,16 +20,17 @@
       <div class="row">
         <% if project.image? %>
         <div class="col-3 col-sm-2 col-md-3 col-lg-2 col-xl-2">
-          <%= image_tag project.image, class: "card-project-img card-img-left" if project.image? %>
+          <%= image_tag project.image.url, class: "card-project-img card-img-left" if project.image? %>
         </div>
         <div class="col-9 col-sm-10 col-md-9 col-lg-10 col-xl-10">
           <div class="card-body card-body-project">
             <h5 class="card-title"><%= project.name %>
-              <% if project.updates.count == 1 %>
-                <small class="text-muted"> | <%= project.updates.count %> update</small> </h5>
-                <% else %>
-                <small class="text-muted"> | <%= project.updates.count %> updates</small> </h5>
-              <% end %>
+                <% if project.updates.count == 1 %>
+                  <small class="text-muted"> | <%= project.updates.count %> update</small>
+                  <% else %>
+                  <small class="text-muted"> | <%= project.updates.count %> updates</small> 
+                <% end %>
+              </h5>
             <p class="card-text"><%= project.description %></p>
           </div>
         </div>
@@ -37,11 +38,12 @@
         <div class="col-12">
           <div class="card-body">
             <h5 class="card-title"><%= project.name %>
-            <% if project.updates.count == 1 %>
-              <small class="text-muted"> | <%= project.updates.count %> update</small> </h5>
-              <% else %>
-              <small class="text-muted"> | <%= project.updates.count %> updates</small> </h5>
-            <% end %>
+              <% if project.updates.count == 1 %>
+                <small class="text-muted"> | <%= project.updates.count %> update</small>
+                <% else %>
+                <small class="text-muted"> | <%= project.updates.count %> updates</small>
+              <% end %>
+            </h5>
             <p class="card-text"><%= project.description %></p>
           </div>
         </div>
