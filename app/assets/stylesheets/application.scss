@@ -140,12 +140,13 @@ body {
 .jumbo-spacefeed {
   width: 100%;
   height: 310px;
-  border-radius: 0px;
-  // background-image: url(https://farm8.staticflickr.com/7846/45510474035_52ab176a9f_o.jpg);
-  background-image: url(https://farm2.staticflickr.com/1918/44798444064_bbfba68528_o.png);
+  border-radius: 7px;
+  background-image: url(https://unsplash.com/photos/h8nxGssjQXs/download?force=true&w=1920);
+  // background-image: url(https://farm2.staticflickr.com/1918/44798444064_bbfba68528_o.png);
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: center bottom 10%;
   background-size: cover;
+  // object-fit: fill;
   box-shadow:  0 0px 20px 0 rgba(211, 211, 211, 0.3), 0 0px 20px 0 rgba(211, 211, 211, 0.3);
 }
 .jumbo-spacefeed-login {

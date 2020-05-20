@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col">
         <!-- Find like-minded people to rent a better house together. -->
-        <h1 class="main-text-color"><%=  image_tag('planetome2.0_logo.png', style: 'height:40px;width:auto;margin-right:10px;')%><small> Start your project. Today.</small></h1>
+        <h1 class="main-text-color"><%=  image_tag('planets_logo_full.png', style: 'height:65px;width:auto;margin-right:5px;margin-top:-8px;margin-left:-15px;')%><small> Start your project. Today.</small></h1>
       </div>
     </div>
     <br>
@@ -47,10 +47,10 @@
               </div>
             </div>
             <% else %>
-            <h1 class=" main-text-color  good-font mt-3">Hop in!
+            <h1 class=" main-text-color text-white text-white-shadow good-font mt-3">Join us!
             <br>
             <!-- Find a place you'll call home. -->
-            <small>Start a new exciting project today.</small></h1>
+            <small>Start your dream project today.</small></h1>
             <div class="row">
               <div class="col">
                 <%= link_to "Let's go!", new_user_registration_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
@@ -87,7 +87,7 @@
      </div>
    </div>
     <div class="row">
-      <% @projects.order("created_at DESC").each do |project| %>
+      <% @projects.order("updated_at DESC").each do |project| %>
       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
         <%= link_to project_path(project), class: "card-user-link" do %>
         <div class="card card-community-index ">
@@ -112,11 +112,12 @@
             <div class="col-12">
               <div class="card-body">
                 <h5 class="card-title"><%= project.name %>
-                <% if project.updates.count == 1 %>
-                  <small class="text-muted"> | <%= project.updates.count %> update</small> </h5>
-                  <% else %>
-                  <small class="text-muted"> | <%= project.updates.count %> updates</small> </h5>
-                <% end %>
+                  <% if project.updates.count == 1 %>
+                    <small class="text-muted"> | <%= project.updates.count %> update</small>
+                    <% else %>
+                    <small class="text-muted"> | <%= project.updates.count %> updates</small>
+                  <% end %>
+                </h5>
                 <p class="card-text"><%= project.description %></p>
               </div>
             </div>
@@ -124,11 +125,11 @@
           </div>
         </div>
         <% end %>
-        <div class="row float-right mr-0  ">
+        <div class=" float-right mr-0  mb-2">
           <% if project.user.present? %>
           <%= link_to user_path(project.user), class: "user-title-project" do %>
             <h5 class="user-title-project text-muted">
-            <%= time_ago_in_words(project.created_at) %> ago
+            <%= time_ago_in_words(project.updated_at) %> ago
             <%= image_tag project.user.avatar.url(:thumb), class: "profilePhotoProjectCard" if project.user.avatar? %>
             <%= project.user.name %>
             </h5>
