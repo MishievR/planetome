@@ -2,9 +2,10 @@ class ProjectsController < ApplicationController
 
   before_action :require_same_user, only: [:destroy, :edit, :update]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_permission, except: [:index, :new, :create]
 
   def index
-    @projects = Project.all
+    @projects = Project.where(:is_public => false)
   end
 
   # GET /projects/1
@@ -12,7 +13,11 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @update = Update.new
-
+    if user_signed_in? && current_user == @project.user
+      @user_projects = Project.where(:user => current_user)
+    else
+      @user_projects = Project.where(:user => @project.user, :is_public => false)
+    end
   end
 
   # GET /projects/new
@@ -84,14 +89,24 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:name, :description, :image, field_ids: [])
+    params.require(:project).permit(:name, :description, :is_public, :image, field_ids: [])
   end
 
   def require_same_user
     @project = Project.find(params[:id])
     if @project.user != current_user
       flash[:danger] = "You can't perform this action."
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+  def check_permission
+    @project = Project.find(params[:id])
+    if @project.is_public == true
+      if @project.user != current_user
+        flash[:danger] = "You can't perform this action."
+        redirect_back(fallback_location: root_path)
+      end
     end
   end
 

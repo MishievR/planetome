@@ -19,6 +19,35 @@
                   <label><i class="fas fa-upload"></i> <strong>Project</strong> image</label>
                   <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
                 </div>
+                <div class="form-group">
+
+                  <% if @project.is_public? %>
+                  <div class="card card-project-visibility d-inline-flex p-2">
+                    <label><strong>Your project is private right now</strong> <br>De-select checkbox below to make it public.</label>
+                    <div class="form-check">
+                      <%= f.check_box :is_public, class: "form-check-input" %>
+                      <label class="form-check-label" style="margin-top:2px;">
+                        Make this project <strong>private</strong>
+                      </label>
+                    </div>
+                  </div>
+
+                  <% else %>
+
+                  <div class="card card-project-visibility d-inline-flex p-2">
+                    <label><strong>All new projects are public by default</strong></label>
+                    <div class="form-check">
+                      <%= f.check_box :is_public, class: "form-check-input" %>
+                      <label class="form-check-label" style="margin-top:2px;">
+                        Make this project <strong>private</strong>
+                      </label>
+                    </div>
+                  </div>
+                  <% end %>
+
+                </div>
+
+
                 <!-- <div class="form-group">
                   <h4><strong><%= f.label :Field, class: "control-label" %></strong></h4>
                   <%= f.collection_check_boxes :field_ids, Field.all, :id, :name do |cb| %>
@@ -33,13 +62,18 @@
                 <div class="form-group">
                   <%= f.label :Project_Preview %>
                   <div class="row">
-                    <div class="card card-community-main mr-3 mt-3">
-                      <%= image_tag @project.image.url, class: "card-commutity-img card-img-top" if @project.image? %>
-                      <div class="card-body">
-                        <h5 class="card-title"><%= @project.name %></h5>
-                        <p class="card-text"><%= @project.description %></p>
-                        <!-- <p class="card-text-location"><i class="fas fa-globe"></i> Worldwide</p> -->
+                    <div class="col-12">
+                      <div class="card card-user-page p-2">
+                        <%= image_tag @project.image.url, class: "card-user-bg-img card-img-top mb-2" if @project.image? %>
+                        <div class="p-1">
+                          <% if @project.is_public? %>
+                          <span class="badge badge-dark mb-1">Private</span>
+                          <% end %>
+                          <h5 class="card-title card-title-project "> <strong><%= @project.name %></strong></h5>
+                          <p class="card-text"><%= @project.description %></p>
+                        </div>
                       </div>
+                      <br>
                     </div>
                   </div>
                 </div>

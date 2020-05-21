@@ -1,27 +1,32 @@
 <div class="row">
-      <div class="col">
-        <div class="jumbotron jumbotron-users jumbo-new-user">
-
-        <% if current_user.present? %>
-          <div class="row">
-            <div class="col">
-              <h1 class=" main-text-color good-font mt-3 h1-responsive">Welcome to <%=  image_tag('planetome2.0_logo.png', style: 'height:30px;margin-top:-5px;width:auto;')%>,
-                <%= @user.first_name %>
-                <br>
-                <small>Select the city where you want to stay in community.</small>
-              </h1>
-            </div>
-          </div>
+  <div class="col">
+    <div class="jumbotron jumbotron-users jumbo-new-user">
+      <% if current_user.present? %>
         <div class="row">
           <div class="col">
-            <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-              <%= f.select :city_id, City.all.collect {|p| [ p.name, p.id ] }, { :include_blank => 'Select a city you are going'}, class: "form-control company-pick", autofocus: false %> <br>
-              <%= f.submit( "Create my destination", class: 'btn btn-danger') %>
-            <% end %>
-            <%# link_to "Let's begin", new_topic_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
+            <h1 class=" main-text-color good-font mt-3 h1-responsive">Welcome <%= @user.first_name %>
+              <br>
+              <small>Start by creating your first project.</small>
+            </h1>
           </div>
         </div>
-        <% end %>
+        <div class="row">
+          <div class="col">
+            <%= link_to "Create first project", new_project_path, class: "btn btn-danger"  %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h4>Here is some tips on projects</h4>
+        <p>1. Tip number one</p>
       </div>
+    </div>
   </div>
 </div>

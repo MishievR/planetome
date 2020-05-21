@@ -1,15 +1,15 @@
 <div class="row">
   <div class="col-12">
     <div class="row card-small-user">
-      <%= image_tag user.avatar.url(:small), class: "small-card-profile-photo" if user.avatar? %>
-      <% if current_user == user && user.first_name == nil %>
-      <h6 class="card-title card-title-small-user"><%= link_to "Add info", edit_user_path(user), class: "user-link" %></h6>
-      <% else %>
-      <h6 class="card-title card-title-small-user"><%= link_to user.name, user_path(user), class: "user-link" %>
-        <br>
-        <small class="user-username"><%= user.username %></small>
-      </h6>
-      <% end %>
+      <div class="d-flex align-items-center">
+        <%= image_tag user.avatar.url(:small), class: "small-card-profile-photo" if user.avatar? %>
+        <h6 class="card-title card-title-small-user mb0px"><%= link_to user.name, user_path(user), class: "user-link" %>
+          <% if user.username? %>
+            <br>
+            <small class="user-username"> <%= user.username %></small>
+          <% end %>
+        </h6>
+      </div>
     </div>
   </div>
 </div>

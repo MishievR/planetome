@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :require_same_user, only: [:edit, :update, :destroy]
   before_action :require_admin, only: [:destroy, :all]
+  before_action :require_login
 
   def index
    @users = User.all
@@ -49,6 +50,15 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def require_login
+    unless user_signed_in?
+      flash[:danger] = "Create your own account to perform this action."
+      redirect_to new_user_registration_path
+    end
+
+
   end
 
   def require_same_user

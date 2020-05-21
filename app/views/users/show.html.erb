@@ -7,10 +7,8 @@
   <body>
 <div class="row">
   <div class="col">
-    <% if current_user == @user %>
-      <h3 class="main-text-color custom-font">Hi, <%= @user.first_name %>!</h3>
-    <% else %>
-      <h1 class="main-text-color custom-font">Meet <%= @user.first_name %></h1>
+    <% if current_user != @user %>
+      <h3 class="main-text-color custom-font"><%= current_user.first_name %>, meet <%= @user.first_name %></h3>
     <% end %>
   </div>
 </div>
@@ -21,10 +19,9 @@
     <%= render 'users/userinfosidebar' %>
   </div>
   <div class="col-12 order-first col-sm-12 order-sm-last col-md-8 col-lg-9 col-xl-9">
-    <% if @user.city == nil %>
-      <%= render 'users/new_user' %>
-
-    <% end %>
+    <%# if @user.city == nil %>
+      <%# render 'users/new_user' %>
+    <%# end %>
 
     <!-- <div class="">
 
@@ -113,26 +110,7 @@
 
 
       <% if @user.projects.count == 0 %>
-      <div class="row">
-        <div class="col">
-          <h3 class="main-text-color custom-font">Projects
-          <br>
-          <small class="text-muted">No projects yet.</small>
-          </h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <div class="card card-field-main">
-            <div class="card-body">
-              <h5 class="card-title text-muted">Create a new one!
-              <br>
-              <small class="text-muted">Right now!</small></h5>
-              <%= link_to "New project", new_project_path, class: "btn btn-danger"  %>
-            </div>
-          </div>
-        </div>
-      </div>
+        <%= render 'users/new_user' %>
       <% else %>
       <div class="row">
         <div class="col">
@@ -141,23 +119,26 @@
       </div>
       <% end %>
       <div class="row">
-        <% @user.projects.each do |project| %>
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <%= link_to project_path(project), class: "card-user-link" do %>
-            <div class="card card-community-index mt-3">
-              <div class="d-inline-flex">
-                <%= image_tag project.image.url, class: "fixed-image " if project.image? %>
-                <div class="d-flex align-items-center" >
-                  <div class="ml-2 mt-2 mb-2 mr-1">
-                    <h5 class="card-title mb-0 mb-1"><%= project.name %></h5>
-                    <p class="card-text mb-0"><%= project.description %></p>
+          <% @user.projects.each do |project| %>
+            <%= link_to project_path(project), class: "card-user-link" do %>
+              <div class="card card-community-index mt-3 p-1">
+                <div class="d-inline-flex">
+                  <%= image_tag project.image.url, class: "fixed-image " if project.image? %>
+                  <div class="d-flex align-items-center" >
+                    <div class="ml-2 mt-2 mb-2 mr-1">
+                      <% if project.is_public? %>
+                      <span class="badge badge-dark">Private</span>
+                      <% end %>
+                      <h5 class="card-title mb-0 mb-1"><%= project.name %></h5>
+                      <p class="card-text mb-0"><%= project.description %></p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         </div>
-        <% end %>
       </div>
       <br>
       <br>

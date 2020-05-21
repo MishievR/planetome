@@ -12,7 +12,7 @@ class PagesController < ApplicationController
     @places = Place.all
     @topics = Topic.all
     @homes = Home.all
-    @projects = Project.all
+    @projects = Project.where(:is_public => false)
   end
 
 end

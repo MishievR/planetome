@@ -1,9 +1,12 @@
 <div class="row">
   <div class="col-12">
-    <div class="card card-user-page">
-      <%= image_tag @project.image.url, class: "card-user-bg-img card-img-top" if @project.image? %>
-      <div class="card-body">
-        <h5 class="card-title card-title-project"><%= @project.name %></h5>
+    <div class="card card-user-page p-2">
+      <%= image_tag @project.image.url, class: "card-user-bg-img card-img-top mb-2" if @project.image? %>
+      <div class="p-1">
+        <% if @project.is_public? %>
+        <span class="badge badge-dark mb-1">Private</span>
+        <% end %>
+        <h5 class="card-title card-title-project "> <strong><%= @project.name %></strong></h5>
         <p class="card-text"><%= @project.description %></p>
       </div>
     </div>
@@ -26,9 +29,8 @@
 <% else %>
   <div class="row">
     <div class="col-12">
-      <%= link_to upvote_project_path(@project), method: :put, class: "btn btn-outline-danger btn-block" do %>
-        I'm interested
-        <span class="badge badge-danger badge-upvote"><%= @project.get_upvotes.size %></span>
+      <%= link_to upvote_project_path(@project), method: :put, class: "btn btn-danger btn-block" do %>
+        I'm interested <span class="badge badge-light"><%= @project.get_upvotes.size %></span>
       <% end %>
     </div>
   </div>
@@ -61,19 +63,26 @@
       <h6 class="main-text-color">
       <small class="text-muted">Projects</small>
       </h6>
-      <% @project.user.projects.each do |project| %>
+
+      <% @user_projects.order("updated_at DESC").each do |project| %>
+
+
         <%= link_to project_path(project), class: "main-text-color a-none" do %>
         <div class="mb-1">
-
-
           <% if @project == project %>
             <div class="projects-list current-project">
               <%= image_tag project.image.url, class: "card-project-img-small card-img-left" if project.image? %>
+              <% if project.is_public? %>
+              <i class="fas fa-lock"></i>
+              <% end %>
               <%= project.name %>
             </div>
           <% else %>
             <div class="projects-list">
               <%= image_tag project.image.url, class: "card-project-img-small card-img-left" if project.image? %>
+              <% if project.is_public? %>
+              <i class="fas fa-lock"></i>
+              <% end %>
               <%= project.name %>
             </div>
           <% end %>

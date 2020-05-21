@@ -12,7 +12,8 @@
     <div class="row">
       <div class="col">
         <!-- Find like-minded people to rent a better house together. -->
-        <h1 class="main-text-color"><%=  image_tag('planets_logo_full.png', style: 'height:65px;width:auto;margin-right:5px;margin-top:-8px;margin-left:-15px;')%><small> Start your project. Today.</small></h1>
+        <h1 class="main-text-color"><%=  image_tag('planets_logo_full.png', style: 'height:65px;width:auto;margin-right:10px;margin-top:-8px;')%><small>Start your project. Today.</small></h1>
+        <h6 class="main-text-color">Upload all your ideas and project from your head to planets and start finally making progress.</h6>
       </div>
     </div>
     <br>
@@ -32,22 +33,22 @@
                   <% if current_user == @user && @user.first_name == nil %>
                   <h5 class="user-title-menu"><%= link_to "Add personal info", edit_user_path(current_user), class: "user-link-index" %></h5>
                   <% else %>
-                  <h1 class=" main-text-color good-font mt-3">Hi,
+                  <h1 class="main-text-color good-font mt-3">Hi,
                     <%= image_tag current_user.avatar.url(:thumb), class: "profilePhotoIndex" if current_user.avatar? %>
-                    <%= link_to current_user.first_name, user_path(current_user), class: "user-link-index" %>
+                    <%= link_to current_user.first_name, user_path(current_user), class: "main-text-color" %>
                     <br>
-                    <small>Connect with new communities today.</small>
+                    <small>Big things start small.</small>
                   </h1>
                   <% end %>
                 </div>
               </div>
             <div class="row">
               <div class="col">
-                <%= link_to "Find your home", new_topic_path, data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
+                <%= link_to "Make progress", user_path(current_user), data: { turbolinks: false }, class: "btn btn-lg btn-danger btn-post-job good-font"%>
               </div>
             </div>
             <% else %>
-            <h1 class=" main-text-color text-white text-white-shadow good-font mt-3">Join us!
+            <h1 class=" main-text-color mt-3">Join us!
             <br>
             <!-- Find a place you'll call home. -->
             <small>Start your dream project today.</small></h1>
@@ -61,7 +62,7 @@
         </div>
       </div>
     </div>
-    <br>
+    <!-- <br>
     <br>
     <div class="row">
       <div class="col">
@@ -70,77 +71,73 @@
             <br>Divide the big tasks into small and doable tasks
             <br> Consistency > intensity.
             <br> Block fixed amaount of time for your projects
-
-
             </p>
             <h6 class="red-text-color mt-3"><strong> Learn more ></strong></h6>
       </div>
-    </div>
+    </div> -->
     <br>
     <br>
     <div class="row">
      <div class="col">
        <%= link_to(projects_path, class: "pages-index-main-links good-font") do %>
-       <h1 class="main-text-color">Projects</h1>
+       <h1 class="main-text-color font-cabin">Projects</h1>
        <h3><small class="text-muted">Check what people is up to.</small></h3>
        <% end %>
      </div>
    </div>
     <div class="row">
-      <% @projects.order("updated_at DESC").each do |project| %>
-      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-        <%= link_to project_path(project), class: "card-user-link" do %>
-        <div class="card card-community-index ">
-          <div class="row">
-            <% if project.image? %>
-            <div class="col-3 col-sm-2 col-md-3 col-lg-2 col-xl-2">
-              <%= image_tag project.image.url, class: "card-project-img card-img-left" if project.image? %>
-            </div>
-            <div class="col-9 col-sm-10 col-md-9 col-lg-10 col-xl-10">
-              <div class="card-body card-body-project">
-                <h5 class="card-title"><%= project.name %>
-                  <% if project.updates.count == 1 %>
-                    <small class="text-muted"> | <%= project.updates.count %> update</small>
-                    <% else %>
-                    <small class="text-muted"> | <%= project.updates.count %> updates</small>
+        <% @projects.order("updated_at DESC").each do |project| %>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+              <%= link_to project_path(project), class: "card-user-link" do %>
+                <div class="card card-community-index mt-3 p-1">
+                  <div class="d-inline-flex">
+                    <%= image_tag project.image.url, class: "fixed-image " if project.image? %>
+                    <div class="d-flex align-items-center" >
+                      <div class="ml-2 mt-2 mb-2 mr-1">
+                        <h5 class="card-title card-title-project mb-0 mb-1"><%= project.name %>
+                          <% if project.updates.count == 1 %>
+                            <small style="margin-bottom:3px;"><span class="badge badge-pill badge-light"><%= project.updates.count %> update</span></small>
+                            <% else %>
+                            <small style="margin-bottom:3px;"><span class="badge badge-pill badge-light"><%= project.updates.count %> updates</span></small>
+                          <% end %>
+                        </h5>
+                        <p class="card-text mb0px"><%= project.description %></p>
+                        <% if project.user.present? %>
+                        <%= link_to user_path(project.user), class: "user-title-project" do %>
+                          <p class="user-title-project mt-0 pt-1 text-muted mb0px">
+
+                          <%= image_tag project.user.avatar.url(:thumb), class: "profilePhotoProjectCard" if project.user.avatar? %>
+                          <%= project.user.name %>
+                          </p>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class=" float-right mr-0  mb-2">
+                  <% if project.user.present? %>
+                  <%= link_to user_path(project.user), class: "user-title-project" do %>
+                    <h5 class="user-title-project text-muted">
+                    <%= time_ago_in_words(project.updated_at) %> ago
+                    <%= image_tag project.user.avatar.url(:thumb), class: "profilePhotoProjectCard" if project.user.avatar? %>
+                    <%= project.user.name %>
+                    </h5>
+                    <% end %>
                   <% end %>
-                  </h5>
-                <p class="card-text"><%= project.description %></p>
-              </div>
+                </div> -->
+              <% end %>
             </div>
-            <% else %>
-            <div class="col-12">
-              <div class="card-body">
-                <h5 class="card-title"><%= project.name %>
-                  <% if project.updates.count == 1 %>
-                    <small class="text-muted"> | <%= project.updates.count %> update</small>
-                    <% else %>
-                    <small class="text-muted"> | <%= project.updates.count %> updates</small>
-                  <% end %>
-                </h5>
-                <p class="card-text"><%= project.description %></p>
-              </div>
-            </div>
-            <% end %>
-          </div>
-        </div>
         <% end %>
-        <div class=" float-right mr-0  mb-2">
-          <% if project.user.present? %>
-          <%= link_to user_path(project.user), class: "user-title-project" do %>
-            <h5 class="user-title-project text-muted">
-            <%= time_ago_in_words(project.updated_at) %> ago
-            <%= image_tag project.user.avatar.url(:thumb), class: "profilePhotoProjectCard" if project.user.avatar? %>
-            <%= project.user.name %>
-            </h5>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-      <% end %>
     </div>
 
-     <div class="row">
+
+
+
+
+
+
+     <!-- <div class="row">
       <div class="col">
         <%= link_to(homes_path, class: "pages-index-main-links good-font") do %>
         <h1 class="main-text-color">Homes</h1>
@@ -164,7 +161,7 @@
         <% end %>
         </div>
       <% end %>
-    </div>
+    </div> -->
 
 
 
@@ -290,7 +287,7 @@
     <br>
     <br>
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col">
         <%= link_to(cities_path, class: "pages-index-main-links good-font") do %>
         <h1 class="main-text-color">Cities</h1>
@@ -328,7 +325,7 @@
       </div>
     </div>
 
-    <br>
+    <br> -->
 
   </body>
   <script>

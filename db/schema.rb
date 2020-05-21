@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_19_183859) do
+ActiveRecord::Schema.define(version: 2020_05_21_125649) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -224,6 +224,10 @@ ActiveRecord::Schema.define(version: 2020_05_19_183859) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.boolean "is_public", default: false
+    t.boolean "archived", default: false
+    t.datetime "archived_at_time"
+    t.text "archived_reason"
   end
 
   create_table "taggings", force: :cascade do |t|
