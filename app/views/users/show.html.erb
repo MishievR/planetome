@@ -120,7 +120,7 @@
       <% end %>
       <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <% @user.projects.each do |project| %>
+          <% @user_projects.order("updated_at").each do |project| %>
             <%= link_to project_path(project), class: "card-user-link" do %>
               <div class="card card-community-index mt-3 p-1">
                 <div class="d-inline-flex">

@@ -34,6 +34,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    if user_signed_in? && current_user == @user
+      @user_projects = Project.where(:user => @user)
+    else
+      @user_projects = Project.where(:user => @user, :is_public => false)
+    end
+
   end
 
   def destroy

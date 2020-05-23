@@ -1,5 +1,38 @@
 <div class="row">
   <div class="col-12">
+    <% if !@project.image? %>
+    <p class="mb0px float-right">
+      <%= link_to( "#notfitModalCenter", role: :button,  class: "btn btn-danger-round-support-small", data: { parent: '#exampleModalCenter-#{i.id}', toggle: :modal, target: '.bd-example-modal-xl' }) do %>
+        <i class="fas fa-image"></i> Add background
+      <% end %>
+    </p>
+    <div class="row mb-2">
+      <div class="col-12">
+        <div class="modal fade bd-example-modal-xl" id="notfitModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"><span class="main-text-color text-17 mb-2"> Add background to your project</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= form_for(@project, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+                <div class="form-group">
+                  <label><i class="fas fa-upload"></i> <strong>Choose image</strong></label><br>
+                  <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg,image/jpg', id: "file" %>
+                </div>
+                <%= f.submit( "Change", class: 'btn btn-sm btn-danger-primary', id: "submit", disabled: true )%>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
     <div class="card card-user-page p-2">
       <%= image_tag @project.image.url, class: "card-user-bg-img card-img-top mb-2" if @project.image? %>
       <div class="p-1">
@@ -92,3 +125,18 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  $(document).ready(
+    function(){
+        $('input:file').change(
+            function(){
+                if ($(this).val()) {
+                    $('input:submit.btn.btn-danger-primary').attr('disabled',false);
+                    // or, as has been pointed out elsewhere:
+                    // $('input:submit').removeAttr('disabled');
+                }
+            }
+            );
+    });
+</script>

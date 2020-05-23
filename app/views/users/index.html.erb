@@ -11,24 +11,54 @@
 <div class="row">
   <% @users.each do |user| %>
   <div class="col-6 col-md-6 col-lg-3 col-xl-3">
-    <%= link_to user_path(user), class: "card-user-link"  do %>
-    <div class="card card-user  mt-3">
-      <%= image_tag user.background.url, class: "card-user-bg-img card-img-top" if user.background? %>
-      <div class="card-img-overlay">
-        <div class="d-flex justify-content-center">
-          <%= image_tag user.avatar.url(:medium), class: "profilePhoto " if user.avatar? %>
-        </div>
-        <div class="d-flex justify-content-center">
-          <h6 class="card-title card-title-user text-center font-background-color-usercard"><%= user.first_name %></h6>
-        </div>
-      </div>
-    </div>
     <div class="row">
-      <div class="col">
-        <h6 class="card-text card-text-main main-text-color mt-2 "><%= truncate(user.about, length: 100 )%></h6>
+      <div class="col-12">
+      <%= link_to user_path(user), class: "card-user-link"  do %>
+        <div class="card card-login">
+          <% if !user.background? %>
+          <div class="card-body mt-5">
+          <% else %>
+          <%= image_tag user.background.url, class: "card-img-top" if user.background? %>
+          <div class="card-body">
+          <% end %>
+            <%= image_tag user.avatar.url(:large), class: "profilePhotoUserShow" if user.avatar? %>
+            <div class="row mt-2">
+              <div class="col">
+                  <h4 class="heading-22 main-text-color d-inline"><%= user.name %>
+                    <% if user.username != nil %>
+                      <br>
+                      <small><%= user.username %></small>
+                    <% end %>
+                  </h4>
+              </div>
+            </div>
+            <% if user.about != nil %>
+              <div class="row mt-1">
+                <div class="col">
+                  <p class="mb0px"><%= user.about %></p>
+                </div>
+              </div>
+            <% end %>
+
+            <% if user.projects.count > 0 %>
+              <div class="row mt-1">
+                <div class="col">
+                  <span class="badge badge-pill badge-dark"><%= user.projects.count %>
+                    <% if user.projects.count == 1 %>
+                      project
+                    <% else %>
+                      projects
+                    <% end %>
+                  </span>
+                </div>
+              </div>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
       </div>
     </div>
-    <% end %>
-  </div>
   <% end %>
+  </div>
 </div>

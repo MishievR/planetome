@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-12">
     <div class="card card-login">
       <% if @user.background? %>
@@ -14,8 +14,7 @@
         </div>
         </div>
       </div>
-      </div>
-
+    </div>
     <div class="row">
       <div class="col">
         <h6 class="card-text card-text-main main-text-color mt-2 "><%= @user.about %></h6>
@@ -23,36 +22,27 @@
       </div>
     </div>
     <br>
-
-
     <% if current_user == @user %>
       <span class="text-muted">Your controls</span>
-      <%# link_to "Submit a topic", new_topic_path, class: "btn btn-block btn-danger mt-2"  %>
       <% if @user.projects.count != 0 %>
         <%= link_to "Start new project", new_project_path, class: "btn btn-block btn-danger"  %>
       <% end %>
-
         <%= link_to(edit_user_path(@user), class: "btn btn-block btn-danger") do %>
         <% if !@user.about? || !@user.avatar? || !@user.background? %>
           Complete your profile
         <% else %>
           Edit your profile
         <% end %>
-
       <% end %>
-
-
       <%= link_to(destroy_user_session_path, method: :delete, class: "btn main-text-color btn-block") do %>
       <i class="fas fa-sign-out-alt"></i>
       Log out
       <% end %>
     <% end %>
-
   </div>
 </div>
 <br>
 <br>
-
 
 
 
@@ -77,4 +67,136 @@
       </div>
     </div>
   </div>
+</div> -->
+
+
+<div class="row">
+  <div class="col-12">
+    <% if @user.background? %>
+    <% else %>
+    <p class="mb0px float-right">
+      <%= link_to( "#notfitModalCenter", role: :button,  class: "btn btn-danger-round-support-small", data: { parent: '#exampleModalCenter-#{i.id}', toggle: :modal, target: '.bd-example-modal-xl' }) do %>
+        <i class="fas fa-image"></i> Change cover
+      <% end %>
+    </p>
+    <div class="row mb-2">
+      <div class="col-12">
+        <div class="modal fade bd-example-modal-xl" id="notfitModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"><span class="main-text-color text-17 mb-2"> Add a new cover to your profile</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+                <div class="form-group">
+                  <label><i class="fas fa-upload"></i> <strong>Choose image</strong></label><br>
+                  <%= f.file_field :background, accept: 'image/png,image/gif,image/jpeg,image/jpg', id: "file" %>
+                </div>
+                <%= f.submit( "Change", class: 'btn btn-sm btn-danger-primary', id: "submit", disabled: true )%>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+    <div class="card card-login">
+      <%= image_tag @user.background.url, class: "card-img-top" if @user.background? %>
+      <div class="card-body">
+        <%= image_tag @user.avatar.url(:large), class: "profilePhotoUserShow" if @user.avatar? %>
+        <% if !@user.avatar? %>
+          <%= link_to image_tag('pick_profile_photo.png', class: "profilePhotoUserShow mb-2"), "#addProfilePhoto", role: :button, data: { parent: '#addProfilePhoto', toggle: :collapse }, aria: { controls: :addProfilePhotot, expanded: false } %>
+          <div class="collapse" id="addProfilePhoto">
+            <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+            <div class="form-group mt-2">
+              <label><i class="fas fa-upload"></i> Add profile photo</label>
+              <%= f.file_field :avatar, accept: 'image/png,image/gif,image/jpeg,image/jpg', id: "file" %>
+            </div>
+            <%= f.submit("Upload", class: 'btn btn-sm btn-danger-primary', id: "submit", disabled: true) %>
+            <% end %>
+            <br>
+          </div>
+        <% end %>
+        <div class="row mt-2">
+          <div class="col">
+              <h4 class="heading-22 main-text-color d-inline"><%= @user.name %>
+                <% if @user.username != nil %>
+                  <br>
+                  <small><%= @user.username %></small>
+                <% end %>
+              </h4>
+          </div>
+        </div>
+        <% if @user.about != nil %>
+          <div class="row mt-1">
+            <div class="col">
+              <p class="mb0px"><%= @user.about %></p>
+            </div>
+          </div>
+        <% end %>
+        <% if current_user == @user || (user_signed_in? && current_user.admin?) %>
+        <hr>
+        <div class="row">
+          <div class="col">
+            <% if current_user == @user || (user_signed_in? && current_user.admin?) %>
+            <p class="mb0px mt-2"><%= link_to(edit_user_path(@user), class: "main-text-color") do %>
+              <i class="fas fa-edit"></i>
+                <% if !@user.about? || !@user.avatar? %>
+                  Complete your profile
+                <% else %>
+                  Settings
+                <% end %>
+              <% end %>
+            </p>
+            <p class="mb0px mt-2"><%= link_to(destroy_user_session_path, method: :delete, class: " main-text-color ") do %>
+              <i class="fas fa-sign-out-alt"></i> Log out
+              <% end %>
+            </p>
+            <% end %>
+          </div>
+        </div>
+
+
+
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
+<% if current_user == @user %>
+  <% if @user.projects.count != 0 %>
+    <%= link_to "Start new project", new_project_path, class: "btn btn-block btn-danger"  %>
+  <% end %>
+<% end %>
+<!-- <div class="row">
+  <div class="col-12">
+    <div class="card card-login p-3 mb-3 mt-3">
+      <p class="text-17 main-text-color mb0px bl-round mb-1"> <%= t ".have-question-1" %></p>
+      <p class="text-15 mb0px"><%= t ".have-question-2" %>
+        <span class="main-text-color"><%= t ".have-question-3" %></span>
+      </p>
+    </div>
+  </div>
+</div> -->
+
+<script>
+  $(document).ready(
+    function(){
+        $('input:file').change(
+            function(){
+                if ($(this).val()) {
+                    $('input:submit.btn.btn-danger-primary').attr('disabled',false);
+                    // or, as has been pointed out elsewhere:
+                    // $('input:submit').removeAttr('disabled');
+                }
+            }
+            );
+    });
+</script>
